@@ -1,0 +1,14 @@
+# Local tools and temporary files
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+~$*
+*.log
+.env
+.env.*
+# Research documents are kept in the parent workspace
+*.pdf
+*.xlsx
+*.docx
