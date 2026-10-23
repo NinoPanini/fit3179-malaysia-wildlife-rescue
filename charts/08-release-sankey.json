@@ -1,0 +1,277 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sankey diagram linking 16 released species to six release areas; ribbon width shows animals. Same 32 animals as the flow map.",
+  "width": "container",
+  "height": 520,
+  "params": [
+    {
+      "name": "destinationChoice",
+      "value": "All destinations",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All destinations",
+          "Temenggor Forest Reserve",
+          "Taman Negara Terengganu",
+          "Taman Negara Pahang",
+          "Ulu Muda Forest Reserve",
+          "Penang National Park",
+          "Sungkai Wildlife Reserve"
+        ],
+        "name": "Highlight a release area: "
+      }
+    }
+  ],
+  "padding": {
+    "left": 190,
+    "right": 210,
+    "top": 10,
+    "bottom": 10
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "axis": null
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "scale": {
+        "reverse": true,
+        "domain": [
+          0,
+          43
+        ]
+      },
+      "axis": null
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/release-ribbons.json"
+      },
+      "transform": [
+        {
+          "calculate": "indexof([\"Brahminy kite\", \"White-bellied sea eagle\", \"Changeable hawk-eagle\", \"Buffy fish owl\", \"Spotted wood owl\", \"Oriental pied hornbill\"], datum.species) >= 0 ? 'Birds' : 'Mammals'",
+          "as": "group"
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "y2": {
+          "field": "y2"
+        },
+        "detail": {
+          "field": "species"
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Reptiles",
+              "Mammals",
+              "Birds"
+            ],
+            "range": [
+              "#5f8f3e",
+              "#b4612f",
+              "#3b7ca3"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "test": "destinationChoice == 'All destinations' || datum.destination == destinationChoice",
+            "value": 0.6
+          },
+          "value": 0.08
+        },
+        "tooltip": [
+          {
+            "field": "species",
+            "title": "Species"
+          },
+          {
+            "field": "destination",
+            "title": "Release area"
+          },
+          {
+            "field": "animals",
+            "type": "quantitative",
+            "title": "Animals"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-nodes.json"
+      },
+      "transform": [
+        {
+          "calculate": "datum.side == 'destination' ? 'Area' : indexof([\"Brahminy kite\", \"White-bellied sea eagle\", \"Changeable hawk-eagle\", \"Buffy fish owl\", \"Spotted wood owl\", \"Oriental pied hornbill\"], datum.label) >= 0 ? 'Birds' : 'Mammals'",
+          "as": "group"
+        }
+      ],
+      "mark": "rect",
+      "encoding": {
+        "x2": {
+          "field": "x2"
+        },
+        "y2": {
+          "field": "y2"
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Mammals",
+              "Birds",
+              "Area"
+            ],
+            "range": [
+              "#b4612f",
+              "#3b7ca3",
+              "#213d31"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "label",
+            "title": "Species / area"
+          },
+          {
+            "field": "animals",
+            "type": "quantitative",
+            "title": "Animals"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-nodes.json"
+      },
+      "transform": [
+        {
+          "filter": "datum.side == 'species'"
+        },
+        {
+          "calculate": "datum.label + '  ' + datum.animals",
+          "as": "label_count"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "fontSize": 13
+      },
+      "encoding": {
+        "y": {
+          "field": "mid",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label_count"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-nodes.json"
+      },
+      "transform": [
+        {
+          "filter": "datum.side == 'destination'"
+        },
+        {
+          "calculate": "datum.label + '  ' + datum.animals",
+          "as": "label_count"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 13,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "x": {
+          "field": "x2",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "mid",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label_count"
+        }
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "color": "independent"
+    }
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

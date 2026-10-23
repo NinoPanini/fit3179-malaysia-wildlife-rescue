@@ -1,0 +1,257 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth: the selected animal group's share of each state's 2024 handovers, in fixed classes.",
+  "width": "container",
+  "height": 470,
+  "params": [
+    {
+      "name": "groupChoice",
+      "value": "Mammals",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Mammals",
+          "Reptiles",
+          "Birds"
+        ],
+        "name": "Show the share that were: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/peninsular-states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d9d6cc",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "Territory"
+          },
+          {
+            "field": "note",
+            "type": "nominal",
+            "title": "Note"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "'Federal Territories: one combined figure, not split by territory'",
+          "as": "note"
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/peninsular-states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.state",
+          "from": {
+            "data": {
+              "url": "data/handovers-2024.json"
+            },
+            "key": "state",
+            "fields": [
+              "reptiles",
+              "mammals",
+              "birds",
+              "total"
+            ]
+          }
+        },
+        {
+          "filter": "isValid(datum.total)"
+        },
+        {
+          "calculate": "(groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds) / datum.total",
+          "as": "share"
+        },
+        {
+          "calculate": "groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds",
+          "as": "count"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "share",
+          "type": "quantitative",
+          "title": "Share of the state’s handovers",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              0.02,
+              0.05,
+              0.1,
+              0.25,
+              0.5,
+              0.75,
+              0.9
+            ],
+            "range": [
+              "#f3f0e4",
+              "#e2dcc0",
+              "#c4c497",
+              "#97a873",
+              "#6a8a57",
+              "#456b44",
+              "#2b4f33",
+              "#173523"
+            ]
+          },
+          "legend": {
+            "format": ".0%",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 300
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Share of handovers",
+            "format": ".1%"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Animals in this group",
+            "format": ","
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "All animals handed over",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/state-anchors.json"
+      },
+      "transform": [
+        {
+          "calculate": "(groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds) / datum.total",
+          "as": "share"
+        },
+        {
+          "window": [
+            {
+              "op": "row_number",
+              "as": "r"
+            }
+          ],
+          "sort": [
+            {
+              "field": "share",
+              "order": "descending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.r == 1"
+        },
+        {
+          "calculate": "['Highest: ' + datum.state, format(datum.share, '.0%') + ' ' + lower(groupChoice)]",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 26,
+        "dy": -6,
+        "fontSize": 13,
+        "fontWeight": 600,
+        "lineHeight": 16
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

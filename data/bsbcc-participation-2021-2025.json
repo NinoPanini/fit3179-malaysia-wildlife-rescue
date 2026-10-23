@@ -1,0 +1,62 @@
+[
+ {
+  "year": 2021,
+  "programme": "Volunteers",
+  "people": 7,
+  "note": "2021 text also describes two remote RASMA volunteers; inclusion in seven is unclear"
+ },
+ {
+  "year": 2021,
+  "programme": "Interns",
+  "people": 3,
+  "note": "Reported programme count"
+ },
+ {
+  "year": 2022,
+  "programme": "Volunteers",
+  "people": 23,
+  "note": "Separate from interns and group BAT programmes"
+ },
+ {
+  "year": 2022,
+  "programme": "Interns",
+  "people": 19,
+  "note": "Derived: 18 Malaysian-institution interns + 1 international-institution intern"
+ },
+ {
+  "year": 2023,
+  "programme": "Volunteers",
+  "people": 40,
+  "note": "Separate from interns and group BAT programmes"
+ },
+ {
+  "year": 2023,
+  "programme": "Interns",
+  "people": 9,
+  "note": "Reported programme count"
+ },
+ {
+  "year": 2024,
+  "programme": "Volunteers",
+  "people": 45,
+  "note": "Separate from interns and group BAT programmes"
+ },
+ {
+  "year": 2024,
+  "programme": "Interns",
+  "people": 14,
+  "note": "Reported programme count"
+ },
+ {
+  "year": 2025,
+  "programme": "Volunteers",
+  "people": 57,
+  "note": "Separate from interns and group BAT programmes"
+ },
+ {
+  "year": 2025,
+  "programme": "Interns",
+  "people": 21,
+  "note": "Reported programme count"
+ }
+]

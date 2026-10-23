@@ -1,0 +1,83 @@
+[
+ {
+  "site": "Penang National Park",
+  "state": "Pulau Pinang",
+  "longitude": 100.19,
+  "latitude": 5.45,
+  "origin_longitude": 101.33,
+  "origin_latitude": 3.98,
+  "animals": 13,
+  "species": 7,
+  "species_list": "Leopard cat (1), Common palm civet (3), Asian small-clawed otter (2), Brahminy kite (1), White-bellied sea eagle (4), Buffy fish owl (1), Spotted wood owl (1)",
+  "arrow_angle": 343.3724602967668,
+  "arrow_longitude": 100.22192048,
+  "arrow_latitude": 5.33350976
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "state": "Kedah",
+  "longitude": 100.97,
+  "latitude": 6.0,
+  "origin_longitude": 101.33,
+  "origin_latitude": 3.98,
+  "animals": 4,
+  "species": 2,
+  "species_list": "Agile gibbon (3), Dusky leaf monkey (1)",
+  "arrow_angle": 11.061366930344704,
+  "arrow_longitude": 100.94147168,
+  "arrow_latitude": 5.86986624
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "state": "Perak",
+  "longitude": 101.4,
+  "latitude": 5.4,
+  "origin_longitude": 101.33,
+  "origin_latitude": 3.98,
+  "animals": 4,
+  "species": 1,
+  "species_list": "Leopard (4)",
+  "arrow_angle": 23.98855859519435,
+  "arrow_longitude": 101.36056128,
+  "arrow_latitude": 5.3165371200000004
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "state": "Terengganu",
+  "longitude": 102.65,
+  "latitude": 4.9,
+  "origin_longitude": 101.33,
+  "origin_latitude": 3.98,
+  "animals": 6,
+  "species": 3,
+  "species_list": "Clouded leopard (2), Sun bear (3), Sambar deer (1)",
+  "arrow_angle": 76.29107495078073,
+  "arrow_longitude": 102.54796928,
+  "arrow_latitude": 4.877557120000001
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "state": "Pahang",
+  "longitude": 102.4,
+  "latitude": 4.38,
+  "origin_longitude": 101.33,
+  "origin_latitude": 3.98,
+  "animals": 4,
+  "species": 2,
+  "species_list": "Dhole (1), Changeable hawk-eagle (3)",
+  "arrow_angle": 90.66906274738123,
+  "arrow_longitude": 102.32587360000001,
+  "arrow_latitude": 4.382553120000001
+ },
+ {
+  "site": "Sungkai Wildlife Reserve",
+  "state": "Perak",
+  "longitude": 101.33,
+  "latitude": 3.98,
+  "origin_longitude": 101.33,
+  "origin_latitude": 3.98,
+  "animals": 1,
+  "species": 1,
+  "species_list": "Oriental pied hornbill (1)"
+ }
+]

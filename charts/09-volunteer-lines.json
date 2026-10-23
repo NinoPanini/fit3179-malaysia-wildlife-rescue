@@ -1,0 +1,180 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line chart: volunteers and interns reported by BSBCC each year, 2021-2025.",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "data/bsbcc-participation-2021-2025.json"
+  },
+  "padding": {
+    "right": 20
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 14,
+        "labelColor": "#213d31"
+      }
+    },
+    "y": {
+      "field": "people",
+      "type": "quantitative",
+      "title": "People",
+      "scale": {
+        "domain": [
+          0,
+          65
+        ]
+      },
+      "axis": {
+        "tickCount": 4
+      }
+    },
+    "color": {
+      "field": "programme",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Volunteers",
+          "Interns"
+        ],
+        "range": [
+          "#2b4f33",
+          "#c4952b"
+        ]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "programme",
+        "title": "Programme"
+      },
+      {
+        "field": "year",
+        "title": "Year"
+      },
+      {
+        "field": "people",
+        "type": "quantitative",
+        "title": "People"
+      },
+      {
+        "field": "note",
+        "title": "Note"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "point": {
+          "filled": true,
+          "size": 70
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.programme == 'Volunteers'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 13,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "people"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.programme == 'Interns'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": 17,
+        "fontSize": 13,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "people"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "dy": 4,
+        "fontSize": 14,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "programme"
+        }
+      }
+    }
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 /* Chart embedding follows FIT3179/Vega-Lite/5_multiple_charts_html.
-   Specs, data and libraries are local, so the preview works offline. */
+   Specs, data, fonts and libraries are local, so the page works offline.
+   Charts wait for the web fonts so Vega measures labels with the right typeface. */
 const views = new Map();
 window.chartStatus = {};
 async function renderChart(element) {
@@ -19,7 +20,8 @@ async function renderChart(element) {
     console.error(id, error);
   }
 }
-document.querySelectorAll('[data-spec]').forEach(renderChart);
+const fontsReady = document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))]) : Promise.resolve();
+fontsReady.then(() => document.querySelectorAll('[data-spec]').forEach(renderChart));
 let resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);

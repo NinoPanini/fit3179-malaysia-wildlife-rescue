@@ -1,0 +1,32 @@
+[
+ {
+  "year": 2023,
+  "group": "Reptiles",
+  "animals": 417
+ },
+ {
+  "year": 2023,
+  "group": "Mammals",
+  "animals": 77
+ },
+ {
+  "year": 2023,
+  "group": "Birds",
+  "animals": 73
+ },
+ {
+  "year": 2024,
+  "group": "Reptiles",
+  "animals": 10968
+ },
+ {
+  "year": 2024,
+  "group": "Mammals",
+  "animals": 75
+ },
+ {
+  "year": 2024,
+  "group": "Birds",
+  "animals": 183
+ }
+]

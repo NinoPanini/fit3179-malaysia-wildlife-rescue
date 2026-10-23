@@ -1,0 +1,65 @@
+[
+ {
+  "bear": "Sunbearo",
+  "order": 0,
+  "outcome": "Later confirmed dead (collar retrieved)",
+  "first": "2021-01-10",
+  "last": "2021-01-10"
+ },
+ {
+  "bear": "Loki",
+  "order": 1,
+  "outcome": "Fate unknown: collar failed",
+  "first": "2021-01-10",
+  "last": "2021-01-10"
+ },
+ {
+  "bear": "Rudy",
+  "order": 2,
+  "outcome": "In care at BSBCC",
+  "first": "2021-03-13",
+  "last": "2022-07-26"
+ },
+ {
+  "bear": "Wawa",
+  "order": 3,
+  "outcome": "No news after May 2022",
+  "first": "2022-02-26",
+  "last": "2022-05-05"
+ },
+ {
+  "bear": "Kwong",
+  "order": 4,
+  "outcome": "In care at BSBCC",
+  "first": "2022-09-20",
+  "last": "2023-08-01"
+ },
+ {
+  "bear": "Sika",
+  "order": 5,
+  "outcome": "Died about three weeks after release",
+  "first": "2023-02-10",
+  "last": "2023-03-05"
+ },
+ {
+  "bear": "Tenom",
+  "order": 6,
+  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "first": "2023-06-02",
+  "last": "2024-02-20"
+ },
+ {
+  "bear": "Pitang",
+  "order": 7,
+  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "first": "2024-10-16",
+  "last": "2025-01-05"
+ },
+ {
+  "bear": "Itam",
+  "order": 8,
+  "outcome": "Died weeks after release",
+  "first": "2025-03-10",
+  "last": "2025-06-15"
+ }
+]

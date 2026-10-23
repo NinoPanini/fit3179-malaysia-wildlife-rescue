@@ -1,0 +1,292 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart: each reporting state ranked by animals handed over in 2021, 2023 and 2024. 2022 has no state table.",
+  "width": "container",
+  "height": 420,
+  "data": {
+    "url": "data/handovers-trend.json"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "scale": {
+        "domain": [
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "padding": 1.6
+      },
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "labelFontSize": 15,
+        "labelFontWeight": 600,
+        "labelColor": "#213d31",
+        "orient": "top"
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0.5,
+          14.6
+        ],
+        "reverse": true
+      },
+      "axis": null
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2022,
+            "rank": 13.6
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12.5,
+        "color": "#5d6b62",
+        "lineHeight": 17,
+        "fontStyle": "italic",
+        "text": [
+          "2022: no state table published",
+          "(national total 11,170 animals)"
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year <= 2023"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "cursor": "pointer",
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "detail": {
+          "field": "state"
+        },
+        "color": {
+          "condition": {
+            "param": "pickState",
+            "value": "#213d31"
+          },
+          "value": "#d6d1c1"
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "pickState",
+            "value": 3
+          },
+          "value": 1.6
+        },
+        "order": {
+          "field": "year"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year >= 2023"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "detail": {
+          "field": "state"
+        },
+        "color": {
+          "condition": {
+            "param": "pickState",
+            "value": "#213d31"
+          },
+          "value": "#d6d1c1"
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "pickState",
+            "value": 3.5
+          },
+          "value": 2
+        },
+        "order": {
+          "field": "year"
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "pickState",
+          "value": [
+            {
+              "state": "Terengganu"
+            }
+          ],
+          "select": {
+            "type": "point",
+            "fields": [
+              "state"
+            ],
+            "on": "click",
+            "clear": "dblclick"
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "opacity": 1,
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.5,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "param": "pickState",
+            "value": "#213d31"
+          },
+          "value": "#bdb7a5"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "rank",
+            "type": "quantitative",
+            "title": "Rank (1 = most)"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Animals handed over",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2021"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -12,
+        "fontSize": 13
+      },
+      "encoding": {
+        "text": {
+          "field": "state"
+        },
+        "color": {
+          "condition": {
+            "param": "pickState",
+            "value": "#213d31"
+          },
+          "value": "#5d6b62"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2024"
+        },
+        {
+          "calculate": "datum.state + '  ' + format(datum.total, ',')",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontSize": 13
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "condition": {
+            "param": "pickState",
+            "value": "#213d31"
+          },
+          "value": "#5d6b62"
+        }
+      }
+    }
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

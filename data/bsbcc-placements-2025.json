@@ -1,0 +1,458 @@
+[
+ {
+  "placement": "BSBCC2025-V01",
+  "start": "2025-01-07",
+  "end": "2025-02-07",
+  "days": 32,
+  "origin": "Sweden",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V02",
+  "start": "2025-01-07",
+  "end": "2025-02-07",
+  "days": 32,
+  "origin": "Sweden",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V03",
+  "start": "2025-01-07",
+  "end": "2025-02-07",
+  "days": 32,
+  "origin": "Sweden",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V04",
+  "start": "2025-01-07",
+  "end": "2025-02-07",
+  "days": 32,
+  "origin": "Sweden",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V05",
+  "start": "2025-02-07",
+  "end": "2025-02-17",
+  "days": 11,
+  "origin": "Mexico",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V06",
+  "start": "2025-02-07",
+  "end": "2025-02-17",
+  "days": 11,
+  "origin": "Mexico",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V07",
+  "start": "2025-03-07",
+  "end": "2025-04-07",
+  "days": 32,
+  "origin": "Sweden",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V08",
+  "start": "2025-03-07",
+  "end": "2025-04-07",
+  "days": 32,
+  "origin": "Sweden",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V09",
+  "start": "2025-03-07",
+  "end": "2025-04-07",
+  "days": 32,
+  "origin": "Sweden",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V10",
+  "start": "2025-03-07",
+  "end": "2025-03-17",
+  "days": 11,
+  "origin": "Japan",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V11",
+  "start": "2025-03-07",
+  "end": "2025-03-17",
+  "days": 11,
+  "origin": "Japan",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V12",
+  "start": "2025-03-07",
+  "end": "2025-03-17",
+  "days": 11,
+  "origin": "United Kingdom",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V13",
+  "start": "2025-03-20",
+  "end": "2025-03-31",
+  "days": 12,
+  "origin": "United Kingdom",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V14",
+  "start": "2025-03-20",
+  "end": "2025-03-31",
+  "days": 12,
+  "origin": "United Kingdom",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V15",
+  "start": "2025-03-20",
+  "end": "2025-03-31",
+  "days": 12,
+  "origin": "Singapore",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V16",
+  "start": "2025-03-10",
+  "end": "2025-03-25",
+  "days": 16,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V17",
+  "start": "2025-03-10",
+  "end": "2025-03-25",
+  "days": 16,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V18",
+  "start": "2025-03-26",
+  "end": "2025-05-03",
+  "days": 39,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V19",
+  "start": "2025-04-07",
+  "end": "2025-05-01",
+  "days": 25,
+  "origin": "United Kingdom",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V20",
+  "start": "2025-04-07",
+  "end": "2025-04-17",
+  "days": 11,
+  "origin": "Japan",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V21",
+  "start": "2025-05-06",
+  "end": "2025-05-18",
+  "days": 13,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V22",
+  "start": "2025-05-27",
+  "end": "2025-06-16",
+  "days": 21,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V23",
+  "start": "2025-06-07",
+  "end": "2025-07-01",
+  "days": 25,
+  "origin": "United States",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V24",
+  "start": "2025-06-07",
+  "end": "2025-06-17",
+  "days": 11,
+  "origin": "Australia",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V25",
+  "start": "2025-06-02",
+  "end": "2025-06-15",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V26",
+  "start": "2025-06-23",
+  "end": "2025-07-11",
+  "days": 19,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V27",
+  "start": "2025-06-09",
+  "end": "2025-06-22",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V28",
+  "start": "2025-06-30",
+  "end": "2025-07-11",
+  "days": 12,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V29",
+  "start": "2025-07-07",
+  "end": "2025-07-17",
+  "days": 11,
+  "origin": "Australia",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V30",
+  "start": "2025-07-07",
+  "end": "2025-07-17",
+  "days": 11,
+  "origin": "United States",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V31",
+  "start": "2025-07-07",
+  "end": "2025-07-20",
+  "days": 14,
+  "origin": "United States",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V32",
+  "start": "2025-07-07",
+  "end": "2025-07-20",
+  "days": 14,
+  "origin": "United States",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V33",
+  "start": "2025-07-17",
+  "end": "2025-07-30",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V34",
+  "start": "2025-07-17",
+  "end": "2025-07-30",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V35",
+  "start": "2025-07-17",
+  "end": "2025-07-30",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V36",
+  "start": "2025-08-07",
+  "end": "2025-08-31",
+  "days": 25,
+  "origin": "Latvia",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V37",
+  "start": "2025-08-07",
+  "end": "2025-08-17",
+  "days": 11,
+  "origin": "Australia",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V38",
+  "start": "2025-08-07",
+  "end": "2025-08-31",
+  "days": 25,
+  "origin": "Australia",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V39",
+  "start": "2025-08-13",
+  "end": "2025-08-24",
+  "days": 12,
+  "origin": "Japan",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V40",
+  "start": "2025-08-13",
+  "end": "2025-08-24",
+  "days": 12,
+  "origin": "Japan",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V41",
+  "start": "2025-08-06",
+  "end": "2025-08-19",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V42",
+  "start": "2025-08-07",
+  "end": "2025-08-20",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V43",
+  "start": "2025-08-18",
+  "end": "2025-08-31",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V44",
+  "start": "2025-08-18",
+  "end": "2025-08-31",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V45",
+  "start": "2025-08-18",
+  "end": "2025-08-31",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V46",
+  "start": "2025-09-05",
+  "end": "2025-09-18",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V47",
+  "start": "2025-09-06",
+  "end": "2025-09-19",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V48",
+  "start": "2025-09-08",
+  "end": "2025-09-21",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V49",
+  "start": "2025-09-15",
+  "end": "2025-09-28",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V50",
+  "start": "2025-09-22",
+  "end": "2025-10-05",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V51",
+  "start": "2025-09-22",
+  "end": "2025-10-05",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V52",
+  "start": "2025-10-17",
+  "end": "2025-10-31",
+  "days": 15,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V53",
+  "start": "2025-11-11",
+  "end": "2025-11-25",
+  "days": 15,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V54",
+  "start": "2025-11-01",
+  "end": "2025-11-30",
+  "days": 30,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V55",
+  "start": "2025-11-05",
+  "end": "2025-11-18",
+  "days": 14,
+  "origin": "Malaysia",
+  "origin_group": "Malaysia"
+ },
+ {
+  "placement": "BSBCC2025-V56",
+  "start": "2025-11-07",
+  "end": "2025-11-17",
+  "days": 11,
+  "origin": "Japan",
+  "origin_group": "Other countries"
+ },
+ {
+  "placement": "BSBCC2025-V57",
+  "start": "2025-12-07",
+  "end": "2025-12-17",
+  "days": 11,
+  "origin": "Singapore",
+  "origin_group": "Other countries"
+ }
+]

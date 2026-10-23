@@ -1,0 +1,38 @@
+[
+ {
+  "year": 2021,
+  "total": 11408,
+  "reptiles": 9048,
+  "mammals": 2095,
+  "birds": 265,
+  "state_table": true,
+  "source": "PERHILITAN 2021, Table 20"
+ },
+ {
+  "year": 2022,
+  "total": 11170,
+  "reptiles": 9190,
+  "mammals": 1820,
+  "birds": 161,
+  "state_table": false,
+  "source": "PERHILITAN 2022, p104 text (no state table published)"
+ },
+ {
+  "year": 2023,
+  "total": 12691,
+  "reptiles": 11099,
+  "mammals": 1439,
+  "birds": 153,
+  "state_table": true,
+  "source": "PERHILITAN 2023, Table 46"
+ },
+ {
+  "year": 2024,
+  "total": 16034,
+  "reptiles": 14146,
+  "mammals": 1683,
+  "birds": 205,
+  "state_table": true,
+  "source": "PERHILITAN 2024, Table 34"
+ }
+]

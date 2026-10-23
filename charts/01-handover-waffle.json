@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "100 squares, one per percent of the 16,034 animals handed over to PERHILITAN in 2024, coloured by animal group.",
+  "data": {
+    "url": "data/handovers-waffle-2024.json"
+  },
+  "transform": [
+    {
+      "calculate": "datum.group + ' · ' + datum.share + '%'",
+      "as": "label"
+    }
+  ],
+  "width": 300,
+  "height": 300,
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 2,
+    "stroke": "#fbf9f2",
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": [
+          "Reptiles",
+          "Mammals",
+          "Birds"
+        ],
+        "range": [
+          "#5f8f3e",
+          "#b4612f",
+          "#3b7ca3"
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "direction": "vertical",
+        "symbolType": "square",
+        "symbolSize": 260,
+        "labelFontSize": 15,
+        "rowPadding": 10,
+        "labelLimit": 300,
+        "labelExpr": "datum.label == 'Reptiles' ? 'Reptiles · 88%' : datum.label == 'Mammals' ? 'Mammals · 11%' : 'Birds · 1%'"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "group",
+        "type": "nominal",
+        "title": "Animal group"
+      },
+      {
+        "field": "group_total",
+        "type": "quantitative",
+        "title": "Animals handed over, 2024",
+        "format": ","
+      },
+      {
+        "field": "share",
+        "type": "quantitative",
+        "title": "Share of all handovers (%)"
+      }
+    ]
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

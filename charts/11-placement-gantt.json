@@ -1,0 +1,326 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Gantt chart of 57 volunteer placements at BSBCC in 2025, linked to a histogram of placement length. Drag across the timeline to select placements that started in that period.",
+  "data": {
+    "url": "data/bsbcc-placements-2025.json"
+  },
+  "hconcat": [
+    {
+      "width": 620,
+      "height": 430,
+      "params": [
+        {
+          "name": "brush",
+          "select": {
+            "type": "interval",
+            "encodings": [
+              "x"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "height": 5,
+        "cornerRadius": 1.5
+      },
+      "encoding": {
+        "y": {
+          "field": "placement",
+          "type": "nominal",
+          "sort": {
+            "field": "start"
+          },
+          "axis": null,
+          "title": null
+        },
+        "x": {
+          "field": "start",
+          "type": "temporal",
+          "title": null,
+          "axis": {
+            "format": "%b",
+            "tickCount": {
+              "interval": "month"
+            },
+            "orient": "top",
+            "labelColor": "#213d31",
+            "labelFontSize": 13
+          }
+        },
+        "x2": {
+          "field": "end"
+        },
+        "color": {
+          "field": "origin_group",
+          "type": "nominal",
+          "title": "Volunteer from",
+          "scale": {
+            "domain": [
+              "Malaysia",
+              "Other countries"
+            ],
+            "range": [
+              "#2b4f33",
+              "#c4952b"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "title": "Listed origin"
+          },
+          {
+            "field": "start",
+            "type": "temporal",
+            "title": "Start",
+            "format": "%d %b %Y"
+          },
+          {
+            "field": "end",
+            "type": "temporal",
+            "title": "End",
+            "format": "%d %b %Y"
+          },
+          {
+            "field": "days",
+            "type": "quantitative",
+            "title": "Calendar days"
+          }
+        ]
+      }
+    },
+    {
+      "width": 290,
+      "height": 250,
+      "layer": [
+        {
+          "transform": [
+            {
+              "bin": {
+                "step": 7,
+                "extent": [
+                  7,
+                  42
+                ]
+              },
+              "field": "days",
+              "as": [
+                "bin_start",
+                "bin_end"
+              ]
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "color": "#e2ddcb",
+            "stroke": "#fbf9f2",
+            "strokeWidth": 2
+          },
+          "encoding": {
+            "x": {
+              "field": "bin_start",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  7,
+                  42
+                ]
+              },
+              "title": "Placement length (calendar days)",
+              "axis": {
+                "values": [
+                  7,
+                  14,
+                  21,
+                  28,
+                  35,
+                  42
+                ]
+              }
+            },
+            "x2": {
+              "field": "bin_end"
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative",
+              "title": "Placements",
+              "scale": {
+                "domain": [
+                  0,
+                  26
+                ]
+              },
+              "axis": {
+                "tickCount": 5
+              }
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": {
+                "param": "brush"
+              }
+            },
+            {
+              "bin": {
+                "step": 7,
+                "extent": [
+                  7,
+                  42
+                ]
+              },
+              "field": "days",
+              "as": [
+                "bin_start",
+                "bin_end"
+              ]
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "color": "#2b4f33",
+            "stroke": "#fbf9f2",
+            "strokeWidth": 2
+          },
+          "encoding": {
+            "x": {
+              "field": "bin_start",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  7,
+                  42
+                ]
+              },
+              "title": "Placement length (calendar days)",
+              "axis": {
+                "values": [
+                  7,
+                  14,
+                  21,
+                  28,
+                  35,
+                  42
+                ]
+              }
+            },
+            "x2": {
+              "field": "bin_end"
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "bin_start",
+                "title": "From (days)"
+              },
+              {
+                "field": "bin_end",
+                "title": "Up to (days)"
+              },
+              {
+                "aggregate": "count",
+                "type": "quantitative",
+                "title": "Placements"
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "d": 14
+              }
+            ]
+          },
+          "encoding": {
+            "x": {
+              "field": "d",
+              "type": "quantitative"
+            }
+          },
+          "layer": [
+            {
+              "mark": {
+                "type": "rule",
+                "color": "#c4952b",
+                "strokeDash": [
+                  5,
+                  4
+                ],
+                "strokeWidth": 2
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "text": "Median of all: 14 days",
+                "align": "left",
+                "dx": 6,
+                "dy": 4,
+                "baseline": "top",
+                "color": "#7d5a10",
+                "fontSize": 12.5,
+                "fontWeight": 600
+              },
+              "encoding": {
+                "y": {
+                  "value": 0
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "spacing": 36,
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

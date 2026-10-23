@@ -1,0 +1,506 @@
+[
+ {
+  "year": 2023,
+  "month": "Jan",
+  "group": "Mammals",
+  "animals": 7,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jan",
+  "group": "Reptiles",
+  "animals": 2,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jan",
+  "group": "Birds",
+  "animals": 13,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Feb",
+  "group": "Mammals",
+  "animals": 8,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Feb",
+  "group": "Reptiles",
+  "animals": 1,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Feb",
+  "group": "Birds",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Mar",
+  "group": "Mammals",
+  "animals": 7,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Mar",
+  "group": "Reptiles",
+  "animals": 10,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Mar",
+  "group": "Birds",
+  "animals": 4,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Apr",
+  "group": "Mammals",
+  "animals": 4,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Apr",
+  "group": "Reptiles",
+  "animals": 10,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Apr",
+  "group": "Birds",
+  "animals": 1,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "May",
+  "group": "Mammals",
+  "animals": 11,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "May",
+  "group": "Reptiles",
+  "animals": 35,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "May",
+  "group": "Birds",
+  "animals": 9,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jun",
+  "group": "Mammals",
+  "animals": 10,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jun",
+  "group": "Reptiles",
+  "animals": 91,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jun",
+  "group": "Birds",
+  "animals": 19,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jul",
+  "group": "Mammals",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jul",
+  "group": "Reptiles",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Jul",
+  "group": "Birds",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Aug",
+  "group": "Mammals",
+  "animals": 2,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Aug",
+  "group": "Reptiles",
+  "animals": 243,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Aug",
+  "group": "Birds",
+  "animals": 3,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Sep",
+  "group": "Mammals",
+  "animals": 1,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Sep",
+  "group": "Reptiles",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Sep",
+  "group": "Birds",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Oct",
+  "group": "Mammals",
+  "animals": 9,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Oct",
+  "group": "Reptiles",
+  "animals": 6,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Oct",
+  "group": "Birds",
+  "animals": 13,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Nov",
+  "group": "Mammals",
+  "animals": 14,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Nov",
+  "group": "Reptiles",
+  "animals": 3,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Nov",
+  "group": "Birds",
+  "animals": 7,
+  "reported": true
+ },
+ {
+  "year": 2023,
+  "month": "Dec",
+  "group": "Reptiles",
+  "animals": null,
+  "reported": false
+ },
+ {
+  "year": 2023,
+  "month": "Dec",
+  "group": "Mammals",
+  "animals": null,
+  "reported": false
+ },
+ {
+  "year": 2023,
+  "month": "Dec",
+  "group": "Birds",
+  "animals": null,
+  "reported": false
+ },
+ {
+  "year": 2024,
+  "month": "Jan",
+  "group": "Mammals",
+  "animals": 10,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Feb",
+  "group": "Mammals",
+  "animals": 10,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Mar",
+  "group": "Mammals",
+  "animals": 3,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Apr",
+  "group": "Mammals",
+  "animals": 4,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "May",
+  "group": "Mammals",
+  "animals": 2,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jun",
+  "group": "Mammals",
+  "animals": 6,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jul",
+  "group": "Mammals",
+  "animals": 7,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Aug",
+  "group": "Mammals",
+  "animals": 4,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Sep",
+  "group": "Mammals",
+  "animals": 5,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Oct",
+  "group": "Mammals",
+  "animals": 9,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Nov",
+  "group": "Mammals",
+  "animals": 9,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Dec",
+  "group": "Mammals",
+  "animals": 6,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jan",
+  "group": "Reptiles",
+  "animals": 32,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Feb",
+  "group": "Reptiles",
+  "animals": 45,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Mar",
+  "group": "Reptiles",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Apr",
+  "group": "Reptiles",
+  "animals": 9,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "May",
+  "group": "Reptiles",
+  "animals": 16,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jun",
+  "group": "Reptiles",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jul",
+  "group": "Reptiles",
+  "animals": 4,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Aug",
+  "group": "Reptiles",
+  "animals": 469,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Sep",
+  "group": "Reptiles",
+  "animals": 5009,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Oct",
+  "group": "Reptiles",
+  "animals": 95,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Nov",
+  "group": "Reptiles",
+  "animals": 77,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Dec",
+  "group": "Reptiles",
+  "animals": 5212,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jan",
+  "group": "Birds",
+  "animals": 37,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Feb",
+  "group": "Birds",
+  "animals": 3,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Mar",
+  "group": "Birds",
+  "animals": 0,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Apr",
+  "group": "Birds",
+  "animals": 55,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "May",
+  "group": "Birds",
+  "animals": 30,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jun",
+  "group": "Birds",
+  "animals": 3,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Jul",
+  "group": "Birds",
+  "animals": 10,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Aug",
+  "group": "Birds",
+  "animals": 6,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Sep",
+  "group": "Birds",
+  "animals": 17,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Oct",
+  "group": "Birds",
+  "animals": 10,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Nov",
+  "group": "Birds",
+  "animals": 11,
+  "reported": true
+ },
+ {
+  "year": 2024,
+  "month": "Dec",
+  "group": "Birds",
+  "animals": 1,
+  "reported": true
+ }
+]

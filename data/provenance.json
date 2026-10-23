@@ -1,32 +1,63 @@
 {
-  "prepared": "2026-10-17",
-  "observations": "2024–2025",
+  "prepared": "2026-10-24",
+  "observations": "2021–2025",
   "sources": [
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2024",
-      "locator": "Table 34 p121; Figure 26 table p107; Table 31 p108",
-      "file": "data/raw/user_supplied/perhilitan_annual_report_2024.pdf",
+      "locator": "Table 34 p121 (handovers); table under Figure 26 p107 (NWRC monthly intake); Table 31 p108 (releases)",
       "url": null,
-      "note": "User-supplied original; direct report URL has not been recorded. Permission confirmed by project owner."
+      "note": "Library copy; approval confirmed by author."
+    },
+    {
+      "provider": "PERHILITAN",
+      "title": "Laporan Tahunan 2023",
+      "locator": "Table 46 (handovers by state); Table 31 (NWRC received by month) and NWRC text",
+      "url": null,
+      "note": "The printed December row equals the annual totals stated in the text (567 animals); December 2023 intake is shown as not printed."
+    },
+    {
+      "provider": "PERHILITAN",
+      "title": "Laporan Tahunan 2022",
+      "locator": "PDF p106 / printed p104 text: national handover total 11,170",
+      "url": null,
+      "note": "Scanned report; no state table published. Listed group figures sum to 11,171 in the source."
+    },
+    {
+      "provider": "PERHILITAN",
+      "title": "Laporan Tahunan 2021",
+      "locator": "Table 20, printed p80",
+      "url": "https://files.wildlife.gov.my/wildlife-wp-media/2025/09/14174633/LT2021.pdf",
+      "note": "State rows used; printed footer error documented in research notes."
     },
     {
       "provider": "BSBCC",
-      "title": "Annual Report 2024",
-      "url": "https://www.bsbcc.org.my/s/Annual-Report-2024_FINAL.pdf",
-      "locator": "PDF pp6,11,12"
+      "title": "Annual Reports 2021–2025",
+      "urls": [
+        "https://www.bsbcc.org.my/s/Annual-Report-2021.pdf",
+        "https://www.bsbcc.org.my/s/Annual-Report-2022.pdf",
+        "https://www.bsbcc.org.my/s/Annual-Report-2023_FINAL_compressed-3ebd.pdf",
+        "https://www.bsbcc.org.my/s/Annual-Report-2024_FINAL.pdf",
+        "https://www.bsbcc.org.my/s/Annual-Report-2025.pdf"
+      ],
+      "locator": "Bear events (see bear-journeys.json source fields); volunteer/intern counts; 2025 Appendix I placements pp30–32"
     },
     {
-      "provider": "BSBCC",
-      "title": "Annual Report 2025",
-      "url": "https://www.bsbcc.org.my/s/Annual-Report-2025.pdf",
-      "locator": "PDF pp9,12,13,30–32"
+      "provider": "Brunton et al. 2025, Wildlife Biology",
+      "url": "https://nsojournals.onlinelibrary.wiley.com/doi/10.1002/wlb3.01264",
+      "licence": "CC BY 4.0",
+      "locator": "Table 1 outcomes for 2021–2023 releases only (Sunbearo, Loki); no GPS data"
     },
     {
-      "provider": "WWF-Malaysia",
-      "title": "Annual Review 2025",
-      "url": "https://wwfmy.awsassets.panda.org/downloads/wwf-malaysia-annual-review-2025_021225.pdf",
-      "locator": "p21, 2024 coral-restoration event"
+      "provider": "FGV Holdings / NWRC",
+      "title": "Sun bear management guideline, 2nd ed. 2022",
+      "note": "Background text only; no figures reproduced."
+    },
+    {
+      "provider": "IUCN",
+      "title": "Guidelines on responsible translocation of displaced organisms (2025)",
+      "url": "https://www.iucn-ctsg.org/wp-content/uploads/2025/10/IUCN-Guidelines-July-2025.pdf",
+      "note": "Background text only."
     },
     {
       "provider": "geoBoundaries / OpenStreetMap contributors",
@@ -34,22 +65,30 @@
       "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MYS/ADM1/geoBoundaries-MYS-ADM1_simplified.geojson",
       "licence": "ODbL 1.0",
       "note": "Reference geometry represents 2017, build 2023. This is cartographic context, not dated wildlife observations. Selected peninsular features, renamed properties, reversed ring winding for Vega; anchors are largest-polygon planar centroids."
+    },
+    {
+      "provider": "Author placement",
+      "title": "Approximate protected-area and Sabah place positions",
+      "note": "Hand-placed for orientation (Penang NP 5.45N 100.19E and Ulu Muda 6.00N 100.97E from Wikipedia coordinates; Temenggor south of Royal Belum; others approximate). Accuracy roughly 10–20 km. Not release coordinates."
     }
   ],
   "caveats": [
-    "NWRC Figure 26 bar labels and numeric table disagree in places. The website consistently uses the printed numeric table and discloses this discrepancy.",
-    "Federal Territories reporting unit is retained in totals and tables but not allocated to individual territory polygons.",
-    "State anchors show regional reporting locations, not precise rescue/release sites. Perak-to-Perak releases are shown separately.",
-    "The Sankey and flow map are two views of the same 32 released animals; they must never be summed.",
-    "Placement durations are inclusive calendar days, not worked hours or workdays.",
-    "Animal GPS data and unverified MyBIS data are excluded."
+    "NWRC 2024: Figure 26 bar labels and its numeric table differ in places; the numeric table is used.",
+    "NWRC 2023: the printed December row repeats the annual totals, so December 2023 is marked not printed and year totals come from the report text.",
+    "Federal Territories are one combined reporting unit, kept in totals and tables but not split across territory polygons.",
+    "State ranks skip 2022 because that report gives only a national total.",
+    "The flow map and Sankey show the same 32 released animals; never sum them.",
+    "Bear events are cases described in public reports, not all BSBCC bears; Sika’s first mortality-signal date (5 Mar 2023) comes from the 2023 report text.",
+    "Placement durations are inclusive calendar days, not hours worked.",
+    "Animal GPS data and MyBIS data are excluded. Observation window: 2021–Jul 2026; reference map geometry exempt (2017 boundaries)."
   ],
   "eligibility_policy": {
     "minimum_date": "2021-01-01",
     "maximum_date": "2026-07-31",
     "updated": "2026-10-24",
     "wildlife_observations_compliant": true,
-    "geometry_compliant": false,
-    "required_action": "Replace 2017 boundary layer; no reference-map exception approved."
+    "geometry_compliant": true,
+    "required_action": null,
+    "map_layer_note": "Generic reference geometry is exempt from the observation-date rule (user clarification 24 Oct 2026). Vintage 2017 disclosed."
   }
 }

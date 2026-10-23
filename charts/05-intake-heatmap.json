@@ -1,0 +1,304 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of animals received by NWRC each month in 2023 and 2024 by animal group, with yearly totals as bars.",
+  "hconcat": [
+    {
+      "width": 590,
+      "height": 240,
+      "data": {
+        "url": "data/nwrc-intake-2023-2024.json"
+      },
+      "transform": [
+        {
+          "calculate": "datum.year + ' · ' + datum.group",
+          "as": "row"
+        },
+        {
+          "calculate": "!datum.reported ? 'Not printed' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : datum.animals < 100 ? '10–99' : datum.animals < 1000 ? '100–999' : '1,000+'",
+          "as": "band"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "sort": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "axis": {
+            "title": null,
+            "labelAngle": 0,
+            "orient": "top",
+            "labelColor": "#213d31"
+          }
+        },
+        "y": {
+          "field": "row",
+          "type": "nominal",
+          "sort": [
+            "2023 · Reptiles",
+            "2023 · Mammals",
+            "2023 · Birds",
+            "2024 · Reptiles",
+            "2024 · Mammals",
+            "2024 · Birds"
+          ],
+          "title": null,
+          "axis": {
+            "labelFontSize": 13,
+            "labelColor": "#213d31",
+            "labelPadding": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "nominal",
+            "title": "Month"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "group",
+            "type": "nominal",
+            "title": "Group"
+          },
+          {
+            "field": "animals",
+            "type": "quantitative",
+            "title": "Animals received",
+            "format": ","
+          },
+          {
+            "field": "band",
+            "type": "nominal",
+            "title": "Class"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "stroke": "#fbf9f2",
+            "strokeWidth": 3,
+            "cornerRadius": 3
+          },
+          "encoding": {
+            "color": {
+              "field": "band",
+              "type": "ordinal",
+              "title": "Animals received in the month",
+              "scale": {
+                "domain": [
+                  "0",
+                  "1–9",
+                  "10–99",
+                  "100–999",
+                  "1,000+",
+                  "Not printed"
+                ],
+                "range": [
+                  "#f1eee3",
+                  "#dcd8bd",
+                  "#a9b486",
+                  "#5e8452",
+                  "#22452e",
+                  "#ffffff"
+                ]
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "horizontal",
+                "symbolType": "square",
+                "symbolStrokeColor": "#bdb7a5",
+                "symbolStrokeWidth": 1
+              }
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 12.5
+          },
+          "encoding": {
+            "text": {
+              "condition": {
+                "test": "!datum.reported",
+                "value": "n/p"
+              },
+              "field": "animals",
+              "format": ","
+            },
+            "color": {
+              "condition": {
+                "test": "datum.animals >= 100",
+                "value": "white"
+              },
+              "value": "#213d31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 210,
+      "height": 240,
+      "data": {
+        "url": "data/nwrc-intake-totals.json"
+      },
+      "transform": [
+        {
+          "calculate": "datum.year + ' · ' + datum.group",
+          "as": "row"
+        }
+      ],
+      "encoding": {
+        "y": {
+          "field": "row",
+          "type": "nominal",
+          "sort": [
+            "2023 · Reptiles",
+            "2023 · Mammals",
+            "2023 · Birds",
+            "2024 · Reptiles",
+            "2024 · Mammals",
+            "2024 · Birds"
+          ],
+          "title": null,
+          "axis": null
+        },
+        "x": {
+          "field": "animals",
+          "type": "quantitative",
+          "title": "Year total",
+          "scale": {
+            "domain": [
+              0,
+              14000
+            ]
+          },
+          "axis": {
+            "orient": "top",
+            "tickCount": 2,
+            "grid": false,
+            "labels": false
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "height": 18,
+            "cornerRadiusEnd": 2
+          },
+          "encoding": {
+            "color": {
+              "field": "group",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "Reptiles",
+                  "Mammals",
+                  "Birds"
+                ],
+                "range": [
+                  "#5f8f3e",
+                  "#b4612f",
+                  "#3b7ca3"
+                ]
+              },
+              "legend": null
+            },
+            "tooltip": [
+              {
+                "field": "row",
+                "title": "Year · group"
+              },
+              {
+                "field": "animals",
+                "type": "quantitative",
+                "title": "Animals received",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 6,
+            "fontSize": 13,
+            "fontWeight": 600
+          },
+          "encoding": {
+            "text": {
+              "field": "animals",
+              "format": ","
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "spacing": 18,
+  "resolve": {
+    "scale": {
+      "color": "independent"
+    }
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

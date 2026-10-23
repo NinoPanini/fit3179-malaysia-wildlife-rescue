@@ -1,0 +1,348 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Flow map: animals released by NWRC in 2024, from the centre at Sungkai to six named protected areas. Line width shows animals.",
+  "width": "container",
+  "height": 520,
+  "padding": {
+    "left": 110,
+    "top": 5,
+    "right": 5,
+    "bottom": 5
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/peninsular-states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ebe7d9",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State / territory"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-arcs.json"
+      },
+      "mark": {
+        "type": "line",
+        "color": "#2f5a40",
+        "opacity": 0.8,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "detail": {
+          "field": "site"
+        },
+        "order": {
+          "field": "step"
+        },
+        "strokeWidth": {
+          "field": "animals",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              13
+            ],
+            "range": [
+              0,
+              9
+            ]
+          },
+          "title": "Animals released",
+          "legend": {
+            "values": [
+              1,
+              4,
+              13
+            ],
+            "orient": "bottom-left"
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-sites.json"
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.arrow_angle)"
+        },
+        {
+          "calculate": "50 + datum.animals * 16",
+          "as": "arrow_size"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "shape": "triangle-up",
+        "filled": true,
+        "color": "#2f5a40",
+        "opacity": 0.95
+      },
+      "encoding": {
+        "longitude": {
+          "field": "arrow_longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "arrow_latitude",
+          "type": "quantitative"
+        },
+        "angle": {
+          "field": "arrow_angle",
+          "type": "quantitative",
+          "scale": null
+        },
+        "size": {
+          "field": "arrow_size",
+          "type": "quantitative",
+          "scale": null
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-sites.json"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 70,
+        "color": "#213d31",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "site",
+            "title": "Release area"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "animals",
+            "type": "quantitative",
+            "title": "Animals released"
+          },
+          {
+            "field": "species_list",
+            "title": "Species (animals)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "longitude": 101.33,
+            "latitude": 3.98,
+            "label": [
+              "NWRC, Sungkai",
+              "(1 released in the",
+              "adjoining reserve)"
+            ]
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "size": 380,
+            "color": "#c4952b",
+            "stroke": "#fbf9f2",
+            "strokeWidth": 2
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -16,
+            "fontSize": 12.5,
+            "fontWeight": 700,
+            "lineHeight": 15,
+            "color": "#7d5a10"
+          },
+          "encoding": {
+            "text": {
+              "field": "label"
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-sites.json"
+      },
+      "transform": [
+        {
+          "filter": {
+            "field": "site",
+            "oneOf": [
+              "Penang National Park"
+            ]
+          }
+        },
+        {
+          "calculate": "[datum.site, datum.animals + (datum.animals == 1 ? ' animal' : ' animals')]",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 12.5,
+        "fontWeight": 600,
+        "lineHeight": 15
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-sites.json"
+      },
+      "transform": [
+        {
+          "filter": {
+            "field": "site",
+            "oneOf": [
+              "Ulu Muda Forest Reserve",
+              "Temenggor Forest Reserve",
+              "Taman Negara Terengganu",
+              "Taman Negara Pahang"
+            ]
+          }
+        },
+        {
+          "calculate": "[datum.site, datum.animals + (datum.animals == 1 ? ' animal' : ' animals')]",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 12.5,
+        "fontWeight": 600,
+        "lineHeight": 15
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

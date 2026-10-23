@@ -1,0 +1,221 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional-symbol map: circle area shows wildlife handed over in each reporting state, 2024.",
+  "width": "container",
+  "height": 470,
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/peninsular-states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ebe7d9",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State / territory"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/state-anchors.json"
+      },
+      "params": [
+        {
+          "name": "stateHover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "state"
+            ],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "color": "#2f5a40",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.5,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "total",
+          "type": "quantitative",
+          "title": "Animals handed over",
+          "scale": {
+            "range": [
+              0,
+              1900
+            ],
+            "zero": true
+          },
+          "legend": {
+            "values": [
+              300,
+              1000,
+              2500
+            ],
+            "orient": "bottom-left",
+            "symbolFillColor": "#2f5a40",
+            "symbolOpacity": 0.7,
+            "labelExpr": "format(datum.value, ',')"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "stateHover",
+            "empty": false,
+            "value": 0.95
+          },
+          "value": 0.72
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "Reporting state"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Animals handed over",
+            "format": ","
+          },
+          {
+            "field": "reptiles",
+            "type": "quantitative",
+            "title": "Reptiles",
+            "format": ","
+          },
+          {
+            "field": "mammals",
+            "type": "quantitative",
+            "title": "Mammals",
+            "format": ","
+          },
+          {
+            "field": "birds",
+            "type": "quantitative",
+            "title": "Birds",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/state-anchors.json"
+      },
+      "transform": [
+        {
+          "window": [
+            {
+              "op": "rank",
+              "as": "r"
+            }
+          ],
+          "sort": [
+            {
+              "field": "total",
+              "order": "descending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.r <= 3"
+        },
+        {
+          "calculate": "[datum.state, format(datum.total, ',')]",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 30,
+        "fontSize": 13,
+        "fontWeight": 600,
+        "lineHeight": 15
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#5d6b62",
+      "titleColor": "#213d31",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#213d31",
+      "titleColor": "#213d31",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#213d31"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#213d31"
+    }
+  }
+}

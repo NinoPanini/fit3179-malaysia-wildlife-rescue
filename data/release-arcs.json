@@ -1,0 +1,877 @@
+[
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 0,
+  "longitude": 101.33,
+  "latitude": 3.98
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 1,
+  "longitude": 101.26100920916666,
+  "latitude": 4.018698468333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 2,
+  "longitude": 101.19400283666666,
+  "latitude": 4.058935873333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 3,
+  "longitude": 101.1289808825,
+  "latitude": 4.100712215000001
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 4,
+  "longitude": 101.06594334666669,
+  "latitude": 4.144027493333334
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 5,
+  "longitude": 101.00489022916665,
+  "latitude": 4.188881708333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 6,
+  "longitude": 100.94582152999999,
+  "latitude": 4.23527486
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 7,
+  "longitude": 100.88873724916665,
+  "latitude": 4.2832069483333335
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 8,
+  "longitude": 100.83363738666667,
+  "latitude": 4.332677973333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 9,
+  "longitude": 100.78052194249997,
+  "latitude": 4.383687934999999
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 10,
+  "longitude": 100.72939091666666,
+  "latitude": 4.436236833333334
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 11,
+  "longitude": 100.68024430916665,
+  "latitude": 4.490324668333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 12,
+  "longitude": 100.63308211999998,
+  "latitude": 4.54595144
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 13,
+  "longitude": 100.58790434916666,
+  "latitude": 4.603117148333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 14,
+  "longitude": 100.54471099666665,
+  "latitude": 4.661821793333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 15,
+  "longitude": 100.50350206249999,
+  "latitude": 4.722065375
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 16,
+  "longitude": 100.46427754666666,
+  "latitude": 4.783847893333334
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 17,
+  "longitude": 100.42703744916668,
+  "latitude": 4.847169348333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 18,
+  "longitude": 100.39178177,
+  "latitude": 4.9120297399999995
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 19,
+  "longitude": 100.35851050916665,
+  "latitude": 4.978429068333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 20,
+  "longitude": 100.32722366666665,
+  "latitude": 5.046367333333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 21,
+  "longitude": 100.2979212425,
+  "latitude": 5.115844535
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 22,
+  "longitude": 100.27060323666666,
+  "latitude": 5.186860673333333
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 23,
+  "longitude": 100.24526964916666,
+  "latitude": 5.259415748333334
+ },
+ {
+  "site": "Penang National Park",
+  "animals": 13,
+  "step": 24,
+  "longitude": 100.22192048,
+  "latitude": 5.33350976
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 0,
+  "longitude": 101.33,
+  "latitude": 3.98
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 1,
+  "longitude": 101.28245211055555,
+  "latitude": 4.053155656666666
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 2,
+  "longitude": 101.23763110888889,
+  "latitude": 4.1267972933333334
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 3,
+  "longitude": 101.19553699500001,
+  "latitude": 4.200924910000001
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 4,
+  "longitude": 101.1561697688889,
+  "latitude": 4.275538506666667
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 5,
+  "longitude": 101.11952943055556,
+  "latitude": 4.350638083333333
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 6,
+  "longitude": 101.08561598000001,
+  "latitude": 4.426223639999999
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 7,
+  "longitude": 101.05442941722222,
+  "latitude": 4.502295176666666
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 8,
+  "longitude": 101.02596974222223,
+  "latitude": 4.578852693333334
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 9,
+  "longitude": 101.00023695499999,
+  "latitude": 4.655896189999999
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 10,
+  "longitude": 100.97723105555556,
+  "latitude": 4.733425666666667
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 11,
+  "longitude": 100.95695204388888,
+  "latitude": 4.811441123333333
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 12,
+  "longitude": 100.93939992,
+  "latitude": 4.889942560000001
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 13,
+  "longitude": 100.92457468388889,
+  "latitude": 4.968929976666667
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 14,
+  "longitude": 100.91247633555555,
+  "latitude": 5.048403373333333
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 15,
+  "longitude": 100.90310487500001,
+  "latitude": 5.12836275
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 16,
+  "longitude": 100.89646030222222,
+  "latitude": 5.208808106666666
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 17,
+  "longitude": 100.89254261722223,
+  "latitude": 5.289739443333334
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 18,
+  "longitude": 100.89135182000001,
+  "latitude": 5.37115676
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 19,
+  "longitude": 100.89288791055554,
+  "latitude": 5.453060056666667
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 20,
+  "longitude": 100.89715088888889,
+  "latitude": 5.535449333333333
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 21,
+  "longitude": 100.904140755,
+  "latitude": 5.618324589999999
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 22,
+  "longitude": 100.91385750888888,
+  "latitude": 5.701685826666667
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 23,
+  "longitude": 100.92630115055555,
+  "latitude": 5.7855330433333325
+ },
+ {
+  "site": "Ulu Muda Forest Reserve",
+  "animals": 4,
+  "step": 24,
+  "longitude": 100.94147168,
+  "latitude": 5.86986624
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 0,
+  "longitude": 101.33,
+  "latitude": 3.98
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 1,
+  "longitude": 101.30922879388889,
+  "latitude": 4.036775751944445
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 2,
+  "longitude": 101.29037450888889,
+  "latitude": 4.093457007777777
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 3,
+  "longitude": 101.273437145,
+  "latitude": 4.150043767500001
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 4,
+  "longitude": 101.25841670222223,
+  "latitude": 4.206536031111112
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 5,
+  "longitude": 101.24531318055556,
+  "latitude": 4.262933798611112
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 6,
+  "longitude": 101.23412658000001,
+  "latitude": 4.319237070000001
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 7,
+  "longitude": 101.22485690055557,
+  "latitude": 4.3754458452777785
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 8,
+  "longitude": 101.21750414222224,
+  "latitude": 4.431560124444445
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 9,
+  "longitude": 101.21206830499997,
+  "latitude": 4.487579907500001
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 10,
+  "longitude": 101.2085493888889,
+  "latitude": 4.543505194444446
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 11,
+  "longitude": 101.2069473938889,
+  "latitude": 4.599335985277779
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 12,
+  "longitude": 101.20726232000001,
+  "latitude": 4.655072280000001
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 13,
+  "longitude": 101.20949416722223,
+  "latitude": 4.710714078611113
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 14,
+  "longitude": 101.21364293555555,
+  "latitude": 4.7662613811111125
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 15,
+  "longitude": 101.21970862500001,
+  "latitude": 4.821714187500001
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 16,
+  "longitude": 101.22769123555557,
+  "latitude": 4.877072497777778
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 17,
+  "longitude": 101.23759076722223,
+  "latitude": 4.932336311944445
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 18,
+  "longitude": 101.24940722000001,
+  "latitude": 4.987505630000001
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 19,
+  "longitude": 101.26314059388889,
+  "latitude": 5.0425804519444455
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 20,
+  "longitude": 101.27879088888889,
+  "latitude": 5.097560777777779
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 21,
+  "longitude": 101.29635810500001,
+  "latitude": 5.152446607500001
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 22,
+  "longitude": 101.31584224222223,
+  "latitude": 5.207237941111112
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 23,
+  "longitude": 101.33724330055556,
+  "latitude": 5.261934778611112
+ },
+ {
+  "site": "Temenggor Forest Reserve",
+  "animals": 4,
+  "step": 24,
+  "longitude": 101.36056128,
+  "latitude": 5.3165371200000004
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 0,
+  "longitude": 101.33,
+  "latitude": 3.98
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 1,
+  "longitude": 101.36646630777778,
+  "latitude": 4.03789037
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 2,
+  "longitude": 101.40417456444443,
+  "latitude": 4.093998813333333
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 3,
+  "longitude": 101.44312477000001,
+  "latitude": 4.1483253300000005
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 4,
+  "longitude": 101.48331692444447,
+  "latitude": 4.200869920000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 5,
+  "longitude": 101.52475102777778,
+  "latitude": 4.251632583333334
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 6,
+  "longitude": 101.56742708,
+  "latitude": 4.300613320000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 7,
+  "longitude": 101.61134508111112,
+  "latitude": 4.347812130000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 8,
+  "longitude": 101.65650503111112,
+  "latitude": 4.393229013333334
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 9,
+  "longitude": 101.70290692999998,
+  "latitude": 4.436863970000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 10,
+  "longitude": 101.75055077777779,
+  "latitude": 4.478717000000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 11,
+  "longitude": 101.79943657444446,
+  "latitude": 4.518788103333335
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 12,
+  "longitude": 101.84956432000001,
+  "latitude": 4.5570772800000015
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 13,
+  "longitude": 101.90093401444446,
+  "latitude": 4.593584530000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 14,
+  "longitude": 101.95354565777777,
+  "latitude": 4.6283098533333344
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 15,
+  "longitude": 102.00739924999999,
+  "latitude": 4.6612532500000015
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 16,
+  "longitude": 102.06249479111112,
+  "latitude": 4.692414720000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 17,
+  "longitude": 102.11883228111111,
+  "latitude": 4.721794263333335
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 18,
+  "longitude": 102.17641172,
+  "latitude": 4.749391880000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 19,
+  "longitude": 102.23523310777779,
+  "latitude": 4.775207570000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 20,
+  "longitude": 102.29529644444446,
+  "latitude": 4.799241333333335
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 21,
+  "longitude": 102.35660173000001,
+  "latitude": 4.821493170000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 22,
+  "longitude": 102.41914896444445,
+  "latitude": 4.841963080000001
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 23,
+  "longitude": 102.48293814777779,
+  "latitude": 4.860651063333334
+ },
+ {
+  "site": "Taman Negara Terengganu",
+  "animals": 6,
+  "step": 24,
+  "longitude": 102.54796928,
+  "latitude": 4.877557120000001
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 0,
+  "longitude": 101.33,
+  "latitude": 3.98
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 1,
+  "longitude": 101.3652849888889,
+  "latitude": 4.013384113055555
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 2,
+  "longitude": 101.40110995555554,
+  "latitude": 4.0453237855555555
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 3,
+  "longitude": 101.43747490000001,
+  "latitude": 4.075819017500001
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 4,
+  "longitude": 101.47437982222223,
+  "latitude": 4.104869808888889
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 5,
+  "longitude": 101.51182472222223,
+  "latitude": 4.132476159722223
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 6,
+  "longitude": 101.5498096,
+  "latitude": 4.15863807
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 7,
+  "longitude": 101.58833445555557,
+  "latitude": 4.183355539722223
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 8,
+  "longitude": 101.6273992888889,
+  "latitude": 4.20662856888889
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 9,
+  "longitude": 101.66700409999999,
+  "latitude": 4.2284571575
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 10,
+  "longitude": 101.7071488888889,
+  "latitude": 4.248841305555557
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 11,
+  "longitude": 101.74783365555558,
+  "latitude": 4.267781013055557
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 12,
+  "longitude": 101.7890584,
+  "latitude": 4.285276280000001
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 13,
+  "longitude": 101.83082312222223,
+  "latitude": 4.30132710638889
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 14,
+  "longitude": 101.87312782222222,
+  "latitude": 4.315933492222223
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 15,
+  "longitude": 101.91597250000001,
+  "latitude": 4.329095437500001
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 16,
+  "longitude": 101.95935715555557,
+  "latitude": 4.3408129422222235
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 17,
+  "longitude": 102.0032817888889,
+  "latitude": 4.35108600638889
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 18,
+  "longitude": 102.04774640000001,
+  "latitude": 4.3599146300000005
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 19,
+  "longitude": 102.0927509888889,
+  "latitude": 4.367298813055556
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 20,
+  "longitude": 102.13829555555557,
+  "latitude": 4.373238555555556
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 21,
+  "longitude": 102.18438010000001,
+  "latitude": 4.377733857500001
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 22,
+  "longitude": 102.23100462222223,
+  "latitude": 4.38078471888889
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 23,
+  "longitude": 102.27816912222222,
+  "latitude": 4.382391139722222
+ },
+ {
+  "site": "Taman Negara Pahang",
+  "animals": 4,
+  "step": 24,
+  "longitude": 102.32587360000001,
+  "latitude": 4.382553120000001
+ }
+]

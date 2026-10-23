@@ -1,0 +1,802 @@
+[
+ {
+  "cell": 0,
+  "col": 0,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 1,
+  "col": 1,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 2,
+  "col": 2,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 3,
+  "col": 3,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 4,
+  "col": 4,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 5,
+  "col": 5,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 6,
+  "col": 6,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 7,
+  "col": 7,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 8,
+  "col": 8,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 9,
+  "col": 9,
+  "row": 0,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 10,
+  "col": 0,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 11,
+  "col": 1,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 12,
+  "col": 2,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 13,
+  "col": 3,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 14,
+  "col": 4,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 15,
+  "col": 5,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 16,
+  "col": 6,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 17,
+  "col": 7,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 18,
+  "col": 8,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 19,
+  "col": 9,
+  "row": 1,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 20,
+  "col": 0,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 21,
+  "col": 1,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 22,
+  "col": 2,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 23,
+  "col": 3,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 24,
+  "col": 4,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 25,
+  "col": 5,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 26,
+  "col": 6,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 27,
+  "col": 7,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 28,
+  "col": 8,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 29,
+  "col": 9,
+  "row": 2,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 30,
+  "col": 0,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 31,
+  "col": 1,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 32,
+  "col": 2,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 33,
+  "col": 3,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 34,
+  "col": 4,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 35,
+  "col": 5,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 36,
+  "col": 6,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 37,
+  "col": 7,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 38,
+  "col": 8,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 39,
+  "col": 9,
+  "row": 3,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 40,
+  "col": 0,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 41,
+  "col": 1,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 42,
+  "col": 2,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 43,
+  "col": 3,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 44,
+  "col": 4,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 45,
+  "col": 5,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 46,
+  "col": 6,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 47,
+  "col": 7,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 48,
+  "col": 8,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 49,
+  "col": 9,
+  "row": 4,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 50,
+  "col": 0,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 51,
+  "col": 1,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 52,
+  "col": 2,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 53,
+  "col": 3,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 54,
+  "col": 4,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 55,
+  "col": 5,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 56,
+  "col": 6,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 57,
+  "col": 7,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 58,
+  "col": 8,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 59,
+  "col": 9,
+  "row": 5,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 60,
+  "col": 0,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 61,
+  "col": 1,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 62,
+  "col": 2,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 63,
+  "col": 3,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 64,
+  "col": 4,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 65,
+  "col": 5,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 66,
+  "col": 6,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 67,
+  "col": 7,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 68,
+  "col": 8,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 69,
+  "col": 9,
+  "row": 6,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 70,
+  "col": 0,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 71,
+  "col": 1,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 72,
+  "col": 2,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 73,
+  "col": 3,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 74,
+  "col": 4,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 75,
+  "col": 5,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 76,
+  "col": 6,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 77,
+  "col": 7,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 78,
+  "col": 8,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 79,
+  "col": 9,
+  "row": 7,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 80,
+  "col": 0,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 81,
+  "col": 1,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 82,
+  "col": 2,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 83,
+  "col": 3,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 84,
+  "col": 4,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 85,
+  "col": 5,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 86,
+  "col": 6,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 87,
+  "col": 7,
+  "row": 8,
+  "group": "Reptiles",
+  "group_total": 14146,
+  "share": 88.2
+ },
+ {
+  "cell": 88,
+  "col": 8,
+  "row": 8,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 89,
+  "col": 9,
+  "row": 8,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 90,
+  "col": 0,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 91,
+  "col": 1,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 92,
+  "col": 2,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 93,
+  "col": 3,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 94,
+  "col": 4,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 95,
+  "col": 5,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 96,
+  "col": 6,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 97,
+  "col": 7,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 98,
+  "col": 8,
+  "row": 9,
+  "group": "Mammals",
+  "group_total": 1683,
+  "share": 10.5
+ },
+ {
+  "cell": 99,
+  "col": 9,
+  "row": 9,
+  "group": "Birds",
+  "group_total": 205,
+  "share": 1.3
+ }
+]
