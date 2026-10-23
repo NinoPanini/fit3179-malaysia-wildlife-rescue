@@ -1,0 +1,16 @@
+{
+  "name": "malaysia-wildlife-story",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kenneth Gomes — FIT3179 Malaysian wildlife visual story",
+  "scripts": {
+    "start": "node scripts/serve.cjs",
+    "check": "node scripts/check.cjs",
+    "vendor": "node scripts/vendor.cjs"
+  },
+  "dependencies": {
+    "vega": "5.33.0",
+    "vega-lite": "5.23.0",
+    "vega-embed": "6.29.0"
+  }
+}

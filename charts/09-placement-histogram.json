@@ -1,0 +1,198 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 290,
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#243c32",
+      "titleColor": "#243c32",
+      "domain": false,
+      "gridColor": "#e2e7de",
+      "tickColor": "#bac8bc",
+      "labelPadding": 8,
+      "titlePadding": 14
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "orient": "bottom",
+      "labelColor": "#243c32",
+      "titleColor": "#243c32",
+      "padding": 16
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#243c32"
+    },
+    "range": {
+      "category": [
+        "#225b43",
+        "#b26130",
+        "#628ba3",
+        "#7d6b97",
+        "#8f9547",
+        "#9c6970"
+      ]
+    }
+  },
+  "data": {
+    "url": "data/bsbcc-placements.json"
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "bin": {
+            "step": 7,
+            "extent": [
+              7,
+              42
+            ]
+          },
+          "field": "days",
+          "as": [
+            "bin_start",
+            "bin_end"
+          ]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "placements"
+            }
+          ],
+          "groupby": [
+            "bin_start",
+            "bin_end"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "color": "#225b43",
+        "stroke": "#faf8f0",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "bin_start",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              7,
+              42
+            ],
+            "nice": false
+          },
+          "title": "Placement length (calendar days)",
+          "axis": {
+            "values": [
+              7,
+              14,
+              21,
+              28,
+              35,
+              42
+            ]
+          }
+        },
+        "x2": {
+          "field": "bin_end"
+        },
+        "y2": {
+          "datum": 0
+        },
+        "y": {
+          "field": "placements",
+          "type": "quantitative",
+          "title": "Volunteer placements",
+          "axis": {
+            "tickMinStep": 1
+          }
+        },
+        "tooltip": [
+          {
+            "field": "bin_start",
+            "title": "From (inclusive)",
+            "type": "quantitative"
+          },
+          {
+            "field": "bin_end",
+            "title": "To (exclusive)",
+            "type": "quantitative"
+          },
+          {
+            "field": "placements",
+            "type": "quantitative",
+            "title": "Placements"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "median": 14
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#b26130",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "median",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "median": 14,
+            "label": "Median: 14 days"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "dy": -4,
+        "color": "#b26130",
+        "fontSize": 13
+      },
+      "encoding": {
+        "x": {
+          "field": "median",
+          "type": "quantitative"
+        },
+        "y": {
+          "value": 0
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

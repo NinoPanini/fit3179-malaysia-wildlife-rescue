@@ -1,0 +1,146 @@
+[
+  {
+    "species": "Leopard",
+    "scientific_name": "Panthera pardus",
+    "animals": 4,
+    "destination": "Temenggor Forest Reserve",
+    "state": "Perak",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Clouded leopard",
+    "scientific_name": "Neofelis nebulosa",
+    "animals": 2,
+    "destination": "Taman Negara Terengganu",
+    "state": "Terengganu",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Sun bear",
+    "scientific_name": "Helarctos malayanus",
+    "animals": 3,
+    "destination": "Taman Negara Terengganu",
+    "state": "Terengganu",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Dhole",
+    "scientific_name": "Cuon alpinus",
+    "animals": 1,
+    "destination": "Taman Negara Pahang",
+    "state": "Pahang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Sambar deer",
+    "scientific_name": "Rusa unicolor",
+    "animals": 1,
+    "destination": "Taman Negara Terengganu",
+    "state": "Terengganu",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Agile gibbon",
+    "scientific_name": "Hylobates agilis",
+    "animals": 3,
+    "destination": "Ulu Muda Forest Reserve",
+    "state": "Kedah",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Leopard cat",
+    "scientific_name": "Prionailurus bengalensis",
+    "animals": 1,
+    "destination": "Penang National Park",
+    "state": "Pulau Pinang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "scientific_name": "Trachypithecus obscurus",
+    "animals": 1,
+    "destination": "Ulu Muda Forest Reserve",
+    "state": "Kedah",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Common palm civet",
+    "scientific_name": "Paradoxurus hermaphroditus",
+    "animals": 3,
+    "destination": "Penang National Park",
+    "state": "Pulau Pinang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "scientific_name": "Aonyx cinereus",
+    "animals": 2,
+    "destination": "Penang National Park",
+    "state": "Pulau Pinang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Brahminy kite",
+    "scientific_name": "Haliastur indus",
+    "animals": 1,
+    "destination": "Penang National Park",
+    "state": "Pulau Pinang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "scientific_name": "Haliaeetus leucogaster",
+    "animals": 4,
+    "destination": "Penang National Park",
+    "state": "Pulau Pinang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "scientific_name": "Nisaetus cirrhatus",
+    "animals": 3,
+    "destination": "Taman Negara Pahang",
+    "state": "Pahang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Buffy fish owl",
+    "scientific_name": "Ketupa ketupu",
+    "animals": 1,
+    "destination": "Penang National Park",
+    "state": "Pulau Pinang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Spotted wood owl",
+    "scientific_name": "Strix seloputo",
+    "animals": 1,
+    "destination": "Penang National Park",
+    "state": "Pulau Pinang",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "scientific_name": "Anthracoceros albirostris",
+    "animals": 1,
+    "destination": "Sungkai Wildlife Reserve",
+    "state": "Perak",
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 31, p108"
+  }
+]

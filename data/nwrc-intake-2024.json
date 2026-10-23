@@ -1,0 +1,290 @@
+[
+  {
+    "month": "Jan",
+    "month_number": 1,
+    "group": "Mammals",
+    "animals": 10,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Feb",
+    "month_number": 2,
+    "group": "Mammals",
+    "animals": 10,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Mar",
+    "month_number": 3,
+    "group": "Mammals",
+    "animals": 3,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Apr",
+    "month_number": 4,
+    "group": "Mammals",
+    "animals": 4,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "May",
+    "month_number": 5,
+    "group": "Mammals",
+    "animals": 2,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jun",
+    "month_number": 6,
+    "group": "Mammals",
+    "animals": 6,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jul",
+    "month_number": 7,
+    "group": "Mammals",
+    "animals": 7,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Aug",
+    "month_number": 8,
+    "group": "Mammals",
+    "animals": 4,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Sep",
+    "month_number": 9,
+    "group": "Mammals",
+    "animals": 5,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Oct",
+    "month_number": 10,
+    "group": "Mammals",
+    "animals": 9,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Nov",
+    "month_number": 11,
+    "group": "Mammals",
+    "animals": 9,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Dec",
+    "month_number": 12,
+    "group": "Mammals",
+    "animals": 6,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jan",
+    "month_number": 1,
+    "group": "Reptiles",
+    "animals": 32,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Feb",
+    "month_number": 2,
+    "group": "Reptiles",
+    "animals": 45,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Mar",
+    "month_number": 3,
+    "group": "Reptiles",
+    "animals": 0,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Apr",
+    "month_number": 4,
+    "group": "Reptiles",
+    "animals": 9,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "May",
+    "month_number": 5,
+    "group": "Reptiles",
+    "animals": 16,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jun",
+    "month_number": 6,
+    "group": "Reptiles",
+    "animals": 0,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jul",
+    "month_number": 7,
+    "group": "Reptiles",
+    "animals": 4,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Aug",
+    "month_number": 8,
+    "group": "Reptiles",
+    "animals": 469,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Sep",
+    "month_number": 9,
+    "group": "Reptiles",
+    "animals": 5009,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Oct",
+    "month_number": 10,
+    "group": "Reptiles",
+    "animals": 95,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Nov",
+    "month_number": 11,
+    "group": "Reptiles",
+    "animals": 77,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Dec",
+    "month_number": 12,
+    "group": "Reptiles",
+    "animals": 5212,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jan",
+    "month_number": 1,
+    "group": "Birds",
+    "animals": 37,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Feb",
+    "month_number": 2,
+    "group": "Birds",
+    "animals": 3,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Mar",
+    "month_number": 3,
+    "group": "Birds",
+    "animals": 0,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Apr",
+    "month_number": 4,
+    "group": "Birds",
+    "animals": 55,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "May",
+    "month_number": 5,
+    "group": "Birds",
+    "animals": 30,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jun",
+    "month_number": 6,
+    "group": "Birds",
+    "animals": 3,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Jul",
+    "month_number": 7,
+    "group": "Birds",
+    "animals": 10,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Aug",
+    "month_number": 8,
+    "group": "Birds",
+    "animals": 6,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Sep",
+    "month_number": 9,
+    "group": "Birds",
+    "animals": 17,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Oct",
+    "month_number": 10,
+    "group": "Birds",
+    "animals": 10,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Nov",
+    "month_number": 11,
+    "group": "Birds",
+    "animals": 11,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  },
+  {
+    "month": "Dec",
+    "month_number": 12,
+    "group": "Birds",
+    "animals": 1,
+    "year": 2024,
+    "source": "PERHILITAN 2024, numeric table beneath Figure 26, p107"
+  }
+]

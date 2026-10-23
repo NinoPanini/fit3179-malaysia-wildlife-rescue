@@ -1,0 +1,164 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 290,
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#243c32",
+      "titleColor": "#243c32",
+      "domain": false,
+      "gridColor": "#e2e7de",
+      "tickColor": "#bac8bc",
+      "labelPadding": 8,
+      "titlePadding": 14
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "orient": "bottom",
+      "labelColor": "#243c32",
+      "titleColor": "#243c32",
+      "padding": 16
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#243c32"
+    },
+    "range": {
+      "category": [
+        "#225b43",
+        "#b26130",
+        "#628ba3",
+        "#7d6b97",
+        "#8f9547",
+        "#9c6970"
+      ]
+    }
+  },
+  "padding": {
+    "left": 25,
+    "right": 125,
+    "top": 20,
+    "bottom": 20
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "data": {
+    "url": "data/bsbcc-participation.json"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "labelFontSize": 15
+      },
+      "scale": {
+        "padding": 0.22
+      }
+    },
+    "y": {
+      "field": "people",
+      "type": "quantitative",
+      "title": "People",
+      "scale": {
+        "domain": [
+          0,
+          65
+        ]
+      }
+    },
+    "color": {
+      "field": "programme",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Volunteers",
+          "Interns"
+        ],
+        "range": [
+          "#225b43",
+          "#b26130"
+        ]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "programme",
+        "type": "nominal",
+        "title": "Programme"
+      },
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "people",
+        "type": "quantitative",
+        "title": "People"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 15,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "people"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year === 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 14,
+        "fontSize": 14
+      },
+      "encoding": {
+        "text": {
+          "field": "programme"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 180,
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "labelColor": "#243c32",
+      "titleColor": "#243c32",
+      "domain": false,
+      "gridColor": "#e2e7de",
+      "tickColor": "#bac8bc",
+      "labelPadding": 8,
+      "titlePadding": 14
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal",
+      "orient": "bottom",
+      "labelColor": "#243c32",
+      "titleColor": "#243c32",
+      "padding": 16
+    },
+    "title": {
+      "fontSize": 14,
+      "anchor": "start",
+      "color": "#243c32"
+    },
+    "range": {
+      "category": [
+        "#225b43",
+        "#b26130",
+        "#628ba3",
+        "#7d6b97",
+        "#8f9547",
+        "#9c6970"
+      ]
+    }
+  },
+  "data": {
+    "url": "data/bsbcc-care-milestones.json"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": null,
+      "axis": {
+        "format": "%b %Y",
+        "tickCount": 6
+      }
+    },
+    "y": {
+      "field": "bear",
+      "type": "nominal",
+      "title": null,
+      "axis": {
+        "labelFontSize": 15
+      }
+    },
+    "color": {
+      "field": "bear",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Tenom",
+          "Pitang"
+        ],
+        "range": [
+          "#225b43",
+          "#b26130"
+        ]
+      },
+      "legend": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "order": {
+          "field": "date",
+          "type": "temporal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 110,
+        "stroke": "#fffdf7",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "bear",
+            "type": "nominal",
+            "title": "Bear"
+          },
+          {
+            "field": "date",
+            "type": "temporal",
+            "title": "Reported date",
+            "format": "%d %b %Y"
+          },
+          {
+            "field": "event",
+            "type": "nominal",
+            "title": "Milestone"
+          },
+          {
+            "field": "source",
+            "type": "nominal",
+            "title": "Source"
+          }
+        ]
+      }
+    }
+  ]
+}

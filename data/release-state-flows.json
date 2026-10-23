@@ -1,0 +1,52 @@
+[
+  {
+    "state": "Perak",
+    "animals": 5,
+    "longitude": 101.10748779170048,
+    "latitude": 4.774272354183842,
+    "origin_longitude": 101.10748779170048,
+    "origin_latitude": 4.774272354183842,
+    "origin": "NWRC, Perak",
+    "location_note": "Approximate state anchors; not release coordinates or travel paths"
+  },
+  {
+    "state": "Terengganu",
+    "animals": 6,
+    "longitude": 102.94723948054252,
+    "latitude": 4.935281411017404,
+    "origin_longitude": 101.10748779170048,
+    "origin_latitude": 4.774272354183842,
+    "origin": "NWRC, Perak",
+    "location_note": "Approximate state anchors; not release coordinates or travel paths"
+  },
+  {
+    "state": "Pahang",
+    "animals": 4,
+    "longitude": 102.54076361609214,
+    "latitude": 3.739643877297972,
+    "origin_longitude": 101.10748779170048,
+    "origin_latitude": 4.774272354183842,
+    "origin": "NWRC, Perak",
+    "location_note": "Approximate state anchors; not release coordinates or travel paths"
+  },
+  {
+    "state": "Kedah",
+    "animals": 4,
+    "longitude": 100.66000888805598,
+    "latitude": 5.9231316412499995,
+    "origin_longitude": 101.10748779170048,
+    "origin_latitude": 4.774272354183842,
+    "origin": "NWRC, Perak",
+    "location_note": "Approximate state anchors; not release coordinates or travel paths"
+  },
+  {
+    "state": "Pulau Pinang",
+    "animals": 13,
+    "longitude": 100.4594414590336,
+    "latitude": 5.361620569927138,
+    "origin_longitude": 101.10748779170048,
+    "origin_latitude": 4.774272354183842,
+    "origin": "NWRC, Perak",
+    "location_note": "Approximate state anchors; not release coordinates or travel paths"
+  }
+]

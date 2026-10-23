@@ -1,0 +1,4466 @@
+[
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.02,
+    "y": 0.0,
+    "y2": 4.0,
+    "order": 0
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.052000000000000005,
+    "y": 0.010592592592592593,
+    "y2": 4.010592592592593,
+    "order": 1
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.084,
+    "y": 0.041407407407407414,
+    "y2": 4.041407407407408,
+    "order": 2
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.116,
+    "y": 0.09100000000000001,
+    "y2": 4.091,
+    "order": 3
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.148,
+    "y": 0.15792592592592594,
+    "y2": 4.157925925925926,
+    "order": 4
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.17999999999999997,
+    "y": 0.24074074074074073,
+    "y2": 4.2407407407407405,
+    "order": 5
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.212,
+    "y": 0.3380000000000001,
+    "y2": 4.338,
+    "order": 6
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.244,
+    "y": 0.44825925925925925,
+    "y2": 4.44825925925926,
+    "order": 7
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.276,
+    "y": 0.5700740740740742,
+    "y2": 4.570074074074074,
+    "order": 8
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.308,
+    "y": 0.702,
+    "y2": 4.702,
+    "order": 9
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.33999999999999997,
+    "y": 0.8425925925925926,
+    "y2": 4.842592592592593,
+    "order": 10
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.372,
+    "y": 0.9904074074074073,
+    "y2": 4.990407407407408,
+    "order": 11
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.404,
+    "y": 1.1440000000000003,
+    "y2": 5.144,
+    "order": 12
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.436,
+    "y": 1.301925925925926,
+    "y2": 5.301925925925926,
+    "order": 13
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.468,
+    "y": 1.4627407407407407,
+    "y2": 5.462740740740741,
+    "order": 14
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.5,
+    "y": 1.625,
+    "y2": 5.625,
+    "order": 15
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.532,
+    "y": 1.7872592592592593,
+    "y2": 5.787259259259259,
+    "order": 16
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.564,
+    "y": 1.948074074074074,
+    "y2": 5.948074074074074,
+    "order": 17
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.596,
+    "y": 2.106,
+    "y2": 6.106,
+    "order": 18
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.628,
+    "y": 2.2595925925925924,
+    "y2": 6.259592592592592,
+    "order": 19
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.6599999999999999,
+    "y": 2.4074074074074074,
+    "y2": 6.407407407407407,
+    "order": 20
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.692,
+    "y": 2.5479999999999996,
+    "y2": 6.548,
+    "order": 21
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.724,
+    "y": 2.6799259259259256,
+    "y2": 6.679925925925925,
+    "order": 22
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.756,
+    "y": 2.801740740740741,
+    "y2": 6.80174074074074,
+    "order": 23
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.788,
+    "y": 2.9120000000000004,
+    "y2": 6.912000000000001,
+    "order": 24
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.8200000000000001,
+    "y": 3.0092592592592595,
+    "y2": 7.0092592592592595,
+    "order": 25
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.852,
+    "y": 3.092074074074074,
+    "y2": 7.092074074074074,
+    "order": 26
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.884,
+    "y": 3.159,
+    "y2": 7.159,
+    "order": 27
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.916,
+    "y": 3.2085925925925927,
+    "y2": 7.208592592592593,
+    "order": 28
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.948,
+    "y": 3.2394074074074073,
+    "y2": 7.239407407407407,
+    "order": 29
+  },
+  {
+    "species": "Leopard",
+    "destination": "Temenggor Forest Reserve",
+    "animals": 4,
+    "x": 0.98,
+    "y": 3.25,
+    "y2": 7.25,
+    "order": 30
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.02,
+    "y": 4.65,
+    "y2": 6.65,
+    "order": 0
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.052000000000000005,
+    "y": 4.660592592592593,
+    "y2": 6.660592592592593,
+    "order": 1
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.084,
+    "y": 4.691407407407408,
+    "y2": 6.691407407407408,
+    "order": 2
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.116,
+    "y": 4.7410000000000005,
+    "y2": 6.7410000000000005,
+    "order": 3
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.148,
+    "y": 4.807925925925926,
+    "y2": 6.807925925925926,
+    "order": 4
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.17999999999999997,
+    "y": 4.890740740740741,
+    "y2": 6.890740740740741,
+    "order": 5
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.212,
+    "y": 4.988,
+    "y2": 6.988,
+    "order": 6
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.244,
+    "y": 5.09825925925926,
+    "y2": 7.09825925925926,
+    "order": 7
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.276,
+    "y": 5.220074074074074,
+    "y2": 7.220074074074074,
+    "order": 8
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.308,
+    "y": 5.352,
+    "y2": 7.352,
+    "order": 9
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.33999999999999997,
+    "y": 5.492592592592593,
+    "y2": 7.492592592592593,
+    "order": 10
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.372,
+    "y": 5.640407407407408,
+    "y2": 7.640407407407408,
+    "order": 11
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.404,
+    "y": 5.7940000000000005,
+    "y2": 7.7940000000000005,
+    "order": 12
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.436,
+    "y": 5.951925925925926,
+    "y2": 7.951925925925926,
+    "order": 13
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.468,
+    "y": 6.112740740740741,
+    "y2": 8.11274074074074,
+    "order": 14
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.5,
+    "y": 6.275,
+    "y2": 8.275,
+    "order": 15
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.532,
+    "y": 6.4372592592592595,
+    "y2": 8.43725925925926,
+    "order": 16
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.564,
+    "y": 6.598074074074074,
+    "y2": 8.598074074074074,
+    "order": 17
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.596,
+    "y": 6.756,
+    "y2": 8.756,
+    "order": 18
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.628,
+    "y": 6.909592592592593,
+    "y2": 8.909592592592592,
+    "order": 19
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.6599999999999999,
+    "y": 7.057407407407408,
+    "y2": 9.057407407407407,
+    "order": 20
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.692,
+    "y": 7.198,
+    "y2": 9.198,
+    "order": 21
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.724,
+    "y": 7.3299259259259255,
+    "y2": 9.329925925925926,
+    "order": 22
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.756,
+    "y": 7.451740740740741,
+    "y2": 9.45174074074074,
+    "order": 23
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.788,
+    "y": 7.562000000000001,
+    "y2": 9.562000000000001,
+    "order": 24
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.8200000000000001,
+    "y": 7.65925925925926,
+    "y2": 9.65925925925926,
+    "order": 25
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.852,
+    "y": 7.7420740740740746,
+    "y2": 9.742074074074075,
+    "order": 26
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.884,
+    "y": 7.809,
+    "y2": 9.809000000000001,
+    "order": 27
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.916,
+    "y": 7.8585925925925935,
+    "y2": 9.858592592592593,
+    "order": 28
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.948,
+    "y": 7.889407407407408,
+    "y2": 9.889407407407408,
+    "order": 29
+  },
+  {
+    "species": "Clouded leopard",
+    "destination": "Taman Negara Terengganu",
+    "animals": 2,
+    "x": 0.98,
+    "y": 7.9,
+    "y2": 9.9,
+    "order": 30
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.02,
+    "y": 7.300000000000001,
+    "y2": 10.3,
+    "order": 0
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.052000000000000005,
+    "y": 7.308474074074074,
+    "y2": 10.308474074074073,
+    "order": 1
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.084,
+    "y": 7.333125925925927,
+    "y2": 10.333125925925927,
+    "order": 2
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.116,
+    "y": 7.372800000000001,
+    "y2": 10.372800000000002,
+    "order": 3
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.148,
+    "y": 7.426340740740741,
+    "y2": 10.426340740740741,
+    "order": 4
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.17999999999999997,
+    "y": 7.492592592592593,
+    "y2": 10.492592592592594,
+    "order": 5
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.212,
+    "y": 7.570400000000001,
+    "y2": 10.570400000000001,
+    "order": 6
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.244,
+    "y": 7.658607407407408,
+    "y2": 10.658607407407409,
+    "order": 7
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.276,
+    "y": 7.75605925925926,
+    "y2": 10.75605925925926,
+    "order": 8
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.308,
+    "y": 7.861600000000001,
+    "y2": 10.861600000000001,
+    "order": 9
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.33999999999999997,
+    "y": 7.974074074074075,
+    "y2": 10.974074074074075,
+    "order": 10
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.372,
+    "y": 8.092325925925927,
+    "y2": 11.092325925925927,
+    "order": 11
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.404,
+    "y": 8.215200000000001,
+    "y2": 11.215200000000001,
+    "order": 12
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.436,
+    "y": 8.341540740740742,
+    "y2": 11.341540740740742,
+    "order": 13
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.468,
+    "y": 8.470192592592593,
+    "y2": 11.470192592592593,
+    "order": 14
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.5,
+    "y": 8.600000000000001,
+    "y2": 11.600000000000001,
+    "order": 15
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.532,
+    "y": 8.729807407407408,
+    "y2": 11.729807407407408,
+    "order": 16
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.564,
+    "y": 8.85845925925926,
+    "y2": 11.85845925925926,
+    "order": 17
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.596,
+    "y": 8.9848,
+    "y2": 11.9848,
+    "order": 18
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.628,
+    "y": 9.107674074074074,
+    "y2": 12.107674074074074,
+    "order": 19
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.6599999999999999,
+    "y": 9.225925925925926,
+    "y2": 12.225925925925926,
+    "order": 20
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.692,
+    "y": 9.3384,
+    "y2": 12.3384,
+    "order": 21
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.724,
+    "y": 9.443940740740741,
+    "y2": 12.443940740740741,
+    "order": 22
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.756,
+    "y": 9.541392592592594,
+    "y2": 12.541392592592594,
+    "order": 23
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.788,
+    "y": 9.6296,
+    "y2": 12.6296,
+    "order": 24
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.8200000000000001,
+    "y": 9.707407407407409,
+    "y2": 12.707407407407409,
+    "order": 25
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.852,
+    "y": 9.77365925925926,
+    "y2": 12.77365925925926,
+    "order": 26
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.884,
+    "y": 9.827200000000001,
+    "y2": 12.827200000000001,
+    "order": 27
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.916,
+    "y": 9.866874074074074,
+    "y2": 12.866874074074074,
+    "order": 28
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.948,
+    "y": 9.891525925925926,
+    "y2": 12.891525925925926,
+    "order": 29
+  },
+  {
+    "species": "Sun bear",
+    "destination": "Taman Negara Terengganu",
+    "animals": 3,
+    "x": 0.98,
+    "y": 9.9,
+    "y2": 12.9,
+    "order": 30
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.02,
+    "y": 10.950000000000001,
+    "y2": 11.950000000000001,
+    "order": 0
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 10.961733333333335,
+    "y2": 11.961733333333335,
+    "order": 1
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.084,
+    "y": 10.995866666666668,
+    "y2": 11.995866666666668,
+    "order": 2
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.116,
+    "y": 11.0508,
+    "y2": 12.0508,
+    "order": 3
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.148,
+    "y": 11.124933333333335,
+    "y2": 12.124933333333335,
+    "order": 4
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 11.216666666666669,
+    "y2": 12.216666666666669,
+    "order": 5
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.212,
+    "y": 11.3244,
+    "y2": 12.3244,
+    "order": 6
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.244,
+    "y": 11.446533333333335,
+    "y2": 12.446533333333335,
+    "order": 7
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.276,
+    "y": 11.581466666666667,
+    "y2": 12.581466666666667,
+    "order": 8
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.308,
+    "y": 11.7276,
+    "y2": 12.7276,
+    "order": 9
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 11.883333333333335,
+    "y2": 12.883333333333335,
+    "order": 10
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.372,
+    "y": 12.047066666666668,
+    "y2": 13.047066666666668,
+    "order": 11
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.404,
+    "y": 12.217200000000002,
+    "y2": 13.217200000000002,
+    "order": 12
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.436,
+    "y": 12.392133333333334,
+    "y2": 13.392133333333334,
+    "order": 13
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.468,
+    "y": 12.570266666666667,
+    "y2": 13.570266666666667,
+    "order": 14
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.5,
+    "y": 12.75,
+    "y2": 13.75,
+    "order": 15
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.532,
+    "y": 12.929733333333335,
+    "y2": 13.929733333333335,
+    "order": 16
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.564,
+    "y": 13.107866666666668,
+    "y2": 14.107866666666668,
+    "order": 17
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.596,
+    "y": 13.282800000000002,
+    "y2": 14.282800000000002,
+    "order": 18
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.628,
+    "y": 13.452933333333334,
+    "y2": 14.452933333333334,
+    "order": 19
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 13.616666666666667,
+    "y2": 14.616666666666667,
+    "order": 20
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.692,
+    "y": 13.772400000000001,
+    "y2": 14.772400000000001,
+    "order": 21
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.724,
+    "y": 13.918533333333334,
+    "y2": 14.918533333333334,
+    "order": 22
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.756,
+    "y": 14.053466666666667,
+    "y2": 15.053466666666667,
+    "order": 23
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.788,
+    "y": 14.175600000000001,
+    "y2": 15.175600000000001,
+    "order": 24
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 14.283333333333335,
+    "y2": 15.283333333333335,
+    "order": 25
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.852,
+    "y": 14.375066666666667,
+    "y2": 15.375066666666667,
+    "order": 26
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.884,
+    "y": 14.449200000000001,
+    "y2": 15.449200000000001,
+    "order": 27
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.916,
+    "y": 14.504133333333334,
+    "y2": 15.504133333333334,
+    "order": 28
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.948,
+    "y": 14.538266666666667,
+    "y2": 15.538266666666667,
+    "order": 29
+  },
+  {
+    "species": "Dhole",
+    "destination": "Taman Negara Pahang",
+    "animals": 1,
+    "x": 0.98,
+    "y": 14.55,
+    "y2": 15.55,
+    "order": 30
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.02,
+    "y": 12.600000000000001,
+    "y2": 13.600000000000001,
+    "order": 0
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 12.600977777777778,
+    "y2": 13.600977777777778,
+    "order": 1
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.084,
+    "y": 12.603822222222224,
+    "y2": 13.603822222222224,
+    "order": 2
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.116,
+    "y": 12.608400000000001,
+    "y2": 13.608400000000001,
+    "order": 3
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.148,
+    "y": 12.614577777777779,
+    "y2": 13.614577777777779,
+    "order": 4
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 12.622222222222224,
+    "y2": 13.622222222222224,
+    "order": 5
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.212,
+    "y": 12.631200000000002,
+    "y2": 13.631200000000002,
+    "order": 6
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.244,
+    "y": 12.641377777777778,
+    "y2": 13.641377777777778,
+    "order": 7
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.276,
+    "y": 12.652622222222224,
+    "y2": 13.652622222222224,
+    "order": 8
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.308,
+    "y": 12.664800000000001,
+    "y2": 13.664800000000001,
+    "order": 9
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 12.677777777777779,
+    "y2": 13.677777777777779,
+    "order": 10
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.372,
+    "y": 12.691422222222224,
+    "y2": 13.691422222222224,
+    "order": 11
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.404,
+    "y": 12.7056,
+    "y2": 13.7056,
+    "order": 12
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.436,
+    "y": 12.72017777777778,
+    "y2": 13.72017777777778,
+    "order": 13
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.468,
+    "y": 12.735022222222224,
+    "y2": 13.735022222222224,
+    "order": 14
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.5,
+    "y": 12.75,
+    "y2": 13.75,
+    "order": 15
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.532,
+    "y": 12.764977777777778,
+    "y2": 13.764977777777778,
+    "order": 16
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.564,
+    "y": 12.779822222222222,
+    "y2": 13.779822222222222,
+    "order": 17
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.596,
+    "y": 12.794400000000001,
+    "y2": 13.794400000000001,
+    "order": 18
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.628,
+    "y": 12.808577777777778,
+    "y2": 13.808577777777778,
+    "order": 19
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 12.822222222222223,
+    "y2": 13.822222222222223,
+    "order": 20
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.692,
+    "y": 12.8352,
+    "y2": 13.8352,
+    "order": 21
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.724,
+    "y": 12.847377777777778,
+    "y2": 13.847377777777778,
+    "order": 22
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.756,
+    "y": 12.858622222222223,
+    "y2": 13.858622222222223,
+    "order": 23
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.788,
+    "y": 12.8688,
+    "y2": 13.8688,
+    "order": 24
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 12.877777777777778,
+    "y2": 13.877777777777778,
+    "order": 25
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.852,
+    "y": 12.885422222222223,
+    "y2": 13.885422222222223,
+    "order": 26
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.884,
+    "y": 12.8916,
+    "y2": 13.8916,
+    "order": 27
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.916,
+    "y": 12.896177777777778,
+    "y2": 13.896177777777778,
+    "order": 28
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.948,
+    "y": 12.899022222222223,
+    "y2": 13.899022222222223,
+    "order": 29
+  },
+  {
+    "species": "Sambar deer",
+    "destination": "Taman Negara Terengganu",
+    "animals": 1,
+    "x": 0.98,
+    "y": 12.9,
+    "y2": 13.9,
+    "order": 30
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.02,
+    "y": 14.250000000000002,
+    "y2": 17.25,
+    "order": 0
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.052000000000000005,
+    "y": 14.266133333333336,
+    "y2": 17.266133333333336,
+    "order": 1
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.084,
+    "y": 14.313066666666668,
+    "y2": 17.313066666666668,
+    "order": 2
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.116,
+    "y": 14.388600000000002,
+    "y2": 17.388600000000004,
+    "order": 3
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.148,
+    "y": 14.490533333333335,
+    "y2": 17.490533333333335,
+    "order": 4
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.17999999999999997,
+    "y": 14.616666666666669,
+    "y2": 17.616666666666667,
+    "order": 5
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.212,
+    "y": 14.764800000000003,
+    "y2": 17.7648,
+    "order": 6
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.244,
+    "y": 14.932733333333335,
+    "y2": 17.932733333333335,
+    "order": 7
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.276,
+    "y": 15.118266666666669,
+    "y2": 18.11826666666667,
+    "order": 8
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.308,
+    "y": 15.319200000000002,
+    "y2": 18.319200000000002,
+    "order": 9
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.33999999999999997,
+    "y": 15.533333333333335,
+    "y2": 18.533333333333335,
+    "order": 10
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.372,
+    "y": 15.758466666666669,
+    "y2": 18.75846666666667,
+    "order": 11
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.404,
+    "y": 15.992400000000004,
+    "y2": 18.992400000000004,
+    "order": 12
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.436,
+    "y": 16.232933333333335,
+    "y2": 19.232933333333335,
+    "order": 13
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.468,
+    "y": 16.47786666666667,
+    "y2": 19.47786666666667,
+    "order": 14
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.5,
+    "y": 16.725,
+    "y2": 19.725,
+    "order": 15
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.532,
+    "y": 16.972133333333336,
+    "y2": 19.972133333333336,
+    "order": 16
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.564,
+    "y": 17.217066666666668,
+    "y2": 20.217066666666668,
+    "order": 17
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.596,
+    "y": 17.457600000000003,
+    "y2": 20.457600000000003,
+    "order": 18
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.628,
+    "y": 17.691533333333336,
+    "y2": 20.691533333333336,
+    "order": 19
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.6599999999999999,
+    "y": 17.916666666666668,
+    "y2": 20.916666666666668,
+    "order": 20
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.692,
+    "y": 18.1308,
+    "y2": 21.1308,
+    "order": 21
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.724,
+    "y": 18.331733333333336,
+    "y2": 21.331733333333336,
+    "order": 22
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.756,
+    "y": 18.51726666666667,
+    "y2": 21.51726666666667,
+    "order": 23
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.788,
+    "y": 18.685200000000002,
+    "y2": 21.685200000000002,
+    "order": 24
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.8200000000000001,
+    "y": 18.833333333333336,
+    "y2": 21.833333333333336,
+    "order": 25
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.852,
+    "y": 18.95946666666667,
+    "y2": 21.95946666666667,
+    "order": 26
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.884,
+    "y": 19.061400000000003,
+    "y2": 22.061400000000003,
+    "order": 27
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.916,
+    "y": 19.136933333333335,
+    "y2": 22.136933333333335,
+    "order": 28
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.948,
+    "y": 19.18386666666667,
+    "y2": 22.18386666666667,
+    "order": 29
+  },
+  {
+    "species": "Agile gibbon",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 3,
+    "x": 0.98,
+    "y": 19.200000000000003,
+    "y2": 22.200000000000003,
+    "order": 30
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.02,
+    "y": 17.900000000000002,
+    "y2": 18.900000000000002,
+    "order": 0
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 17.919392592592594,
+    "y2": 18.919392592592594,
+    "order": 1
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.084,
+    "y": 17.97580740740741,
+    "y2": 18.97580740740741,
+    "order": 2
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.116,
+    "y": 18.0666,
+    "y2": 19.0666,
+    "order": 3
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.148,
+    "y": 18.18912592592593,
+    "y2": 19.18912592592593,
+    "order": 4
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 18.340740740740742,
+    "y2": 19.340740740740742,
+    "order": 5
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.212,
+    "y": 18.518800000000002,
+    "y2": 19.518800000000002,
+    "order": 6
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.244,
+    "y": 18.72065925925926,
+    "y2": 19.72065925925926,
+    "order": 7
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.276,
+    "y": 18.943674074074075,
+    "y2": 19.943674074074075,
+    "order": 8
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.308,
+    "y": 19.185200000000002,
+    "y2": 20.185200000000002,
+    "order": 9
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 19.442592592592593,
+    "y2": 20.442592592592593,
+    "order": 10
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.372,
+    "y": 19.71320740740741,
+    "y2": 20.71320740740741,
+    "order": 11
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.404,
+    "y": 19.994400000000002,
+    "y2": 20.994400000000002,
+    "order": 12
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.436,
+    "y": 20.28352592592593,
+    "y2": 21.28352592592593,
+    "order": 13
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.468,
+    "y": 20.577940740740743,
+    "y2": 21.577940740740743,
+    "order": 14
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.5,
+    "y": 20.875,
+    "y2": 21.875,
+    "order": 15
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.532,
+    "y": 21.17205925925926,
+    "y2": 22.17205925925926,
+    "order": 16
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.564,
+    "y": 21.466474074074075,
+    "y2": 22.466474074074075,
+    "order": 17
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.596,
+    "y": 21.7556,
+    "y2": 22.7556,
+    "order": 18
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.628,
+    "y": 22.036792592592594,
+    "y2": 23.036792592592594,
+    "order": 19
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 22.30740740740741,
+    "y2": 23.30740740740741,
+    "order": 20
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.692,
+    "y": 22.5648,
+    "y2": 23.5648,
+    "order": 21
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.724,
+    "y": 22.806325925925925,
+    "y2": 23.806325925925925,
+    "order": 22
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.756,
+    "y": 23.029340740740743,
+    "y2": 24.029340740740743,
+    "order": 23
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.788,
+    "y": 23.2312,
+    "y2": 24.2312,
+    "order": 24
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 23.40925925925926,
+    "y2": 24.40925925925926,
+    "order": 25
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.852,
+    "y": 23.560874074074075,
+    "y2": 24.560874074074075,
+    "order": 26
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.884,
+    "y": 23.683400000000002,
+    "y2": 24.683400000000002,
+    "order": 27
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.916,
+    "y": 23.774192592592595,
+    "y2": 24.774192592592595,
+    "order": 28
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.948,
+    "y": 23.83060740740741,
+    "y2": 24.83060740740741,
+    "order": 29
+  },
+  {
+    "species": "Leopard cat",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.98,
+    "y": 23.85,
+    "y2": 24.85,
+    "order": 30
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.02,
+    "y": 19.55,
+    "y2": 20.55,
+    "order": 0
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 19.558637037037037,
+    "y2": 20.558637037037037,
+    "order": 1
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.084,
+    "y": 19.583762962962965,
+    "y2": 20.583762962962965,
+    "order": 2
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.116,
+    "y": 19.624200000000002,
+    "y2": 20.624200000000002,
+    "order": 3
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.148,
+    "y": 19.678770370370373,
+    "y2": 20.678770370370373,
+    "order": 4
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 19.746296296296297,
+    "y2": 20.746296296296297,
+    "order": 5
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.212,
+    "y": 19.8256,
+    "y2": 20.8256,
+    "order": 6
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.244,
+    "y": 19.915503703703706,
+    "y2": 20.915503703703706,
+    "order": 7
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.276,
+    "y": 20.01482962962963,
+    "y2": 21.01482962962963,
+    "order": 8
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.308,
+    "y": 20.122400000000003,
+    "y2": 21.122400000000003,
+    "order": 9
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 20.237037037037037,
+    "y2": 21.237037037037037,
+    "order": 10
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.372,
+    "y": 20.357562962962966,
+    "y2": 21.357562962962966,
+    "order": 11
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.404,
+    "y": 20.4828,
+    "y2": 21.4828,
+    "order": 12
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.436,
+    "y": 20.611570370370373,
+    "y2": 21.611570370370373,
+    "order": 13
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.468,
+    "y": 20.742696296296298,
+    "y2": 21.742696296296298,
+    "order": 14
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.5,
+    "y": 20.875,
+    "y2": 21.875,
+    "order": 15
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.532,
+    "y": 21.007303703703705,
+    "y2": 22.007303703703705,
+    "order": 16
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.564,
+    "y": 21.13842962962963,
+    "y2": 22.13842962962963,
+    "order": 17
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.596,
+    "y": 21.267200000000003,
+    "y2": 22.267200000000003,
+    "order": 18
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.628,
+    "y": 21.392437037037038,
+    "y2": 22.392437037037038,
+    "order": 19
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 21.512962962962966,
+    "y2": 22.512962962962966,
+    "order": 20
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.692,
+    "y": 21.6276,
+    "y2": 22.6276,
+    "order": 21
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.724,
+    "y": 21.735170370370373,
+    "y2": 22.735170370370373,
+    "order": 22
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.756,
+    "y": 21.834496296296297,
+    "y2": 22.834496296296297,
+    "order": 23
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.788,
+    "y": 21.924400000000002,
+    "y2": 22.924400000000002,
+    "order": 24
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 22.003703703703707,
+    "y2": 23.003703703703707,
+    "order": 25
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.852,
+    "y": 22.071229629629634,
+    "y2": 23.071229629629634,
+    "order": 26
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.884,
+    "y": 22.1258,
+    "y2": 23.1258,
+    "order": 27
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.916,
+    "y": 22.16623703703704,
+    "y2": 23.16623703703704,
+    "order": 28
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.948,
+    "y": 22.191362962962966,
+    "y2": 23.191362962962966,
+    "order": 29
+  },
+  {
+    "species": "Dusky leaf monkey",
+    "destination": "Ulu Muda Forest Reserve",
+    "animals": 1,
+    "x": 0.98,
+    "y": 22.200000000000003,
+    "y2": 23.200000000000003,
+    "order": 30
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.02,
+    "y": 21.2,
+    "y2": 24.2,
+    "order": 0
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.052000000000000005,
+    "y": 21.211896296296295,
+    "y2": 24.211896296296295,
+    "order": 1
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.084,
+    "y": 21.246503703703702,
+    "y2": 24.246503703703702,
+    "order": 2
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.116,
+    "y": 21.3022,
+    "y2": 24.3022,
+    "order": 3
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.148,
+    "y": 21.377362962962962,
+    "y2": 24.377362962962962,
+    "order": 4
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.17999999999999997,
+    "y": 21.470370370370368,
+    "y2": 24.470370370370368,
+    "order": 5
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.212,
+    "y": 21.5796,
+    "y2": 24.5796,
+    "order": 6
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.244,
+    "y": 21.70342962962963,
+    "y2": 24.70342962962963,
+    "order": 7
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.276,
+    "y": 21.84023703703704,
+    "y2": 24.84023703703704,
+    "order": 8
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.308,
+    "y": 21.9884,
+    "y2": 24.9884,
+    "order": 9
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.33999999999999997,
+    "y": 22.146296296296295,
+    "y2": 25.146296296296295,
+    "order": 10
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.372,
+    "y": 22.312303703703705,
+    "y2": 25.312303703703705,
+    "order": 11
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.404,
+    "y": 22.4848,
+    "y2": 25.4848,
+    "order": 12
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.436,
+    "y": 22.662162962962963,
+    "y2": 25.662162962962963,
+    "order": 13
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.468,
+    "y": 22.84277037037037,
+    "y2": 25.84277037037037,
+    "order": 14
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.5,
+    "y": 23.025,
+    "y2": 26.025,
+    "order": 15
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.532,
+    "y": 23.20722962962963,
+    "y2": 26.20722962962963,
+    "order": 16
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.564,
+    "y": 23.387837037037038,
+    "y2": 26.387837037037038,
+    "order": 17
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.596,
+    "y": 23.5652,
+    "y2": 26.5652,
+    "order": 18
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.628,
+    "y": 23.737696296296296,
+    "y2": 26.737696296296296,
+    "order": 19
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.6599999999999999,
+    "y": 23.903703703703705,
+    "y2": 26.903703703703705,
+    "order": 20
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.692,
+    "y": 24.061600000000002,
+    "y2": 27.061600000000002,
+    "order": 21
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.724,
+    "y": 24.209762962962962,
+    "y2": 27.209762962962962,
+    "order": 22
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.756,
+    "y": 24.346570370370372,
+    "y2": 27.346570370370372,
+    "order": 23
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.788,
+    "y": 24.4704,
+    "y2": 27.4704,
+    "order": 24
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.8200000000000001,
+    "y": 24.579629629629633,
+    "y2": 27.579629629629633,
+    "order": 25
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.852,
+    "y": 24.67263703703704,
+    "y2": 27.67263703703704,
+    "order": 26
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.884,
+    "y": 24.7478,
+    "y2": 27.7478,
+    "order": 27
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.916,
+    "y": 24.8034962962963,
+    "y2": 27.8034962962963,
+    "order": 28
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.948,
+    "y": 24.838103703703705,
+    "y2": 27.838103703703705,
+    "order": 29
+  },
+  {
+    "species": "Common palm civet",
+    "destination": "Penang National Park",
+    "animals": 3,
+    "x": 0.98,
+    "y": 24.85,
+    "y2": 27.85,
+    "order": 30
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.02,
+    "y": 24.849999999999998,
+    "y2": 26.849999999999998,
+    "order": 0
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.052000000000000005,
+    "y": 24.859777777777776,
+    "y2": 26.859777777777776,
+    "order": 1
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.084,
+    "y": 24.888222222222222,
+    "y2": 26.888222222222222,
+    "order": 2
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.116,
+    "y": 24.933999999999997,
+    "y2": 26.933999999999997,
+    "order": 3
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.148,
+    "y": 24.995777777777775,
+    "y2": 26.995777777777775,
+    "order": 4
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.17999999999999997,
+    "y": 25.07222222222222,
+    "y2": 27.07222222222222,
+    "order": 5
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.212,
+    "y": 25.162,
+    "y2": 27.162,
+    "order": 6
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.244,
+    "y": 25.263777777777776,
+    "y2": 27.263777777777776,
+    "order": 7
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.276,
+    "y": 25.37622222222222,
+    "y2": 27.37622222222222,
+    "order": 8
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.308,
+    "y": 25.497999999999998,
+    "y2": 27.497999999999998,
+    "order": 9
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.33999999999999997,
+    "y": 25.627777777777776,
+    "y2": 27.627777777777776,
+    "order": 10
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.372,
+    "y": 25.76422222222222,
+    "y2": 27.76422222222222,
+    "order": 11
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.404,
+    "y": 25.906,
+    "y2": 27.906,
+    "order": 12
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.436,
+    "y": 26.051777777777776,
+    "y2": 28.051777777777776,
+    "order": 13
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.468,
+    "y": 26.200222222222223,
+    "y2": 28.200222222222223,
+    "order": 14
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.5,
+    "y": 26.35,
+    "y2": 28.35,
+    "order": 15
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.532,
+    "y": 26.499777777777776,
+    "y2": 28.499777777777776,
+    "order": 16
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.564,
+    "y": 26.648222222222223,
+    "y2": 28.648222222222223,
+    "order": 17
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.596,
+    "y": 26.794,
+    "y2": 28.794,
+    "order": 18
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.628,
+    "y": 26.93577777777778,
+    "y2": 28.93577777777778,
+    "order": 19
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.6599999999999999,
+    "y": 27.072222222222223,
+    "y2": 29.072222222222223,
+    "order": 20
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.692,
+    "y": 27.202,
+    "y2": 29.202,
+    "order": 21
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.724,
+    "y": 27.323777777777778,
+    "y2": 29.323777777777778,
+    "order": 22
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.756,
+    "y": 27.436222222222224,
+    "y2": 29.436222222222224,
+    "order": 23
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.788,
+    "y": 27.538,
+    "y2": 29.538,
+    "order": 24
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.8200000000000001,
+    "y": 27.62777777777778,
+    "y2": 29.62777777777778,
+    "order": 25
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.852,
+    "y": 27.704222222222224,
+    "y2": 29.704222222222224,
+    "order": 26
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.884,
+    "y": 27.766000000000002,
+    "y2": 29.766000000000002,
+    "order": 27
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.916,
+    "y": 27.811777777777777,
+    "y2": 29.811777777777777,
+    "order": 28
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.948,
+    "y": 27.840222222222224,
+    "y2": 29.840222222222224,
+    "order": 29
+  },
+  {
+    "species": "Asian small-clawed otter",
+    "destination": "Penang National Park",
+    "animals": 2,
+    "x": 0.98,
+    "y": 27.85,
+    "y2": 29.85,
+    "order": 30
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.02,
+    "y": 27.499999999999996,
+    "y2": 28.499999999999996,
+    "order": 0
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 27.507659259259256,
+    "y2": 28.507659259259256,
+    "order": 1
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.084,
+    "y": 27.529940740740738,
+    "y2": 28.529940740740738,
+    "order": 2
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.116,
+    "y": 27.565799999999996,
+    "y2": 28.565799999999996,
+    "order": 3
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.148,
+    "y": 27.614192592592588,
+    "y2": 28.614192592592588,
+    "order": 4
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 27.67407407407407,
+    "y2": 28.67407407407407,
+    "order": 5
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.212,
+    "y": 27.744399999999995,
+    "y2": 28.744399999999995,
+    "order": 6
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.244,
+    "y": 27.824125925925923,
+    "y2": 28.824125925925923,
+    "order": 7
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.276,
+    "y": 27.912207407407404,
+    "y2": 28.912207407407404,
+    "order": 8
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.308,
+    "y": 28.007599999999996,
+    "y2": 29.007599999999996,
+    "order": 9
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 28.109259259259257,
+    "y2": 29.109259259259257,
+    "order": 10
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.372,
+    "y": 28.216140740740737,
+    "y2": 29.216140740740737,
+    "order": 11
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.404,
+    "y": 28.327199999999998,
+    "y2": 29.327199999999998,
+    "order": 12
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.436,
+    "y": 28.441392592592592,
+    "y2": 29.441392592592592,
+    "order": 13
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.468,
+    "y": 28.55767407407407,
+    "y2": 29.55767407407407,
+    "order": 14
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.5,
+    "y": 28.674999999999997,
+    "y2": 29.674999999999997,
+    "order": 15
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.532,
+    "y": 28.792325925925926,
+    "y2": 29.792325925925926,
+    "order": 16
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.564,
+    "y": 28.908607407407406,
+    "y2": 29.908607407407406,
+    "order": 17
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.596,
+    "y": 29.0228,
+    "y2": 30.0228,
+    "order": 18
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.628,
+    "y": 29.13385925925926,
+    "y2": 30.13385925925926,
+    "order": 19
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 29.24074074074074,
+    "y2": 30.24074074074074,
+    "order": 20
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.692,
+    "y": 29.3424,
+    "y2": 30.3424,
+    "order": 21
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.724,
+    "y": 29.437792592592594,
+    "y2": 30.437792592592594,
+    "order": 22
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.756,
+    "y": 29.525874074074075,
+    "y2": 30.525874074074075,
+    "order": 23
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.788,
+    "y": 29.605600000000003,
+    "y2": 30.605600000000003,
+    "order": 24
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 29.675925925925927,
+    "y2": 30.675925925925927,
+    "order": 25
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.852,
+    "y": 29.735807407407407,
+    "y2": 30.735807407407407,
+    "order": 26
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.884,
+    "y": 29.784200000000002,
+    "y2": 30.784200000000002,
+    "order": 27
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.916,
+    "y": 29.82005925925926,
+    "y2": 30.82005925925926,
+    "order": 28
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.948,
+    "y": 29.84234074074074,
+    "y2": 30.84234074074074,
+    "order": 29
+  },
+  {
+    "species": "Brahminy kite",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.98,
+    "y": 29.85,
+    "y2": 30.85,
+    "order": 30
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.02,
+    "y": 29.149999999999995,
+    "y2": 33.14999999999999,
+    "order": 0
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.052000000000000005,
+    "y": 29.155540740740737,
+    "y2": 33.15554074074073,
+    "order": 1
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.084,
+    "y": 29.171659259259254,
+    "y2": 33.17165925925926,
+    "order": 2
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.116,
+    "y": 29.197599999999994,
+    "y2": 33.197599999999994,
+    "order": 3
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.148,
+    "y": 29.232607407407404,
+    "y2": 33.2326074074074,
+    "order": 4
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.17999999999999997,
+    "y": 29.27592592592592,
+    "y2": 33.27592592592592,
+    "order": 5
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.212,
+    "y": 29.326799999999995,
+    "y2": 33.32679999999999,
+    "order": 6
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.244,
+    "y": 29.38447407407407,
+    "y2": 33.38447407407407,
+    "order": 7
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.276,
+    "y": 29.448192592592587,
+    "y2": 33.44819259259259,
+    "order": 8
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.308,
+    "y": 29.517199999999995,
+    "y2": 33.517199999999995,
+    "order": 9
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.33999999999999997,
+    "y": 29.59074074074074,
+    "y2": 33.59074074074074,
+    "order": 10
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.372,
+    "y": 29.668059259259255,
+    "y2": 33.66805925925925,
+    "order": 11
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.404,
+    "y": 29.748399999999997,
+    "y2": 33.7484,
+    "order": 12
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.436,
+    "y": 29.831007407407405,
+    "y2": 33.831007407407405,
+    "order": 13
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.468,
+    "y": 29.915125925925924,
+    "y2": 33.91512592592592,
+    "order": 14
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.5,
+    "y": 30.0,
+    "y2": 34.0,
+    "order": 15
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.532,
+    "y": 30.084874074074072,
+    "y2": 34.08487407407407,
+    "order": 16
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.564,
+    "y": 30.16899259259259,
+    "y2": 34.16899259259259,
+    "order": 17
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.596,
+    "y": 30.2516,
+    "y2": 34.251599999999996,
+    "order": 18
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.628,
+    "y": 30.33194074074074,
+    "y2": 34.33194074074074,
+    "order": 19
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.6599999999999999,
+    "y": 30.409259259259258,
+    "y2": 34.40925925925926,
+    "order": 20
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.692,
+    "y": 30.4828,
+    "y2": 34.4828,
+    "order": 21
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.724,
+    "y": 30.55180740740741,
+    "y2": 34.55180740740741,
+    "order": 22
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.756,
+    "y": 30.615525925925926,
+    "y2": 34.61552592592592,
+    "order": 23
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.788,
+    "y": 30.6732,
+    "y2": 34.6732,
+    "order": 24
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.8200000000000001,
+    "y": 30.724074074074075,
+    "y2": 34.724074074074075,
+    "order": 25
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.852,
+    "y": 30.767392592592593,
+    "y2": 34.76739259259259,
+    "order": 26
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.884,
+    "y": 30.802400000000002,
+    "y2": 34.802400000000006,
+    "order": 27
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.916,
+    "y": 30.828340740740742,
+    "y2": 34.82834074074074,
+    "order": 28
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.948,
+    "y": 30.84445925925926,
+    "y2": 34.84445925925926,
+    "order": 29
+  },
+  {
+    "species": "White-bellied sea eagle",
+    "destination": "Penang National Park",
+    "animals": 4,
+    "x": 0.98,
+    "y": 30.85,
+    "y2": 34.85,
+    "order": 30
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.02,
+    "y": 33.8,
+    "y2": 36.8,
+    "order": 0
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.052000000000000005,
+    "y": 33.74051851851851,
+    "y2": 36.74051851851851,
+    "order": 1
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.084,
+    "y": 33.56748148148148,
+    "y2": 36.56748148148148,
+    "order": 2
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.116,
+    "y": 33.288999999999994,
+    "y2": 36.288999999999994,
+    "order": 3
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.148,
+    "y": 32.913185185185185,
+    "y2": 35.913185185185185,
+    "order": 4
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.17999999999999997,
+    "y": 32.44814814814814,
+    "y2": 35.44814814814814,
+    "order": 5
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.212,
+    "y": 31.901999999999997,
+    "y2": 34.902,
+    "order": 6
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.244,
+    "y": 31.28285185185185,
+    "y2": 34.282851851851845,
+    "order": 7
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.276,
+    "y": 30.598814814814812,
+    "y2": 33.598814814814816,
+    "order": 8
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.308,
+    "y": 29.857999999999997,
+    "y2": 32.858,
+    "order": 9
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.33999999999999997,
+    "y": 29.068518518518516,
+    "y2": 32.068518518518516,
+    "order": 10
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.372,
+    "y": 28.23848148148148,
+    "y2": 31.23848148148148,
+    "order": 11
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.404,
+    "y": 27.375999999999998,
+    "y2": 30.375999999999998,
+    "order": 12
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.436,
+    "y": 26.489185185185185,
+    "y2": 29.489185185185185,
+    "order": 13
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.468,
+    "y": 25.586148148148148,
+    "y2": 28.586148148148148,
+    "order": 14
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.5,
+    "y": 24.674999999999997,
+    "y2": 27.674999999999997,
+    "order": 15
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.532,
+    "y": 23.76385185185185,
+    "y2": 26.76385185185185,
+    "order": 16
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.564,
+    "y": 22.860814814814816,
+    "y2": 25.860814814814816,
+    "order": 17
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.596,
+    "y": 21.973999999999997,
+    "y2": 24.973999999999997,
+    "order": 18
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.628,
+    "y": 21.11151851851852,
+    "y2": 24.11151851851852,
+    "order": 19
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.6599999999999999,
+    "y": 20.28148148148148,
+    "y2": 23.28148148148148,
+    "order": 20
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.692,
+    "y": 19.492,
+    "y2": 22.492,
+    "order": 21
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.724,
+    "y": 18.751185185185186,
+    "y2": 21.751185185185186,
+    "order": 22
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.756,
+    "y": 18.06714814814815,
+    "y2": 21.06714814814815,
+    "order": 23
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.788,
+    "y": 17.447999999999997,
+    "y2": 20.447999999999997,
+    "order": 24
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.8200000000000001,
+    "y": 16.901851851851852,
+    "y2": 19.901851851851852,
+    "order": 25
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.852,
+    "y": 16.436814814814813,
+    "y2": 19.436814814814813,
+    "order": 26
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.884,
+    "y": 16.061,
+    "y2": 19.061,
+    "order": 27
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.916,
+    "y": 15.782518518518518,
+    "y2": 18.78251851851852,
+    "order": 28
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.948,
+    "y": 15.609481481481481,
+    "y2": 18.60948148148148,
+    "order": 29
+  },
+  {
+    "species": "Changeable hawk-eagle",
+    "destination": "Taman Negara Pahang",
+    "animals": 3,
+    "x": 0.98,
+    "y": 15.55,
+    "y2": 18.55,
+    "order": 30
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.02,
+    "y": 37.449999999999996,
+    "y2": 38.449999999999996,
+    "order": 0
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 37.44152592592592,
+    "y2": 38.44152592592592,
+    "order": 1
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.084,
+    "y": 37.41687407407407,
+    "y2": 38.41687407407407,
+    "order": 2
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.116,
+    "y": 37.377199999999995,
+    "y2": 38.377199999999995,
+    "order": 3
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.148,
+    "y": 37.32365925925926,
+    "y2": 38.32365925925926,
+    "order": 4
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 37.257407407407406,
+    "y2": 38.257407407407406,
+    "order": 5
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.212,
+    "y": 37.17959999999999,
+    "y2": 38.17959999999999,
+    "order": 6
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.244,
+    "y": 37.09139259259259,
+    "y2": 38.09139259259259,
+    "order": 7
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.276,
+    "y": 36.99394074074074,
+    "y2": 37.99394074074074,
+    "order": 8
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.308,
+    "y": 36.8884,
+    "y2": 37.8884,
+    "order": 9
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 36.775925925925925,
+    "y2": 37.775925925925925,
+    "order": 10
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.372,
+    "y": 36.65767407407407,
+    "y2": 37.65767407407407,
+    "order": 11
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.404,
+    "y": 36.5348,
+    "y2": 37.5348,
+    "order": 12
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.436,
+    "y": 36.40845925925926,
+    "y2": 37.40845925925926,
+    "order": 13
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.468,
+    "y": 36.279807407407404,
+    "y2": 37.279807407407404,
+    "order": 14
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.5,
+    "y": 36.15,
+    "y2": 37.15,
+    "order": 15
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.532,
+    "y": 36.02019259259259,
+    "y2": 37.02019259259259,
+    "order": 16
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.564,
+    "y": 35.89154074074074,
+    "y2": 36.89154074074074,
+    "order": 17
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.596,
+    "y": 35.7652,
+    "y2": 36.7652,
+    "order": 18
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.628,
+    "y": 35.642325925925924,
+    "y2": 36.642325925925924,
+    "order": 19
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 35.52407407407407,
+    "y2": 36.52407407407407,
+    "order": 20
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.692,
+    "y": 35.4116,
+    "y2": 36.4116,
+    "order": 21
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.724,
+    "y": 35.30605925925926,
+    "y2": 36.30605925925926,
+    "order": 22
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.756,
+    "y": 35.208607407407406,
+    "y2": 36.208607407407406,
+    "order": 23
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.788,
+    "y": 35.120400000000004,
+    "y2": 36.120400000000004,
+    "order": 24
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 35.04259259259259,
+    "y2": 36.04259259259259,
+    "order": 25
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.852,
+    "y": 34.97634074074074,
+    "y2": 35.97634074074074,
+    "order": 26
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.884,
+    "y": 34.9228,
+    "y2": 35.9228,
+    "order": 27
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.916,
+    "y": 34.883125925925924,
+    "y2": 35.883125925925924,
+    "order": 28
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.948,
+    "y": 34.858474074074074,
+    "y2": 35.858474074074074,
+    "order": 29
+  },
+  {
+    "species": "Buffy fish owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.98,
+    "y": 34.85,
+    "y2": 35.85,
+    "order": 30
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.02,
+    "y": 39.099999999999994,
+    "y2": 40.099999999999994,
+    "order": 0
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 39.0894074074074,
+    "y2": 40.0894074074074,
+    "order": 1
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.084,
+    "y": 39.05859259259259,
+    "y2": 40.05859259259259,
+    "order": 2
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.116,
+    "y": 39.00899999999999,
+    "y2": 40.00899999999999,
+    "order": 3
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.148,
+    "y": 38.94207407407407,
+    "y2": 39.94207407407407,
+    "order": 4
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 38.859259259259254,
+    "y2": 39.859259259259254,
+    "order": 5
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.212,
+    "y": 38.76199999999999,
+    "y2": 39.76199999999999,
+    "order": 6
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.244,
+    "y": 38.651740740740735,
+    "y2": 39.651740740740735,
+    "order": 7
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.276,
+    "y": 38.52992592592592,
+    "y2": 39.52992592592592,
+    "order": 8
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.308,
+    "y": 38.397999999999996,
+    "y2": 39.397999999999996,
+    "order": 9
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 38.257407407407406,
+    "y2": 39.257407407407406,
+    "order": 10
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.372,
+    "y": 38.10959259259259,
+    "y2": 39.10959259259259,
+    "order": 11
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.404,
+    "y": 37.955999999999996,
+    "y2": 38.955999999999996,
+    "order": 12
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.436,
+    "y": 37.79807407407407,
+    "y2": 38.79807407407407,
+    "order": 13
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.468,
+    "y": 37.63725925925926,
+    "y2": 38.63725925925926,
+    "order": 14
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.5,
+    "y": 37.474999999999994,
+    "y2": 38.474999999999994,
+    "order": 15
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.532,
+    "y": 37.312740740740736,
+    "y2": 38.312740740740736,
+    "order": 16
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.564,
+    "y": 37.15192592592592,
+    "y2": 38.15192592592592,
+    "order": 17
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.596,
+    "y": 36.994,
+    "y2": 37.994,
+    "order": 18
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.628,
+    "y": 36.840407407407405,
+    "y2": 37.840407407407405,
+    "order": 19
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 36.69259259259259,
+    "y2": 37.69259259259259,
+    "order": 20
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.692,
+    "y": 36.552,
+    "y2": 37.552,
+    "order": 21
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.724,
+    "y": 36.42007407407407,
+    "y2": 37.42007407407407,
+    "order": 22
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.756,
+    "y": 36.29825925925926,
+    "y2": 37.29825925925926,
+    "order": 23
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.788,
+    "y": 36.188,
+    "y2": 37.188,
+    "order": 24
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 36.09074074074074,
+    "y2": 37.09074074074074,
+    "order": 25
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.852,
+    "y": 36.007925925925925,
+    "y2": 37.007925925925925,
+    "order": 26
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.884,
+    "y": 35.941,
+    "y2": 36.941,
+    "order": 27
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.916,
+    "y": 35.89140740740741,
+    "y2": 36.89140740740741,
+    "order": 28
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.948,
+    "y": 35.860592592592596,
+    "y2": 36.860592592592596,
+    "order": 29
+  },
+  {
+    "species": "Spotted wood owl",
+    "destination": "Penang National Park",
+    "animals": 1,
+    "x": 0.98,
+    "y": 35.85,
+    "y2": 36.85,
+    "order": 30
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.02,
+    "y": 40.74999999999999,
+    "y2": 41.74999999999999,
+    "order": 0
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.052000000000000005,
+    "y": 40.7394074074074,
+    "y2": 41.7394074074074,
+    "order": 1
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.084,
+    "y": 40.70859259259259,
+    "y2": 41.70859259259259,
+    "order": 2
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.116,
+    "y": 40.65899999999999,
+    "y2": 41.65899999999999,
+    "order": 3
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.148,
+    "y": 40.59207407407407,
+    "y2": 41.59207407407407,
+    "order": 4
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.17999999999999997,
+    "y": 40.50925925925925,
+    "y2": 41.50925925925925,
+    "order": 5
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.212,
+    "y": 40.41199999999999,
+    "y2": 41.41199999999999,
+    "order": 6
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.244,
+    "y": 40.30174074074073,
+    "y2": 41.30174074074073,
+    "order": 7
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.276,
+    "y": 40.17992592592592,
+    "y2": 41.17992592592592,
+    "order": 8
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.308,
+    "y": 40.047999999999995,
+    "y2": 41.047999999999995,
+    "order": 9
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.33999999999999997,
+    "y": 39.907407407407405,
+    "y2": 40.907407407407405,
+    "order": 10
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.372,
+    "y": 39.75959259259259,
+    "y2": 40.75959259259259,
+    "order": 11
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.404,
+    "y": 39.605999999999995,
+    "y2": 40.605999999999995,
+    "order": 12
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.436,
+    "y": 39.44807407407407,
+    "y2": 40.44807407407407,
+    "order": 13
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.468,
+    "y": 39.28725925925926,
+    "y2": 40.28725925925926,
+    "order": 14
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.5,
+    "y": 39.125,
+    "y2": 40.125,
+    "order": 15
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.532,
+    "y": 38.962740740740735,
+    "y2": 39.962740740740735,
+    "order": 16
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.564,
+    "y": 38.80192592592592,
+    "y2": 39.80192592592592,
+    "order": 17
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.596,
+    "y": 38.644,
+    "y2": 39.644,
+    "order": 18
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.628,
+    "y": 38.4904074074074,
+    "y2": 39.4904074074074,
+    "order": 19
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.6599999999999999,
+    "y": 38.34259259259259,
+    "y2": 39.34259259259259,
+    "order": 20
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.692,
+    "y": 38.202,
+    "y2": 39.202,
+    "order": 21
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.724,
+    "y": 38.07007407407407,
+    "y2": 39.07007407407407,
+    "order": 22
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.756,
+    "y": 37.94825925925926,
+    "y2": 38.94825925925926,
+    "order": 23
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.788,
+    "y": 37.838,
+    "y2": 38.838,
+    "order": 24
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.8200000000000001,
+    "y": 37.74074074074074,
+    "y2": 38.74074074074074,
+    "order": 25
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.852,
+    "y": 37.65792592592592,
+    "y2": 38.65792592592592,
+    "order": 26
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.884,
+    "y": 37.591,
+    "y2": 38.591,
+    "order": 27
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.916,
+    "y": 37.541407407407405,
+    "y2": 38.541407407407405,
+    "order": 28
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.948,
+    "y": 37.510592592592594,
+    "y2": 38.510592592592594,
+    "order": 29
+  },
+  {
+    "species": "Oriental pied hornbill",
+    "destination": "Sungkai Wildlife Reserve",
+    "animals": 1,
+    "x": 0.98,
+    "y": 37.5,
+    "y2": 38.5,
+    "order": 30
+  }
+]

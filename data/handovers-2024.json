@@ -1,0 +1,122 @@
+[
+  {
+    "state": "Kelantan",
+    "reptiles": 2845,
+    "mammals": 36,
+    "birds": 8,
+    "total": 2889,
+    "mammal_share": 0.012461059190031152,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Pulau Pinang",
+    "reptiles": 2359,
+    "mammals": 192,
+    "birds": 37,
+    "total": 2588,
+    "mammal_share": 0.07418856259659969,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Johor",
+    "reptiles": 2091,
+    "mammals": 39,
+    "birds": 23,
+    "total": 2153,
+    "mammal_share": 0.018114259173246633,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Terengganu",
+    "reptiles": 1979,
+    "mammals": 24,
+    "birds": 14,
+    "total": 2017,
+    "mammal_share": 0.011898859692612791,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Selangor",
+    "reptiles": 773,
+    "mammals": 1169,
+    "birds": 45,
+    "total": 1987,
+    "mammal_share": 0.5883241066935078,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Wilayah Persekutuan",
+    "reptiles": 1017,
+    "mammals": 19,
+    "birds": 2,
+    "total": 1038,
+    "mammal_share": 0.018304431599229287,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Kedah",
+    "reptiles": 805,
+    "mammals": 61,
+    "birds": 18,
+    "total": 884,
+    "mammal_share": 0.06900452488687783,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Perak",
+    "reptiles": 693,
+    "mammals": 25,
+    "birds": 10,
+    "total": 728,
+    "mammal_share": 0.034340659340659344,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Melaka",
+    "reptiles": 572,
+    "mammals": 58,
+    "birds": 20,
+    "total": 650,
+    "mammal_share": 0.08923076923076922,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Pahang",
+    "reptiles": 530,
+    "mammals": 43,
+    "birds": 20,
+    "total": 593,
+    "mammal_share": 0.07251264755480608,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Negeri Sembilan",
+    "reptiles": 346,
+    "mammals": 13,
+    "birds": 6,
+    "total": 365,
+    "mammal_share": 0.03561643835616438,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  },
+  {
+    "state": "Perlis",
+    "reptiles": 136,
+    "mammals": 4,
+    "birds": 2,
+    "total": 142,
+    "mammal_share": 0.028169014084507043,
+    "year": 2024,
+    "source": "PERHILITAN 2024, Table 34, p121"
+  }
+]

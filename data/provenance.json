@@ -1,0 +1,55 @@
+{
+  "prepared": "2026-10-17",
+  "observations": "2024–2025",
+  "sources": [
+    {
+      "provider": "PERHILITAN",
+      "title": "Laporan Tahunan 2024",
+      "locator": "Table 34 p121; Figure 26 table p107; Table 31 p108",
+      "file": "data/raw/user_supplied/perhilitan_annual_report_2024.pdf",
+      "url": null,
+      "note": "User-supplied original; direct report URL has not been recorded. Permission confirmed by project owner."
+    },
+    {
+      "provider": "BSBCC",
+      "title": "Annual Report 2024",
+      "url": "https://www.bsbcc.org.my/s/Annual-Report-2024_FINAL.pdf",
+      "locator": "PDF pp6,11,12"
+    },
+    {
+      "provider": "BSBCC",
+      "title": "Annual Report 2025",
+      "url": "https://www.bsbcc.org.my/s/Annual-Report-2025.pdf",
+      "locator": "PDF pp9,12,13,30–32"
+    },
+    {
+      "provider": "WWF-Malaysia",
+      "title": "Annual Review 2025",
+      "url": "https://wwfmy.awsassets.panda.org/downloads/wwf-malaysia-annual-review-2025_021225.pdf",
+      "locator": "p21, 2024 coral-restoration event"
+    },
+    {
+      "provider": "geoBoundaries / OpenStreetMap contributors",
+      "title": "Malaysia ADM1 simplified geometry",
+      "url": "https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/MYS/ADM1/geoBoundaries-MYS-ADM1_simplified.geojson",
+      "licence": "ODbL 1.0",
+      "note": "Reference geometry represents 2017, build 2023. This is cartographic context, not dated wildlife observations. Selected peninsular features, renamed properties, reversed ring winding for Vega; anchors are largest-polygon planar centroids."
+    }
+  ],
+  "caveats": [
+    "NWRC Figure 26 bar labels and numeric table disagree in places. The website consistently uses the printed numeric table and discloses this discrepancy.",
+    "Federal Territories reporting unit is retained in totals and tables but not allocated to individual territory polygons.",
+    "State anchors show regional reporting locations, not precise rescue/release sites. Perak-to-Perak releases are shown separately.",
+    "The Sankey and flow map are two views of the same 32 released animals; they must never be summed.",
+    "Placement durations are inclusive calendar days, not worked hours or workdays.",
+    "Animal GPS data and unverified MyBIS data are excluded."
+  ],
+  "eligibility_policy": {
+    "minimum_date": "2021-01-01",
+    "maximum_date": "2026-07-31",
+    "updated": "2026-10-24",
+    "wildlife_observations_compliant": true,
+    "geometry_compliant": false,
+    "required_action": "Replace 2017 boundary layer; no reference-map exception approved."
+  }
+}
