@@ -14,7 +14,7 @@
       "title": null,
       "axis": {
         "labelFontSize": 13.5,
-        "labelColor": "#213d31"
+        "labelColor": "#1f2d2a"
       }
     },
     "x": {
@@ -34,9 +34,9 @@
     "color": {
       "condition": {
         "test": "datum.origin == 'Malaysia'",
-        "value": "#2b4f33"
+        "value": "#2f4858"
       },
-      "value": "#9aa58f"
+      "value": "#E1B04F"
     },
     "tooltip": [
       {
@@ -98,8 +98,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -110,18 +110,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

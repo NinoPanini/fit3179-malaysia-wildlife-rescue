@@ -23,7 +23,7 @@
     }
   ],
   "padding": {
-    "left": 190,
+    "left": 212,
     "right": 210,
     "top": 10,
     "bottom": 10
@@ -90,9 +90,9 @@
               "Birds"
             ],
             "range": [
-              "#5f8f3e",
-              "#b4612f",
-              "#3b7ca3"
+              "#0072B2",
+              "#E69F00",
+              "#CC79A7"
             ]
           },
           "legend": null
@@ -149,9 +149,9 @@
               "Area"
             ],
             "range": [
-              "#b4612f",
-              "#3b7ca3",
-              "#213d31"
+              "#E69F00",
+              "#CC79A7",
+              "#1f2d2a"
             ]
           },
           "legend": null
@@ -167,6 +167,47 @@
             "title": "Animals"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/release-nodes.json"
+      },
+      "transform": [
+        {
+          "filter": {
+            "field": "label",
+            "oneOf": [
+              "Leopard",
+              "Brahminy kite"
+            ]
+          }
+        },
+        {
+          "calculate": "datum.label == 'Leopard' ? 'MAMMALS' : 'BIRDS'",
+          "as": "heading"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -208,
+        "fontSize": 11.5,
+        "fontWeight": 700,
+        "letterSpacing": 1.5,
+        "baseline": "middle"
+      },
+      "encoding": {
+        "y": {
+          "field": "mid",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "heading"
+        },
+        "color": {
+          "value": "#56625d"
+        }
       }
     },
     {
@@ -248,8 +289,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -260,18 +301,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

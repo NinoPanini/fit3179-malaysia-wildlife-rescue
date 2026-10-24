@@ -17,7 +17,7 @@
       "axis": {
         "labelAngle": 0,
         "labelFontSize": 14,
-        "labelColor": "#213d31"
+        "labelColor": "#1f2d2a"
       }
     },
     "y": {
@@ -43,8 +43,8 @@
           "Interns"
         ],
         "range": [
-          "#2b4f33",
-          "#c4952b"
+          "#1f2d2a",
+          "#8a6d2f"
         ]
       },
       "legend": null
@@ -73,10 +73,54 @@
     {
       "mark": {
         "type": "line",
-        "strokeWidth": 3,
-        "point": {
-          "filled": true,
-          "size": 70
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "strokeDash": {
+          "field": "programme",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Volunteers",
+              "Interns"
+            ],
+            "range": [
+              [
+                1,
+                0
+              ],
+              [
+                6,
+                4
+              ]
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80,
+        "opacity": 1
+      },
+      "encoding": {
+        "shape": {
+          "field": "programme",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Volunteers",
+              "Interns"
+            ],
+            "range": [
+              "circle",
+              "square"
+            ]
+          },
+          "legend": null
         }
       }
     },
@@ -151,8 +195,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -163,18 +207,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

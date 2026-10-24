@@ -24,7 +24,7 @@
         "labelAngle": 0,
         "labelFontSize": 15,
         "labelFontWeight": 600,
-        "labelColor": "#213d31",
+        "labelColor": "#1f2d2a",
         "orient": "top"
       }
     },
@@ -54,7 +54,7 @@
       "mark": {
         "type": "text",
         "fontSize": 12.5,
-        "color": "#5d6b62",
+        "color": "#56625d",
         "lineHeight": 17,
         "fontStyle": "italic",
         "text": [
@@ -85,9 +85,9 @@
         "color": {
           "condition": {
             "param": "pickState",
-            "value": "#213d31"
+            "value": "#1f2d2a"
           },
-          "value": "#d6d1c1"
+          "value": "#d3cfc2"
         },
         "strokeWidth": {
           "condition": {
@@ -118,9 +118,9 @@
         "color": {
           "condition": {
             "param": "pickState",
-            "value": "#213d31"
+            "value": "#1f2d2a"
           },
-          "value": "#d6d1c1"
+          "value": "#d3cfc2"
         },
         "strokeWidth": {
           "condition": {
@@ -165,7 +165,7 @@
         "color": {
           "condition": {
             "param": "pickState",
-            "value": "#213d31"
+            "value": "#1f2d2a"
           },
           "value": "#bdb7a5"
         },
@@ -213,9 +213,9 @@
         "color": {
           "condition": {
             "param": "pickState",
-            "value": "#213d31"
+            "value": "#1f2d2a"
           },
-          "value": "#5d6b62"
+          "value": "#56625d"
         }
       }
     },
@@ -242,9 +242,9 @@
         "color": {
           "condition": {
             "param": "pickState",
-            "value": "#213d31"
+            "value": "#1f2d2a"
           },
-          "value": "#5d6b62"
+          "value": "#56625d"
         }
       }
     }
@@ -263,8 +263,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -275,18 +275,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

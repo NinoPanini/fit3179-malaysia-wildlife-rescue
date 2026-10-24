@@ -14,7 +14,7 @@
       "axis": {
         "labelFontSize": 15,
         "labelFontWeight": 600,
-        "labelColor": "#213d31",
+        "labelColor": "#1f2d2a",
         "labelPadding": 12,
         "grid": true,
         "gridColor": "#efece2"
@@ -42,7 +42,7 @@
               "interval": "year"
             },
             "labelFontSize": 14,
-            "labelColor": "#213d31",
+            "labelColor": "#1f2d2a",
             "grid": true
           }
         },
@@ -74,7 +74,7 @@
               "interval": "year"
             },
             "labelFontSize": 14,
-            "labelColor": "#213d31",
+            "labelColor": "#1f2d2a",
             "grid": true
           },
           "scale": {
@@ -102,7 +102,7 @@
               "square",
               "triangle-up",
               "diamond",
-              "circle",
+              "triangle-down",
               "cross"
             ]
           },
@@ -128,12 +128,12 @@
               "Death signal"
             ],
             "range": [
-              "#8a8270",
-              "#5f8f3e",
-              "#c4952b",
-              "#b4612f",
-              "#a9c3d4",
-              "#1d1a16"
+              "#7f7f7f",
+              "#009E73",
+              "#E69F00",
+              "#D55E00",
+              "#56B4E9",
+              "#000000"
             ]
           },
           "legend": {
@@ -188,7 +188,7 @@
         "dx": 16,
         "fontSize": 13,
         "fontStyle": "italic",
-        "color": "#5d6b62"
+        "color": "#56625d"
       },
       "encoding": {
         "x": {
@@ -201,7 +201,7 @@
               "interval": "year"
             },
             "labelFontSize": 14,
-            "labelColor": "#213d31",
+            "labelColor": "#1f2d2a",
             "grid": true
           }
         },
@@ -225,8 +225,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -237,18 +237,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

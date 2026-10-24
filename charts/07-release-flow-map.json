@@ -43,7 +43,7 @@
       },
       "mark": {
         "type": "line",
-        "color": "#2f5a40",
+        "color": "#3e5260",
         "opacity": 0.8,
         "strokeCap": "round"
       },
@@ -104,7 +104,7 @@
         "type": "point",
         "shape": "triangle-up",
         "filled": true,
-        "color": "#2f5a40",
+        "color": "#3e5260",
         "opacity": 0.95
       },
       "encoding": {
@@ -135,7 +135,7 @@
       "mark": {
         "type": "circle",
         "size": 70,
-        "color": "#213d31",
+        "color": "#1f2d2a",
         "stroke": "#fbf9f2",
         "strokeWidth": 1.5
       },
@@ -188,7 +188,7 @@
           "mark": {
             "type": "circle",
             "size": 380,
-            "color": "#c4952b",
+            "color": "#D9A43A",
             "stroke": "#fbf9f2",
             "strokeWidth": 2
           }
@@ -319,8 +319,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -331,18 +331,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

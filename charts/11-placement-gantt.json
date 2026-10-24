@@ -44,7 +44,7 @@
               "interval": "month"
             },
             "orient": "top",
-            "labelColor": "#213d31",
+            "labelColor": "#1f2d2a",
             "labelFontSize": 13
           }
         },
@@ -61,8 +61,8 @@
               "Other countries"
             ],
             "range": [
-              "#2b4f33",
-              "#c4952b"
+              "#2f4858",
+              "#E1B04F"
             ]
           },
           "legend": {
@@ -118,9 +118,13 @@
           ],
           "mark": {
             "type": "bar",
-            "color": "#e2ddcb",
-            "stroke": "#fbf9f2",
-            "strokeWidth": 2
+            "fill": "#fbf9f2",
+            "stroke": "#3e5260",
+            "strokeWidth": 1.5,
+            "strokeDash": [
+              3,
+              2
+            ]
           },
           "encoding": {
             "x": {
@@ -187,7 +191,7 @@
           ],
           "mark": {
             "type": "bar",
-            "color": "#2b4f33",
+            "color": "#2f4858",
             "stroke": "#fbf9f2",
             "strokeWidth": 2
           },
@@ -255,7 +259,7 @@
             {
               "mark": {
                 "type": "rule",
-                "color": "#c4952b",
+                "color": "#D9A43A",
                 "strokeDash": [
                   5,
                   4
@@ -297,8 +301,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -309,18 +313,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

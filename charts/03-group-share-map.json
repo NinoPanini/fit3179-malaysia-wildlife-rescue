@@ -106,23 +106,19 @@
           "scale": {
             "type": "threshold",
             "domain": [
-              0.02,
               0.05,
               0.1,
               0.25,
               0.5,
-              0.75,
-              0.9
+              0.75
             ],
             "range": [
-              "#f3f0e4",
-              "#e2dcc0",
-              "#c4c497",
-              "#97a873",
-              "#6a8a57",
-              "#456b44",
-              "#2b4f33",
-              "#173523"
+              "#ffffcc",
+              "#c7e9b4",
+              "#7fcdbb",
+              "#41b6c4",
+              "#2c7fb8",
+              "#253494"
             ]
           },
           "legend": {
@@ -169,35 +165,14 @@
           "as": "share"
         },
         {
-          "window": [
-            {
-              "op": "row_number",
-              "as": "r"
-            }
-          ],
-          "sort": [
-            {
-              "field": "share",
-              "order": "descending"
-            }
-          ]
-        },
-        {
-          "filter": "datum.r == 1"
-        },
-        {
-          "calculate": "['Highest: ' + datum.state, format(datum.share, '.0%') + ' ' + lower(groupChoice)]",
+          "calculate": "datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')",
           "as": "label"
         }
       ],
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 26,
-        "dy": -6,
-        "fontSize": 13,
-        "fontWeight": 600,
-        "lineHeight": 16
+        "fontSize": 12,
+        "fontWeight": 700
       },
       "encoding": {
         "longitude": {
@@ -210,7 +185,26 @@
         },
         "text": {
           "field": "label"
-        }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.share >= 0.25",
+            "value": "white"
+          },
+          "value": "#1f2d2a"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Share",
+            "format": ".1%"
+          }
+        ]
       }
     }
   ],
@@ -228,8 +222,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -240,18 +234,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }

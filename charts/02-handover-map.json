@@ -50,7 +50,7 @@
       ],
       "mark": {
         "type": "circle",
-        "color": "#2f5a40",
+        "color": "#3e5260",
         "stroke": "#fbf9f2",
         "strokeWidth": 1.5,
         "cursor": "pointer"
@@ -82,7 +82,7 @@
               2500
             ],
             "orient": "bottom-left",
-            "symbolFillColor": "#2f5a40",
+            "symbolFillColor": "#3e5260",
             "symbolOpacity": 0.7,
             "labelExpr": "format(datum.value, ',')"
           }
@@ -192,8 +192,8 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#5d6b62",
-      "titleColor": "#213d31",
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
       "domain": false,
       "gridColor": "#e4e0d2",
       "tickColor": "#e4e0d2",
@@ -204,18 +204,18 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#213d31",
-      "titleColor": "#213d31",
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#213d31"
+      "color": "#1f2d2a"
     }
   }
 }
