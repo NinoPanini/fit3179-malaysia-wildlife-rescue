@@ -80,6 +80,9 @@
       "encoding": {
         "text": {
           "field": "placements"
+        },
+        "color": {
+          "value": "#1f2d2a"
         }
       }
     }

@@ -127,9 +127,12 @@
           },
           "legend": {
             "labelExpr": "(groupChoice == 'Mammals' ? [\"under 2%\", \"2%\\u20134%\", \"4%\\u20137%\", \"7%\\u201310%\", \"10%\\u201325%\", \"25% or more\"] : groupChoice == 'Reptiles' ? [\"under 50%\", \"50%\\u201390%\", \"90%\\u201393%\", \"93%\\u201396%\", \"96%\\u201398%\", \"98% or more\"] : [\"under 0.5%\", \"0.5%\\u20131%\", \"1%\\u20131.5%\", \"1.5%\\u20132%\", \"2%\\u20133%\", \"3% or more\"])[datum.value]",
-            "orient": "bottom",
-            "direction": "horizontal",
-            "columns": 3,
+            "orient": "bottom-left",
+            "direction": "vertical",
+            "title": [
+              "Share of the",
+              "state’s handovers"
+            ],
             "symbolType": "square",
             "symbolSize": 220,
             "symbolStrokeColor": "#9c9686",

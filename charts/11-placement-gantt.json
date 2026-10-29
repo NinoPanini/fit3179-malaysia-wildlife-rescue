@@ -47,6 +47,9 @@
           "field": "start",
           "type": "temporal",
           "title": null,
+          "scale": {
+            "nice": "month"
+          },
           "axis": {
             "format": "%b",
             "tickCount": {
@@ -75,8 +78,9 @@
             ]
           },
           "legend": {
-            "orient": "bottom",
-            "direction": "horizontal"
+            "orient": "top",
+            "direction": "horizontal",
+            "offset": 26
           }
         },
         "tooltip": [
