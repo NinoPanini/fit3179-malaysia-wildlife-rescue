@@ -63,7 +63,7 @@ figure{margin:0;min-width:0}
 .figure-top h3{font-size:23px;line-height:1.25;margin:0 0 4px}
 .figure-top p{font-size:15px;color:var(--muted);line-height:1.45;margin:0}
 .chart{width:100%;min-height:120px;position:relative}
-.chart[aria-busy="true"]::before{content:"Loading chart…";position:absolute;inset:0;display:grid;place-items:center;font-size:14px;color:var(--muted);background:repeating-linear-gradient(-45deg,transparent 0 10px,rgba(0,0,0,.025) 10px 20px);border-radius:4px}
+.chart[aria-busy="true"]::before{content:"Loading chart…";position:absolute;inset:0;display:grid;place-items:center;font-size:14px;color:var(--muted)}
 .try{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--green);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin:4px 0 0 4px;vertical-align:baseline;white-space:nowrap}
 .chart .vega-embed{width:100%;padding-right:0!important}
 .chart .vega-embed summary{display:none}

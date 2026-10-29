@@ -50,6 +50,30 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
   assert.equal(placements.map(r => r.days).sort((a, b) => a - b)[28], 14);
   assert.equal(sum(read('data/bsbcc-origins-2025.json'), 'placements'), 57);
 
+  // Claims made in the page text (index.html) - if the data changes, these fail first
+  const rank = (st, y) => trend.find(r => r.state === st && r.year === y).rank;
+  assert.equal(rank('Terengganu', 2021), 11); assert.equal(rank('Terengganu', 2024), 4);
+  assert.equal(rank('Kelantan', 2021), 4); assert.equal(rank('Kelantan', 2024), 1);
+  assert.equal(rank('Pulau Pinang', 2021), 1); assert.equal(rank('Pulau Pinang', 2024), 2);
+  const national = read('data/handovers-national.json');
+  assert(national[1].total < national[0].total, '2022 total dips below 2021');
+  assert.equal(Math.round(16034 / 11408 * 100 - 100), 41, 'about 40% rise 2021-2024');
+  const share = (st, g) => { const r = h24.find(x => x.state === st); return r[g] / r.total; };
+  assert.equal(Math.round(share('Selangor', 'mammals') * 100), 59);
+  assert(h24.every(r => r.birds / r.total < 0.034), 'birds never exceed 3.4%');
+  assert(h24.every(r => r.reptiles / r.total > 0.38), 'reptiles never below 38%');
+  ['Kelantan', 'Johor', 'Terengganu'].forEach(st => assert(share(st, 'mammals') <= 0.02));
+  const nwrcTotals = read('data/nwrc-intake-totals.json');
+  assert.equal(sum(nwrcTotals.filter(r => r.year === 2023), 'animals'), 567);
+  const rep24 = m => intake.find(r => r.year === 2024 && r.month === m && r.group === 'Reptiles').animals;
+  assert(rep24('Sep') + rep24('Dec') > 10000, 'two months brought >10,000 reptiles');
+  assert.equal(read('data/release-sites.json').find(r => r.site === 'Penang National Park').animals, 13);
+  const people = read('data/bsbcc-participation-2021-2025.json').filter(r => r.programme === 'Volunteers').map(r => r.people);
+  assert.deepEqual([people[0], people[people.length - 1]], [7, 57]);
+  assert(people.every((v, i) => i === 0 || v > people[i - 1]), 'volunteers rose every year');
+  assert.equal(read('data/bsbcc-origins-2025.json').find(r => r.origin === 'Malaysia').placements, 27);
+  assert(placements.every(p => p.end <= '2025-12-31'), 'all placement days fall in 2025');
+
   const files = fs.readdirSync(path.join(root, 'charts')).filter(f => f.endsWith('.json'));
   assert.equal(files.length, 13, 'Eleven numbered chart files plus two small context charts');
   for (const file of files) {

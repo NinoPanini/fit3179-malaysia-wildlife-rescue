@@ -245,6 +245,10 @@
                 "bin_start",
                 "bin_end"
               ]
+            },
+            {
+              "calculate": "datum.bin_start + '–' + (datum.bin_end - 1) + ' days'",
+              "as": "range"
             }
           ],
           "mark": {
@@ -284,12 +288,8 @@
             },
             "tooltip": [
               {
-                "field": "bin_start",
-                "title": "From (days)"
-              },
-              {
-                "field": "bin_end",
-                "title": "Up to (days)"
+                "field": "range",
+                "title": "Placement length"
               },
               {
                 "aggregate": "count",

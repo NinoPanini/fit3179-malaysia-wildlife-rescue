@@ -1,25 +1,25 @@
 {
-  "prepared": "2026-10-24",
+  "prepared": "2026-10-30",
   "observations": "2021–2025",
   "sources": [
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2024",
-      "locator": "Table 34 p121 (handovers); table under Figure 26 p107 (NWRC monthly intake); Table 31 p108 (releases)",
+      "locator": "Table 34 PDF p123 / printed p121 (handovers); table under Figure 26 PDF p109 / printed p107 (NWRC monthly intake); Table 31 PDF p110 / printed p108 (releases)",
       "url": null,
       "note": "Library copy; approval confirmed by author."
     },
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2023",
-      "locator": "Table 46 (handovers by state); Table 31 (NWRC received by month) and NWRC text",
+      "locator": "Table 46 (PDF p120, printed p119; handovers by state); Table 31 (PDF p90, printed p89; NWRC received by month) and NWRC text",
       "url": null,
       "note": "The printed December row equals the annual totals stated in the text (567 animals); December 2023 intake is shown as not printed."
     },
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2022",
-      "locator": "PDF p106 / printed p104 text: national handover total 11,170",
+      "locator": "PDF p106 / printed p105 text: national handover total 11,170",
       "url": null,
       "note": "Scanned report; no state table published. Listed group figures sum to 11,171 in the source."
     },
