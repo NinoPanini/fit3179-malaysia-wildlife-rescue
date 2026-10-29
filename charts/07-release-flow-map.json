@@ -9,6 +9,12 @@
     "right": 5,
     "bottom": 5
   },
+  "params": [
+    {
+      "name": "siteFocus",
+      "value": "All destinations"
+    }
+  ],
   "projection": {
     "type": "mercator"
   },
@@ -62,6 +68,13 @@
         "order": {
           "field": "step"
         },
+        "opacity": {
+          "condition": {
+            "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
+            "value": 0.85
+          },
+          "value": 0.1
+        },
         "strokeWidth": {
           "field": "animals",
           "type": "quantitative",
@@ -104,10 +117,16 @@
         "type": "point",
         "shape": "triangle-up",
         "filled": true,
-        "color": "#3e5260",
-        "opacity": 0.95
+        "color": "#3e5260"
       },
       "encoding": {
+        "opacity": {
+          "condition": {
+            "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
+            "value": 0.95
+          },
+          "value": 0.1
+        },
         "longitude": {
           "field": "arrow_longitude",
           "type": "quantitative"
@@ -134,10 +153,10 @@
       },
       "mark": {
         "type": "circle",
-        "size": 70,
         "color": "#1f2d2a",
         "stroke": "#fbf9f2",
-        "strokeWidth": 1.5
+        "strokeWidth": 1.5,
+        "cursor": "pointer"
       },
       "encoding": {
         "longitude": {
@@ -147,6 +166,13 @@
         "latitude": {
           "field": "latitude",
           "type": "quantitative"
+        },
+        "size": {
+          "condition": {
+            "test": "datum.site == siteFocus",
+            "value": 260
+          },
+          "value": 110
         },
         "tooltip": [
           {
@@ -245,9 +271,17 @@
         "dx": -10,
         "fontSize": 12.5,
         "fontWeight": 600,
-        "lineHeight": 15
+        "lineHeight": 15,
+        "cursor": "pointer"
       },
       "encoding": {
+        "opacity": {
+          "condition": {
+            "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
+            "value": 1
+          },
+          "value": 0.3
+        },
         "longitude": {
           "field": "longitude",
           "type": "quantitative"
@@ -288,9 +322,17 @@
         "dx": 10,
         "fontSize": 12.5,
         "fontWeight": 600,
-        "lineHeight": 15
+        "lineHeight": 15,
+        "cursor": "pointer"
       },
       "encoding": {
+        "opacity": {
+          "condition": {
+            "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
+            "value": 1
+          },
+          "value": 0.3
+        },
         "longitude": {
           "field": "longitude",
           "type": "quantitative"

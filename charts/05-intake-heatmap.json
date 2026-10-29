@@ -1,6 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Heatmap of animals received by NWRC each month in 2023 and 2024 by animal group, with yearly totals as bars.",
+  "usermeta": {
+    "fitWidth": 990
+  },
   "hconcat": [
     {
       "width": 590,

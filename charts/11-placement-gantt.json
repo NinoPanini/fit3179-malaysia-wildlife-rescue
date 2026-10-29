@@ -1,13 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Gantt chart of 57 volunteer placements at BSBCC in 2025, linked to a histogram of placement length. Drag across the timeline to select placements that started in that period.",
+  "usermeta": {
+    "fitWidth": 1010
+  },
   "data": {
     "url": "data/bsbcc-placements-2025.json"
   },
   "hconcat": [
     {
       "width": 620,
-      "height": 430,
+      "height": 627,
       "params": [
         {
           "name": "brush",
@@ -21,7 +24,7 @@
       ],
       "mark": {
         "type": "bar",
-        "height": 5,
+        "height": 7,
         "cornerRadius": 1.5
       },
       "encoding": {
@@ -31,8 +34,14 @@
           "sort": {
             "field": "start"
           },
-          "axis": null,
-          "title": null
+          "title": null,
+          "axis": {
+            "labels": false,
+            "ticks": false,
+            "domain": false,
+            "grid": true,
+            "gridColor": "#efece2"
+          }
         },
         "x": {
           "field": "start",
@@ -99,6 +108,51 @@
       "width": 290,
       "height": 250,
       "layer": [
+        {
+          "transform": [
+            {
+              "filter": {
+                "param": "brush"
+              }
+            },
+            {
+              "aggregate": [
+                {
+                  "op": "count",
+                  "as": "n"
+                },
+                {
+                  "op": "sum",
+                  "field": "days",
+                  "as": "d"
+                }
+              ]
+            },
+            {
+              "calculate": "(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements') + ' · ' + format(datum.d, ',') + ' calendar days'",
+              "as": "t"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "bottom",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "#1f2d2a"
+          },
+          "encoding": {
+            "x": {
+              "value": 0
+            },
+            "y": {
+              "value": -16
+            },
+            "text": {
+              "field": "t"
+            }
+          }
+        },
         {
           "transform": [
             {

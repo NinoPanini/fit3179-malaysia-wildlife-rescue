@@ -74,15 +74,19 @@
         <figure>
           <div class="figure-top"><span class="chart-number">03</span><div><h3>The animal mix changes from state to state</h3><p>Share of each state’s handovers that were mammals, reptiles or birds · 2024</p></div></div>
           <div id="share-map" class="chart map" data-spec="charts/03-group-share-map.json" aria-label="Choropleth map of the share of each state's handovers belonging to a chosen animal group. In Selangor, 59 percent were mammals."></div>
-          <figcaption>In <b>Selangor, 59% were mammals</b>, compared with 2% or less in Kelantan, Johor and Terengganu. Every state is labelled with its percentage, so the colours are never the only clue. Use the menu to switch between groups.</figcaption>
+          <figcaption>In <b>Selangor, 59% were mammals</b>, compared with 2% or less in Kelantan, Johor and Terengganu. Every state is labelled with its exact percentage. Use the menu to switch groups: <b>the colour classes change with the group</b>, because birds are never more than 3.4% of a state’s handovers and reptiles never less than 38%. One shared scale would paint the bird map a single colour.</figcaption>
         </figure>
       </div>
       <p class="scope-note">Both maps cover Peninsular Malaysia only; Sabah and Sarawak keep separate records. The Federal Territories are reported as one figure (1,038 animals), so Kuala Lumpur and Putrajaya are grey on the maps but included in all totals.</p>
 
       <figure class="wide-figure">
-        <div class="figure-top"><span class="chart-number">04</span><div><h3>More handovers each year, and Terengganu climbing fast</h3><p>States ranked by animals handed over · 1 = most · 2021, 2023 and 2024</p></div></div>
+        <div class="figure-top"><span class="chart-number">04</span><div><h3>Terengganu climbed from 11th to 4th place</h3><p>States ranked by animals handed over · 1 = most · 2021, 2023 and 2024</p></div></div>
+        <div class="bump-totals">
+          <p><b>Ranks are not totals.</b> For scale, here is the number of animals handed over across Peninsular Malaysia each year. Totals dipped slightly in 2022, then rose.</p>
+          <div id="national-totals" class="chart" data-spec="charts/context-national-totals.json" aria-label="Bar chart of national handover totals: 11,408 in 2021, 11,170 in 2022, 12,691 in 2023 and 16,034 in 2024."></div>
+        </div>
         <div id="rank-bump" class="chart" data-spec="charts/04-state-rank-bump.json" aria-label="Bump chart of state rankings. Terengganu rose from 11th in 2021 to 4th in 2024."></div>
-        <figcaption>Total handovers rose from <b>11,408 in 2021 to 16,034 in 2024</b>, an increase of about 40%. <b>Terengganu</b> climbed from 11th (264 animals) to 4th (2,017), and Kelantan from 4th to 1st. <b>Click any dot</b> to follow a different state; double-click to clear. The 2022 report gives only a national total, so the 2021–2023 lines are dashed.</figcaption>
+        <figcaption>A rank shows a state’s position, not its size. <b>Terengganu</b> climbed from 11th (264 animals) to 4th (2,017), and <b>Kelantan</b> from 4th to 1st, while Pulau Pinang slipped from 1st to 2nd. <b>Click any dot</b> to follow a different state; double-click to clear. The 2022 report gives only a national total (grey bar above), so the 2021–2023 lines are dashed.</figcaption>
       </figure>
       <p class="source">Sources: <a href="#src-perhilitan">PERHILITAN Annual Reports</a> 2024 (Table 34), 2023 (Table 46), 2022 (national total, p104) and 2021 (Table 20). Boundaries: <a href="#src-map">geoBoundaries / OpenStreetMap</a>.</p>
       <details data-table="data/handovers-2024.json" data-caption="Wildlife handed over to PERHILITAN by state, 2024 (Table 34)" data-columns='[["state","Reporting unit"],["reptiles","Reptiles"],["mammals","Mammals"],["birds","Birds"],["total","Total"]]'><summary>Read the 2024 state figures as a table</summary><div class="table-wrap"></div></details>
@@ -122,11 +126,11 @@
 
       <figure class="wide-figure">
         <div class="figure-top"><span class="chart-number">06</span><div><h3>Release is a risky step</h3><p>Dated events for nine BSBCC bears in the centre’s annual reports · 2021–2025</p></div></div>
-        <div id="bear-journeys" class="chart" data-spec="charts/06-bear-journeys.json" aria-label="Timeline of nine sun bears. Five were released; three were later found dead and two have unknown fates. Tenom and Pitang were still in supervised rehabilitation."></div>
-        <figcaption>Five bears were released between 2021 and 2025. <b>Three later died</b> (Sunbearo, Sika and Itam), and the fates of Loki and Wawa are unknown. Wawa was even rescued from a plantation and released a second time. These are the cases described in public reports, not every bear at the centre. Hover over a symbol for details, or <b>click an event type in the legend</b> to pick it out (double-click to reset).</figcaption>
+        <div class="chart-scroll"><div id="bear-journeys" class="chart wide-fixed" data-spec="charts/06-bear-journeys.json" aria-label="Timeline of nine sun bears. Five were released; three were later found dead and two have unknown fates. Tenom and Pitang were still in supervised rehabilitation."></div></div>
+        <figcaption>Five bears were released between 2021 and 2025. <b>Three later died</b> (Sunbearo, Sika and Itam), and the fates of Loki and Wawa are unknown. Wawa was even rescued from a plantation and released a second time. These are the cases described in public reports, not every bear at the centre. <b>Click a bear</b> to see its events enlarged below the overview, or <b>click an event type in the legend</b> to pick it out (double-click to reset). Hover for dates and sources.</figcaption>
       </figure>
       <p class="source">Sources: <a href="#src-bsbcc">BSBCC Annual Reports 2021–2025</a>; <a href="#src-brunton">Brunton et al. 2025</a> for Sunbearo’s and Loki’s outcomes; background: <a href="#src-guidance">NWRC sun-bear guideline (2022) and IUCN (2025)</a>. No animal tracking data is used.</p>
-      <details data-table="data/bear-journeys.json" data-caption="Bear events from BSBCC annual reports, 2021–2025" data-columns='[["bear","Bear"],["date","Date"],["event","Event"],["place","Place"],["source","Source"]]'><summary>Read all 23 events as a table</summary><div class="table-wrap"></div></details>
+      <details data-table="data/bear-journeys.json" data-caption="Bear events from BSBCC annual reports, 2021–2025" data-columns='[["bear","Bear"],["date_label","Date"],["event","Event"],["place","Place"],["source","Source"]]'><summary>Read all 23 events as a table</summary><div class="table-wrap"></div></details>
     </section>
 
     <!-- ===================== 03 RETURN ===================== -->
@@ -134,7 +138,7 @@
       <div class="section-heading">
         <p class="eyebrow">03 · Return · Where do animals go back to the wild?</p>
         <h2>Back to the forest</h2>
-        <p>In 2024 the National Wildlife Rescue Centre returned <b>32 animals of 16 species</b> to six protected areas. Where an animal goes depends on what it needs: big forests for big cats and bears, a coastal park for eagles and owls.</p>
+        <p>In 2024 the National Wildlife Rescue Centre returned <b>32 animals of 16 species</b> to six protected areas. The report lists the release area for each species, so we can see which animals went where.</p>
       </div>
 
       <div class="split split--map">
@@ -146,7 +150,8 @@
           <p class="eyebrow">Reading the map</p>
           <h3>Penang National Park received the most</h3>
           <p><strong>13 animals</strong>, mostly birds of prey, owls and small mammals, went to Penang National Park.</p>
-          <p>The largest animals went to the largest forests. <strong>Leopards</strong> went to Temenggor Forest Reserve, and <strong>clouded leopards and sun bears</strong> to Taman Negara in Terengganu.</p>
+          <p>The big cats and sun bears went to inland forests: <strong>leopards</strong> to Temenggor Forest Reserve, and <strong>clouded leopards and sun bears</strong> to Taman Negara in Terengganu.</p>
+          <p class="hint">Click a release area to highlight it here and in the species chart below. Click it again to reset.</p>
           <p class="scope-note">Dots mark the approximate position of each protected area. Lines show where animals were sent, not the roads they travelled or exact release spots.</p>
         </div>
       </div>
@@ -154,7 +159,7 @@
       <figure class="wide-figure">
         <div class="figure-top"><span class="chart-number">08</span><div><h3>Which species went where?</h3><p>The same 32 animals · each ribbon links a species to its release area · width shows animals</p></div></div>
         <div class="chart-scroll"><div id="release-sankey" class="chart sankey" data-spec="charts/08-release-sankey.json" aria-label="Sankey diagram linking 16 released species, coloured as mammals or birds, to six release areas."></div></div>
-        <figcaption><b><span class="key key--mammal">Mammals</span></b> and <b><span class="key key--bird">birds</span></b> mostly went to different places: every bird except one hornbill went to Penang National Park or Taman Negara Pahang. Choose an area from the menu to highlight its ribbons. A release is not proof of survival; the report does not follow animals after release.</figcaption>
+        <figcaption><b><span class="key key--mammal">Mammals</span></b> and <b><span class="key key--bird">birds</span></b> mostly went to different places: every bird except one hornbill went to Penang National Park or Taman Negara Pahang. Choose an area from the menu, or click it on the map above, to highlight it in both charts. A release is not proof of survival; the report does not follow animals after release.</figcaption>
       </figure>
       <p class="source">Source: <a href="#src-perhilitan">PERHILITAN 2024</a>, Table 31 (p108). Area positions: <a href="#src-places">approximate locations</a>. The map and the Sankey show the same 32 animals; do not add them together.</p>
       <details data-table="data/nwrc-releases-2024.json" data-caption="Species released by NWRC, 2024 (Table 31)" data-columns='[["species","Species"],["scientific_name","Scientific name"],["animals","Animals"],["destination","Release area"],["state","State"]]'><summary>Read the 16 species as a table</summary><div class="table-wrap"></div></details>
@@ -184,7 +189,7 @@
       <figure class="wide-figure">
         <div class="figure-top"><span class="chart-number">11<br>12</span><div><h3>Short stays, all year round</h3><p>Every 2025 volunteer placement from start to end date (left), and how long they lasted (right) · <b>drag across the timeline</b> to select placements that started in that period</p></div></div>
         <div class="chart-scroll"><div id="placement-gantt" class="chart wide-fixed" data-spec="charts/11-placement-gantt.json" aria-label="Gantt chart of 57 volunteer placements across 2025 linked to a histogram of placement length. The median placement lasted 14 calendar days."></div></div>
-        <figcaption>Dark bars are volunteers from Malaysia; light gold bars are from other countries. In the histogram, dashed outlines show all 57 placements and filled bars show your selection. March was the busiest start month (12 placements). The typical placement lasted <b>two weeks</b> (median 14 days). Together, volunteers gave <b>978 calendar days</b> in 2025. That counts days on site, not hours worked.</figcaption>
+        <figcaption>Each row is one placement. Dark bars are volunteers from Malaysia; light gold bars are from other countries. Drag across the timeline: the summary above the histogram counts the placements you selected and their calendar days, dashed outlines show all 57 placements and filled bars show your selection. March was the busiest start month (12 placements). The typical placement lasted <b>two weeks</b> (median 14 days). Together, volunteers gave <b>978 calendar days</b> in 2025. That counts days on site, not hours worked.</figcaption>
       </figure>
       <p class="source">Sources: <a href="#src-bsbcc">BSBCC Annual Reports 2021–2025</a>; 2025 placements from Appendix I (pp30–32). Placement length = end date − start date + 1. Names are not shown.</p>
       <details data-table="data/bsbcc-placements-2025.json" data-caption="BSBCC volunteer placements, 2025 (names omitted)" data-columns='[["placement","Placement"],["origin","Listed origin"],["start","Start"],["end","End"],["days","Calendar days"]]'><summary>Read all 57 placements as a table</summary><div class="table-wrap"></div></details>
@@ -193,8 +198,8 @@
         <p>What we learned</p>
         <h3>Care is a chain of decisions, places and people.</h3>
         <ol class="findings">
-          <li><b>More animals are being handed in.</b> Handovers rose by about 40% between 2021 and 2024, and nine in ten are reptiles (charts 01 and 04).</li>
-          <li><b>Where you live shapes what is handed in.</b> Selangor’s handovers are mostly mammals, while Kelantan, Johor and Terengganu hand over almost only reptiles (chart 03).</li>
+          <li><b>More animals are being handed in.</b> Despite a small dip in 2022, handovers rose by about 40% between 2021 and 2024, and nine in ten are reptiles (charts 01 and 04).</li>
+          <li><b>The mix differs from state to state.</b> Most of Selangor’s handovers are mammals, while in Kelantan, Johor and Terengganu almost all are reptiles (chart 03).</li>
           <li><b>Rescue centres work in sudden waves.</b> Two months in 2024 brought in more than 10,000 reptiles (chart 05).</li>
           <li><b>Release is a beginning, not a guaranteed happy ending.</b> Three of the five sun bears released since 2021 later died (chart 06), and none of the 32 NWRC releases are followed up in the report (charts 07 and 08).</li>
           <li><b>People make the work possible.</b> BSBCC’s volunteers grew eight-fold in five years, mostly on two-week stays (charts 09 to 12).</li>

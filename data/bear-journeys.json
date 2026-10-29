@@ -8,6 +8,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Released with Loki",
   "source": "BSBCC 2021, PDF p8",
+  "date_label": "10 Jan 2021",
   "order": 0,
   "outcome": "Later confirmed dead (collar retrieved)"
  },
@@ -20,6 +21,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Post-release collar failed; do not infer fate",
   "source": "BSBCC 2021, PDF p8",
+  "date_label": "10 Jan 2021",
   "order": 1,
   "outcome": "Fate unknown: collar failed"
  },
@@ -32,6 +34,7 @@
   "place": "Papar, Sabah",
   "note": "Previously kept as a pet",
   "source": "BSBCC 2022, PDF p6",
+  "date_label": "13 Mar 2021",
   "order": 2,
   "outcome": "In care at BSBCC"
  },
@@ -44,6 +47,7 @@
   "place": "BSBCC from Lok Kawi Wildlife Park",
   "note": "Different from confiscation date",
   "source": "BSBCC 2022, PDF p6",
+  "date_label": "26 Jul 2022",
   "order": 2,
   "outcome": "In care at BSBCC"
  },
@@ -56,6 +60,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "First release episode",
   "source": "BSBCC 2022, PDF p8",
+  "date_label": "26 Feb 2022",
   "order": 3,
   "outcome": "No news after May 2022"
  },
@@ -68,6 +73,7 @@
   "place": "Sabahmas plantation",
   "note": "Intervention after entering plantation",
   "source": "BSBCC 2022, PDF p9",
+  "date_label": "25 Apr 2022",
   "order": 3,
   "outcome": "No news after May 2022"
  },
@@ -80,6 +86,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Do not count as a second bear",
   "source": "BSBCC 2022, PDF p10",
+  "date_label": "26 Apr 2022",
   "order": 3,
   "outcome": "No news after May 2022"
  },
@@ -92,6 +99,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Non-mortality signal; subsequent fate unknown",
   "source": "BSBCC 2022, PDF p10",
+  "date_label": "5 May 2022",
   "order": 3,
   "outcome": "No news after May 2022"
  },
@@ -104,6 +112,7 @@
   "place": "Sabah Wildlife Department",
   "note": "Date of surrender; admission later",
   "source": "BSBCC 2023, PDF p6",
+  "date_label": "20 Sep 2022",
   "order": 4,
   "outcome": "In care at BSBCC"
  },
@@ -116,6 +125,7 @@
   "place": "BSBCC",
   "note": "Approximate age 2 years in source",
   "source": "BSBCC 2023, PDF p6",
+  "date_label": "1 Aug 2023",
   "order": 4,
   "outcome": "In care at BSBCC"
  },
@@ -128,6 +138,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Later confirmed dead; reported recovery period 15-25 May",
   "source": "BSBCC 2023, PDF p7",
+  "date_label": "10 Feb 2023",
   "order": 5,
   "outcome": "Died about three weeks after release"
  },
@@ -140,6 +151,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "First mortality signal; remains found 15-25 May",
   "source": "BSBCC 2023, PDF p7",
+  "date_label": "5 Mar 2023",
   "order": 5,
   "outcome": "Died about three weeks after release"
  },
@@ -152,6 +164,7 @@
   "place": "Lok Kawi Wildlife Park",
   "note": "Surrendered to Sabah Wildlife Department",
   "source": "BSBCC 2023, PDF p6",
+  "date_label": "2 Jun 2023",
   "order": 6,
   "outcome": "Still in supervised rehabilitation (2025 report)"
  },
@@ -164,6 +177,7 @@
   "place": "BSBCC",
   "note": "Approximate age 3 months in source",
   "source": "BSBCC 2023, PDF p6",
+  "date_label": "10 Jun 2023",
   "order": 6,
   "outcome": "Still in supervised rehabilitation (2025 report)"
  },
@@ -176,6 +190,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Not a completed independent release",
   "source": "BSBCC 2024, PDF p11",
+  "date_label": "30 Jan 2024",
   "order": 6,
   "outcome": "Still in supervised rehabilitation (2025 report)"
  },
@@ -188,6 +203,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Supervised rehabilitation",
   "source": "BSBCC 2024, PDF p11",
+  "date_label": "20 Feb 2024",
   "order": 6,
   "outcome": "Still in supervised rehabilitation (2025 report)"
  },
@@ -200,6 +216,7 @@
   "place": "Sabah Wildlife Department",
   "note": "Age conflicts across reports: 4 months in 2024 report vs 6 months in 2025",
   "source": "BSBCC 2024, PDF p6",
+  "date_label": "16 Oct 2024",
   "order": 7,
   "outcome": "Still in supervised rehabilitation (2025 report)"
  },
@@ -212,6 +229,7 @@
   "place": "BSBCC",
   "note": "From Sipitang; avoid resolving age discrepancy by guessing",
   "source": "BSBCC 2024, PDF p6",
+  "date_label": "25 Oct 2024",
   "order": 7,
   "outcome": "Still in supervised rehabilitation (2025 report)"
  },
@@ -224,6 +242,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Ongoing monitored rehabilitation, not proof of independent survival",
   "source": "BSBCC 2025, PDF p9",
+  "date_label": "5 Jan 2025",
   "order": 7,
   "outcome": "Still in supervised rehabilitation (2025 report)"
  },
@@ -236,6 +255,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Released after approximately five years in rehabilitation",
   "source": "BSBCC 2025, PDF p6",
+  "date_label": "10 Mar 2025",
   "order": 8,
   "outcome": "Died weeks after release"
  },
@@ -248,6 +268,7 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Signal date, not confirmed date of death",
   "source": "BSBCC 2025, PDF p6",
+  "date_label": "30 Apr 2025",
   "order": 8,
   "outcome": "Died weeks after release"
  },
@@ -260,18 +281,20 @@
   "place": "Tabin Wildlife Reserve",
   "note": "Location enabled subsequent search",
   "source": "BSBCC 2025, PDF p6",
+  "date_label": "10 May 2025",
   "order": 8,
   "outcome": "Died weeks after release"
  },
  {
   "bear": "Itam",
-  "date": "2025-06-15",
+  "date": "2025-06-01",
   "precision": "month",
   "event": "Remains recovered",
   "kind": "Death signal",
   "place": "Tabin Wildlife Reserve",
   "note": "Early June; exact day unspecified. Cause is suspected, not proven",
   "source": "BSBCC 2025, PDF p6",
+  "date_label": "Early June 2025 (day not reported)",
   "order": 8,
   "outcome": "Died weeks after release"
  }

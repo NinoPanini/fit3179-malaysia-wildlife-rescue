@@ -2,17 +2,46 @@
    Specs, data, fonts and libraries are local, so the page works offline.
    Charts wait for the web fonts so Vega measures labels with the right typeface. */
 const views = new Map();
+window.vegaViews = views;   // handy in the browser console: vegaViews.get('placement-gantt').signal('brush')
+const specs = new Map();     // original specs, kept so fixed-width charts can be refitted on resize
 window.chartStatus = {};
+
+/* Concatenated views (hconcat/vconcat) cannot use width "container" in Vega-Lite, so their specs
+   carry usermeta.fitWidth: the natural width they were designed at. Here every fixed sub-view width
+   is scaled to the space the page actually has (e.g. narrower at 1024 px), without sideways scrolling. */
+function fitToColumn(spec, element, correction = 1) {
+  const base = spec.usermeta && spec.usermeta.fitWidth;
+  if (!base) return spec;
+  const avail = Math.max(element.clientWidth, 620);          // below this, the .chart-scroll box scrolls
+  const scale = Math.min(Math.max(avail / base, 0.6), 1.12) * correction;
+  const copy = structuredClone(spec);
+  (function scaleWidths(node) {
+    for (const key of ['hconcat', 'vconcat', 'concat']) (node[key] || []).forEach(scaleWidths);
+    if (typeof node.width === 'number') node.width = Math.round(node.width * scale);
+  })(copy);
+  return copy;
+}
+
 async function renderChart(element) {
   const id = element.id;
   try {
-    const response = await fetch(element.dataset.spec);
-    if (!response.ok) throw new Error(`Chart file unavailable (${response.status})`);
-    const spec = await response.json();
-    const result = await vegaEmbed(element, spec, { actions: false, renderer: 'svg' });
+    if (!specs.has(id)) {
+      const response = await fetch(element.dataset.spec);
+      if (!response.ok) throw new Error(`Chart file unavailable (${response.status})`);
+      specs.set(id, await response.json());
+    }
+    if (views.has(id)) views.get(id).finalize();
+    let result = await vegaEmbed(element, fitToColumn(specs.get(id), element), { actions: false, renderer: 'svg' });
+    const drawn = element.querySelector('svg') && element.querySelector('svg').getBoundingClientRect().width;
+    const avail = Math.max(element.clientWidth, 620);
+    if (specs.get(id).usermeta && drawn > avail + 1) {         // labels took more room than estimated: shrink once more
+      result.view.finalize();
+      result = await vegaEmbed(element, fitToColumn(specs.get(id), element, (avail - 4) / drawn), { actions: false, renderer: 'svg' });
+    }
     views.set(id, result.view);
     window.chartStatus[id] = 'ready';
     element.setAttribute('aria-busy', 'false');
+    return result.view;
   } catch (error) {
     window.chartStatus[id] = 'error';
     element.textContent = 'This chart could not load. Refresh the page to try again; its data table is available below.';
@@ -20,12 +49,46 @@ async function renderChart(element) {
     console.error(id, error);
   }
 }
+
+/* Charts 07 and 08 show the same 32 released animals. Clicking a release area on the map, or choosing
+   it in the Sankey's menu, highlights that area in both charts. */
+const ALL = 'All destinations';
+function linkReleaseCharts() {
+  const map = views.get('release-map'), sankey = views.get('release-sankey');
+  if (!map || !sankey) return;
+  const focus = site => {
+    map.signal('siteFocus', site).runAsync();
+    if (sankey.signal('destinationChoice') !== site) sankey.signal('destinationChoice', site).runAsync();
+    window.chartStatus.releaseFocus = site;
+  };
+  map.addEventListener('click', (event, item) => {
+    const site = item && item.datum && item.datum.site;
+    focus(!site || site === map.signal('siteFocus') ? ALL : site);   // click again or on empty map to reset
+  });
+  sankey.addSignalListener('destinationChoice', (name, value) => map.signal('siteFocus', value).runAsync());
+  sankey.addEventListener('click', (event, item) => {
+    const d = item && item.datum;
+    const site = d && (d.destination || (d.side === 'destination' && d.label));
+    if (site) focus(site === sankey.signal('destinationChoice') ? ALL : site);
+  });
+}
+
 const fontsReady = document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))]) : Promise.resolve();
-fontsReady.then(() => document.querySelectorAll('[data-spec]').forEach(renderChart));
-let resizeTimer;
+fontsReady.then(async () => {
+  await Promise.all([...document.querySelectorAll('[data-spec]')].map(renderChart));
+  linkReleaseCharts();
+});
+let resizeTimer, lastWidth = window.innerWidth;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => views.forEach(view => view.resize().runAsync()), 180);
+  resizeTimer = setTimeout(async () => {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    for (const [id, view] of views) {
+      const element = document.getElementById(id);
+      if (specs.get(id).usermeta && specs.get(id).usermeta.fitWidth) await renderChart(element); else view.resize().runAsync();
+    }   // charts 07 and 08 are not refitted, so their link listeners stay attached
+  }, 200);
 });
 const navLinks = [...document.querySelectorAll('nav a')];
 const sectionObserver = new IntersectionObserver(entries => {

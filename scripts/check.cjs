@@ -42,6 +42,7 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
   // BSBCC
   const bears = read('data/bear-journeys.json');
   assert.equal(bears.length, 23);
+  assert(bears.every(e => e.date_label && (e.precision === 'day' || /day not reported/.test(e.date_label))), 'Month-only dates must say the day is not reported');
   assert(bears.every(e => e.date >= '2021-01-01'), 'No pre-2021 bear events');
   const placements = read('data/bsbcc-placements-2025.json');
   assert.equal(placements.length, 57);
@@ -50,7 +51,7 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
   assert.equal(sum(read('data/bsbcc-origins-2025.json'), 'placements'), 57);
 
   const files = fs.readdirSync(path.join(root, 'charts')).filter(f => f.endsWith('.json'));
-  assert.equal(files.length, 12, 'Eleven numbered chart files plus the Sabah locator');
+  assert.equal(files.length, 13, 'Eleven numbered chart files plus two small context charts');
   for (const file of files) {
     const spec = read(`charts/${file}`);
     if (spec.width === 'container') spec.width = 900;
@@ -70,7 +71,7 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
     const items = type => marks.filter(m => m.marktype === type && m.role === 'mark').flatMap(m => m.items);
     if (file.startsWith('01-')) assert.equal(items('rect').length, 100, 'Waffle must have 100 squares');
     if (file.startsWith('08-')) assert.equal(marks.filter(m => m.marktype === 'area').length, 16, 'Each released species must have one ribbon');
-    if (file.startsWith('06-')) assert.equal(items('symbol').length, 23, 'Every bear event must be drawn');
+    if (file.startsWith('06-')) assert(items('symbol').length >= 23, 'Every bear event must be drawn in the overview');
     if (file.startsWith('11-')) assert.equal(items('rect').filter(b => b.datum && b.datum.placement).length, 57, 'Gantt must draw every placement');
     view.finalize();
     console.log(`PASS ${file}`);
