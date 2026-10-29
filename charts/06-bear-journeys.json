@@ -55,13 +55,25 @@
       "data": {
         "url": "data/bear-journeys.json"
       },
+      "params": [
+        {
+          "name": "kindPick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "kind"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
       "mark": {
         "type": "point",
         "filled": true,
         "size": 150,
-        "opacity": 1,
         "stroke": "#fbf9f2",
-        "strokeWidth": 1
+        "strokeWidth": 1,
+        "cursor": "pointer"
       },
       "encoding": {
         "x": {
@@ -83,6 +95,13 @@
               "2027-03-01"
             ]
           }
+        },
+        "opacity": {
+          "condition": {
+            "param": "kindPick",
+            "value": 1
+          },
+          "value": 0.12
         },
         "shape": {
           "field": "kind",

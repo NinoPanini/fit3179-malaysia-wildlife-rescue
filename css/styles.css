@@ -107,10 +107,16 @@ th{background:var(--tint);position:sticky;top:0}
 .story-break strong{font-weight:600;color:var(--green)}
 .key{padding:0 6px;border-radius:3px;color:#1f2d2a;font-size:.92em}
 .key--mammal{background:var(--mammal)}.key--bird{background:var(--bird)}
-.closing{padding:84px 0 0;max-width:var(--measure)}
+.closing{padding:84px 0 0;max-width:72ch}
 .closing>p:first-child{color:var(--gold-ink);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:14px}
 .closing h3{font-size:40px;line-height:1.18;font-weight:520}
-.closing p:last-child{font-size:19px;color:var(--muted)}
+.findings{padding-left:24px;margin:8px 0 28px}
+.findings li{font-size:18px;line-height:1.55;margin-bottom:12px;padding-left:4px}
+.findings b{color:var(--ink)}
+.caveat-head{font-weight:700;color:var(--ink);margin:0 0 6px}
+.caveats{padding-left:22px;color:var(--muted);font-size:16px;margin:0}
+.caveats li{margin-bottom:6px}
+footer code{font-size:13px;background:var(--tint);padding:1px 5px;border-radius:3px}
 
 /* ---- Vega controls ---- */
 .vega-bindings{font-size:15px;margin:10px 0 4px;color:var(--ink);font-weight:600}
