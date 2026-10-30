@@ -2,7 +2,7 @@
   "name": "malaysia-wildlife-story",
   "version": "0.1.0",
   "private": true,
-  "description": "Kenneth Gomes — FIT3179 Malaysian wildlife visual story",
+  "description": "A Second Chance: Wildlife Rescue and Rehabilitation in Malaysia (Kenneth Gomes)",
   "scripts": {
     "start": "node scripts/serve.cjs",
     "check": "node scripts/check.cjs",
