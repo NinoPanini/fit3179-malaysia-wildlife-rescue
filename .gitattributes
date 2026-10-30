@@ -1,0 +1,5 @@
+# Keep the same line endings on every computer, so regenerated files do not show as changed
+* text=auto eol=lf
+*.woff binary
+*.png binary
+*.pdf binary

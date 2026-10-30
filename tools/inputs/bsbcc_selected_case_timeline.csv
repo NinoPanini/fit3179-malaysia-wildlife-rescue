@@ -1,0 +1,23 @@
+﻿bear_name,event_date,date_precision,event_type,location_as_reported,note,source_id,source_locator,source_url
+Sunbearo,2021-01-10,day,Hard release,Tabin Wildlife Reserve,Released with Loki,BSBCC2021,PDF p8,https://www.bsbcc.org.my/s/Annual-Report-2021.pdf
+Loki,2021-01-10,day,Hard release,Tabin Wildlife Reserve,Post-release collar failed; do not infer fate,BSBCC2021,PDF p8,https://www.bsbcc.org.my/s/Annual-Report-2021.pdf
+Rudy,2021-03-13,day,Confiscation,"Papar, Sabah",Previously kept as a pet,BSBCC2022,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2022.pdf
+Rudy,2022-07-26,day,Admission / transfer,BSBCC from Lok Kawi Wildlife Park,Different from confiscation date,BSBCC2022,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2022.pdf
+Wawa,2022-02-26,day,First hard release,Tabin Wildlife Reserve,First release episode,BSBCC2022,PDF p8,https://www.bsbcc.org.my/s/Annual-Report-2022.pdf
+Wawa,2022-04-25,day,Recapture,Sabahmas plantation,Intervention after entering plantation,BSBCC2022,PDF p9,https://www.bsbcc.org.my/s/Annual-Report-2022.pdf
+Wawa,2022-04-26,day,Second hard release,Tabin Wildlife Reserve,Do not count as a second bear,BSBCC2022,PDF p10,https://www.bsbcc.org.my/s/Annual-Report-2022.pdf
+Wawa,2022-05-05,day,Last reported signal,Tabin Wildlife Reserve,Non-mortality signal; subsequent fate unknown,BSBCC2022,PDF p10,https://www.bsbcc.org.my/s/Annual-Report-2022.pdf
+Sika,2023-02-10,day,Hard release,Tabin Wildlife Reserve,Later confirmed dead; reported recovery period 15-25 May,BSBCC2023,PDF p7,https://www.bsbcc.org.my/s/Annual-Report-2023_FINAL_compressed-3ebd.pdf
+Tenom,2023-06-02,day,Handover,Lok Kawi Wildlife Park,Surrendered to Sabah Wildlife Department,BSBCC2023,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2023_FINAL_compressed-3ebd.pdf
+Tenom,2023-06-10,day,Admission / transfer,BSBCC,Approximate age 3 months in source,BSBCC2023,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2023_FINAL_compressed-3ebd.pdf
+Kwong,2022-09-20,day,Handover,Sabah Wildlife Department,Date of surrender; admission later,BSBCC2023,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2023_FINAL_compressed-3ebd.pdf
+Kwong,2023-08-01,day,Admission / transfer,BSBCC,Approximate age 2 years in source,BSBCC2023,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2023_FINAL_compressed-3ebd.pdf
+Tenom,2024-01-30,day,Transfer for soft-release rehabilitation,Tabin Wildlife Reserve,Not a completed independent release,BSBCC2024,PDF p11,https://www.bsbcc.org.my/s/Annual-Report-2024_FINAL.pdf
+Tenom,2024-02-20,day,Forest walks started,Tabin Wildlife Reserve,Supervised rehabilitation,BSBCC2024,PDF p11,https://www.bsbcc.org.my/s/Annual-Report-2024_FINAL.pdf
+Pitang,2024-10-16,day,Handover,Sabah Wildlife Department,Age conflicts across reports: 4 months in 2024 report vs 6 months in 2025,BSBCC2024,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2024_FINAL.pdf
+Pitang,2024-10-25,day,Admission / transfer,BSBCC,From Sipitang; avoid resolving age discrepancy by guessing,BSBCC2024,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2024_FINAL.pdf
+Pitang,2025-01-05,day,Transfer for soft-release rehabilitation,Tabin Wildlife Reserve,"Ongoing monitored rehabilitation, not proof of independent survival",BSBCC2025,PDF p9,https://www.bsbcc.org.my/s/Annual-Report-2025.pdf
+Itam,2025-03-10,day,Hard release,Tabin Wildlife Reserve,Released after approximately five years in rehabilitation,BSBCC2025,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2025.pdf
+Itam,2025-04-30,day,Mortality signal,Tabin Wildlife Reserve,"Signal date, not confirmed date of death",BSBCC2025,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2025.pdf
+Itam,2025-05-10,day,Location alert,Tabin Wildlife Reserve,Location enabled subsequent search,BSBCC2025,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2025.pdf
+Itam,2025-06,month,Remains recovered,Tabin Wildlife Reserve,"Early June; exact day unspecified. Cause is suspected, not proven",BSBCC2025,PDF p6,https://www.bsbcc.org.my/s/Annual-Report-2025.pdf

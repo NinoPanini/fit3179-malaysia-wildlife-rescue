@@ -1,34 +1,35 @@
 {
   "prepared": "2026-10-30",
   "observations": "2021–2025",
+  "perhilitan_catalogue": "https://koha.wildlife.gov.my/cgi-bin/koha/opac-detail.pl?biblionumber=1449",
   "sources": [
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2024",
       "locator": "Table 34 PDF p123 / printed p121 (handovers); table under Figure 26 PDF p109 / printed p107 (NWRC monthly intake); Table 31 PDF p110 / printed p108 (releases)",
-      "url": null,
-      "note": "Library copy; approval confirmed by author."
+      "url": "https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=17de2df114c33ae95d20726b59c8bea6",
+      "note": "PERHILITAN library copy, used with PERHILITAN's approval."
     },
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2023",
       "locator": "Table 46 (PDF p120, printed p119; handovers by state); Table 31 (PDF p90, printed p89; NWRC received by month) and NWRC text",
-      "url": null,
+      "url": "https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=7197e1fada4267a10d41dc857176c569",
       "note": "The printed December row equals the annual totals stated in the text (567 animals); December 2023 intake is shown as not printed."
     },
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2022",
       "locator": "PDF p106 / printed p105 text: national handover total 11,170",
-      "url": null,
+      "url": "https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=92d8a4367169dc9c2c52fc7189214b1a",
       "note": "Scanned report; no state table published. Listed group figures sum to 11,171 in the source."
     },
     {
       "provider": "PERHILITAN",
       "title": "Laporan Tahunan 2021",
       "locator": "Table 20, printed p80",
-      "url": "https://files.wildlife.gov.my/wildlife-wp-media/2025/09/14174633/LT2021.pdf",
-      "note": "State rows used; printed footer error documented in research notes."
+      "url": "https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=72808791d6dcfdbf3102f842ddc26d53",
+      "note": "State rows used. The printed total row repeats the first state's mammal and bird figures (122, 26); the state rows sum to 2,095 mammals and 265 birds, matching the report text, and 11,408 animals in all. Extracted from the copy on PERHILITAN's website: https://files.wildlife.gov.my/wildlife-wp-media/2025/09/14174633/LT2021.pdf"
     },
     {
       "provider": "BSBCC",

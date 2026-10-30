@@ -8,8 +8,8 @@
     "mammal_share": 0.5883241066935078,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 101.51063592314496,
-    "latitude": 3.273818819525609
+    "longitude": 101.510636,
+    "latitude": 3.273819
   },
   {
     "state": "Johor",
@@ -20,8 +20,8 @@
     "mammal_share": 0.018114259173246633,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 103.38067702641973,
-    "latitude": 2.045287743433394
+    "longitude": 103.380677,
+    "latitude": 2.045288
   },
   {
     "state": "Melaka",
@@ -32,8 +32,8 @@
     "mammal_share": 0.08923076923076922,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 102.30439201969348,
-    "latitude": 2.323671620274178
+    "longitude": 102.304392,
+    "latitude": 2.323672
   },
   {
     "state": "Negeri Sembilan",
@@ -44,8 +44,8 @@
     "mammal_share": 0.03561643835616438,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 102.20667068952208,
-    "latitude": 2.775071154440511
+    "longitude": 102.206671,
+    "latitude": 2.775071
   },
   {
     "state": "Kelantan",
@@ -56,8 +56,8 @@
     "mammal_share": 0.012461059190031152,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 102.02737874934964,
-    "latitude": 5.284957609242577
+    "longitude": 102.027379,
+    "latitude": 5.284958
   },
   {
     "state": "Terengganu",
@@ -68,8 +68,8 @@
     "mammal_share": 0.011898859692612791,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 102.94723948054252,
-    "latitude": 4.935281411017404
+    "longitude": 102.947239,
+    "latitude": 4.935281
   },
   {
     "state": "Pahang",
@@ -80,8 +80,8 @@
     "mammal_share": 0.07251264755480608,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 102.54076361609214,
-    "latitude": 3.739643877297972
+    "longitude": 102.540764,
+    "latitude": 3.739644
   },
   {
     "state": "Kedah",
@@ -92,8 +92,8 @@
     "mammal_share": 0.06900452488687783,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 100.66000888805598,
-    "latitude": 5.9231316412499995
+    "longitude": 100.660009,
+    "latitude": 5.923132
   },
   {
     "state": "Perlis",
@@ -104,8 +104,8 @@
     "mammal_share": 0.028169014084507043,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 100.2416445432105,
-    "latitude": 6.5036937650221915
+    "longitude": 100.241645,
+    "latitude": 6.503694
   },
   {
     "state": "Perak",
@@ -116,8 +116,8 @@
     "mammal_share": 0.034340659340659344,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 101.10748779170048,
-    "latitude": 4.774272354183842
+    "longitude": 101.107488,
+    "latitude": 4.774272
   },
   {
     "state": "Pulau Pinang",
@@ -128,7 +128,7 @@
     "mammal_share": 0.07418856259659969,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
-    "longitude": 100.4594414590336,
-    "latitude": 5.361620569927138
+    "longitude": 100.459441,
+    "latitude": 5.361621
   }
 ]
