@@ -70,9 +70,16 @@ npm start
 
 To regenerate the data and specifications, run the three steps in [`tools/README.md`](tools/README.md) with Python 3.9 or later, then run `npm run check`. The validation check needs the pinned development packages, which `npm ci --ignore-scripts` installs.
 
-## Rights and licences
+## Licence
 
-Report content remains the copyright of its publishers. Brunton et al. (2025) is published under CC BY 4.0. Boundary data are © OpenStreetMap contributors via geoBoundaries, and the adapted files in `data/` are available under the Open Database License 1.0. Fraunces and Source Sans 3 are licensed under the SIL Open Font License. Vega, Vega-Lite and vega-embed are © University of Washington Interactive Data Lab and are distributed under their own licences in `vendor/`.
+© 2026 Kenneth Gomes. The text, visualisations, chart specifications and code in this repository are licensed under the [Creative Commons Attribution-NonCommercial 4.0 International licence (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). They may be shared and adapted for non-commercial purposes with credit; commercial use requires the author's permission. See [`LICENSE`](LICENSE).
+
+Third-party material is excluded from this licence and remains with its owners:
+
+- Figures from the PERHILITAN and BSBCC annual reports remain the property of those organisations and are used with their permission.
+- Brunton et al. (2025) is published under CC BY 4.0.
+- Boundary data are © OpenStreetMap contributors via geoBoundaries; the adapted boundary files are available under the Open Database License 1.0.
+- Fraunces and Source Sans 3 are licensed under the SIL Open Font License 1.1; Vega, Vega-Lite and vega-embed are © University of Washington Interactive Data Lab under the BSD 3-Clause License. Licence texts are included beside these files.
 
 ## Acknowledgements
 

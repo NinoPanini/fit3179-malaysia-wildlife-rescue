@@ -2,6 +2,8 @@
   "name": "malaysia-wildlife-story",
   "version": "0.1.0",
   "private": true,
+  "author": "Kenneth Gomes",
+  "license": "CC-BY-NC-4.0",
   "description": "A Second Chance: Wildlife Rescue and Rehabilitation in Malaysia (Kenneth Gomes)",
   "scripts": {
     "start": "node scripts/serve.cjs",

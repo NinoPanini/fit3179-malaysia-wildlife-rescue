@@ -1,0 +1,42 @@
+Copyright (c) 2026 Kenneth Gomes
+
+A Second Chance: Wildlife Rescue and Rehabilitation in Malaysia
+https://ninopanini.github.io/website/
+
+Except for the third-party material listed below, the text, visualisations,
+chart specifications, data-processing scripts and other original work in this
+repository are licensed under the Creative Commons Attribution-NonCommercial
+4.0 International licence (CC BY-NC 4.0).
+
+You may share and adapt this work for non-commercial purposes, provided that
+you credit the author, link to the licence and indicate any changes made.
+Commercial use requires the author's written permission.
+
+Licence summary: https://creativecommons.org/licenses/by-nc/4.0/
+Full legal code: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+
+Third-party material
+--------------------
+
+The licence above covers only the author's original work. The following
+material remains with its owners and is used under their terms:
+
+- Figures transcribed from the annual reports of the Department of Wildlife
+  and National Parks Peninsular Malaysia (PERHILITAN) and the Bornean Sun Bear
+  Conservation Centre (BSBCC). Used with the permission of each organisation.
+  Reuse of these figures requires the permission of the respective owner.
+
+- Malaysian state boundaries: (c) OpenStreetMap contributors, via
+  geoBoundaries. The boundary files (data/peninsular-states.geojson,
+  data/borneo-states.geojson and
+  tools/inputs/geoboundaries-MYS-ADM1-simplified.geojson) are available under
+  the Open Database License 1.0:
+  https://opendatacommons.org/licenses/odbl/1-0/
+
+- Fraunces and Source Sans 3 typefaces (assets/fonts/): SIL Open Font
+  License 1.1. Licence texts are included beside the font files.
+
+- Vega, Vega-Lite and vega-embed (vendor/): (c) University of Washington
+  Interactive Data Lab, BSD 3-Clause License. Licence texts are included
+  beside the library files.
