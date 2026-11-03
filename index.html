@@ -79,17 +79,17 @@
       <p class="scope-note">Both maps cover Peninsular Malaysia only; Sabah and Sarawak keep separate records. The Federal Territories are reported as one figure (1,038 animals), so Kuala Lumpur and Putrajaya are grey on the maps but included in all totals.</p>
 
       <figure class="wide-figure">
-        <div class="figure-top"><span class="chart-number">04</span><div><h3>Terengganu climbed from 11th to 4th place</h3><p>States ranked by animals handed over · 1 = most · 2021, 2023 and 2024 <span class="try">Click a dot to follow a state</span></p></div></div>
+        <div class="figure-top"><span class="chart-number">04</span><div><h3>Terengganu: 264 → 2,017 animals</h3><p>Animals handed over in each state · 2021 compared with 2024</p></div></div>
         <div class="bump-totals">
           <p><b>For scale:</b> all animals handed over in Peninsular Malaysia each year. Totals dipped in 2022, then rose.</p>
           <div id="national-totals" class="chart" data-spec="charts/context-national-totals.json" aria-label="Bar chart of national handover totals: 11,408 in 2021, 11,170 in 2022, 12,691 in 2023 and 16,034 in 2024."></div>
         </div>
-        <div id="rank-bump" class="chart" data-spec="charts/04-state-rank-bump.json" aria-label="Bump chart of state rankings. Terengganu rose from 11th in 2021 to 4th in 2024."></div>
-        <figcaption>A rank shows a state’s position, not its size. <b>Terengganu</b> climbed from 11th (264 animals) to 4th (2,017), and <b>Kelantan</b> from 4th to 1st, while Pulau Pinang slipped from 1st to 2nd. <b>Click any dot</b> to follow a different state; double-click to clear. The 2022 report gives only a national total (grey bar above), so the 2021–2023 lines are dashed.</figcaption>
+        <div class="chart-scroll"><div id="state-comparison" class="chart comparison-chart" data-spec="charts/04-state-comparison.json" aria-label="Connected-dot chart comparing exact handover counts in 2021 and 2024 for each reporting unit. Terengganu increased from 264 to 2,017 animals."></div></div>
+        <figcaption>Each row compares the same state in two years. Circles show <b>2021</b>; squares show <b>2024</b>. Terengganu recorded <b>1,753 more handovers</b>. These counts do not measure wild populations or conservation success.</figcaption>
       </figure>
       <p class="source">Sources: <a href="#src-perhilitan">PERHILITAN Annual Reports</a> 2024 (Table 34), 2023 (Table 46), 2022 (national total, p105) and 2021 (Table 20). Boundaries: <a href="#src-map">geoBoundaries / OpenStreetMap</a>.</p>
       <details data-table="data/handovers-2024.json" data-caption="Wildlife handed over to PERHILITAN by state, 2024 (Table 34)" data-columns='[["state","Reporting unit"],["reptiles","Reptiles"],["mammals","Mammals"],["birds","Birds"],["total","Total"]]'><summary>Read the 2024 state figures as a table</summary><div class="table-wrap"></div></details>
-      <details data-table="data/handovers-trend.json" data-caption="State totals and ranks, 2021, 2023 and 2024" data-columns='[["year","Year"],["state","State"],["total","Animals"],["rank","Rank"]]'><summary>Read the yearly ranks as a table</summary><div class="table-wrap"></div></details>
+      <details data-table="data/handovers-trend.json" data-caption="State totals and ranks, 2021, 2023 and 2024" data-columns='[["year","Year"],["state","State"],["total","Animals"],["rank","Rank"]]'><summary>Read the yearly state figures as a table</summary><div class="table-wrap"></div></details>
     </section>
 
     <!-- ===================== 02 RECOVERY ===================== -->
@@ -187,9 +187,11 @@
       </div>
 
       <figure class="wide-figure">
-        <div class="figure-top"><span class="chart-number">11–12</span><div><h3>Short stays, all year round</h3><p>Every 2025 volunteer placement from start to end date (left), and how long they lasted (right) <span class="try">Drag across a timeline · double-click to clear</span></p></div></div>
-        <div class="chart-scroll"><div id="placement-gantt" class="chart wide-fixed" data-spec="charts/11-placement-gantt.json" aria-label="Gantt chart of 57 volunteer placements across 2025 linked to a histogram of placement length. The median placement lasted 14 days; 38 of 57 lasted two weeks or less."></div></div>
-        <figcaption>Each row is one placement, split into two half-year panels on the same time scale. Dark bars are volunteers from Malaysia; grey bars are from other countries. Drag across either timeline to select the placements that started in that period; the histogram fills in your selection over dashed outlines of all 57. March was the busiest start month (12 placements). <b>38 of the 57 stayed two weeks or less</b> (median 14 days), and together volunteers gave <b>978 total placement-days</b> in 2025: days on site, not hours worked.</figcaption>
+        <div class="figure-top"><span class="chart-number">11–12</span><div><h3>Most placements lasted two weeks or less</h3><p>57 volunteer placements at BSBCC · 2025 <span class="try">Choose a month to compare stays</span></p></div></div>
+        <div class="placement-facts"><span><strong>57</strong> placements</span><span><strong>14 days</strong> median stay</span><span><strong>978</strong> total placement-days</span></div>
+        <div id="placement-control" class="chart-control"></div>
+        <div class="chart-scroll"><div id="placement-months" class="chart" data-spec="charts/11-placement-months.json" aria-label="Monthly placement starts split by origin, linked to the length-of-stay histogram. All bars have exact counts. Choose a month using the menu or a column; choose All months to reset."></div></div>
+        <figcaption><b>March had the most starts: 12.</b> The columns count new placements, not everyone present that month. <b>38 of 57 placements lasted two weeks or less.</b> Choose a month to see its lengths of stay; choose <b>All months</b> to reset. Placement-days count calendar days on site, not hours worked.</figcaption>
       </figure>
       <p class="source">Sources: <a href="#src-bsbcc">BSBCC Annual Reports 2021–2025</a>; 2025 placements from Appendix I (pp30–32). Placement length = end date − start date + 1. Names are not shown.</p>
       <details data-table="data/bsbcc-placements-2025.json" data-caption="BSBCC volunteer placements, 2025 (names omitted)" data-columns='[["placement","Placement"],["origin","Listed origin"],["start","Start"],["end","End"],["days","Calendar days"]]'><summary>Read all 57 placements as a table</summary><div class="table-wrap"></div></details>
@@ -201,7 +203,7 @@
           <li><b>More animals are being handed in.</b> Despite a small dip in 2022, handovers rose by about 40% between 2021 and 2024, and nine in ten are reptiles (charts 01 and 04).</li>
           <li><b>The mix differs from state to state.</b> Most of Selangor’s handovers are mammals, while in Kelantan, Johor and Terengganu almost all are reptiles (chart 03).</li>
           <li><b>Rescue centres work in sudden waves.</b> Two months in 2024 brought in more than 10,000 reptiles (chart 05).</li>
-          <li><b>Release is a beginning, not a guaranteed happy ending.</b> Three of the five sun bears released since 2021 later died (chart 06), and none of the 32 NWRC releases are followed up in the report (charts 07 and 08).</li>
+          <li><b>Release is a beginning, not a guaranteed happy ending.</b> Three of the five featured sun bears released since 2021 later died (chart 06), and none of the 32 NWRC releases are followed up in the report (charts 07 and 08).</li>
           <li><b>People make the work possible.</b> BSBCC’s volunteers rose from 7 in 2021 to 57 in 2025, most staying about two weeks (charts 09 to 12).</li>
         </ol>
         <p class="caveat-head">What these records cannot tell us</p>
@@ -245,7 +247,7 @@
     </div>
     <div>
       <p><b>How it was made.</b> Twelve charts and maps drawn with <a href="https://vega.github.io/vega-lite/">Vega-Lite</a> 5 (each chart’s readable JSON is in the <code>charts</code> folder). Data were typed or extracted from the reports listed above into small JSON files in <code>data</code>; the Python scripts that do this and write the chart files are in <code>tools</code>, with notes on how to rerun them. Map, selection and linked-view patterns are adapted from the <a href="https://github.com/FIT3179/Vega-Lite">FIT3179 Vega-Lite examples</a>. Typefaces: Fraunces and Source Sans 3 (SIL Open Font License). Colours follow the Okabe–Ito and ColorBrewer colour-blind-safe palettes.</p>
-      <p><b>AI acknowledgement.</b> OpenAI Codex helped extract report tables and build the first version. Anthropic Claude helped extend the data, write the Python that generates the chart specifications, design the page and edit text. The author chose the story, checked every figure against the original reports and reviewed all code and wording.</p>
+      <p><b>AI acknowledgement.</b> OpenAI Codex helped extract report tables, build the first version and revise the state comparison, intake heatmap and volunteer charts after feedback. Anthropic Claude helped extend the data, write the Python that generates the chart specifications, design the page and edit text. The author chose the story, checked every figure against the original reports and reviewed all code and wording.</p>
       <p><b>Licence.</b> © 2026 Kenneth Gomes. Text, charts and code: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>, for non-commercial use with credit. Report figures remain the property of PERHILITAN and BSBCC; map data © OpenStreetMap contributors (ODbL).</p>
     </div>
   </footer>

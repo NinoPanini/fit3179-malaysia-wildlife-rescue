@@ -1,0 +1,451 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly volunteer placement starts, split by origin, linked to a duration histogram. All counts are labelled. Select a month by click or menu; All months resets.",
+  "usermeta": {
+    "fitWidth": 1100,
+    "mobileStack": true
+  },
+  "data": {
+    "url": "data/bsbcc-placements-2025.json"
+  },
+  "transform": [
+    {
+      "calculate": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][toNumber(substring(datum.start, 5, 7)) - 1]",
+      "as": "month"
+    }
+  ],
+  "params": [
+    {
+      "name": "selectedMonth",
+      "value": "All months",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All months",
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ],
+        "name": "Month: ",
+        "element": "#placement-control"
+      }
+    }
+  ],
+  "hconcat": [
+    {
+      "width": 570,
+      "height": 300,
+      "title": {
+        "text": "11 · When did placements start?",
+        "subtitle": "2025 · Monthly starts",
+        "fontSize": 17,
+        "subtitleFontSize": 13,
+        "offset": 18
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "sort": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "axis": {
+            "title": "Start month · 2025",
+            "labelAngle": 0,
+            "labelFontSize": 13
+          }
+        },
+        "y": {
+          "field": "top",
+          "type": "quantitative",
+          "title": "Placements starting",
+          "scale": {
+            "domain": [
+              0,
+              14
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              3,
+              6,
+              9,
+              12
+            ]
+          }
+        }
+      },
+      "layer": [
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {
+                  "op": "count",
+                  "as": "placements"
+                }
+              ],
+              "groupby": [
+                "month",
+                "origin_group"
+              ]
+            },
+            {
+              "calculate": "datum.origin_group == 'Malaysia' ? 0 : 1",
+              "as": "group_order"
+            },
+            {
+              "stack": "placements",
+              "groupby": [
+                "month"
+              ],
+              "sort": [
+                {
+                  "field": "group_order"
+                }
+              ],
+              "as": [
+                "bottom",
+                "top"
+              ]
+            },
+            {
+              "calculate": "(datum.bottom + datum.top) / 2",
+              "as": "middle"
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "stroke": "#fbf9f2",
+            "strokeWidth": 1,
+            "cursor": "pointer"
+          },
+          "encoding": {
+            "y2": {
+              "field": "bottom"
+            },
+            "color": {
+              "field": "origin_group",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "Malaysia",
+                  "Other countries"
+                ],
+                "range": [
+                  "#2f4858",
+                  "#8a8270"
+                ]
+              },
+              "legend": {
+                "orient": "top",
+                "symbolType": "square",
+                "labelFontSize": 14
+              }
+            },
+            "opacity": {
+              "condition": {
+                "test": "selectedMonth == 'All months' || datum.month == selectedMonth",
+                "value": 1
+              },
+              "value": 0.3
+            },
+            "tooltip": [
+              {
+                "field": "month",
+                "title": "Start month"
+              },
+              {
+                "field": "origin_group",
+                "title": "Origin"
+              },
+              {
+                "field": "placements",
+                "title": "Placements in this group",
+                "type": "quantitative"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {
+                  "op": "count",
+                  "as": "placements"
+                }
+              ],
+              "groupby": [
+                "month",
+                "origin_group"
+              ]
+            },
+            {
+              "calculate": "datum.origin_group == 'Malaysia' ? 0 : 1",
+              "as": "group_order"
+            },
+            {
+              "stack": "placements",
+              "groupby": [
+                "month"
+              ],
+              "sort": [
+                {
+                  "field": "group_order"
+                }
+              ],
+              "as": [
+                "bottom",
+                "top"
+              ]
+            },
+            {
+              "calculate": "(datum.bottom + datum.top) / 2",
+              "as": "middle"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "fontWeight": 700,
+            "cursor": "pointer"
+          },
+          "encoding": {
+            "y": {
+              "field": "middle",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "placements"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.origin_group == 'Malaysia'",
+                "value": "white"
+              },
+              "value": "#141c19"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {
+                  "op": "count",
+                  "as": "total"
+                }
+              ],
+              "groupby": [
+                "month"
+              ]
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "dy": -9,
+            "fontSize": 15,
+            "fontWeight": 700,
+            "cursor": "pointer"
+          },
+          "encoding": {
+            "y": {
+              "field": "total",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "total"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 330,
+      "height": 300,
+      "title": {
+        "text": "12 · How long did they stay?",
+        "subtitle": {
+          "expr": "selectedMonth == 'All months' ? 'All 57 placements · 2025' : 'Placements starting in ' + selectedMonth + ' · 2025'"
+        },
+        "fontSize": 17,
+        "subtitleFontSize": 13,
+        "offset": 18
+      },
+      "transform": [
+        {
+          "filter": "selectedMonth == 'All months' || datum.month == selectedMonth"
+        },
+        {
+          "calculate": "8 + floor((datum.days - 8) / 7) * 7",
+          "as": "bin_start"
+        },
+        {
+          "calculate": "datum.bin_start + '–' + (datum.bin_start + 6)",
+          "as": "range"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "placements"
+            }
+          ],
+          "groupby": [
+            "range"
+          ]
+        },
+        {
+          "impute": "placements",
+          "key": "range",
+          "keyvals": [
+            "8–14",
+            "15–21",
+            "22–28",
+            "29–35",
+            "36–42"
+          ],
+          "value": 0
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "range",
+          "type": "ordinal",
+          "sort": [
+            "8–14",
+            "15–21",
+            "22–28",
+            "29–35",
+            "36–42"
+          ],
+          "axis": {
+            "title": "Length of stay (days)",
+            "labelAngle": 0,
+            "labelFontSize": 13
+          }
+        },
+        "y": {
+          "field": "placements",
+          "type": "quantitative",
+          "title": "Placements",
+          "scale": {
+            "domain": [
+              0,
+              42
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              10,
+              20,
+              30,
+              40
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "range",
+            "title": "Days on site"
+          },
+          {
+            "field": "placements",
+            "title": "Placements",
+            "type": "quantitative"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#2f4858",
+            "stroke": "#fbf9f2",
+            "strokeWidth": 2
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": -9,
+            "fontSize": 15,
+            "fontWeight": 700
+          },
+          "encoding": {
+            "text": {
+              "field": "placements"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "spacing": 44,
+  "resolve": {
+    "scale": {
+      "x": "independent",
+      "y": "independent"
+    }
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#1f2d2a"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#1f2d2a"
+    }
+  }
+}

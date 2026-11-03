@@ -8,14 +8,14 @@ An interactive data visualisation study of how wild animals move through rescue 
 
 ## Research questions
 
-The study follows a rescued animal through four stages. Each section of the site addresses one question:
+The study uses separate public records to explain four parts of wildlife care. Each section addresses one question:
 
 1. **Intake.** Which animals are handed over to the wildlife authorities, and in which states?
 2. **Recovery.** What happens while animals are in care?
 3. **Return.** Where are rehabilitated animals released?
 4. **People.** Who gives their time to support this work?
 
-The site presents twelve visualisations built with Vega-Lite. They include a proportional-symbol map, a choropleth, a flow map, a bump chart, a heatmap, a timeline, a Sankey diagram and a brush-linked Gantt chart with a histogram.
+The site presents twelve visualisations built with Vega-Lite. They include three map idioms, a connected-dot comparison of state handovers, a monthly intake heatmap, bear event timelines, a Sankey, and monthly volunteer-start columns linked to a duration histogram. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
 
 ## Data sources
 
@@ -43,7 +43,7 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 ## Limitations
 
 - Handovers are records of contact with the authorities. They do not estimate wild populations or measure how well a state protects wildlife.
-- PERHILITAN's 2022 report gives only a national total, so 2022 is omitted from state rankings. In the 2023 report, the rescue centre's December row repeats the annual totals, so December 2023 is left blank rather than estimated.
+- PERHILITAN's 2022 report gives only a national total. The state comparison uses the 2021 and 2024 endpoints, while the supporting national bars include all four years. In the 2023 report, the rescue centre's December row repeats the annual totals, so December 2023 is marked unavailable. The heatmap's year-total column uses published annual totals, not sums of incomplete monthly records.
 - The Federal Territories are reported as a single unit, so they are counted in all totals but appear in grey on the maps.
 - Release-area positions are approximate (within about 10–20 km) and show destinations, not routes. The 2024 NWRC report does not follow up on the animals it released.
 - The sun bear timeline covers cases described in BSBCC's public reports, not every bear in its care. Sabah and Sarawak wildlife agencies publish separately and are outside the scope of this study.

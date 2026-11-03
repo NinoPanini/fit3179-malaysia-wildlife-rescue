@@ -2,7 +2,7 @@
    Specs, data, fonts and libraries are local, so the page works offline.
    Charts wait for the web fonts so Vega measures labels with the right typeface. */
 const views = new Map();
-window.vegaViews = views;   // handy in the browser console: vegaViews.get('placement-gantt').signal('brush')
+window.vegaViews = views;   // e.g. vegaViews.get('placement-months').signal('selectedMonth')
 const specs = new Map();     // original specs, kept so fixed-width charts can be refitted on resize
 window.chartStatus = {};
 
@@ -12,6 +12,14 @@ window.chartStatus = {};
 function fitToColumn(spec, element, correction = 1) {
   const base = spec.usermeta && spec.usermeta.fitWidth;
   if (!base) return spec;
+  if (spec.usermeta.mobileStack && element.clientWidth < 720) {
+    const copy = structuredClone(spec);
+    copy.vconcat = copy.hconcat;
+    delete copy.hconcat;
+    copy.spacing = 52;
+    copy.vconcat.forEach(panel => { panel.width = Math.max(240, element.clientWidth - 65); });
+    return copy;
+  }
   const avail = Math.max(element.clientWidth, 620);          // below this, the .chart-scroll box scrolls
   const scale = Math.min(Math.max(avail / base, 0.6), 1.12) * correction;
   const copy = structuredClone(spec);
@@ -39,6 +47,12 @@ async function renderChart(element) {
       result = await vegaEmbed(element, fitToColumn(specs.get(id), element, (avail - 4) / drawn), { actions: false, renderer: 'svg' });
     }
     views.set(id, result.view);
+    if (id === 'placement-months') {
+      result.view.addEventListener('click', (event, item) => {
+        const month = item && item.datum && item.datum.month;
+        if (month) result.view.signal('selectedMonth', result.view.signal('selectedMonth') === month ? 'All months' : month).runAsync();
+      });
+    }
     window.chartStatus[id] = 'ready';
     element.setAttribute('aria-busy', 'false');
     return result.view;

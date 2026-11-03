@@ -77,6 +77,9 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
 
   const files = fs.readdirSync(path.join(root, 'charts')).filter(f => f.endsWith('.json'));
   assert.equal(files.length, 13, 'Eleven numbered chart files plus two small context charts');
+  const chartLinks = [...fs.readFileSync(path.join(root, 'index.html'), 'utf8').matchAll(/data-spec="([^"]+)"/g)].map(m => m[1]);
+  assert.equal(chartLinks.length, 13, 'The page must reference all 13 specifications');
+  chartLinks.forEach(file => assert(fs.existsSync(path.join(root, file)), `Missing chart linked from page: ${file}`));
   for (const file of files) {
     const spec = read(`charts/${file}`);
     if (spec.width === 'container') spec.width = 900;
@@ -97,7 +100,36 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
     if (file.startsWith('01-')) assert.equal(items('rect').length, 100, 'Waffle must have 100 squares');
     if (file.startsWith('08-')) assert.equal(marks.filter(m => m.marktype === 'area').length, 16, 'Each released species must have one ribbon');
     if (file.startsWith('06-')) assert(items('symbol').length >= 23, 'Every bear event must be drawn in the overview');
-    if (file.startsWith('11-')) assert.equal(items('rect').filter(b => b.datum && b.datum.placement).length, 57, 'Gantt must draw every placement');
+    if (file.startsWith('04-')) {
+      assert.equal(items('symbol').length, 24, 'Two endpoints for each of 12 reporting units');
+      const labels = items('text').map(t => String(t.text));
+      assert(labels.includes('264') && labels.includes('2,017'), 'Both Terengganu counts must be visible');
+    }
+    if (file.startsWith('05-')) {
+      const totals = items('text').filter(t => t.datum && t.datum.animals === 10968);
+      assert.equal(totals.length, 1, 'Published reptile annual total must remain visible');
+      assert.equal(items('text').filter(t => t.text === 'n/a').length, 3, 'December 2023 remains missing, not zero');
+    }
+    if (file.startsWith('11-')) {
+      const startBars = items('rect').filter(b => b.datum && b.datum.month && b.datum.origin_group);
+      assert.equal(sum(startBars.map(b => b.datum), 'placements'), 57, 'Monthly start segments account for all 57 placements');
+      assert.equal(sum(startBars.filter(b => b.datum.month === 'Mar').map(b => b.datum), 'placements'), 12, 'March has 12 starts');
+      const histogram = () => items('rect').filter(b => b.datum && b.datum.range);
+      assert.equal(sum(histogram().map(b => b.datum), 'placements'), 57, 'All placements appear in duration bins');
+      assert.deepEqual(histogram().map(b => b.datum.placements).sort((a,b) => a-b), [1,4,6,8,38]);
+      for (const month of ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']) {
+        await view.signal('selectedMonth', month).runAsync();
+        // Refresh the scenegraph references after a signal changes the histogram.
+        const bars = [];
+        (function walk(n) { if (n.marktype === 'rect' && n.role === 'mark') bars.push(...n.items); for (const i of n.items || []) walk(i); })(view.scenegraph().root);
+        const bins = bars.filter(b => b.datum && b.datum.range);
+        const monthIndex = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(month) + 1;
+        const expected = placements.filter(p => Number(p.start.slice(5,7)) === monthIndex);
+        assert.equal(sum(bins.map(b => b.datum), 'placements'), expected.length, `${month}: selected histogram counts every start`);
+        assert.equal(bins.length, 5, `${month}: retain empty bins with zero labels`);
+      }
+      await view.signal('selectedMonth', 'All months').runAsync();
+    }
     view.finalize();
     console.log(`PASS ${file}`);
   }

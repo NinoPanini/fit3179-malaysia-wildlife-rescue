@@ -1,0 +1,277 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Connected-dot comparison of handovers in 2021 and 2024. Each row is one reporting unit; every endpoint has its exact count.",
+  "width": "container",
+  "height": 540,
+  "padding": 18,
+  "data": {
+    "url": "data/handovers-trend.json"
+  },
+  "transform": [
+    {
+      "filter": "datum.year == 2021 || datum.year == 2024"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": [
+        "Kelantan",
+        "Pulau Pinang",
+        "Johor",
+        "Terengganu",
+        "Selangor",
+        "Wilayah Persekutuan",
+        "Kedah",
+        "Perak",
+        "Melaka",
+        "Pahang",
+        "Negeri Sembilan",
+        "Perlis"
+      ],
+      "axis": {
+        "title": null,
+        "labelColor": "#1f2d2a",
+        "labelFontSize": 14,
+        "labelLimit": 190,
+        "labelExpr": "datum.label == 'Wilayah Persekutuan' ? 'Federal Territories' : datum.label",
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.state == 'Terengganu' && datum.year == 2024"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "height": 43,
+        "color": "#e6ecdf"
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative"
+        },
+        "x2": {
+          "datum": 3200
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "pivot": "year",
+          "value": "total",
+          "groupby": [
+            "state"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "2021",
+          "type": "quantitative",
+          "title": "Animals handed over",
+          "scale": {
+            "domain": [
+              0,
+              3200
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              500,
+              1000,
+              1500,
+              2000,
+              2500,
+              3000
+            ],
+            "format": ",.0f",
+            "grid": true
+          }
+        },
+        "x2": {
+          "field": "2024"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.state == 'Terengganu'",
+            "value": "#1f2d2a"
+          },
+          "value": "#b9b3a3"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 105,
+        "opacity": 1,
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "total",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "year",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              2021,
+              2024
+            ],
+            "range": [
+              "#9a6200",
+              "#2f4858"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "title": null,
+            "symbolSize": 110,
+            "labelFontSize": 15
+          }
+        },
+        "shape": {
+          "field": "year",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              2021,
+              2024
+            ],
+            "range": [
+              "circle",
+              "square"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "Reporting unit"
+          },
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Animals"
+          },
+          {
+            "field": "source",
+            "title": "Source"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2021"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -13,
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#875600"
+      },
+      "encoding": {
+        "x": {
+          "field": "total",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "total",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2024"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": 15,
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#2f4858"
+      },
+      "encoding": {
+        "x": {
+          "field": "total",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "total",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    }
+  ],
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#1f2d2a"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#1f2d2a"
+    }
+  }
+}

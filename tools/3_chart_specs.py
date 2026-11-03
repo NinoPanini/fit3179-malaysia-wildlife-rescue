@@ -1,8 +1,8 @@
 """Step 3 of 3: the Vega-Lite specifications (run from the website folder: python tools/3_chart_specs.py).
 
 Writes every chart as readable JSON in charts/. One shared config (font, palette) keeps all
-charts consistent. Patterns for layered maps, lookups, bound selectors, the bump-chart
-selection and the brush-linked views are adapted from the FIT3179/Vega-Lite teaching examples.
+charts consistent. Patterns for layered maps, lookups, bound selectors, connected-dot comparisons
+and the linked views are adapted from the FIT3179/Vega-Lite teaching examples.
 """
 import json
 from pathlib import Path
@@ -202,112 +202,101 @@ save('03-group-share-map.json', {
          for offshore in (False, True)],
 })
 
-# ---- 04 Bump chart of state ranks --------------------------------------
-YEARS = [2021, 2022, 2023, 2024]
-x_year = {'field': 'year', 'type': 'ordinal', 'scale': {'domain': YEARS, 'padding': 1.6},
-          'axis': {'title': None, 'labelAngle': 0, 'labelFontSize': 15, 'labelFontWeight': 600, 'labelColor': INK, 'orient': 'top'}}
-y_rank = {'field': 'rank', 'type': 'quantitative', 'scale': {'domain': [0.5, 14.6], 'reverse': True}, 'axis': None}
-picked = {'param': 'pickState'}
-save('04-state-rank-bump.json', {
-    'description': 'Bump chart: each reporting state ranked by animals handed over in 2021, 2023 and 2024. 2022 has no state table.',
-    'width': 'container', 'height': 420,
+# ---- 04 Connected dots: actual handovers, 2021 versus 2024 ------------
+# A shared count axis replaces ranks. Above/below endpoint labels remain readable
+# even when the two years have similar counts. Year is encoded by shape AND hue.
+trend = json.loads((ROOT / 'data/handovers-trend.json').read_text(encoding='utf8'))
+STATE_ORDER = [r['state'] for r in sorted([r for r in trend if r['year'] == 2024], key=lambda r: -r['total'])]
+state_y = {'field': 'state', 'type': 'nominal', 'sort': STATE_ORDER,
+           'axis': {'title': None, 'labelColor': INK, 'labelFontSize': 14, 'labelLimit': 190,
+                    'labelExpr': "datum.label == 'Wilayah Persekutuan' ? 'Federal Territories' : datum.label", 'ticks': False}}
+save('04-state-comparison.json', {
+    'description': 'Connected-dot comparison of handovers in 2021 and 2024. Each row is one reporting unit; every endpoint has its exact count.',
+    'width': 'container', 'height': 540, 'padding': 18,
     'data': {'url': 'data/handovers-trend.json'},
-    'encoding': {'x': x_year, 'y': y_rank},
+    'transform': [{'filter': 'datum.year == 2021 || datum.year == 2024'}],
+    'encoding': {'y': state_y},
     'layer': [
-        {'data': {'values': [{'year': 2022, 'rank': 13.6}]},
-         'mark': {'type': 'text', 'fontSize': 12.5, 'color': MUTED, 'lineHeight': 17, 'fontStyle': 'italic',
-                  'text': ['2022 state rankings unavailable:', 'dashed lines join 2021 to 2023']}},
-        {'transform': [{'filter': 'datum.year <= 2023'}],
-         'mark': {'type': 'line', 'strokeDash': [4, 4], 'cursor': 'pointer', 'interpolate': 'monotone'},
-         'encoding': {'detail': {'field': 'state'},
-                      'color': {'condition': {**picked, 'value': INK}, 'value': PALE},
-                      'strokeWidth': {'condition': {**picked, 'value': 3}, 'value': 1.6},
-                      'order': {'field': 'year'}}},
-        {'transform': [{'filter': 'datum.year >= 2023'}],
-         'mark': {'type': 'line', 'cursor': 'pointer'},
-         'encoding': {'detail': {'field': 'state'},
-                      'color': {'condition': {**picked, 'value': INK}, 'value': PALE},
-                      'strokeWidth': {'condition': {**picked, 'value': 3.5}, 'value': 2},
-                      'order': {'field': 'year'}}},
-        {'params': [{'name': 'pickState', 'value': [{'state': 'Terengganu'}],   # the headline's state stands out first
-                     'select': {'type': 'point', 'fields': ['state'], 'on': 'click', 'clear': 'dblclick'}}],
-         'mark': {'type': 'circle', 'size': 90, 'opacity': 1, 'stroke': PAPER, 'strokeWidth': 1.5, 'cursor': 'pointer'},
-         'encoding': {'color': {'condition': {**picked, 'value': INK}, 'value': PALE},
-                      'tooltip': [{'field': 'state', 'type': 'nominal', 'title': 'State'},
-                                  {'field': 'year', 'type': 'ordinal', 'title': 'Year'},
-                                  {'field': 'rank', 'type': 'quantitative', 'title': 'Rank (1 = most)'},
-                                  {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','}]}},
-        {'transform': [{'filter': 'datum.year == 2021'}, {'calculate': "datum.state + '  ' + datum.rank", 'as': 'label'}],
-         'mark': {'type': 'text', 'align': 'right', 'dx': -12, 'fontSize': 13},
-         'encoding': {'text': {'field': 'label'},
-                      'color': {'condition': {**picked, 'value': INK}, 'value': MUTED}}},
-        {'transform': [{'filter': 'datum.year == 2024'}, {'calculate': "datum.rank + '  ' + datum.state + '  ' + format(datum.total, ',')", 'as': 'label'}],
-         'mark': {'type': 'text', 'align': 'left', 'dx': 12, 'fontSize': 13},
-         'encoding': {'text': {'field': 'label'},
-                      'color': {'condition': {**picked, 'value': INK}, 'value': MUTED}}},
-        {'transform': [{'filter': picked},
-                       {'calculate': "datum.rank == 1 ? '1st' : datum.rank == 2 ? '2nd' : datum.rank == 3 ? '3rd' : datum.rank + 'th'", 'as': 'ord'}],
-         'mark': {'type': 'text', 'dy': -14, 'fontSize': 13, 'fontWeight': 700, 'color': INK},
-         'encoding': {'text': {'field': 'ord'}}},
+        {'transform': [{'filter': "datum.state == 'Terengganu' && datum.year == 2024"}],
+         'mark': {'type': 'rect', 'height': 43, 'color': '#e6ecdf'},
+         'encoding': {'x': {'datum': 0, 'type': 'quantitative'}, 'x2': {'datum': 3200}}},
+        {'transform': [{'pivot': 'year', 'value': 'total', 'groupby': ['state']}],
+         'mark': {'type': 'rule', 'strokeWidth': 3},
+         'encoding': {'x': {'field': '2021', 'type': 'quantitative', 'title': 'Animals handed over',
+                            'scale': {'domain': [0, 3200]}, 'axis': {'values': [0, 500, 1000, 1500, 2000, 2500, 3000], 'format': ',.0f', 'grid': True}},
+                      'x2': {'field': '2024'},
+                      'color': {'condition': {'test': "datum.state == 'Terengganu'", 'value': INK}, 'value': '#b9b3a3'}}},
+        {'mark': {'type': 'point', 'filled': True, 'size': 105, 'opacity': 1, 'stroke': PAPER, 'strokeWidth': 1},
+         'encoding': {'x': {'field': 'total', 'type': 'quantitative'},
+                      'color': {'field': 'year', 'type': 'nominal', 'scale': {'domain': [2021, 2024], 'range': ['#9a6200', MY]},
+                                'legend': {'orient': 'top', 'title': None, 'symbolSize': 110, 'labelFontSize': 15}},
+                      'shape': {'field': 'year', 'type': 'nominal', 'scale': {'domain': [2021, 2024], 'range': ['circle', 'square']}},
+                      'tooltip': [{'field': 'state', 'title': 'Reporting unit'}, {'field': 'year', 'title': 'Year'},
+                                  {'field': 'total', 'type': 'quantitative', 'format': ',', 'title': 'Animals'}, {'field': 'source', 'title': 'Source'}]}},
+        *[{'transform': [{'filter': f'datum.year == {year}'}],
+           'mark': {'type': 'text', 'dy': offset, 'fontSize': 13, 'fontWeight': 600, 'color': colour},
+           'encoding': {'x': {'field': 'total', 'type': 'quantitative'}, 'text': {'field': 'total', 'type': 'quantitative', 'format': ','}}}
+          for year, offset, colour in [(2021, -13, '#875600'), (2024, 15, MY)]],
     ],
 })
 
-# ---- 05 Heatmap + total bars: NWRC monthly intake 2023-2024 -----------
-ROWS = [f'{y} · {g}' for y in (2023, 2024) for g in GROUP]
+# ---- 05 Paired-year heatmap with a numeric annual-total column --------
+# Use the published annual totals, NOT the sum of incomplete 2023 monthly rows.
+ROWS = [f'{g} · {y}' for g in GROUP for y in (2023, 2024)]
+# Original vector pictograms: lizard, paw and bird. These supplement the text labels;
+# they carry category identity only, never magnitude, and require no external assets.
+ANIMAL_SHAPES = [
+    'M-.15,-.75 Q.4,-1 .45,-.55 L.25,-.25 .8,-.45 .95,-.2 .7,-.15 .2,.05 .75,.5 .6,.7 .1,.3 Q.1,.8 -.35,1 L-.1,.45 -.25,.1 -.75,.55 -.95,.35 -.65,.25 -.25,-.15 -.75,-.4 -.7,-.65 -.2,-.45 Z',
+    'M-.5,.85 Q-1,.6 -.6,.15 Q0,-.65 .6,.15 Q1,.6 .5,.85 Q0,.55 -.5,.85 Z M-.9,-.45 A.23,.3 0 1,0 -.44,-.45 A.23,.3 0 1,0 -.9,-.45 M-.35,-.8 A.23,.3 0 1,0 .11,-.8 A.23,.3 0 1,0 -.35,-.8 M.25,-.7 A.23,.3 0 1,0 .71,-.7 A.23,.3 0 1,0 .25,-.7 M.65,-.2 A.21,.28 0 1,0 1.07,-.2 A.21,.28 0 1,0 .65,-.2',
+    'M-1,.6 L-.6,.15 Q-.7,-.5 -.15,-.3 Q.1,-1 .65,-.65 L1,-.35 .7,-.3 Q.8,.35 .3,.6 Q-.15,.9 -.6,.6 Z',
+]
 row_y = {'field': 'row', 'type': 'nominal', 'sort': ROWS, 'title': None}
+MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 BANDS = ['0', '1–9', '10–99', '100–999', '1,000+', 'Not available']
 band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : "
         "datum.animals < 100 ? '10–99' : datum.animals < 1000 ? '100–999' : '1,000+'")
 save('05-intake-heatmap.json', {
-    'description': 'Heatmap of animals received by NWRC each month in 2023 and 2024 by animal group, with yearly totals as bars.',
-    'usermeta': {'fitWidth': 990},   # js/app.js scales the fixed widths below to the page column
+    'description': 'Monthly intake with 2023 and 2024 paired for each animal group. One shared colour scale; exact counts in every cell and published year totals at right.',
+    'usermeta': {'fitWidth': 1050},
     'hconcat': [
-        {'width': 590, 'height': 240,
+        {'width': 28, 'height': 330,
+         'data': {'url': 'data/nwrc-intake-totals.json'},
+         'transform': [{'calculate': "datum.group + ' · ' + datum.year", 'as': 'row'}],
+         'mark': {'type': 'point', 'filled': True, 'size': 220, 'color': MUTED, 'opacity': 1},
+         'encoding': {'y': {**row_y, 'axis': None},
+                      'shape': {'field': 'group', 'type': 'nominal', 'scale': {'domain': list(GROUP), 'range': ANIMAL_SHAPES}, 'legend': None}}},
+        {'width': 720, 'height': 330,
          'data': {'url': 'data/nwrc-intake-2023-2024.json'},
-         'transform': [{'calculate': "datum.year + ' · ' + datum.group", 'as': 'row'},
-                       {'calculate': band, 'as': 'band'}],
+         'transform': [{'calculate': "datum.group + ' · ' + datum.year", 'as': 'row'}, {'calculate': band, 'as': 'band'}],
          'encoding': {
-             'x': {'field': 'month', 'type': 'ordinal', 'sort': ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+             'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                    'axis': {'title': None, 'labelAngle': 0, 'orient': 'top', 'labelColor': INK}},
-             'y': {**row_y, 'axis': {'labelFontSize': 13, 'labelColor': INK, 'labelPadding': 10}},
-             'tooltip': [{'field': 'month', 'type': 'nominal', 'title': 'Month'}, {'field': 'year', 'type': 'ordinal', 'title': 'Year'},
-                         {'field': 'group', 'type': 'nominal', 'title': 'Group'},
-                         {'field': 'animals', 'type': 'quantitative', 'title': 'Animals received', 'format': ','},
-                         {'field': 'band', 'type': 'nominal', 'title': 'Class'}]},
+             'y': {**row_y, 'axis': {'labelFontSize': 14, 'labelColor': INK, 'labelPadding': 10, 'ticks': False}},
+             'tooltip': [{'field': 'month', 'title': 'Month'}, {'field': 'year', 'title': 'Year'},
+                         {'field': 'group', 'title': 'Group'}, {'field': 'animals', 'type': 'quantitative', 'title': 'Animals received', 'format': ','},
+                         {'field': 'band', 'title': 'Class'}]},
          'layer': [
-             # zero months: empty cell with a thin outline; unavailable months: grey with "n/a"
              {'mark': {'type': 'rect', 'cornerRadius': 3},
               'encoding': {'stroke': {'condition': {'test': "datum.band == '0'", 'value': '#c9c3b0'}, 'value': PAPER},
                            'strokeWidth': {'condition': {'test': "datum.band == '0'", 'value': 1}, 'value': 3},
-                           'color': {'field': 'band', 'type': 'ordinal', 'title': 'Animals received in the month',
+                           'color': {'field': 'band', 'type': 'ordinal', 'title': 'Animals per month · same scale for every row',
                                      'scale': {'domain': BANDS, 'range': [PAPER, '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8', '#d6d0bf']},
-                                     'legend': {'orient': 'bottom', 'direction': 'horizontal', 'symbolType': 'square',
+                                     'legend': {'orient': 'bottom', 'direction': 'horizontal', 'symbolType': 'square', 'titleLimit': 600,
                                                 'symbolStrokeColor': '#bdb7a5', 'symbolStrokeWidth': 1}}}},
-             {'mark': {'type': 'text', 'fontSize': 12.5},
+             {'mark': {'type': 'text', 'fontSize': 14, 'fontWeight': 500},
               'encoding': {'text': {'condition': {'test': '!datum.reported', 'value': 'n/a'}, 'field': 'animals', 'format': ','},
                            'color': {'condition': {'test': 'datum.animals >= 1000', 'value': 'white'}, 'value': INK}}},
-             # the two spikes behind "sudden waves": outlined in ink
              {'transform': [{'filter': 'datum.animals >= 1000'}],
               'mark': {'type': 'rect', 'fillOpacity': 0, 'stroke': INK, 'strokeWidth': 2.5, 'cornerRadius': 3}},
          ]},
-        {'width': 210, 'height': 240,
+        {'width': 95, 'height': 330, 'title': {'text': 'Year total', 'anchor': 'middle', 'fontSize': 14, 'offset': 16},
          'data': {'url': 'data/nwrc-intake-totals.json'},
-         'transform': [{'calculate': "datum.year + ' · ' + datum.group", 'as': 'row'}],
-         'encoding': {'y': {**row_y, 'axis': None},
-                      'x': {'field': 'animals', 'type': 'quantitative', 'title': 'Year total',
-                            'scale': {'domain': [0, 14000]}, 'axis': {'orient': 'top', 'tickCount': 2, 'grid': False, 'labels': False}}},
-         'layer': [
-             {'mark': {'type': 'bar', 'height': 18, 'cornerRadiusEnd': 2},
-              'encoding': {'color': group_colour(), 'tooltip': [{'field': 'row', 'title': 'Year · group'},
-                                                               {'field': 'animals', 'type': 'quantitative', 'title': 'Animals received', 'format': ','}]}},
-             {'mark': {'type': 'text', 'align': 'left', 'dx': 6, 'fontSize': 13, 'fontWeight': 600},
-              'encoding': {'text': {'field': 'animals', 'format': ','}}},
-             {'data': {'values': [{}]}, 'mark': {'type': 'rule', 'color': MUTED, 'strokeWidth': 1},   # zero baseline
-              'encoding': {'x': {'datum': 0}, 'y': {'value': 0}, 'y2': {'value': 'height'}}},
-         ]},
+         'transform': [{'calculate': "datum.group + ' · ' + datum.year", 'as': 'row'}],
+         'mark': {'type': 'text', 'fontSize': 17, 'fontWeight': 700},
+         'encoding': {'y': {**row_y, 'axis': None}, 'text': {'field': 'animals', 'type': 'quantitative', 'format': ','},
+                      'tooltip': [{'field': 'row', 'title': 'Group · year'}, {'field': 'animals', 'type': 'quantitative', 'title': 'Published annual total', 'format': ','}]}},
     ],
-    'spacing': 18,
-    'resolve': {'scale': {'color': 'independent'}},
+    'spacing': 16,
 })
 
 # ---- 06 Bear journeys: connected dot plot on a timeline ----------------
@@ -548,65 +537,71 @@ save('10-volunteer-origins.json', {
     ],
 })
 
-# ---- 11 Gantt + linked histogram: 57 placements in 2025 ---------------
-BINS = ['8–14', '15–21', '22–28', '29–35', '36–42']            # one-week bins, labelled by the days they hold
-WEEK_BIN = [{'bin': {'step': 7, 'extent': [8, 43], 'nice': False}, 'field': 'days', 'as': ['bin_start', 'bin_end']},
-            {'calculate': "datum.bin_start + '–' + (datum.bin_end - 1)", 'as': 'range'}]
-HX = {'field': 'range', 'type': 'ordinal', 'scale': {'domain': BINS}, 'title': 'Length of stay (days on site)', 'axis': {'labelAngle': 0}}
-ORIGIN = {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]}
-def half_year(name, title, first, after, domain):
-    """One Gantt panel: placements that started in this half of 2025. Both panels use a 197-day x domain, so they share one scale."""
-    return {'name': name, 'width': 620, 'height': {'step': 11},
-            'title': {'text': title, 'anchor': 'start', 'fontSize': 14, 'color': INK, 'offset': 4},
-            'transform': [{'filter': {'field': 'start', 'gte': first}}, {'filter': {'field': 'start', 'lt': after}}],
-            'mark': {'type': 'bar', 'height': 8, 'cornerRadius': 1.5},
-            'encoding': {
-                'y': {'field': 'placement', 'type': 'nominal', 'sort': {'field': 'start'}, 'title': None,
-                      'axis': {'labels': False, 'ticks': False, 'domain': False, 'grid': True, 'gridColor': '#efece2'}},
-                'x': {'field': 'start', 'type': 'temporal', 'title': None, 'scale': {'domainMin': domain[0], 'domainMax': domain[1]},
-                      'axis': {'format': '%b', 'tickCount': {'interval': 'month'}, 'orient': 'top', 'labelColor': INK, 'labelFontSize': 13}},
-                'x2': {'field': 'end'},
-                'color': {'field': 'origin_group', 'type': 'nominal', 'title': 'Volunteer from', 'scale': ORIGIN,
-                          'legend': {'orient': 'top', 'direction': 'horizontal'}},
-                'tooltip': [{'field': 'origin', 'title': 'Listed origin'},
-                            {'field': 'start', 'type': 'temporal', 'title': 'Start', 'format': '%d %b %Y'},
-                            {'field': 'end', 'type': 'temporal', 'title': 'End', 'format': '%d %b %Y'},
-                            {'field': 'days', 'type': 'quantitative', 'title': 'Days on site'}]}}
-JAN, JUL = {'year': 2025, 'month': 1, 'date': 1}, {'year': 2025, 'month': 7, 'date': 1}
-save('11-placement-gantt.json', {
-    'description': 'Gantt chart of 57 volunteer placements at BSBCC in 2025 (two half-year panels), linked to a histogram of placement length. Drag across either timeline to select placements that started in that period.',
-    'usermeta': {'fitWidth': 1010},  # js/app.js scales the fixed widths below to the page column
+# ---- 11 Monthly placement starts + 12 linked duration histogram -------
+# Counts come from the same 57 anonymised placements; starts are not occupancy.
+BINS = ['8–14', '15–21', '22–28', '29–35', '36–42']
+HX = {'field': 'range', 'type': 'ordinal', 'sort': BINS,
+      'axis': {'title': 'Length of stay (days)', 'labelAngle': 0, 'labelFontSize': 13}}
+month_filter = {'filter': "selectedMonth == 'All months' || datum.month == selectedMonth"}
+duration_counts = [month_filter,
+    {'calculate': "8 + floor((datum.days - 8) / 7) * 7", 'as': 'bin_start'},
+    {'calculate': "datum.bin_start + '–' + (datum.bin_start + 6)", 'as': 'range'},
+    {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['range']},
+    {'impute': 'placements', 'key': 'range', 'keyvals': BINS, 'value': 0}]
+monthly_counts = [
+    {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['month', 'origin_group']},
+    {'calculate': "datum.origin_group == 'Malaysia' ? 0 : 1", 'as': 'group_order'},
+    {'stack': 'placements', 'groupby': ['month'], 'sort': [{'field': 'group_order'}], 'as': ['bottom', 'top']},
+    {'calculate': '(datum.bottom + datum.top) / 2', 'as': 'middle'}]
+save('11-placement-months.json', {
+    'description': 'Monthly volunteer placement starts, split by origin, linked to a duration histogram. All counts are labelled. Select a month by click or menu; All months resets.',
+    'usermeta': {'fitWidth': 1100, 'mobileStack': True},
     'data': {'url': 'data/bsbcc-placements-2025.json'},
-    'params': [{'name': 'brush', 'select': {'type': 'interval', 'encodings': ['x']}, 'views': ['firstHalf', 'secondHalf']}],
+    'transform': [{'calculate': "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][toNumber(substring(datum.start, 5, 7)) - 1]", 'as': 'month'}],
+    'params': [{'name': 'selectedMonth', 'value': 'All months',
+                'bind': {'input': 'select', 'options': ['All months'] + MONTHS, 'name': 'Month: ', 'element': '#placement-control'}}],
     'hconcat': [
-        {'vconcat': [half_year('firstHalf', 'Started January–June', JAN, JUL, [JAN, {'year': 2025, 'month': 7, 'date': 17}]),
-                     half_year('secondHalf', 'Started July–December', JUL, {'year': 2026, 'month': 1, 'date': 1}, [JUL, {'year': 2026, 'month': 1, 'date': 14}])],
-         'spacing': 22, 'resolve': {'scale': {'x': 'independent'}}},   # each half-year has its own dates
-        {'width': 290, 'height': 250,
+        {'width': 570, 'height': 300,
+         'title': {'text': '11 · When did placements start?', 'subtitle': '2025 · Monthly starts', 'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
+         'encoding': {'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
+                            'axis': {'title': 'Start month · 2025', 'labelAngle': 0, 'labelFontSize': 13}},
+                      'y': {'field': 'top', 'type': 'quantitative', 'title': 'Placements starting',
+                            'scale': {'domain': [0, 14]}, 'axis': {'values': [0, 3, 6, 9, 12]}}},
          'layer': [
-             {'transform': [{'filter': {'param': 'brush'}},
-                            {'aggregate': [{'op': 'count', 'as': 'n'}, {'op': 'sum', 'field': 'days', 'as': 'd'}, {'op': 'median', 'field': 'days', 'as': 'm'}]},
-                            {'calculate': "[(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements'),"
-                                          " format(datum.d, ',') + ' total placement-days', 'Median stay: ' + datum.m + ' days']", 'as': 't'}],
-              'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'fontSize': 14, 'fontWeight': 700, 'lineHeight': 19, 'color': INK},
-              'encoding': {'x': {'value': 0}, 'y': {'value': -78}, 'text': {'field': 't'}}},
-             {'transform': WEEK_BIN,
-              'mark': {'type': 'bar', 'fill': PAPER, 'stroke': MARK, 'strokeWidth': 1.5, 'strokeDash': [3, 2]},
-              'encoding': {'x': HX, 'y': {'aggregate': 'count', 'type': 'quantitative', 'title': 'Placements', 'scale': {'domain': [0, 45]}, 'axis': {'tickCount': 5}}}},
-             {'transform': [{'filter': {'param': 'brush'}}] + WEEK_BIN,
-              'mark': {'type': 'bar', 'color': MY, 'stroke': PAPER, 'strokeWidth': 2},
-              'encoding': {'x': HX, 'y': {'aggregate': 'count', 'type': 'quantitative'},
-                           'tooltip': [{'field': 'range', 'title': 'Days on site'},
-                                       {'aggregate': 'count', 'type': 'quantitative', 'title': 'Placements'}]}},
-             {'data': {'values': [{'range': '8–14', 'n': 38}]},
-              'mark': {'type': 'text', 'text': '38 of 57 stayed two weeks or less', 'align': 'left', 'dx': -16, 'dy': -8,
-                       'baseline': 'bottom', 'color': INK, 'fontSize': 12.5, 'fontWeight': 600},
-              'encoding': {'x': {'field': 'range', 'type': 'ordinal'}, 'y': {'field': 'n', 'type': 'quantitative'}}}]},
+             {'transform': monthly_counts,
+              'mark': {'type': 'bar', 'stroke': PAPER, 'strokeWidth': 1, 'cursor': 'pointer'},
+              'encoding': {'y2': {'field': 'bottom'},
+                           'color': {'field': 'origin_group', 'type': 'nominal', 'title': None,
+                                     'scale': {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]},
+                                     'legend': {'orient': 'top', 'symbolType': 'square', 'labelFontSize': 14}},
+                           'opacity': {'condition': {'test': "selectedMonth == 'All months' || datum.month == selectedMonth", 'value': 1}, 'value': 0.3},
+                           'tooltip': [{'field': 'month', 'title': 'Start month'}, {'field': 'origin_group', 'title': 'Origin'},
+                                       {'field': 'placements', 'title': 'Placements in this group', 'type': 'quantitative'}]}},
+             {'transform': monthly_counts,
+              'mark': {'type': 'text', 'fontSize': 13, 'fontWeight': 700, 'cursor': 'pointer'},
+              'encoding': {'y': {'field': 'middle', 'type': 'quantitative'}, 'text': {'field': 'placements'},
+                           'color': {'condition': {'test': "datum.origin_group == 'Malaysia'", 'value': 'white'}, 'value': '#141c19'}}},
+             {'transform': [{'aggregate': [{'op': 'count', 'as': 'total'}], 'groupby': ['month']}],
+              'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700, 'cursor': 'pointer'},
+              'encoding': {'y': {'field': 'total', 'type': 'quantitative'}, 'text': {'field': 'total'}}},
+         ]},
+        {'width': 330, 'height': 300,
+         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'All 57 placements · 2025' : 'Placements starting in ' + selectedMonth + ' · 2025'"},
+                   'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
+         'transform': duration_counts,
+         'encoding': {'x': HX, 'y': {'field': 'placements', 'type': 'quantitative', 'title': 'Placements',
+                                    'scale': {'domain': [0, 42]}, 'axis': {'values': [0, 10, 20, 30, 40]}},
+                      'tooltip': [{'field': 'range', 'title': 'Days on site'}, {'field': 'placements', 'title': 'Placements', 'type': 'quantitative'}]},
+         'layer': [
+             {'mark': {'type': 'bar', 'color': MY, 'stroke': PAPER, 'strokeWidth': 2}},
+             {'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700}, 'encoding': {'text': {'field': 'placements'}}},
+         ]},
     ],
-    'spacing': 36,
+    'spacing': 44,
+    'resolve': {'scale': {'x': 'independent', 'y': 'independent'}},
 })
 
-# ---- Context (not counted): national handover totals beside the bump chart --
+# ---- Context (not counted): national handover totals beside the state comparison --
 save('context-national-totals.json', {
     'description': 'Small bar chart of total animals handed over to PERHILITAN each year, 2021-2024.',
     'width': 220, 'height': 70,
