@@ -117,17 +117,33 @@ window.addEventListener('resize', () => {
     }   // charts 07 and 08 are not refitted, so their link listeners stay attached
   }, 200);
 });
-const navLinks = [...document.querySelectorAll('nav a')];
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    navLinks.forEach(link => {
-      const active = link.hash === `#${entry.target.id}`;
-      if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
-    });
+// The chapter bar is visible before the introduction and stays above the reading surface.
+// Track chapter starts rather than intersections: long sections and jumps in either direction
+// should keep the same active marker, including after charts resize and change page height.
+const chapterNav = document.querySelector('.chapter-nav');
+const navLinks = [...chapterNav.querySelectorAll('a')];
+const navSections = navLinks.map(link => document.querySelector(link.hash));
+let navFrame = 0;
+function updateChapterNav() {
+  navFrame = 0;
+  const readingLine = chapterNav.getBoundingClientRect().height + 32;
+  let current = 0;
+  navSections.forEach((section, index) => {
+    if (section.getBoundingClientRect().top <= readingLine) current = index;
   });
-}, { rootMargin: '-15% 0px -65% 0px' });
-document.querySelectorAll('main > section[id]').forEach(section => sectionObserver.observe(section));
+  navLinks.forEach((link, index) => {
+    if (index === current) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}
+function scheduleChapterNav() {
+  if (!navFrame) navFrame = requestAnimationFrame(updateChapterNav);
+}
+window.addEventListener('scroll', scheduleChapterNav, { passive: true });
+window.addEventListener('resize', scheduleChapterNav);
+window.addEventListener('hashchange', scheduleChapterNav);
+new ResizeObserver(scheduleChapterNav).observe(document.querySelector('main'));
+scheduleChapterNav();
 // Text tables provide a keyboard-readable alternative to chart tooltips.
 document.querySelectorAll('details[data-table]').forEach(detail => {
   detail.addEventListener('toggle', async () => {
