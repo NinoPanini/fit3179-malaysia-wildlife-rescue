@@ -29,9 +29,9 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#ebe7d9",
-        "stroke": "#fbf9f2",
-        "strokeWidth": 1.2
+        "fill": "#e6e0cf",
+        "stroke": "#a39b86",
+        "strokeWidth": 0.8
       },
       "encoding": {
         "tooltip": [
@@ -214,7 +214,7 @@
           "mark": {
             "type": "circle",
             "size": 380,
-            "color": "#D9A43A",
+            "color": "#1f2d2a",
             "stroke": "#fbf9f2",
             "strokeWidth": 2
           }
@@ -227,7 +227,7 @@
             "fontSize": 12.5,
             "fontWeight": 700,
             "lineHeight": 15,
-            "color": "#7d5a10"
+            "color": "#1f2d2a"
           },
           "encoding": {
             "text": {

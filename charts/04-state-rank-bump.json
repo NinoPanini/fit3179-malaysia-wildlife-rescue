@@ -87,7 +87,7 @@
             "param": "pickState",
             "value": "#1f2d2a"
           },
-          "value": "#d3cfc2"
+          "value": "#9c947f"
         },
         "strokeWidth": {
           "condition": {
@@ -120,7 +120,7 @@
             "param": "pickState",
             "value": "#1f2d2a"
           },
-          "value": "#d3cfc2"
+          "value": "#9c947f"
         },
         "strokeWidth": {
           "condition": {
@@ -141,6 +141,12 @@
           "value": [
             {
               "state": "Terengganu"
+            },
+            {
+              "state": "Kelantan"
+            },
+            {
+              "state": "Pulau Pinang"
             }
           ],
           "select": {
@@ -167,7 +173,7 @@
             "param": "pickState",
             "value": "#1f2d2a"
           },
-          "value": "#bdb7a5"
+          "value": "#9c947f"
         },
         "tooltip": [
           {

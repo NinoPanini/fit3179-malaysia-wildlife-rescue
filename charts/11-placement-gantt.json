@@ -74,7 +74,7 @@
             ],
             "range": [
               "#2f4858",
-              "#E1B04F"
+              "#8a8270"
             ]
           },
           "legend": {
@@ -103,7 +103,7 @@
           {
             "field": "days",
             "type": "quantitative",
-            "title": "Calendar days"
+            "title": "Days on site"
           }
         ]
       }
@@ -133,7 +133,7 @@
               ]
             },
             {
-              "calculate": "(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements') + ' · ' + format(datum.d, ',') + ' calendar days'",
+              "calculate": "(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements') + ' · ' + format(datum.d, ',') + ' days on site'",
               "as": "t"
             }
           ],
@@ -194,7 +194,7 @@
                   42
                 ]
               },
-              "title": "Placement length (calendar days)",
+              "title": "Length of stay (days on site)",
               "axis": {
                 "values": [
                   7,
@@ -267,7 +267,7 @@
                   42
                 ]
               },
-              "title": "Placement length (calendar days)",
+              "title": "Length of stay (days on site)",
               "axis": {
                 "values": [
                   7,
@@ -317,7 +317,7 @@
             {
               "mark": {
                 "type": "rule",
-                "color": "#D9A43A",
+                "color": "#1f2d2a",
                 "strokeDash": [
                   5,
                   4
@@ -328,12 +328,12 @@
             {
               "mark": {
                 "type": "text",
-                "text": "Median of all: 14 days",
+                "text": "Half stayed 14 days or less",
                 "align": "left",
                 "dx": 6,
                 "dy": 4,
                 "baseline": "top",
-                "color": "#7d5a10",
+                "color": "#1f2d2a",
                 "fontSize": 12.5,
                 "fontWeight": 600
               },

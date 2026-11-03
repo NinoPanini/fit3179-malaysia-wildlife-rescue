@@ -39,9 +39,9 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 12,
         "letterSpacing": 2,
-        "color": "#9b947f",
+        "color": "#56625d",
         "fontWeight": 600
       },
       "encoding": {

@@ -93,7 +93,12 @@ assert sum(r['animals'] for r in releases)==32
 save('nwrc-releases-2024.json',releases)
 # A reproducible Sankey layout, with ribbon thickness proportional to animal count.
 # All destinations remain distinct; strips are not movement tracks.
-dests=list(dict.fromkeys(r['destination'] for r in releases))
+# Release areas top to bottom, and species sorted by area within mammals and birds, so ribbons
+# cross as little as possible (the table keeps the report's order).
+dests=['Temenggor Forest Reserve','Taman Negara Terengganu','Ulu Muda Forest Reserve','Penang National Park',
+       'Taman Negara Pahang','Sungkai Wildlife Reserve']
+BIRDS={'Brahminy kite','White-bellied sea eagle','Changeable hawk-eagle','Buffy fish owl','Spotted wood owl','Oriental pied hornbill'}
+layout=sorted(releases,key=lambda r:(r['species'] in BIRDS,dests.index(r['destination'])))
 gap=0.65
 left_total=32+gap*(len(releases)-1)
 right_total=32+gap*(len(dests)-1)
@@ -105,7 +110,7 @@ for d in dests:
     nodes.append(dict(side='destination',label=d,animals=n,x=0.98,x2=1,y=cursor,y2=cursor+n,mid=cursor+n/2,destination=d))
     cursor+=n+gap
 ribbons=[]; cursor=0
-for r in releases:
+for r in layout:
     d=r['destination']; n=r['animals']; y1=right_pos[d]
     nodes.append(dict(side='species',label=r['species'],animals=n,x=0,x2=0.02,y=cursor,y2=cursor+n,mid=cursor+n/2,destination=d))
     for step in range(31):

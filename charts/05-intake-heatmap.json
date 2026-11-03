@@ -116,7 +116,7 @@
                   "Not printed"
                 ],
                 "range": [
-                  "#f7f5ec",
+                  "#fbf9f2",
                   "#ffffcc",
                   "#a1dab4",
                   "#41b6c4",
@@ -224,8 +224,8 @@
                 ],
                 "range": [
                   "#0072B2",
-                  "#E69F00",
-                  "#CC79A7"
+                  "#B26F00",
+                  "#A85F8C"
                 ]
               },
               "legend": null

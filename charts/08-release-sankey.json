@@ -13,9 +13,9 @@
           "All destinations",
           "Temenggor Forest Reserve",
           "Taman Negara Terengganu",
-          "Taman Negara Pahang",
           "Ulu Muda Forest Reserve",
           "Penang National Park",
+          "Taman Negara Pahang",
           "Sungkai Wildlife Reserve"
         ],
         "name": "Highlight a release area: "
@@ -91,8 +91,8 @@
             ],
             "range": [
               "#0072B2",
-              "#E69F00",
-              "#CC79A7"
+              "#B26F00",
+              "#A85F8C"
             ]
           },
           "legend": null
@@ -149,8 +149,8 @@
               "Area"
             ],
             "range": [
-              "#E69F00",
-              "#CC79A7",
+              "#B26F00",
+              "#A85F8C",
               "#1f2d2a"
             ]
           },
@@ -192,7 +192,7 @@
         "type": "text",
         "align": "left",
         "dx": -208,
-        "fontSize": 11.5,
+        "fontSize": 12,
         "fontWeight": 700,
         "letterSpacing": 1.5,
         "baseline": "middle"

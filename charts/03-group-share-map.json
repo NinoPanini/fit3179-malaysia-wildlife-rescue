@@ -32,11 +32,14 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#d9d6cc",
         "stroke": "#fbf9f2",
         "strokeWidth": 1.2
       },
       "encoding": {
+        "color": {
+          "datum": 6,
+          "type": "ordinal"
+        },
         "tooltip": [
           {
             "field": "properties.state",
@@ -114,24 +117,26 @@
               2,
               3,
               4,
-              5
+              5,
+              6
             ],
             "range": [
               "#ffffcc",
-              "#c7e9b4",
-              "#7fcdbb",
+              "#a1dab4",
               "#41b6c4",
-              "#2c7fb8",
-              "#253494"
+              "#2171b5",
+              "#253494",
+              "#081d58",
+              "#958d78"
             ]
           },
           "legend": {
-            "labelExpr": "(groupChoice == 'Mammals' ? [\"under 2%\", \"2%\\u20134%\", \"4%\\u20137%\", \"7%\\u201310%\", \"10%\\u201325%\", \"25% or more\"] : groupChoice == 'Reptiles' ? [\"under 50%\", \"50%\\u201390%\", \"90%\\u201393%\", \"93%\\u201396%\", \"96%\\u201398%\", \"98% or more\"] : [\"under 0.5%\", \"0.5%\\u20131%\", \"1%\\u20131.5%\", \"1.5%\\u20132%\", \"2%\\u20133%\", \"3% or more\"])[datum.value]",
+            "labelExpr": "(groupChoice == 'Mammals' ? [\"under 2%\", \"2%\\u20134%\", \"4%\\u20137%\", \"7%\\u201310%\", \"10%\\u201325%\", \"25% or more\", \"No separate figure\"] : groupChoice == 'Reptiles' ? [\"under 50%\", \"50%\\u201390%\", \"90%\\u201393%\", \"93%\\u201396%\", \"96%\\u201398%\", \"98% or more\", \"No separate figure\"] : [\"under 0.5%\", \"0.5%\\u20131%\", \"1%\\u20131.5%\", \"1.5%\\u20132%\", \"2%\\u20133%\", \"3% or more\", \"No separate figure\"])[datum.value]",
             "orient": "bottom-left",
             "direction": "vertical",
             "title": [
-              "Share of the",
-              "state’s handovers"
+              "Share of each state’s",
+              "handovers in this group"
             ],
             "symbolType": "square",
             "symbolSize": 220,
@@ -185,6 +190,9 @@
         {
           "calculate": "datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')",
           "as": "label"
+        },
+        {
+          "filter": "datum.state != 'Pulau Pinang' && datum.state != 'Perlis'"
         }
       ],
       "mark": {
@@ -206,7 +214,7 @@
         },
         "color": {
           "condition": {
-            "test": "datum.cls >= 4",
+            "test": "datum.cls >= 3",
             "value": "white"
           },
           "value": "#1f2d2a"
@@ -223,6 +231,45 @@
             "format": ".1%"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/state-anchors.json"
+      },
+      "transform": [
+        {
+          "filter": "datum.state == 'Pulau Pinang' || datum.state == 'Perlis'"
+        },
+        {
+          "calculate": "(groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds) / datum.total",
+          "as": "share"
+        },
+        {
+          "calculate": "datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 700,
+        "align": "right",
+        "dx": -12,
+        "color": "#1f2d2a"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
       }
     }
   ],

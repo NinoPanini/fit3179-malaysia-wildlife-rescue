@@ -88,18 +88,24 @@ wr('nwrc-intake-totals.json', [
 KIND = {'Confiscation': 'Into care', 'Handover': 'Into care', 'Admission / transfer': 'Into care',
         'Transfer for soft-release rehabilitation': 'Rehabilitation step', 'Forest walks started': 'Rehabilitation step',
         'Hard release': 'Release', 'First hard release': 'Release', 'Second hard release': 'Release',
-        'Recapture': 'Recaptured', 'Last reported signal': 'Last news', 'Mortality signal': 'Death signal',
-        'Location alert': 'Last news', 'Remains recovered': 'Death signal'}
+        'Recapture': 'Recaptured', 'Last reported signal': 'Last report', 'Mortality signal': 'Death reported',
+        'Location alert': 'Last report', 'Remains recovered': 'Death reported'}
+# Plain wording for collar and release terms shown on the chart (the report's own term stays in brackets).
+PLAIN = {'Hard release': 'Released to the forest (hard release)',
+         'First hard release': 'First release to the forest', 'Second hard release': 'Second release to the forest',
+         'Mortality signal': 'Collar signalled death', 'Last reported signal': 'Last collar signal',
+         'Location alert': 'Collar location alert', 'Transfer for soft-release rehabilitation': 'Moved to soft-release training',
+         'Admission / transfer': 'Admitted or transferred'}
 ev = []
 for r in rows('bsbcc_selected_case_timeline.csv'):
     # Month-only events are drawn at the start of the month; the label says the day is not reported.
     d = r['event_date'] if r['date_precision'] == 'day' else r['event_date'] + '-01'
-    ev.append({'bear': r['bear_name'], 'date': d, 'precision': r['date_precision'], 'event': r['event_type'],
+    ev.append({'bear': r['bear_name'], 'date': d, 'precision': r['date_precision'], 'event': PLAIN.get(r['event_type'], r['event_type']),
                'kind': KIND[r['event_type']], 'place': r['location_as_reported'], 'note': r['note'],
                'source': f"BSBCC {r['source_id'][-4:]}, {r['source_locator']}"})
 # Sika: BSBCC 2023 PDF p7 - mortality signal first received 5 March 2023; skeleton found 15-25 May.
-ev.append({'bear': 'Sika', 'date': '2023-03-05', 'precision': 'day', 'event': 'Mortality signal',
-           'kind': 'Death signal', 'place': 'Tabin Wildlife Reserve', 'note': 'First mortality signal; remains found 15-25 May',
+ev.append({'bear': 'Sika', 'date': '2023-03-05', 'precision': 'day', 'event': PLAIN['Mortality signal'],
+           'kind': 'Death reported', 'place': 'Tabin Wildlife Reserve', 'note': 'First mortality signal; remains found 15-25 May',
            'source': 'BSBCC 2023, PDF p7'})
 assert len(ev) == 23 and all(e['date'] >= '2021' for e in ev)
 for e in ev:
