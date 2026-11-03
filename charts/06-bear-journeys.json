@@ -115,7 +115,33 @@
                 "labelFontSize": 14,
                 "labelColor": "#1f2d2a",
                 "grid": true,
-                "labelExpr": "year(datum.value) > 2026 ? '' : datum.label"
+                "values": [
+                  {
+                    "year": 2021,
+                    "month": 1,
+                    "date": 1
+                  },
+                  {
+                    "year": 2022,
+                    "month": 1,
+                    "date": 1
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "date": 1
+                  },
+                  {
+                    "year": 2024,
+                    "month": 1,
+                    "date": 1
+                  },
+                  {
+                    "year": 2025,
+                    "month": 1,
+                    "date": 1
+                  }
+                ]
               },
               "scale": {
                 "domain": [

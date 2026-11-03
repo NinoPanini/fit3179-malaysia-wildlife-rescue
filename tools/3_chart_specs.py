@@ -295,7 +295,7 @@ save('06-bear-journeys.json', {
                          {'name': 'kindPick', 'select': {'type': 'point', 'fields': ['kind']}, 'bind': 'legend'}],
               'mark': {'type': 'point', 'filled': True, 'size': 140, 'stroke': PAPER, 'strokeWidth': 1, 'cursor': 'pointer'},
               'encoding': {'x': {'field': 'date', **XT, 'scale': {'domain': ['2020-12-01', '2027-03-01']},
-                                 'axis': {**XT['axis'], 'labelExpr': "year(datum.value) > 2026 ? '' : datum.label"}},
+                                 'axis': {**XT['axis'], 'values': [{'year': y, 'month': 1, 'date': 1} for y in range(2021, 2026)]}},   # only years with events; the space on the right holds the notes
                            'shape': {'field': 'kind', 'type': 'nominal', 'title': None, 'scale': SHAPES, 'legend': LEG},
                            'color': {'field': 'kind', 'type': 'nominal', 'title': None, 'scale': KCOLS, 'legend': LEG},
                            'opacity': {'condition': {'param': 'kindPick', 'value': 1}, 'value': 0.12},
