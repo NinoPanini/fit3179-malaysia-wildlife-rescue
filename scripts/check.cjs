@@ -121,20 +121,17 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
       const startBars = items('rect').filter(b => b.datum && b.datum.month && b.datum.origin_group);
       assert.equal(sum(startBars.map(b => b.datum), 'placements'), 57, 'Monthly start segments account for all 57 placements');
       assert.equal(sum(startBars.filter(b => b.datum.month === 'Mar').map(b => b.datum), 'placements'), 12, 'March has 12 starts');
-      const stays = () => items('rect').filter(b => b.datum && b.datum.stay !== undefined);
-      assert.equal(sum(stays().map(b => b.datum), 'placements'), 57, 'All placements appear in the length-of-stay columns');
-      const perStay = Object.fromEntries(stays().map(b => [b.datum.stay, b.datum.placements]));
-      assert.deepEqual(['Under 2 weeks', 'Exactly 2 weeks', '2 to 4 weeks', 'Over 4 weeks'].map(k => perStay[k]), [19, 19, 10, 9], 'Counts for each length of stay');
+      const dots = () => { const out = []; (function walk(n) { if (n.marktype === 'symbol' && n.role === 'mark') out.push(...n.items); for (const i of n.items || []) walk(i); })(view.scenegraph().root); return out.filter(d => d.datum && d.datum.placement); };
+      assert.equal(dots().length, 57, 'Chart 12 draws one person figure per placement');
+      const rowCount = Object.fromEntries(items('text').filter(t => t.datum && t.datum.stay && t.datum.n).map(t => [t.datum.stay, t.datum.n]));
+      assert.deepEqual(['Under 2 weeks', 'Exactly 2 weeks', '2 to 4 weeks', 'Over 4 weeks'].map(k => rowCount[k]), [19, 19, 10, 9], 'Printed count for each length of stay');
       for (const month of ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']) {
         await view.signal('selectedMonth', month).runAsync();
-        // Refresh the scenegraph references after a signal changes the histogram.
-        const bars = [];
-        (function walk(n) { if (n.marktype === 'rect' && n.role === 'mark') bars.push(...n.items); for (const i of n.items || []) walk(i); })(view.scenegraph().root);
-        const bins = bars.filter(b => b.datum && b.datum.stay !== undefined);
         const monthIndex = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(month) + 1;
-        const expected = placements.filter(p => Number(p.start.slice(5,7)) === monthIndex);
-        assert.equal(sum(bins.map(b => b.datum), 'placements'), expected.length, `${month}: selected histogram counts every start`);
-        assert.equal(bins.length, 4, `${month}: keep all four length-of-stay columns, including zeros`);
+        const expected = placements.filter(p => Number(p.start.slice(5,7)) === monthIndex).length;
+        const solid = dots().filter(d => d.fill === '#2f4858' || d.fill === '#8a8270');   // the others are outlines
+        assert.equal(solid.length, expected, `${month}: chart 12 fills every placement that started that month`);
+        assert.equal(dots().length, 57, `${month}: chart 12 still shows all 57 figures`);
       }
       await view.signal('selectedMonth', 'All months').runAsync();
     }

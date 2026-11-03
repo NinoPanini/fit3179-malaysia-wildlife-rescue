@@ -15,7 +15,7 @@ The study uses separate public records to explain four parts of wildlife care. E
 3. **Return.** Where are rehabilitated animals released?
 4. **People.** Who gives their time to support this work?
 
-The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a connected-dot comparison of state handovers, a heatmap of when each animal group arrives at the rescue centre, bear event timelines, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to a chart of stay lengths. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
+The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a connected-dot comparison of state handovers, a heatmap of when each animal group arrives at the rescue centre, bear event timelines, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to an isotype of how long each placement lasted. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
 
 ## Data sources
 
@@ -38,7 +38,7 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 
 **Accessibility.** Categories use the Okabe–Ito palette and amounts use ColorBrewer YlGnBu. Every colour distinction is repeated with labels, shapes or line styles. The main datasets can also be opened as data tables, for keyboard and screen-reader users.
 
-**Validation.** `npm run check` compiles and runs every chart. It confirms report totals, geographic joins, Sankey flows, treemap and length-of-stay counts and the key figures quoted in the text.
+**Validation.** `npm run check` compiles and runs every chart. It confirms report totals, geographic joins, Sankey flows, treemap blocks, the placement figures and the key figures quoted in the text.
 
 ## Limitations
 

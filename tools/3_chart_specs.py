@@ -560,32 +560,35 @@ save('10-volunteer-origins.json', {
 
 # ---- 11 Monthly placement starts + 12 linked lengths of stay -----------
 # Counts come from the same 57 anonymised placements; starts are not occupancy.
-# Stays are grouped in plain-language lengths. The report's placements cluster at fixed programme
-# lengths (11 and 14 days most often), so "two weeks" gets its own column.
+month_filter = {'filter': "selectedMonth == 'All months' || datum.month == selectedMonth"}
+# Chart 12 is an isotype: one person figure per placement, in a row for each length of stay.
+# Within a row, volunteers from Malaysia come first, then a gap, then other countries.
 STAYS = ['Under 2 weeks', 'Exactly 2 weeks', '2 to 4 weeks', 'Over 4 weeks']
 STAY_DAYS = {'Under 2 weeks': '11–13 days', 'Exactly 2 weeks': '14 days', '2 to 4 weeks': '15–28 days', 'Over 4 weeks': '29–39 days'}
-HX = {'field': 'stay', 'type': 'ordinal', 'scale': {'domain': STAYS, 'paddingInner': 0.25, 'paddingOuter': 0.12},
-      'axis': {'title': None, 'labelAngle': 0, 'labelFontSize': 13, 'labelColor': INK,
-               'labelExpr': '[datum.value, ' + json.dumps(STAY_DAYS) + '[datum.value]]'}}   # second line: the days in each column
-month_filter = {'filter': "selectedMonth == 'All months' || datum.month == selectedMonth"}
-duration_counts = [month_filter,
-    {'calculate': "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'", 'as': 'stay'},
-    {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['stay']},
-    {'impute': 'placements', 'key': 'stay', 'keyvals': STAYS, 'value': 0}]
+stay_of = "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'"
+PERSON = 'M0,-1A.3,.3 0 1,1 0,-.4A.3,.3 0 1,1 0,-1ZM-.55,1L-.55,.05Q-.55,-.3 -.25,-.3L.25,-.3Q.55,-.3 .55,.05L.55,1Z'   # head and body, drawn here
+figures = [
+    {'calculate': stay_of, 'as': 'stay'},
+    {'window': [{'op': 'row_number', 'as': 'k'}], 'groupby': ['stay'], 'sort': [{'field': 'origin_group'}, {'field': 'start'}]},
+    {'calculate': "datum.k - 1 + (datum.origin_group == 'Malaysia' ? 0 : 1)", 'as': 'slot'}]   # +1 leaves the gap
+SY = {'field': 'stay', 'type': 'ordinal', 'scale': {'domain': STAYS}, 'title': None,
+      'axis': {'labelFontSize': 13.5, 'labelColor': INK, 'labelPadding': 10, 'ticks': False, 'domain': False,
+               'labelExpr': '[datum.value, ' + json.dumps(STAY_DAYS) + '[datum.value]]'}}   # second line: the days in each row
+SX = {'field': 'slot', 'type': 'quantitative', 'scale': {'domain': [-0.6, 21.8], 'nice': False}, 'axis': None}
 monthly_counts = [
     {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['month', 'origin_group']},
     {'calculate': "datum.origin_group == 'Malaysia' ? 0 : 1", 'as': 'group_order'},
     {'stack': 'placements', 'groupby': ['month'], 'sort': [{'field': 'group_order'}], 'as': ['bottom', 'top']},
     {'calculate': '(datum.bottom + datum.top) / 2', 'as': 'middle'}]
 save('11-placement-months.json', {
-    'description': 'Monthly volunteer placement starts, split by origin, linked to a column chart of four stay lengths. All counts are labelled. Select a month by click or menu; All months resets.',
+    'description': 'Monthly volunteer placement starts, split by origin, linked to an isotype of stay lengths (one person figure per placement). All counts are labelled. Select a month by click or menu; All months resets.',
     'usermeta': {'fitWidth': 1100, 'mobileStack': True},
     'data': {'url': 'data/bsbcc-placements-2025.json'},
     'transform': [{'calculate': "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][toNumber(substring(datum.start, 5, 7)) - 1]", 'as': 'month'}],
     'params': [{'name': 'selectedMonth', 'value': 'All months',
                 'bind': {'input': 'select', 'options': ['All months'] + MONTHS, 'name': 'Month: ', 'element': '#placement-control'}}],
     'hconcat': [
-        {'width': 560, 'height': 300,
+        {'width': 480, 'height': 300,
          'title': {'text': '11 · When did placements start?', 'subtitle': '2025 · Monthly starts', 'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'encoding': {'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                             'axis': {'title': 'Start month · 2025', 'labelAngle': 0, 'labelFontSize': 13}},
@@ -598,7 +601,6 @@ save('11-placement-months.json', {
                            'color': {'field': 'origin_group', 'type': 'nominal', 'title': None,
                                      'scale': {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]},
                                      'legend': {'orient': 'top', 'symbolType': 'square', 'labelFontSize': 14}},
-                           'opacity': {'condition': {'test': "selectedMonth == 'All months' || datum.month == selectedMonth", 'value': 1}, 'value': 0.3},
                            'tooltip': [{'field': 'month', 'title': 'Start month'}, {'field': 'origin_group', 'title': 'Origin'},
                                        {'field': 'placements', 'title': 'Placements in this group', 'type': 'quantitative'}]}},
              {'transform': monthly_counts,
@@ -608,26 +610,28 @@ save('11-placement-months.json', {
              {'transform': [{'aggregate': [{'op': 'count', 'as': 'total'}], 'groupby': ['month']}],
               'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700, 'cursor': 'pointer'},
               'encoding': {'y': {'field': 'total', 'type': 'quantitative'}, 'text': {'field': 'total'}}},
+             # the chosen month gets a dark outline; no fading, so the page keeps two colours only
+             {'transform': [{'aggregate': [{'op': 'count', 'as': 'total'}], 'groupby': ['month']}, {'filter': 'datum.month == selectedMonth'}],
+              'mark': {'type': 'bar', 'fillOpacity': 0, 'stroke': INK, 'strokeWidth': 3},
+              'encoding': {'y': {'field': 'total', 'type': 'quantitative'}, 'y2': {'datum': 0}}},
          ]},
-        {'width': 360, 'height': 300,
-         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'All 57 placements · 2025' : 'Placements starting in ' + selectedMonth + ' · 2025'"},
+        {'width': 400, 'height': 280,
+         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'Each figure is one placement · 38 of 57 stayed two weeks or less' : 'Solid: placements starting in ' + selectedMonth + ' · outline: other months'"},
                    'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
-         'transform': duration_counts,
-         'encoding': {'x': HX, 'y': {'field': 'placements', 'type': 'quantitative', 'title': 'Placements',
-                                    'scale': {'domain': [0, 25]}, 'axis': {'values': [0, 5, 10, 15, 20]}},
-                      'tooltip': [{'field': 'stay', 'title': 'Length of stay'}, {'field': 'placements', 'title': 'Placements', 'type': 'quantitative'}]},
          'layer': [
-             {'data': {'values': [{}]},   # shaded band behind the two columns of two weeks or less
-              'mark': {'type': 'rect', 'color': '#e6e0cf'},
-              'encoding': {'x': {'datum': 'Under 2 weeks', 'bandPosition': -0.12}, 'x2': {'datum': 'Exactly 2 weeks', 'bandPosition': 1.12}, 'y': {'value': 0}, 'y2': {'value': 'height'}, 'tooltip': None}},
-             {'transform': [{'joinaggregate': [{'op': 'sum', 'field': 'placements', 'as': 'all'}]},
-                            {'filter': "datum.stay == 'Under 2 weeks' || datum.stay == 'Exactly 2 weeks'"},
-                            {'aggregate': [{'op': 'sum', 'field': 'placements', 'as': 'short'}, {'op': 'max', 'field': 'all', 'as': 'all'}]},
-                            {'calculate': "[datum.short + ' of ' + datum.all + ' stayed', 'two weeks or less']", 'as': 't'}],
-              'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 6, 'fontSize': 13, 'fontWeight': 700, 'lineHeight': 16, 'color': INK},
-              'encoding': {'x': {'datum': 'Under 2 weeks'}, 'y': {'value': 6}, 'text': {'field': 't'}, 'tooltip': None}},
-             {'mark': {'type': 'bar', 'color': MY}},
-             {'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700}, 'encoding': {'text': {'field': 'placements'}}},
+             # figures from the chosen month (or all) are solid; the rest become outlines in the same colour
+             *[{'transform': figures + [{'filter': ('' if solid else '!') + "(selectedMonth == 'All months' || datum.month == selectedMonth)"}],
+                'mark': {'type': 'point', 'shape': PERSON, 'filled': solid, 'opacity': 1, 'size': 330, 'strokeWidth': 0 if solid else 1.2, 'cursor': 'pointer'},
+                'encoding': {'x': SX, 'y': SY,
+                             'color': {'field': 'origin_group', 'type': 'nominal', 'title': None, 'scale': {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]},
+                                       'legend': {'orient': 'top', 'symbolType': 'square', 'labelFontSize': 14}},   # shared with chart 11: one legend
+                             'tooltip': [{'field': 'origin', 'title': 'Listed origin'}, {'field': 'start', 'title': 'Start date'},
+                                         {'field': 'days', 'type': 'quantitative', 'title': 'Days on site'}]}}
+               for solid in (True, False)],
+             {'transform': [{'calculate': stay_of, 'as': 'stay'}, {'aggregate': [{'op': 'count', 'as': 'n'}], 'groupby': ['stay']},
+                            {'calculate': 'datum.n + 0.6', 'as': 'end'}],   # count printed at the end of each row
+              'mark': {'type': 'text', 'align': 'left', 'fontSize': 16, 'fontWeight': 700, 'color': INK},
+              'encoding': {'x': {'field': 'end', 'type': 'quantitative'}, 'y': SY, 'text': {'field': 'n'}}},
          ]},
     ],
     'spacing': 44,

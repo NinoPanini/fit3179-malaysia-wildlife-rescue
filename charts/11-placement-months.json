@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Monthly volunteer placement starts, split by origin, linked to a column chart of four stay lengths. All counts are labelled. Select a month by click or menu; All months resets.",
+  "description": "Monthly volunteer placement starts, split by origin, linked to an isotype of stay lengths (one person figure per placement). All counts are labelled. Select a month by click or menu; All months resets.",
   "usermeta": {
     "fitWidth": 1100,
     "mobileStack": true
@@ -42,7 +42,7 @@
   ],
   "hconcat": [
     {
-      "width": 560,
+      "width": 480,
       "height": 300,
       "title": {
         "text": "11 · When did placements start?",
@@ -165,13 +165,6 @@
                 "labelFontSize": 14
               }
             },
-            "opacity": {
-              "condition": {
-                "test": "selectedMonth == 'All months' || datum.month == selectedMonth",
-                "value": 1
-              },
-              "value": 0.3
-            },
             "tooltip": [
               {
                 "field": "month",
@@ -280,207 +273,338 @@
               "field": "total"
             }
           }
+        },
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {
+                  "op": "count",
+                  "as": "total"
+                }
+              ],
+              "groupby": [
+                "month"
+              ]
+            },
+            {
+              "filter": "datum.month == selectedMonth"
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "fillOpacity": 0,
+            "stroke": "#1f2d2a",
+            "strokeWidth": 3
+          },
+          "encoding": {
+            "y": {
+              "field": "total",
+              "type": "quantitative"
+            },
+            "y2": {
+              "datum": 0
+            }
+          }
         }
       ]
     },
     {
-      "width": 360,
-      "height": 300,
+      "width": 400,
+      "height": 280,
       "title": {
         "text": "12 · How long did they stay?",
         "subtitle": {
-          "expr": "selectedMonth == 'All months' ? 'All 57 placements · 2025' : 'Placements starting in ' + selectedMonth + ' · 2025'"
+          "expr": "selectedMonth == 'All months' ? 'Each figure is one placement · 38 of 57 stayed two weeks or less' : 'Solid: placements starting in ' + selectedMonth + ' · outline: other months'"
         },
         "fontSize": 17,
         "subtitleFontSize": 13,
         "offset": 18
       },
-      "transform": [
-        {
-          "filter": "selectedMonth == 'All months' || datum.month == selectedMonth"
-        },
-        {
-          "calculate": "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'",
-          "as": "stay"
-        },
-        {
-          "aggregate": [
-            {
-              "op": "count",
-              "as": "placements"
-            }
-          ],
-          "groupby": [
-            "stay"
-          ]
-        },
-        {
-          "impute": "placements",
-          "key": "stay",
-          "keyvals": [
-            "Under 2 weeks",
-            "Exactly 2 weeks",
-            "2 to 4 weeks",
-            "Over 4 weeks"
-          ],
-          "value": 0
-        }
-      ],
-      "encoding": {
-        "x": {
-          "field": "stay",
-          "type": "ordinal",
-          "scale": {
-            "domain": [
-              "Under 2 weeks",
-              "Exactly 2 weeks",
-              "2 to 4 weeks",
-              "Over 4 weeks"
-            ],
-            "paddingInner": 0.25,
-            "paddingOuter": 0.12
-          },
-          "axis": {
-            "title": null,
-            "labelAngle": 0,
-            "labelFontSize": 13,
-            "labelColor": "#1f2d2a",
-            "labelExpr": "[datum.value, {\"Under 2 weeks\": \"11\\u201313 days\", \"Exactly 2 weeks\": \"14 days\", \"2 to 4 weeks\": \"15\\u201328 days\", \"Over 4 weeks\": \"29\\u201339 days\"}[datum.value]]"
-          }
-        },
-        "y": {
-          "field": "placements",
-          "type": "quantitative",
-          "title": "Placements",
-          "scale": {
-            "domain": [
-              0,
-              25
-            ]
-          },
-          "axis": {
-            "values": [
-              0,
-              5,
-              10,
-              15,
-              20
-            ]
-          }
-        },
-        "tooltip": [
-          {
-            "field": "stay",
-            "title": "Length of stay"
-          },
-          {
-            "field": "placements",
-            "title": "Placements",
-            "type": "quantitative"
-          }
-        ]
-      },
       "layer": [
         {
-          "data": {
-            "values": [
-              {}
-            ]
-          },
+          "transform": [
+            {
+              "calculate": "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'",
+              "as": "stay"
+            },
+            {
+              "window": [
+                {
+                  "op": "row_number",
+                  "as": "k"
+                }
+              ],
+              "groupby": [
+                "stay"
+              ],
+              "sort": [
+                {
+                  "field": "origin_group"
+                },
+                {
+                  "field": "start"
+                }
+              ]
+            },
+            {
+              "calculate": "datum.k - 1 + (datum.origin_group == 'Malaysia' ? 0 : 1)",
+              "as": "slot"
+            },
+            {
+              "filter": "(selectedMonth == 'All months' || datum.month == selectedMonth)"
+            }
+          ],
           "mark": {
-            "type": "rect",
-            "color": "#e6e0cf"
+            "type": "point",
+            "shape": "M0,-1A.3,.3 0 1,1 0,-.4A.3,.3 0 1,1 0,-1ZM-.55,1L-.55,.05Q-.55,-.3 -.25,-.3L.25,-.3Q.55,-.3 .55,.05L.55,1Z",
+            "filled": true,
+            "opacity": 1,
+            "size": 330,
+            "strokeWidth": 0,
+            "cursor": "pointer"
           },
           "encoding": {
             "x": {
-              "datum": "Under 2 weeks",
-              "bandPosition": -0.12
-            },
-            "x2": {
-              "datum": "Exactly 2 weeks",
-              "bandPosition": 1.12
+              "field": "slot",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.6,
+                  21.8
+                ],
+                "nice": false
+              },
+              "axis": null
             },
             "y": {
-              "value": 0
+              "field": "stay",
+              "type": "ordinal",
+              "scale": {
+                "domain": [
+                  "Under 2 weeks",
+                  "Exactly 2 weeks",
+                  "2 to 4 weeks",
+                  "Over 4 weeks"
+                ]
+              },
+              "title": null,
+              "axis": {
+                "labelFontSize": 13.5,
+                "labelColor": "#1f2d2a",
+                "labelPadding": 10,
+                "ticks": false,
+                "domain": false,
+                "labelExpr": "[datum.value, {\"Under 2 weeks\": \"11\\u201313 days\", \"Exactly 2 weeks\": \"14 days\", \"2 to 4 weeks\": \"15\\u201328 days\", \"Over 4 weeks\": \"29\\u201339 days\"}[datum.value]]"
+              }
             },
-            "y2": {
-              "value": "height"
+            "color": {
+              "field": "origin_group",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "Malaysia",
+                  "Other countries"
+                ],
+                "range": [
+                  "#2f4858",
+                  "#8a8270"
+                ]
+              },
+              "legend": {
+                "orient": "top",
+                "symbolType": "square",
+                "labelFontSize": 14
+              }
             },
-            "tooltip": null
+            "tooltip": [
+              {
+                "field": "origin",
+                "title": "Listed origin"
+              },
+              {
+                "field": "start",
+                "title": "Start date"
+              },
+              {
+                "field": "days",
+                "type": "quantitative",
+                "title": "Days on site"
+              }
+            ]
           }
         },
         {
           "transform": [
             {
-              "joinaggregate": [
+              "calculate": "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'",
+              "as": "stay"
+            },
+            {
+              "window": [
                 {
-                  "op": "sum",
-                  "field": "placements",
-                  "as": "all"
+                  "op": "row_number",
+                  "as": "k"
+                }
+              ],
+              "groupby": [
+                "stay"
+              ],
+              "sort": [
+                {
+                  "field": "origin_group"
+                },
+                {
+                  "field": "start"
                 }
               ]
             },
             {
-              "filter": "datum.stay == 'Under 2 weeks' || datum.stay == 'Exactly 2 weeks'"
+              "calculate": "datum.k - 1 + (datum.origin_group == 'Malaysia' ? 0 : 1)",
+              "as": "slot"
+            },
+            {
+              "filter": "!(selectedMonth == 'All months' || datum.month == selectedMonth)"
+            }
+          ],
+          "mark": {
+            "type": "point",
+            "shape": "M0,-1A.3,.3 0 1,1 0,-.4A.3,.3 0 1,1 0,-1ZM-.55,1L-.55,.05Q-.55,-.3 -.25,-.3L.25,-.3Q.55,-.3 .55,.05L.55,1Z",
+            "filled": false,
+            "opacity": 1,
+            "size": 330,
+            "strokeWidth": 1.2,
+            "cursor": "pointer"
+          },
+          "encoding": {
+            "x": {
+              "field": "slot",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -0.6,
+                  21.8
+                ],
+                "nice": false
+              },
+              "axis": null
+            },
+            "y": {
+              "field": "stay",
+              "type": "ordinal",
+              "scale": {
+                "domain": [
+                  "Under 2 weeks",
+                  "Exactly 2 weeks",
+                  "2 to 4 weeks",
+                  "Over 4 weeks"
+                ]
+              },
+              "title": null,
+              "axis": {
+                "labelFontSize": 13.5,
+                "labelColor": "#1f2d2a",
+                "labelPadding": 10,
+                "ticks": false,
+                "domain": false,
+                "labelExpr": "[datum.value, {\"Under 2 weeks\": \"11\\u201313 days\", \"Exactly 2 weeks\": \"14 days\", \"2 to 4 weeks\": \"15\\u201328 days\", \"Over 4 weeks\": \"29\\u201339 days\"}[datum.value]]"
+              }
+            },
+            "color": {
+              "field": "origin_group",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "Malaysia",
+                  "Other countries"
+                ],
+                "range": [
+                  "#2f4858",
+                  "#8a8270"
+                ]
+              },
+              "legend": {
+                "orient": "top",
+                "symbolType": "square",
+                "labelFontSize": 14
+              }
+            },
+            "tooltip": [
+              {
+                "field": "origin",
+                "title": "Listed origin"
+              },
+              {
+                "field": "start",
+                "title": "Start date"
+              },
+              {
+                "field": "days",
+                "type": "quantitative",
+                "title": "Days on site"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "calculate": "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'",
+              "as": "stay"
             },
             {
               "aggregate": [
                 {
-                  "op": "sum",
-                  "field": "placements",
-                  "as": "short"
-                },
-                {
-                  "op": "max",
-                  "field": "all",
-                  "as": "all"
+                  "op": "count",
+                  "as": "n"
                 }
+              ],
+              "groupby": [
+                "stay"
               ]
             },
             {
-              "calculate": "[datum.short + ' of ' + datum.all + ' stayed', 'two weeks or less']",
-              "as": "t"
+              "calculate": "datum.n + 0.6",
+              "as": "end"
             }
           ],
           "mark": {
             "type": "text",
             "align": "left",
-            "baseline": "top",
-            "dx": 6,
-            "fontSize": 13,
+            "fontSize": 16,
             "fontWeight": 700,
-            "lineHeight": 16,
             "color": "#1f2d2a"
           },
           "encoding": {
             "x": {
-              "datum": "Under 2 weeks"
+              "field": "end",
+              "type": "quantitative"
             },
             "y": {
-              "value": 6
+              "field": "stay",
+              "type": "ordinal",
+              "scale": {
+                "domain": [
+                  "Under 2 weeks",
+                  "Exactly 2 weeks",
+                  "2 to 4 weeks",
+                  "Over 4 weeks"
+                ]
+              },
+              "title": null,
+              "axis": {
+                "labelFontSize": 13.5,
+                "labelColor": "#1f2d2a",
+                "labelPadding": 10,
+                "ticks": false,
+                "domain": false,
+                "labelExpr": "[datum.value, {\"Under 2 weeks\": \"11\\u201313 days\", \"Exactly 2 weeks\": \"14 days\", \"2 to 4 weeks\": \"15\\u201328 days\", \"Over 4 weeks\": \"29\\u201339 days\"}[datum.value]]"
+              }
             },
             "text": {
-              "field": "t"
-            },
-            "tooltip": null
-          }
-        },
-        {
-          "mark": {
-            "type": "bar",
-            "color": "#2f4858"
-          }
-        },
-        {
-          "mark": {
-            "type": "text",
-            "dy": -9,
-            "fontSize": 15,
-            "fontWeight": 700
-          },
-          "encoding": {
-            "text": {
-              "field": "placements"
+              "field": "n"
             }
           }
         }

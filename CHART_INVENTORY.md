@@ -2,7 +2,7 @@
 
 Updated 3 November 2026 after a first-view readability review: each chart must be understandable from what it shows before the caption is read or a tooltip is opened.
 
-The site has **12 numbered charts** and **8 advanced idioms**, including three different map idioms. Basic idioms are classified using the unit's own definitions: the brief lists bar, stacked bar, grouped bar, dot plots, line, area, pie, scatter and bubble charts as basic, and Course Notes 4 (section 2.2.2) treats dumbbell and connected dot plots as dot plots.
+The site has **12 numbered charts** and **9 advanced idioms**, including three different map idioms. Basic idioms are classified using the unit's own definitions: the brief lists bar, stacked bar, grouped bar, dot plots, line, area, pie, scatter and bubble charts as basic, and Course Notes 4 (section 2.2.2) treats dumbbell and connected dot plots as dot plots.
 
 | Chart | Question | Idiom | Classification |
 |---|---|---|---|
@@ -17,7 +17,7 @@ The site has **12 numbered charts** and **8 advanced idioms**, including three d
 | 09 | How did volunteers and interns change over time? | Multi-line chart | Basic |
 | 10 | Where did volunteers come from? | Treemap (block area = placements) | Advanced 8 |
 | 11 | When did placements start? | Stacked columns by month and origin | Basic (stacked bar) |
-| 12 | How long did placements last? | Column chart of four plain-language stay lengths | Basic (bar) |
+| 12 | How long did placements last, and who stayed how long? | Isotype: one person figure per placement, one row per length of stay, Malaysia first | Advanced 9 |
 
 The national-total bars beside chart 04 and the Sabah locator map are supporting context and are not counted. Selections, tooltips, pictograms and repeated panels do not create extra idioms.
 
@@ -28,9 +28,9 @@ The national-total bars beside chart 04 and the Sabah locator map are supporting
 - **10** replaced a lollipop chart. The Malaysia block fills almost half the area, which is the chart's message; every block carries its country and count. The layout is calculated in `tools/2_chart_data.py` with the squarified treemap algorithm (Bruls et al., 2000), in the same way as the Sankey layout.
 - **11** replaced a Gantt chart of individual placements, which readers did not recognise. Monthly starts are split by origin and every segment is labelled. These are starts, not the number of volunteers present in a month.
 - **05** previously coloured raw counts on one scale. The rows differ in size by about 150 times (75 mammals against 10,968 reptiles in 2024), so the colours mainly repeated chart 01's message that reptiles dominate, and two months hid everything else. Each row is now normalised to its own published year total, and the cell prints the same percentage that sets its colour. The rows now show timing: reptiles arrive in one or two waves (58% in August 2023; 46% in September and 48% in December 2024), while no month brings in 20% of a year's mammals. A ridgeline of the same shares was considered; it shows the wave shapes, but it reads as an area chart, smooths between months, and makes zero and the missing December 2023 harder to see.
-- **12** replaced week-wide histogram bins and then a one-column-per-day histogram, neither of which read clearly. It now has four labelled columns, each with its day range: under 2 weeks (11–13 days), exactly 2 weeks (14 days), 2 to 4 weeks (15–28) and over 4 weeks (29–39). The columns are categories of unequal width, so they are spaced as a bar chart rather than drawn as a histogram. A shaded band over the first two states how many of the shown placements stayed two weeks or less. A month menu or a click on a chart 11 column filters it; All months restores the full year.
+- **12** went through week-wide histogram bins, a one-column-per-day histogram, a four-column bar chart and a stacked-dot unit chart; each either hid the pattern or needed the caption to decode. It is now an isotype: every placement is one person figure, in a row for each plain-language length of stay (under 2 weeks, exactly 2 weeks, 2 to 4 weeks, over 4 weeks, with the days under each label) and the count at the end of the row. Within each row, volunteers from Malaysia come first, then a gap, then other countries, so origin is shown by position as well as colour. At a glance: 38 of 57 stayed two weeks or less, most Malaysians came for exactly two weeks, and most volunteers from other countries stayed under two weeks or over four. Choosing a month keeps the other figures as outlines in the same colour, and outlines the chosen column in chart 11; nothing fades, so the charts only ever use the two origin colours. The isotype is used only here, so chart 09 stays a line chart.
 - **03** uses a deeper top class so the two darkest colours stay distinct for colour-blind readers; every state also prints its percentage.
 
 ## Verification
 
-`npm run check` compiles all 13 specifications, validates the source totals, verifies the 24 state-comparison endpoints, the missing heatmap values, the reptile shares in chart 05, the nine treemap blocks (57 placements), the four length-of-stay counts and every month's counts against the original placement records. Browser review covers visible labels, menu and column selection, reset, and the 1280 and 1024 px laptop layouts with no sideways scrolling.
+`npm run check` compiles all 13 specifications, validates the source totals, verifies the 24 state-comparison endpoints, the missing heatmap values, the reptile shares in chart 05, the nine treemap blocks (57 placements), the 57 figures and four row counts in chart 12, and every month's highlighted placements against the original placement records. Browser review covers visible labels, menu and column selection, reset, and the 1280 and 1024 px laptop layouts with no sideways scrolling.
