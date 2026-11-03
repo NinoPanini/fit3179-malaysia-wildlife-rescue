@@ -134,8 +134,7 @@ save('02-handover-map.json', {
              'latitude': {'field': 'x_lat', 'type': 'quantitative'},
              'size': {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over',
                       'scale': {'range': [0, 1900], 'zero': True},
-                      'legend': {'values': [300, 1000, 2500], 'orient': 'bottom-left', 'symbolFillColor': MARK,
-                                 'symbolOpacity': 1, 'labelExpr': "format(datum.value, ',')"}},
+                      'legend': None},   # every circle is labelled with its count, so no size key is needed
              'tooltip': [{'field': 'state', 'type': 'nominal', 'title': 'Reporting state'},
                          {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','},
                          {'field': 'reptiles', 'type': 'quantitative', 'title': 'Reptiles', 'format': ','},
@@ -170,6 +169,19 @@ def _labels(b, density=False):
 LEGEND_EXPR = ("(" + " : ".join(f"groupChoice == '{g}' ? " + json.dumps(_labels(BREAKS[g], g == 'All animals')) for g in GROUPS_03[:-1]) +
                " : " + json.dumps(_labels(BREAKS['Birds'])) + ")[datum.value]")
 LABEL_03 = ("groupChoice == 'All animals' ? format(datum.share, ',.0f') : datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')")
+COUNT_03 = ("groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : "
+            "groupChoice == 'Birds' ? datum.birds : datum.total")
+# Tooltip, legend heading and (in js/app.js) the chart heading all follow the "Show" menu, so only the chosen
+# measure and its units are shown. A Vega tooltip can be an object, so its rows change with the view.
+def _tip(g):
+    if g == 'All animals':
+        return ("{'State': datum.name, 'Animals per 1,000 km²': format(datum.per_1000_km2, ',.0f'), "
+                "'Animals handed over': format(datum.total, ','), 'Land area (km²)': format(datum.area_km2, ',')}")
+    return (f"{{'State': datum.name, 'Share that were {g.lower()}': format(datum.share, '.1%'), "
+            f"'{g} handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')}}")
+TIP_03 = " : ".join(f"groupChoice == '{g}' ? {_tip(g)}" for g in GROUPS_03[:-1]) + " : " + _tip(GROUPS_03[-1])
+LEGEND_TITLE_03 = ("groupChoice == 'All animals' ? 'Animals handed over per 1,000 km² of land' : "
+                   "'Share of each state’s handovers that were ' + lower(groupChoice)")
 save('03-group-share-map.json', {
     'description': "Choropleth: animals handed over per 1,000 km2 in each state (default), or the chosen animal group's share of each state's 2024 handovers, in fixed classes.",
     'width': 'container', 'height': 470, 'padding': {'left': 72, 'top': 5, 'right': 5, 'bottom': 5},
@@ -185,33 +197,31 @@ save('03-group-share-map.json', {
                                                               'fields': ['reptiles', 'mammals', 'birds', 'total', 'area_km2', 'per_1000_km2']}},
                        {'filter': 'isValid(datum.total)'},
                        {'calculate': share, 'as': 'share'},
-                       {'calculate': "groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : groupChoice == 'Birds' ? datum.birds : datum.total", 'as': 'count'},
+                       {'calculate': COUNT_03, 'as': 'count'},
                        {'calculate': cls, 'as': 'cls'}],
-         'mark': {'type': 'geoshape', 'stroke': BORDER, 'strokeWidth': 0.9},
+         'mark': {'type': 'geoshape', 'stroke': BORDER, 'strokeWidth': 0.9, 'tooltip': {'expr': TIP_03}},
          'encoding': {
              'color': {'field': 'cls', 'type': 'ordinal', 'title': 'Colour class (classes change with the view)',
                        'scale': {'domain': [0, 1, 2, 3, 4, 5], 'range': SEQ},
-                       'legend': {'labelExpr': LEGEND_EXPR, 'orient': 'bottom', 'direction': 'horizontal', 'columns': 4, 'title': ['All animals: animals per 1,000 km² of land', 'One group: share of the state’s handovers'],
+                       'legend': {'labelExpr': LEGEND_EXPR, 'orient': 'bottom', 'direction': 'horizontal', 'columns': 4, 'title': None, 'offset': 34,
                                   'symbolType': 'square', 'symbolSize': 220, 'symbolStrokeColor': '#9c9686', 'symbolStrokeWidth': 0.5,
-                                  'labelLimit': 160, 'titleLimit': 420, 'columnPadding': 14}},
-             'tooltip': [{'field': 'name', 'type': 'nominal', 'title': 'State'},
-                         {'field': 'count', 'type': 'quantitative', 'title': 'Animals (chosen view)', 'format': ','},
-                         {'field': 'total', 'type': 'quantitative', 'title': 'All animals handed over', 'format': ','},
-                         {'field': 'area_km2', 'type': 'quantitative', 'title': 'Land area (km²)', 'format': ','},
-                         {'field': 'per_1000_km2', 'type': 'quantitative', 'title': 'All animals per 1,000 km²', 'format': ',.0f'}]}},
+                                  'labelLimit': 160, 'columnPadding': 14}}}},
+        # the legend heading is a text mark, because a legend title cannot change with the menu
+        {'data': {'values': [{}]},
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'fontSize': 13, 'fontWeight': 600, 'color': INK},
+         'encoding': {'x': {'value': 0}, 'y': {'value': {'expr': 'height + 10'}}, 'text': {'value': {'expr': LEGEND_TITLE_03}}}},
         leader_lines(SHARE_LABELS),
     ] + [{'data': {'values': [d for d in SHARE_LABELS if d['leader'] == offshore]},
           'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state',
-                                                      'fields': ['reptiles', 'mammals', 'birds', 'total', 'per_1000_km2']}},
-                        {'calculate': share, 'as': 'share'}, {'calculate': cls, 'as': 'cls'},
+                                                      'fields': ['reptiles', 'mammals', 'birds', 'total', 'area_km2', 'per_1000_km2']}},
+                        {'calculate': share, 'as': 'share'}, {'calculate': cls, 'as': 'cls'}, {'calculate': COUNT_03, 'as': 'count'},
                         {'calculate': "[datum.name, " + LABEL_03 + "]", 'as': 'label'}],
           # offshore labels sit in the sea (dark text); the rest sit on their state (white on dark classes)
           'mark': {'type': 'text', 'fontSize': 11.5, 'fontWeight': 700, 'lineHeight': 13, 'baseline': 'middle',
-                   'align': 'right' if offshore else 'center', 'dx': -4 if offshore else 0},
+                   'align': 'right' if offshore else 'center', 'dx': -4 if offshore else 0, 'tooltip': {'expr': TIP_03}},
           'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
                        'text': {'field': 'label'},
-                       'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': 'white'}, 'value': INK},
-                       'tooltip': [{'field': 'name', 'title': 'State'}, {'field': 'label', 'title': 'Shown'}]}}
+                       'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': 'white'}, 'value': INK}}}
          for offshore in (False, True)],
 })
 
@@ -271,8 +281,8 @@ MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec
 # Colour = the month's share of that row's published year total, so every row shows WHEN its group
 # arrived, whatever the group's size (75 mammals or 10,968 reptiles). The year-total column shows HOW MANY.
 # An even spread over the year would be about 8% a month.
-BANDS = ['0', 'under 5%', '5–14%', '15–29%', '30% or more', 'Not available']
-band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.share < 0.05 ? 'under 5%' : "
+BANDS = ['0 (none)', 'above 0, under 5%', '5–14%', '15–29%', '30% or more', 'Not available']
+band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0 (none)' : datum.share < 0.05 ? 'above 0, under 5%' : "
         "datum.share < 0.15 ? '5–14%' : datum.share < 0.30 ? '15–29%' : '30% or more'")
 save('05-intake-heatmap.json', {
     'description': 'Monthly intake with 2023 and 2024 paired for each animal group. Each cell shows the month as a share of that row\'s published year total; the year totals are printed at right.',
@@ -299,8 +309,8 @@ save('05-intake-heatmap.json', {
                          {'field': 'share', 'type': 'quantitative', 'title': 'Share of the year', 'format': '.1%'}]},
          'layer': [
              {'mark': {'type': 'rect', 'cornerRadius': 3},
-              'encoding': {'stroke': {'condition': {'test': "datum.band == '0'", 'value': '#c9c3b0'}, 'value': PAPER},
-                           'strokeWidth': {'condition': {'test': "datum.band == '0'", 'value': 1}, 'value': 3},
+              'encoding': {'stroke': {'condition': {'test': "datum.animals == 0", 'value': '#c9c3b0'}, 'value': PAPER},
+                           'strokeWidth': {'condition': {'test': "datum.animals == 0", 'value': 1}, 'value': 3},
                            'color': {'field': 'band', 'type': 'ordinal', 'title': 'Share of the row’s year total that arrived in the month',
                                      'scale': {'domain': BANDS, 'range': [PAPER, '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8', '#d6d0bf']},
                                      'legend': {'orient': 'bottom', 'direction': 'horizontal', 'symbolType': 'square', 'titleLimit': 600,

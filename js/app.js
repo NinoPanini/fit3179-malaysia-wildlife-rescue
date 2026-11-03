@@ -4,6 +4,13 @@
 const views = new Map();
 window.vegaViews = views;   // e.g. vegaViews.get('placement-months').signal('selectedMonth')
 const specs = new Map();     // original specs, kept so fixed-width charts can be refitted on resize
+// Chart 03 headings for each choice in its "Show" menu: [heading, subtitle]
+const SHARE_MAP_HEADINGS = {   // kept to similar lengths so the map does not jump when the menu changes
+  'All animals': ['Small states hand over the most per km²', 'Animals per 1,000 km² of land · Peninsular Malaysia, 2024'],
+  Reptiles: ['Reptiles led everywhere but Selangor', 'Share that were reptiles · Peninsular Malaysia, 2024'],
+  Mammals: ['Selangor’s handovers were 59% mammals', 'Share that were mammals · Peninsular Malaysia, 2024'],
+  Birds: ['Birds stayed under 3.4% in every state', 'Share that were birds · Peninsular Malaysia, 2024'],
+};
 window.chartStatus = {};
 
 /* Concatenated views (hconcat/vconcat) cannot use width "container" in Vega-Lite, so their specs
@@ -47,6 +54,12 @@ async function renderChart(element) {
       result = await vegaEmbed(element, fitToColumn(specs.get(id), element, (avail - 4) / drawn), { actions: false, renderer: 'svg' });
     }
     views.set(id, result.view);
+    if (id === 'share-map') {   // chart 03: the heading and subtitle follow the "Show" menu
+      const title = document.getElementById('share-map-title'), subtitle = document.getElementById('share-map-subtitle');
+      const showHeading = (name, choice) => { [title.textContent, subtitle.textContent] = SHARE_MAP_HEADINGS[choice]; };
+      result.view.addSignalListener('groupChoice', showHeading);
+      showHeading('groupChoice', result.view.signal('groupChoice'));
+    }
     if (id === 'placement-months') {
       result.view.addEventListener('click', (event, item) => {
         const month = item && item.datum && item.datum.month;

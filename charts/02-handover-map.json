@@ -290,17 +290,7 @@
             ],
             "zero": true
           },
-          "legend": {
-            "values": [
-              300,
-              1000,
-              2500
-            ],
-            "orient": "bottom-left",
-            "symbolFillColor": "#3e5260",
-            "symbolOpacity": 1,
-            "labelExpr": "format(datum.value, ',')"
-          }
+          "legend": null
         },
         "tooltip": [
           {
