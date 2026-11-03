@@ -1,0 +1,626 @@
+[
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Sika",
+  "detail": "Released Feb 2023 · collar signalled death 23 days later",
+  "x": 470,
+  "y": 0,
+  "outcome": "Died"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Itam",
+  "detail": "Released Mar 2025 · collar signalled death 51 days later; remains in June",
+  "x": 470,
+  "y": 46,
+  "outcome": "Died"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Sunbearo",
+  "detail": "Released Jan 2021 · death confirmed later (collar retrieved)",
+  "x": 470,
+  "y": 92,
+  "outcome": "Died"
+ },
+ {
+  "type": "node",
+  "level": 2,
+  "label": "Died · 3",
+  "detail": "",
+  "x": 290,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sika",
+  "step": 0,
+  "x": 290,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sika",
+  "step": 1,
+  "x": 446,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sika",
+  "step": 2,
+  "x": 446,
+  "y": 0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sika",
+  "step": 3,
+  "x": 470,
+  "y": 0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Itam",
+  "step": 0,
+  "x": 290,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Itam",
+  "step": 1,
+  "x": 446,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Itam",
+  "step": 2,
+  "x": 446,
+  "y": 46,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Itam",
+  "step": 3,
+  "x": 470,
+  "y": 46,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sunbearo",
+  "step": 0,
+  "x": 290,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sunbearo",
+  "step": 1,
+  "x": 446,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sunbearo",
+  "step": 2,
+  "x": 446,
+  "y": 92,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Died · 3 > Sunbearo",
+  "step": 3,
+  "x": 470,
+  "y": 92,
+  "outcome": "Died"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Wawa",
+  "detail": "Released Feb 2022 · rescued from a plantation and re-released; last signal May 2022",
+  "x": 470,
+  "y": 149.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Loki",
+  "detail": "Released Jan 2021 · collar failed, no later news",
+  "x": 470,
+  "y": 195.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "node",
+  "level": 2,
+  "label": "Fate unknown · 2",
+  "detail": "",
+  "x": 290,
+  "y": 172.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Wawa",
+  "step": 0,
+  "x": 290,
+  "y": 172.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Wawa",
+  "step": 1,
+  "x": 446,
+  "y": 172.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Wawa",
+  "step": 2,
+  "x": 446,
+  "y": 149.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Wawa",
+  "step": 3,
+  "x": 470,
+  "y": 149.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Loki",
+  "step": 0,
+  "x": 290,
+  "y": 172.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Loki",
+  "step": 1,
+  "x": 446,
+  "y": 172.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Loki",
+  "step": 2,
+  "x": 446,
+  "y": 195.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Fate unknown · 2 > Loki",
+  "step": 3,
+  "x": 470,
+  "y": 195.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "node",
+  "level": 1,
+  "label": "Released to the forest · 5",
+  "detail": "",
+  "x": 105,
+  "y": 109.0,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Died · 3",
+  "step": 0,
+  "x": 105,
+  "y": 109.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Died · 3",
+  "step": 1,
+  "x": 266,
+  "y": 109.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Died · 3",
+  "step": 2,
+  "x": 266,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Died · 3",
+  "step": 3,
+  "x": 290,
+  "y": 46.0,
+  "outcome": "Died"
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Fate unknown · 2",
+  "step": 0,
+  "x": 105,
+  "y": 109.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Fate unknown · 2",
+  "step": 1,
+  "x": 266,
+  "y": 109.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Fate unknown · 2",
+  "step": 2,
+  "x": 266,
+  "y": 172.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "link",
+  "id": "Released to the forest · 5 > Fate unknown · 2",
+  "step": 3,
+  "x": 290,
+  "y": 172.0,
+  "outcome": "Fate unknown"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Tenom",
+  "detail": "Handed over Jun 2023 · supervised forest walks since Feb 2024",
+  "x": 470,
+  "y": 274.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Pitang",
+  "detail": "Handed over Oct 2024 · soft-release training since Jan 2025",
+  "x": 470,
+  "y": 320.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "node",
+  "level": 2,
+  "label": "Training in the forest · 2",
+  "detail": "",
+  "x": 290,
+  "y": 297.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Tenom",
+  "step": 0,
+  "x": 290,
+  "y": 297.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Tenom",
+  "step": 1,
+  "x": 446,
+  "y": 297.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Tenom",
+  "step": 2,
+  "x": 446,
+  "y": 274.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Tenom",
+  "step": 3,
+  "x": 470,
+  "y": 274.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Pitang",
+  "step": 0,
+  "x": 290,
+  "y": 297.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Pitang",
+  "step": 1,
+  "x": 446,
+  "y": 297.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Pitang",
+  "step": 2,
+  "x": 446,
+  "y": 320.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Training in the forest · 2 > Pitang",
+  "step": 3,
+  "x": 470,
+  "y": 320.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Rudy",
+  "detail": "Confiscated Mar 2021 · at BSBCC since Jul 2022",
+  "x": 470,
+  "y": 377.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "node",
+  "level": 3,
+  "label": "Kwong",
+  "detail": "Handed over Sep 2022 · at BSBCC since Aug 2023",
+  "x": 470,
+  "y": 423.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "node",
+  "level": 2,
+  "label": "At the centre · 2",
+  "detail": "",
+  "x": 290,
+  "y": 400.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Rudy",
+  "step": 0,
+  "x": 290,
+  "y": 400.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Rudy",
+  "step": 1,
+  "x": 446,
+  "y": 400.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Rudy",
+  "step": 2,
+  "x": 446,
+  "y": 377.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Rudy",
+  "step": 3,
+  "x": 470,
+  "y": 377.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Kwong",
+  "step": 0,
+  "x": 290,
+  "y": 400.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Kwong",
+  "step": 1,
+  "x": 446,
+  "y": 400.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Kwong",
+  "step": 2,
+  "x": 446,
+  "y": 423.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "At the centre · 2 > Kwong",
+  "step": 3,
+  "x": 470,
+  "y": 423.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "node",
+  "level": 1,
+  "label": "Still in care · 4",
+  "detail": "",
+  "x": 105,
+  "y": 348.5,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > Training in the forest · 2",
+  "step": 0,
+  "x": 105,
+  "y": 348.5,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > Training in the forest · 2",
+  "step": 1,
+  "x": 266,
+  "y": 348.5,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > Training in the forest · 2",
+  "step": 2,
+  "x": 266,
+  "y": 297.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > Training in the forest · 2",
+  "step": 3,
+  "x": 290,
+  "y": 297.0,
+  "outcome": "Training in the forest"
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > At the centre · 2",
+  "step": 0,
+  "x": 105,
+  "y": 348.5,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > At the centre · 2",
+  "step": 1,
+  "x": 266,
+  "y": 348.5,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > At the centre · 2",
+  "step": 2,
+  "x": 266,
+  "y": 400.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "link",
+  "id": "Still in care · 4 > At the centre · 2",
+  "step": 3,
+  "x": 290,
+  "y": 400.0,
+  "outcome": "At the centre"
+ },
+ {
+  "type": "node",
+  "level": 0,
+  "label": "9 bears",
+  "detail": "",
+  "x": 0,
+  "y": 228.8,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Released to the forest · 5",
+  "step": 0,
+  "x": 0,
+  "y": 228.8,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Released to the forest · 5",
+  "step": 1,
+  "x": 81,
+  "y": 228.8,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Released to the forest · 5",
+  "step": 2,
+  "x": 81,
+  "y": 109.0,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Released to the forest · 5",
+  "step": 3,
+  "x": 105,
+  "y": 109.0,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Still in care · 4",
+  "step": 0,
+  "x": 0,
+  "y": 228.8,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Still in care · 4",
+  "step": 1,
+  "x": 81,
+  "y": 228.8,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Still in care · 4",
+  "step": 2,
+  "x": 81,
+  "y": 348.5,
+  "outcome": ""
+ },
+ {
+  "type": "link",
+  "id": "9 bears > Still in care · 4",
+  "step": 3,
+  "x": 105,
+  "y": 348.5,
+  "outcome": ""
+ }
+]

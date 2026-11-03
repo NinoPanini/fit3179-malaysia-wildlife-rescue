@@ -1,0 +1,204 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Node-link tree of the nine BSBCC sun bears: released or still in care, then each outcome, ending at each bear with its key dates.",
+  "usermeta": {
+    "fitWidth": 980
+  },
+  "width": 960,
+  "height": 450,
+  "padding": 10,
+  "data": {
+    "url": "data/bear-outcome-tree.json"
+  },
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          -10,
+          960
+        ],
+        "nice": false
+      },
+      "axis": null
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          -25,
+          430
+        ],
+        "reverse": true,
+        "nice": false
+      },
+      "axis": null
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.type == 'link'"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "detail": {
+          "field": "id"
+        },
+        "order": {
+          "field": "step"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.outcome == 'Died'",
+            "value": "#1f2d2a"
+          },
+          "value": "#b9b3a3"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.type == 'node'"
+        },
+        {
+          "filter": "datum.level < 3"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 110,
+        "opacity": 1,
+        "stroke": "#fbf9f2",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.outcome == 'Died'",
+            "value": "#1f2d2a"
+          },
+          "value": "#8a8270"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.type == 'node'"
+        },
+        {
+          "filter": "datum.level < 3"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 4,
+        "dy": -8,
+        "fontSize": 14,
+        "fontWeight": 700,
+        "color": "#1f2d2a"
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.type == 'node'"
+        },
+        {
+          "filter": "datum.level == 3"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 10,
+        "dy": 1,
+        "fontSize": 15,
+        "fontWeight": 700,
+        "color": "#1f2d2a"
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.type == 'node'"
+        },
+        {
+          "filter": "datum.level == 3"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": 10,
+        "dy": 3,
+        "fontSize": 13,
+        "color": "#56625d"
+      },
+      "encoding": {
+        "text": {
+          "field": "detail"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": null,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#56625d",
+      "titleColor": "#1f2d2a",
+      "domain": false,
+      "gridColor": "#e4e0d2",
+      "tickColor": "#e4e0d2",
+      "labelPadding": 6,
+      "titlePadding": 12
+    },
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": 600,
+      "labelColor": "#1f2d2a",
+      "titleColor": "#1f2d2a",
+      "symbolStrokeWidth": 0
+    },
+    "text": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#1f2d2a"
+    },
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "anchor": "start",
+      "color": "#1f2d2a"
+    }
+  }
+}

@@ -15,7 +15,7 @@ The study uses separate public records to explain four parts of wildlife care. E
 3. **Return.** Where are rehabilitated animals released?
 4. **People.** Who gives their time to support this work?
 
-The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a chart of how each state's handovers changed from 2021 to 2024, a heatmap of when each animal group arrives at the rescue centre, bear event timelines, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to an isotype of how long each placement lasted. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
+The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a chart of how each state's handovers changed from 2021 to 2024, a heatmap of when each animal group arrives at the rescue centre, a tree of what happened to the featured sun bears, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to an isotype of how long each placement lasted. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
 
 ## Data sources
 
@@ -47,7 +47,7 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 - The Federal Territories are reported as a single unit. The maps treat Kuala Lumpur, Putrajaya and Labuan as one unit drawn at Kuala Lumpur, and its rate per km² uses their combined area.
 - The animals-per-1,000 km² rate uses state areas measured from the simplified boundary file, so the areas are approximate.
 - Release-area positions are approximate (within about 10–20 km) and show destinations, not routes. The 2024 NWRC report does not follow up on the animals it released.
-- The sun bear timeline covers cases described in BSBCC's public reports, not every bear in its care. Sabah and Sarawak wildlife agencies publish separately and are outside the scope of this study.
+- The sun bear tree covers cases described in BSBCC's public reports, not every bear in its care. Sabah and Sarawak wildlife agencies publish separately and are outside the scope of this study.
 - No animal tracking (GPS) data are used. Volunteer records contain no personal names.
 
 ## Repository structure

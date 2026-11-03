@@ -1,7 +1,7 @@
 """Step 3 of 3: the Vega-Lite specifications (run from the website folder: python tools/3_chart_specs.py).
 
 Writes every chart as readable JSON in charts/. One shared config (font, palette) keeps all
-charts consistent. Patterns for layered maps, lookups, bound selectors, connected-dot comparisons
+charts consistent. Patterns for layered maps, lookups, bound selectors
 and the linked views are adapted from the FIT3179/Vega-Lite teaching examples.
 """
 import json
@@ -19,7 +19,6 @@ INK, MUTED, GRID, PAPER = '#1f2d2a', '#56625d', '#e4e0d2', '#fbf9f2'
 GROUP = {'Reptiles': '#0072B2', 'Mammals': '#B26F00', 'Birds': '#A85F8C'}   # Okabe-Ito hues, darkened so every mark reaches 3:1 contrast
 SEQ = ['#ffffcc', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']   # ColorBrewer YlGnBu; darkest step deepened so the top two classes stay apart for colour-blind readers
 MARK = '#3e5260'                                                             # neutral slate for single-series marks
-PALE = '#9c947f'   # context lines and dots: faint but still visible (2.9:1)
 MY, OTHER = '#2f4858', '#8a8270'                                             # Malaysia highlighted in slate, other countries in neutral grey
 FONT = "'Source Sans 3', 'Segoe UI', Arial, sans-serif"  # quoted: the family name contains a digit
 
@@ -35,7 +34,7 @@ CONFIG = {
     'title': {'font': FONT, 'anchor': 'start', 'color': INK},
 }
 GEO = {'url': 'data/peninsular-states.geojson', 'format': {'type': 'json', 'property': 'features'}}
-LAND, BORDER, NODATA = '#e6e0cf', '#a39b86', '#958d78'   # land, coast and state borders, 'no separate figure'
+LAND, BORDER = '#e6e0cf', '#a39b86'   # land, and coast and state borders
 BASEMAP = {
     'data': GEO,
     'mark': {'type': 'geoshape', 'fill': LAND, 'stroke': BORDER, 'strokeWidth': 0.8},
@@ -320,88 +319,39 @@ save('05-intake-heatmap.json', {
     'spacing': 16,
 })
 
-# ---- 06 Bear journeys: event timeline (one row per bear) ---------------
-KINDS = ['Into care', 'Rehabilitation step', 'Release', 'Recaptured', 'Other collar signal', 'Collar death signal', 'Remains recovered']
-X_SHAPE = 'M-1,-0.6L-0.6,-1L0,-0.4L0.6,-1L1,-0.6L0.4,0L1,0.6L0.6,1L0,0.4L-0.6,1L-1,0.6L-0.4,0Z'   # an X, drawn as an SVG path
-XT = {'type': 'temporal', 'title': None,
-      'axis': {'format': '%Y', 'tickCount': {'interval': 'year'}, 'labelFontSize': 14, 'labelColor': INK, 'grid': True}}
-SHAPES = {'domain': KINDS, 'range': ['circle', 'square', 'triangle-up', 'diamond', 'triangle-down', X_SHAPE, 'cross']}
-KCOLS = {'domain': KINDS, 'range': ['#8a8270', '#1b7837', '#D55E00', '#762a83', '#5e6b8a', '#b2182b', '#000000']}
-BEAR_TIP = [{'field': 'bear', 'title': 'Bear'}, {'field': 'event', 'title': 'Event'},
-            {'field': 'date_label', 'title': 'Date'}, {'field': 'place', 'title': 'Place'},
-            {'field': 'note', 'title': 'Note'}, {'field': 'source', 'title': 'Source'}]
-LEG = {'orient': 'top', 'direction': 'horizontal', 'symbolSize': 150, 'columnPadding': 22, 'labelLimit': 200}
-picked_bear = {'param': 'bearPick'}
-RELEASED, IN_CARE = ['Sunbearo', 'Loki', 'Wawa', 'Sika', 'Itam'], ['Rudy', 'Kwong', 'Tenom', 'Pitang']
-GROUP_HEAD = ['Released to the forest · 5 bears', 'Still in care · 4 bears']
-save('06-bear-journeys.json', {
-    'description': 'Timeline of nine sun bears at BSBCC, 2021-2025, with an enlarged view of the bear you click.',
-    'usermeta': {'fitWidth': 960},   # js/app.js scales the fixed widths below to the page column
-    'data': {'url': 'data/bear-journeys.json'},
-    'vconcat': [
-        {'width': 860, 'height': 418,   # 11 rows of 38 px
-         'encoding': {'y': {'field': 'bear', 'type': 'nominal', 'title': None,
-                            'scale': {'domain': [GROUP_HEAD[0]] + RELEASED + [GROUP_HEAD[1]] + IN_CARE},   # a heading row above each group
-                            'axis': {'values': RELEASED + IN_CARE, 'labelFontSize': 15, 'labelFontWeight': 600, 'labelColor': INK, 'labelPadding': 12, 'grid': True, 'gridColor': '#efece2'}}},
-         'layer': [
-             {'data': {'values': [{'head': h} for h in GROUP_HEAD]},
-              'mark': {'type': 'text', 'align': 'left', 'fontSize': 14, 'fontWeight': 700, 'color': MUTED},
-              'encoding': {'y': {'field': 'head', 'type': 'nominal', 'title': None}, 'x': {'value': -90}, 'text': {'field': 'head'}}},
-             {'data': {'url': 'data/bear-outcomes.json'},
-              'mark': {'type': 'rule', 'strokeWidth': 2.5},
-              'encoding': {'x': {'field': 'first', **XT}, 'x2': {'field': 'last'},
-                           'color': {'condition': {**picked_bear, 'value': INK}, 'value': '#c9c3b0'}}},
-             {'params': [{'name': 'bearPick', 'value': [{'bear': 'Itam'}], 'select': {'type': 'point', 'fields': ['bear'], 'on': 'click', 'clear': False}},
-                         {'name': 'kindPick', 'select': {'type': 'point', 'fields': ['kind']}, 'bind': 'legend'}],
-              'mark': {'type': 'point', 'filled': True, 'size': 140, 'stroke': PAPER, 'strokeWidth': 1, 'cursor': 'pointer'},
-              'encoding': {'x': {'field': 'date', **XT, 'scale': {'domain': ['2020-12-01', '2027-03-01']},
-                                 'axis': {**XT['axis'], 'values': [{'year': y, 'month': 1, 'date': 1} for y in range(2021, 2026)]}},   # only years with events; the space on the right holds the notes
-                           'shape': {'field': 'kind', 'type': 'nominal', 'title': None, 'scale': SHAPES, 'legend': LEG},
-                           'color': {'field': 'kind', 'type': 'nominal', 'title': None, 'scale': KCOLS, 'legend': LEG},
-                           'yOffset': {'field': 'nudge', 'type': 'quantitative', 'scale': {'domain': [-1, 1], 'range': [8, 30]}},   # offset from the row top (row centre = 19 px); stacks events under five weeks apart
-                           'opacity': {'condition': {'param': 'kindPick', 'value': 1}, 'value': 0.12},
-                           'tooltip': BEAR_TIP}},
-             # outcome at the latest report, led by its status; deaths in bold so they can be counted at a glance
-             {'data': {'url': 'data/bear-outcomes.json'}, 'transform': [{'filter': "datum.status == 'Died'"}],
-              'mark': {'type': 'text', 'align': 'left', 'dx': 16, 'fontSize': 13.5, 'fontWeight': 700, 'color': INK},
-              'encoding': {'x': {'field': 'last', **XT}, 'text': {'field': 'outcome'}}},
-             {'data': {'url': 'data/bear-outcomes.json'}, 'transform': [{'filter': "datum.status != 'Died'"}],
-              'mark': {'type': 'text', 'align': 'left', 'dx': 16, 'fontSize': 13, 'fontStyle': 'italic'},
-              'encoding': {'x': {'field': 'last', **XT}, 'text': {'field': 'outcome'},
-                           'color': {'condition': {**picked_bear, 'value': INK}, 'value': MUTED}}},
-         ]},
-        {'width': 860, 'height': 150,
-         'transform': [{'filter': picked_bear},
-                       {'window': [{'op': 'row_number', 'as': 'n'}], 'sort': [{'field': 'date'}]},
-                       {'calculate': 'datum.n % 3', 'as': 'lane'},
-                       {'calculate': "[datum.event, datum.date_label]", 'as': 'label'}],
-         'encoding': {'x': {'field': 'date', 'type': 'temporal', 'title': None,
-                            'scale': {'padding': 70, 'nice': False},
-                            'axis': {'format': '%-d %b %Y', 'tickCount': 5, 'labelFontSize': 13, 'labelColor': INK, 'grid': False}},
-                      'y': {'datum': 0, 'type': 'quantitative', 'scale': {'domain': [-1, 1]}, 'axis': None}},
-         'layer': [
-             {'mark': {'type': 'rule', 'color': INK, 'strokeWidth': 2.5},
-              'encoding': {'x': {'aggregate': 'min', 'field': 'date', 'type': 'temporal'}, 'x2': {'aggregate': 'max', 'field': 'date'}}},
-             {'mark': {'type': 'point', 'filled': True, 'size': 260, 'stroke': PAPER, 'strokeWidth': 1.5},
-              'encoding': {'shape': {'field': 'kind', 'type': 'nominal', 'scale': SHAPES, 'legend': None},
-                           'color': {'field': 'kind', 'type': 'nominal', 'scale': KCOLS, 'legend': None}, 'tooltip': BEAR_TIP}},
-             {'transform': [{'filter': 'datum.lane == 0'}],
-              'mark': {'type': 'text', 'dy': -30, 'fontSize': 12.5, 'lineHeight': 15, 'baseline': 'bottom'},
-              'encoding': {'text': {'field': 'label'}}},
-             {'transform': [{'filter': 'datum.lane == 1'}],
-              'mark': {'type': 'text', 'dy': 22, 'fontSize': 12.5, 'lineHeight': 15, 'baseline': 'top'},
-              'encoding': {'text': {'field': 'label'}}},
-             {'transform': [{'filter': 'datum.lane == 2'}],
-              'mark': {'type': 'text', 'dy': -64, 'fontSize': 12.5, 'lineHeight': 15, 'baseline': 'bottom', 'color': MUTED},
-              'encoding': {'text': {'field': 'label'}}},
-             {'transform': [{'window': [{'op': 'row_number', 'as': 'k'}]}, {'filter': 'datum.k == 1'},
-                            {'calculate': "'Enlarged: ' + datum.bear + ' (click another bear above to switch)'", 'as': 't'}],
-              'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'fontSize': 15, 'fontWeight': 700, 'color': INK},
-              'encoding': {'x': {'value': 0}, 'y': {'value': -38}, 'text': {'field': 't'}}},
-         ]},
+# ---- 06 Outcome tree: what happened to the nine BSBCC bears ------------
+# A node-link tree read left to right: 9 bears -> released / still in care -> outcome -> each bear.
+# The layout (positions and elbow links) is computed in tools/2_chart_data.py, like the Sankey's.
+# The branches leading to the three deaths are dark; every other branch is grey.
+TREE_DATA = {'url': 'data/bear-outcome-tree.json'}
+TX = {'type': 'quantitative', 'scale': {'domain': [-10, 960], 'nice': False}, 'axis': None}
+TY6 = {'type': 'quantitative', 'scale': {'domain': [-25, 430], 'reverse': True, 'nice': False}, 'axis': None}
+died = "datum.outcome == 'Died'"
+nodes = lambda test: [{'filter': "datum.type == 'node'"}, {'filter': test}]
+save('06-bear-outcomes.json', {
+    'description': 'Node-link tree of the nine BSBCC sun bears: released or still in care, then each outcome, ending at each bear with its key dates.',
+    'usermeta': {'fitWidth': 980},   # js/app.js scales the fixed width below to the page column
+    'width': 960, 'height': 450, 'padding': 10,
+    'data': TREE_DATA,
+    'encoding': {'x': {'field': 'x', **TX}, 'y': {'field': 'y', **TY6}},
+    'layer': [
+        {'transform': [{'filter': "datum.type == 'link'"}],
+         'mark': {'type': 'line', 'strokeWidth': 2},
+         'encoding': {'detail': {'field': 'id'}, 'order': {'field': 'step'},
+                      'color': {'condition': {'test': died, 'value': INK}, 'value': '#b9b3a3'}}},
+        {'transform': nodes('datum.level < 3'),
+         'mark': {'type': 'circle', 'size': 110, 'opacity': 1, 'stroke': PAPER, 'strokeWidth': 2},
+         'encoding': {'color': {'condition': {'test': died, 'value': INK}, 'value': '#8a8270'}}},
+        {'transform': nodes('datum.level < 3'),   # group names sit just above each branch point
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'dx': 4, 'dy': -8, 'fontSize': 14, 'fontWeight': 700, 'color': INK},
+         'encoding': {'text': {'field': 'label'}}},
+        {'transform': nodes('datum.level == 3'),
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'dx': 10, 'dy': 1, 'fontSize': 15, 'fontWeight': 700, 'color': INK},
+         'encoding': {'text': {'field': 'label'}}},
+        {'transform': nodes('datum.level == 3'),   # each bear's key dates, under its name
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 10, 'dy': 3, 'fontSize': 13, 'color': MUTED},
+         'encoding': {'text': {'field': 'detail'}}},
     ],
-    'spacing': 56,
-    'resolve': {'legend': {'color': 'independent', 'shape': 'independent'}},
 })
 
 # ---- 07 Flow map: NWRC to named release areas --------------------------
@@ -577,7 +527,6 @@ save('10-volunteer-origins.json', {
 
 # ---- 11 Monthly placement starts + 12 linked lengths of stay -----------
 # Counts come from the same 57 anonymised placements; starts are not occupancy.
-month_filter = {'filter': "selectedMonth == 'All months' || datum.month == selectedMonth"}
 # Chart 12 is an isotype: one person figure per placement, in a row for each length of stay.
 # Within a row, volunteers from Malaysia come first, then a gap, then other countries.
 STAYS = ['Under 2 weeks', 'Exactly 2 weeks', '2 to 4 weeks', 'Over 4 weeks']

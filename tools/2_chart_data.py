@@ -87,7 +87,7 @@ assert all(sum(r['animals'] for r in intake if r['year'] == 2024 and r['group'] 
 wr('nwrc-intake-2023-2024.json', intake)
 wr('nwrc-intake-totals.json', [{'year': y, 'group': g, 'animals': n} for (y, g), n in year_totals.items()])
 
-# ---- 4. Bear journeys 2021-2025 (BSBCC reports; GPS fixes never used)
+# ---- 4. Bear events 2021-2025 and the chart 06 outcome tree (BSBCC reports; GPS fixes never used)
 KIND = {'Confiscation': 'Into care', 'Handover': 'Into care', 'Admission / transfer': 'Into care',
         'Transfer for soft-release rehabilitation': 'Rehabilitation step', 'Forest walks started': 'Rehabilitation step',
         'Hard release': 'Release', 'First hard release': 'Release', 'Second hard release': 'Release',
@@ -118,33 +118,53 @@ for e in ev:
     else:
         early = 'early ' if 'early' in e['note'].lower() else ''
         e['date_label'] = f"{early.capitalize()}{t:%B %Y}".strip() + ' (day not reported)'
-# Outcome at the latest report: the status word leads, so the three deaths can be counted at a glance.
-status = {'Sunbearo': 'Died', 'Sika': 'Died', 'Itam': 'Died', 'Loki': 'Fate unknown', 'Wawa': 'Fate unknown',
-          'Rudy': 'In care', 'Kwong': 'In care', 'Tenom': 'In care', 'Pitang': 'In care'}
-detail = {'Sunbearo': 'confirmed later (collar retrieved)', 'Loki': 'collar failed', 'Wawa': 'no news after May 2022',
-          'Sika': 'about three weeks after release', 'Itam': 'weeks after release',
-          'Tenom': 'supervised rehabilitation (2025 report)', 'Pitang': 'supervised rehabilitation (2025 report)',
-          'Rudy': 'at BSBCC (2024 report)', 'Kwong': 'at BSBCC (2025 report)'}
-outcome = {b: f"{status[b]}: {detail[b]}" for b in status}
-released, in_care = ['Sunbearo', 'Loki', 'Wawa', 'Sika', 'Itam'], ['Rudy', 'Kwong', 'Tenom', 'Pitang']
-order = released + in_care
-for e in ev:
-    e['order'] = order.index(e['bear']); e['outcome'] = outcome[e['bear']]
-# Events less than five weeks apart overlap on the overview, so they are stacked (earliest on top).
-# 'nudge' only moves the symbol up or down inside the bear's row; the date is unchanged.
-ev.sort(key=lambda e: (e['order'], e['date']))
-clusters = []
-for e in ev:
-    near = clusters and clusters[-1][-1]['bear'] == e['bear'] and \
-        (_dt.date.fromisoformat(e['date']) - _dt.date.fromisoformat(clusters[-1][-1]['date'])).days < 35
-    clusters[-1].append(e) if near else clusters.append([e])
-for c in clusters:
-    for i, e in enumerate(c):
-        e['nudge'] = i - (len(c) - 1) / 2
+# Chart 06 is a tree of outcomes: 9 bears -> released / still in care -> outcome -> each bear.
+# Each bear's line of key dates is written from the events above, so it cannot drift from the data.
+TREE = [('Released to the forest', [('Died', ['Sika', 'Itam', 'Sunbearo']), ('Fate unknown', ['Wawa', 'Loki'])]),
+        ('Still in care', [('Training in the forest', ['Tenom', 'Pitang']), ('At the centre', ['Rudy', 'Kwong'])])]
+order = [b for _, kids in TREE for _, bears in kids for b in bears]
+assert sorted(order) == sorted({e['bear'] for e in ev})       # every bear appears exactly once
+ev.sort(key=lambda e: (order.index(e['bear']), e['date']))     # table order: by bear, then date
+first = lambda b, kind: next(e['date'] for e in ev if e['bear'] == b and e['kind'] == kind)
+last = lambda b, kind: [e['date'] for e in ev if e['bear'] == b and e['kind'] == kind][-1]
+mon = lambda d: f"{_dt.date.fromisoformat(d):%b %Y}"
+after = lambda b, kind: (_dt.date.fromisoformat(first(b, kind)) - _dt.date.fromisoformat(first(b, 'Release'))).days
+detail = {
+    'Sika': f"Released {mon(first('Sika', 'Release'))} · collar signalled death {after('Sika', 'Collar death signal')} days later",
+    'Itam': f"Released {mon(first('Itam', 'Release'))} · collar signalled death {after('Itam', 'Collar death signal')} days later; remains in {_dt.date.fromisoformat(first('Itam', 'Remains recovered')):%B}",
+    'Sunbearo': f"Released {mon(first('Sunbearo', 'Release'))} · death confirmed later (collar retrieved)",
+    'Wawa': f"Released {mon(first('Wawa', 'Release'))} · rescued from a plantation and re-released; last signal {mon(first('Wawa', 'Other collar signal'))}",
+    'Loki': f"Released {mon(first('Loki', 'Release'))} · collar failed, no later news",
+    'Tenom': f"Handed over {mon(first('Tenom', 'Into care'))} · supervised forest walks since {mon(last('Tenom', 'Rehabilitation step'))}",
+    'Pitang': f"Handed over {mon(first('Pitang', 'Into care'))} · soft-release training since {mon(first('Pitang', 'Rehabilitation step'))}",
+    'Rudy': f"Confiscated {mon(first('Rudy', 'Into care'))} · at BSBCC since {mon(last('Rudy', 'Into care'))}",
+    'Kwong': f"Handed over {mon(first('Kwong', 'Into care'))} · at BSBCC since {mon(last('Kwong', 'Into care'))}"}
+# Layout in drawing units (like the Sankey): columns by level, bears 46 apart, wider gaps between groups.
+X, STEP, GAP = [0, 105, 290, 470], 46, 22
+tree, y = [], 0
+def node(level, label, x, ny, outcome, detail=''):
+    n = {'type': 'node', 'level': level, 'label': label, 'detail': detail, 'x': x, 'y': round(ny, 1), 'outcome': outcome}
+    tree.append(n); return n
+def link(a, b, outcome):   # an elbow: across from the parent, down, then across into the child
+    for i, (lx, ly) in enumerate([(a['x'], a['y']), (b['x'] - 24, a['y']), (b['x'] - 24, b['y']), (b['x'], b['y'])]):
+        tree.append({'type': 'link', 'id': f"{a['label']} > {b['label']}", 'step': i, 'x': lx, 'y': ly, 'outcome': outcome})
+tops = []
+for name1, kids in TREE:
+    mids = []
+    for name2, bears in kids:
+        leaves = []
+        for b in bears:
+            leaves.append(node(3, b, X[3], y, name2, detail[b])); y += STEP
+        mid = node(2, f'{name2} · {len(bears)}', X[2], sum(l['y'] for l in leaves) / len(leaves), name2)
+        for l in leaves: link(mid, l, name2)
+        mids.append((mid, len(bears))); y += GAP / 2
+    top = node(1, f'{name1} · {sum(n for _, n in mids)}', X[1], sum(m['y'] for m, _ in mids) / len(mids), '')
+    for m, _ in mids: link(top, m, m['outcome'])
+    tops.append(top); y += GAP
+root = node(0, f'{len(order)} bears', X[0], sum(t['y'] for t in tops) / len(tops), '')
+for t in tops: link(root, t, '')
 wr('bear-journeys.json', ev)
-wr('bear-outcomes.json', [{'bear': b, 'order': i, 'status': status[b], 'outcome': outcome[b], 'group': 'Released' if b in released else 'In care',
-    'first': min(e['date'] for e in ev if e['bear'] == b),
-    'last': max(e['date'] for e in ev if e['bear'] == b)} for i, b in enumerate(order)])
+wr('bear-outcome-tree.json', tree)
 
 # ---- 5. Release flows to named protected areas (approximate area positions, approved 24 Oct)
 SITES = {  # lon, lat - approximate positions of each protected area, for orientation only

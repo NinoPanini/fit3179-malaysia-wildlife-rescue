@@ -107,7 +107,11 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
       assert.equal(blocks.length, 9, 'One treemap block per listed country');
       assert.equal(sum(blocks.map(b => b.datum), 'placements'), 57, 'Treemap blocks account for all 57 placements');
     }
-    if (file.startsWith('06-')) assert(items('symbol').length >= 23, 'Every bear event must be drawn in the overview');
+    if (file.startsWith('06-')) {
+      const names = items('text').map(t => String(t.text));
+      ['Sika', 'Itam', 'Sunbearo', 'Wawa', 'Loki', 'Tenom', 'Pitang', 'Rudy', 'Kwong'].forEach(b => assert(names.includes(b), `Bear ${b} must appear in the tree`));
+      assert(names.includes('Died · 3') && names.includes('Fate unknown · 2') && names.includes('Still in care · 4'), 'Outcome counts must be printed');
+    }
     if (file.startsWith('04-')) {
       const bars = items('rect').filter(b => b.datum && b.datum.change !== undefined);
       assert.equal(bars.length, 12, 'One change bar for each of 12 reporting units');
