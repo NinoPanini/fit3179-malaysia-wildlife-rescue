@@ -48,6 +48,7 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
   assert.equal(placements.length, 57);
   assert.equal(sum(placements, 'days'), 978);
   assert.equal(placements.map(r => r.days).sort((a, b) => a - b)[28], 14);
+  assert.equal(placements.filter(r => r.days <= 14).length, 38, '38 of 57 stayed two weeks or less');
   assert.equal(sum(read('data/bsbcc-origins-2025.json'), 'placements'), 57);
 
   // Claims made in the page text (index.html) - if the data changes, these fail first

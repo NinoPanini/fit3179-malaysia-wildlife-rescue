@@ -3,6 +3,12 @@
   "description": "Proportional-symbol map: circle area shows wildlife handed over in each reporting state, 2024.",
   "width": "container",
   "height": 470,
+  "padding": {
+    "left": 72,
+    "top": 5,
+    "right": 5,
+    "bottom": 5
+  },
   "projection": {
     "type": "mercator"
   },
@@ -27,6 +33,71 @@
             "field": "properties.state",
             "type": "nominal",
             "title": "State / territory"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Wilayah Persekutuan",
+            "longitude": 101.69,
+            "latitude": 3.12
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/handovers-2024.json"
+            },
+            "key": "state",
+            "fields": [
+              "total",
+              "reptiles",
+              "mammals",
+              "birds"
+            ]
+          }
+        },
+        {
+          "calculate": "'Federal Territories (combined)'",
+          "as": "state"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "color": "#3e5260",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 1.5,
+        "opacity": 0.72
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "total",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "Reporting unit"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Animals handed over",
+            "format": ","
           }
         ]
       }
@@ -130,46 +201,283 @@
     },
     {
       "data": {
-        "url": "data/state-anchors.json"
+        "values": [
+          {
+            "state": "Perlis",
+            "name": "Perlis",
+            "lon": 99.85,
+            "lat": 6.62,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Kedah",
+            "name": "Kedah",
+            "lon": 99.85,
+            "lat": 6.08,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Pulau Pinang",
+            "name": "Pulau Pinang",
+            "lon": 99.85,
+            "lat": 5.42,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Selangor",
+            "name": "Selangor",
+            "lon": 100.85,
+            "lat": 3.6,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Wilayah Persekutuan",
+            "name": "Federal Territories",
+            "lon": 100.95,
+            "lat": 3.12,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Melaka",
+            "name": "Melaka",
+            "lon": 101.7,
+            "lat": 2.08,
+            "align": "right",
+            "leader": true
+          }
+        ]
       },
       "transform": [
         {
-          "window": [
-            {
-              "op": "rank",
-              "as": "r"
-            }
-          ],
-          "sort": [
-            {
-              "field": "total",
-              "order": "descending"
-            }
-          ]
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/state-anchors.json"
+            },
+            "key": "state",
+            "fields": [
+              "longitude",
+              "latitude"
+            ]
+          }
         },
         {
-          "filter": "datum.r <= 6"
+          "calculate": "isValid(datum.longitude) ? datum.longitude : 101.69",
+          "as": "ax"
         },
         {
-          "calculate": "[datum.state, format(datum.total, ',')]",
+          "calculate": "isValid(datum.latitude) ? datum.latitude : 3.12",
+          "as": "ay"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#8a8270",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "ax"
+        },
+        "latitude2": {
+          "field": "ay"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Perak",
+            "name": "Perak",
+            "lon": 101.38,
+            "lat": 4.62,
+            "align": "left",
+            "leader": false
+          },
+          {
+            "state": "Kelantan",
+            "name": "Kelantan",
+            "lon": 102.3,
+            "lat": 5.62,
+            "align": "left",
+            "leader": false
+          },
+          {
+            "state": "Terengganu",
+            "name": "Terengganu",
+            "lon": 103.42,
+            "lat": 5.0,
+            "align": "left",
+            "leader": false
+          },
+          {
+            "state": "Pahang",
+            "name": "Pahang",
+            "lon": 102.78,
+            "lat": 3.75,
+            "align": "left",
+            "leader": false
+          },
+          {
+            "state": "Negeri Sembilan",
+            "name": "Negeri Sembilan",
+            "lon": 102.5,
+            "lat": 2.98,
+            "align": "left",
+            "leader": false
+          },
+          {
+            "state": "Johor",
+            "name": "Johor",
+            "lon": 103.82,
+            "lat": 2.12,
+            "align": "left",
+            "leader": false
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/handovers-2024.json"
+            },
+            "key": "state",
+            "fields": [
+              "total"
+            ]
+          }
+        },
+        {
+          "calculate": "[datum.name, format(datum.total, ',')]",
           "as": "label"
         }
       ],
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 30,
-        "fontSize": 13,
+        "dx": 4,
+        "fontSize": 12,
         "fontWeight": 600,
-        "lineHeight": 15
+        "lineHeight": 14,
+        "baseline": "middle"
       },
       "encoding": {
         "longitude": {
-          "field": "longitude",
+          "field": "lon",
           "type": "quantitative"
         },
         "latitude": {
-          "field": "latitude",
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Perlis",
+            "name": "Perlis",
+            "lon": 99.85,
+            "lat": 6.62,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Kedah",
+            "name": "Kedah",
+            "lon": 99.85,
+            "lat": 6.08,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Pulau Pinang",
+            "name": "Pulau Pinang",
+            "lon": 99.85,
+            "lat": 5.42,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Selangor",
+            "name": "Selangor",
+            "lon": 100.85,
+            "lat": 3.6,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Wilayah Persekutuan",
+            "name": "Federal Territories",
+            "lon": 100.95,
+            "lat": 3.12,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Melaka",
+            "name": "Melaka",
+            "lon": 101.7,
+            "lat": 2.08,
+            "align": "right",
+            "leader": true
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/handovers-2024.json"
+            },
+            "key": "state",
+            "fields": [
+              "total"
+            ]
+          }
+        },
+        {
+          "calculate": "[datum.name, format(datum.total, ',')]",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "lineHeight": 14,
+        "baseline": "middle"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
           "type": "quantitative"
         },
         "text": {

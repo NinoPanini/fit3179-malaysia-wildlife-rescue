@@ -17,7 +17,7 @@
           "as": "row"
         },
         {
-          "calculate": "!datum.reported ? 'Not printed' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : datum.animals < 100 ? '10–99' : datum.animals < 1000 ? '100–999' : '1,000+'",
+          "calculate": "!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : datum.animals < 100 ? '10–99' : datum.animals < 1000 ? '100–999' : '1,000+'",
           "as": "band"
         }
       ],
@@ -97,11 +97,23 @@
         {
           "mark": {
             "type": "rect",
-            "stroke": "#fbf9f2",
-            "strokeWidth": 3,
             "cornerRadius": 3
           },
           "encoding": {
+            "stroke": {
+              "condition": {
+                "test": "datum.band == '0'",
+                "value": "#c9c3b0"
+              },
+              "value": "#fbf9f2"
+            },
+            "strokeWidth": {
+              "condition": {
+                "test": "datum.band == '0'",
+                "value": 1
+              },
+              "value": 3
+            },
             "color": {
               "field": "band",
               "type": "ordinal",
@@ -113,7 +125,7 @@
                   "10–99",
                   "100–999",
                   "1,000+",
-                  "Not printed"
+                  "Not available"
                 ],
                 "range": [
                   "#fbf9f2",
@@ -121,7 +133,7 @@
                   "#a1dab4",
                   "#41b6c4",
                   "#225ea8",
-                  "#ffffff"
+                  "#d6d0bf"
                 ]
               },
               "legend": {
@@ -143,7 +155,7 @@
             "text": {
               "condition": {
                 "test": "!datum.reported",
-                "value": "n/p"
+                "value": "n/a"
               },
               "field": "animals",
               "format": ","
@@ -155,6 +167,20 @@
               },
               "value": "#1f2d2a"
             }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.animals >= 1000"
+            }
+          ],
+          "mark": {
+            "type": "rect",
+            "fillOpacity": 0,
+            "stroke": "#1f2d2a",
+            "strokeWidth": 2.5,
+            "cornerRadius": 3
           }
         }
       ]
@@ -256,6 +282,29 @@
             "text": {
               "field": "animals",
               "format": ","
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {}
+            ]
+          },
+          "mark": {
+            "type": "rule",
+            "color": "#56625d",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "x": {
+              "datum": 0
+            },
+            "y": {
+              "value": 0
+            },
+            "y2": {
+              "value": "height"
             }
           }
         }

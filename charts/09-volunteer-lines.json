@@ -179,6 +179,37 @@
           "field": "programme"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2021,
+            "people": 60
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": -8,
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "lineHeight": 15,
+        "color": "#56625d",
+        "text": [
+          "2021 report also mentions",
+          "2 remote volunteers;",
+          "unclear if among the 7"
+        ]
+      },
+      "encoding": {
+        "color": {
+          "value": "#56625d"
+        },
+        "tooltip": null
+      }
     }
   ],
   "autosize": {

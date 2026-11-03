@@ -24,11 +24,16 @@
       "scale": {
         "domain": [
           0,
-          30
+          38
         ]
       },
       "axis": {
-        "tickCount": 4
+        "values": [
+          0,
+          10,
+          20,
+          30
+        ]
       }
     },
     "color": {
@@ -70,6 +75,21 @@
       }
     },
     {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "sum",
+              "field": "placements",
+              "as": "all"
+            }
+          ]
+        },
+        {
+          "calculate": "datum.origin == 'Malaysia' ? datum.placements + ' of ' + datum.all + ' · ' + format(datum.placements / datum.all, '.0%') : datum.placements",
+          "as": "label"
+        }
+      ],
       "mark": {
         "type": "text",
         "align": "left",
@@ -79,7 +99,7 @@
       },
       "encoding": {
         "text": {
-          "field": "placements"
+          "field": "label"
         },
         "color": {
           "value": "#1f2d2a"

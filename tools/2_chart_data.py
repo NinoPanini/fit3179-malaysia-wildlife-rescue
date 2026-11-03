@@ -88,8 +88,8 @@ wr('nwrc-intake-totals.json', [
 KIND = {'Confiscation': 'Into care', 'Handover': 'Into care', 'Admission / transfer': 'Into care',
         'Transfer for soft-release rehabilitation': 'Rehabilitation step', 'Forest walks started': 'Rehabilitation step',
         'Hard release': 'Release', 'First hard release': 'Release', 'Second hard release': 'Release',
-        'Recapture': 'Recaptured', 'Last reported signal': 'Last report', 'Mortality signal': 'Death reported',
-        'Location alert': 'Last report', 'Remains recovered': 'Death reported'}
+        'Recapture': 'Recaptured', 'Last reported signal': 'Other collar signal', 'Mortality signal': 'Collar death signal',
+        'Location alert': 'Other collar signal', 'Remains recovered': 'Remains found'}
 # Plain wording for collar and release terms shown on the chart (the report's own term stays in brackets).
 PLAIN = {'Hard release': 'Released to the forest (hard release)',
          'First hard release': 'First release to the forest', 'Second hard release': 'Second release to the forest',
@@ -105,7 +105,7 @@ for r in rows('bsbcc_selected_case_timeline.csv'):
                'source': f"BSBCC {r['source_id'][-4:]}, {r['source_locator']}"})
 # Sika: BSBCC 2023 PDF p7 - mortality signal first received 5 March 2023; skeleton found 15-25 May.
 ev.append({'bear': 'Sika', 'date': '2023-03-05', 'precision': 'day', 'event': PLAIN['Mortality signal'],
-           'kind': 'Death reported', 'place': 'Tabin Wildlife Reserve', 'note': 'First mortality signal; remains found 15-25 May',
+           'kind': 'Collar death signal', 'place': 'Tabin Wildlife Reserve', 'note': 'First mortality signal; remains found 15-25 May',
            'source': 'BSBCC 2023, PDF p7'})
 assert len(ev) == 23 and all(e['date'] >= '2021' for e in ev)
 for e in ev:
@@ -119,11 +119,23 @@ outcome = {'Sunbearo': 'Later confirmed dead (collar retrieved)', 'Loki': 'Fate 
            'Wawa': 'No news after May 2022', 'Sika': 'Died about three weeks after release',
            'Itam': 'Died weeks after release', 'Tenom': 'Still in supervised rehabilitation (2025 report)',
            'Pitang': 'Still in supervised rehabilitation (2025 report)', 'Rudy': 'At BSBCC (2024 report)', 'Kwong': 'At BSBCC (2025 report)'}
-order = ['Sunbearo', 'Loki', 'Rudy', 'Wawa', 'Kwong', 'Sika', 'Tenom', 'Pitang', 'Itam']
+released, in_care = ['Sunbearo', 'Loki', 'Wawa', 'Sika', 'Itam'], ['Rudy', 'Kwong', 'Tenom', 'Pitang']
+order = released + in_care
 for e in ev:
     e['order'] = order.index(e['bear']); e['outcome'] = outcome[e['bear']]
-wr('bear-journeys.json', sorted(ev, key=lambda e: (e['order'], e['date'])))
-wr('bear-outcomes.json', [{'bear': b, 'order': i, 'outcome': outcome[b],
+# Events less than five weeks apart overlap on the overview, so they are stacked (earliest on top).
+# 'nudge' only moves the symbol up or down inside the bear's row; the date is unchanged.
+ev.sort(key=lambda e: (e['order'], e['date']))
+clusters = []
+for e in ev:
+    near = clusters and clusters[-1][-1]['bear'] == e['bear'] and \
+        (_dt.date.fromisoformat(e['date']) - _dt.date.fromisoformat(clusters[-1][-1]['date'])).days < 35
+    clusters[-1].append(e) if near else clusters.append([e])
+for c in clusters:
+    for i, e in enumerate(c):
+        e['nudge'] = i - (len(c) - 1) / 2
+wr('bear-journeys.json', ev)
+wr('bear-outcomes.json', [{'bear': b, 'order': i, 'outcome': outcome[b], 'group': 'Released' if b in released else 'In care',
     'first': min(e['date'] for e in ev if e['bear'] == b),
     'last': max(e['date'] for e in ev if e['bear'] == b)} for i, b in enumerate(order)])
 

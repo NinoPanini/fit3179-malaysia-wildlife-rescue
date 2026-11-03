@@ -53,7 +53,7 @@
         "labelFontSize": 15,
         "rowPadding": 10,
         "labelLimit": 300,
-        "labelExpr": "datum.label == 'Reptiles' ? 'Reptiles · 88%' : datum.label == 'Mammals' ? 'Mammals · 11%' : 'Birds · 1%'"
+        "labelExpr": "datum.label == 'Reptiles' ? 'Reptiles · 88% (14,146)' : datum.label == 'Mammals' ? 'Mammals · 11% (1,683)' : 'Birds · 1% (205)'"
       }
     },
     "tooltip": [

@@ -58,8 +58,8 @@
         "lineHeight": 17,
         "fontStyle": "italic",
         "text": [
-          "2022: no state table published",
-          "(national total 11,170 animals)"
+          "2022 state rankings unavailable:",
+          "dashed lines join 2021 to 2023"
         ]
       }
     },
@@ -141,12 +141,6 @@
           "value": [
             {
               "state": "Terengganu"
-            },
-            {
-              "state": "Kelantan"
-            },
-            {
-              "state": "Pulau Pinang"
             }
           ],
           "select": {
@@ -204,6 +198,10 @@
       "transform": [
         {
           "filter": "datum.year == 2021"
+        },
+        {
+          "calculate": "datum.state + '  ' + datum.rank",
+          "as": "label"
         }
       ],
       "mark": {
@@ -214,7 +212,7 @@
       },
       "encoding": {
         "text": {
-          "field": "state"
+          "field": "label"
         },
         "color": {
           "condition": {
@@ -231,7 +229,7 @@
           "filter": "datum.year == 2024"
         },
         {
-          "calculate": "datum.state + '  ' + format(datum.total, ',')",
+          "calculate": "datum.rank + '  ' + datum.state + '  ' + format(datum.total, ',')",
           "as": "label"
         }
       ],
@@ -251,6 +249,31 @@
             "value": "#1f2d2a"
           },
           "value": "#56625d"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "param": "pickState"
+          }
+        },
+        {
+          "calculate": "datum.rank == 1 ? '1st' : datum.rank == 2 ? '2nd' : datum.rank == 3 ? '3rd' : datum.rank + 'th'",
+          "as": "ord"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 13,
+        "fontWeight": 700,
+        "color": "#1f2d2a"
+      },
+      "encoding": {
+        "text": {
+          "field": "ord"
         }
       }
     }

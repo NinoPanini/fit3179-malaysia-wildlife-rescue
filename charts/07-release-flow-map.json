@@ -95,7 +95,10 @@
               4,
               13
             ],
-            "orient": "bottom-left"
+            "orient": "bottom-left",
+            "symbolType": "stroke",
+            "symbolSize": 1600,
+            "labelFontSize": 13
           }
         }
       }
@@ -199,43 +202,106 @@
       "data": {
         "values": [
           {
-            "longitude": 101.33,
-            "latitude": 3.98,
-            "label": [
-              "NWRC, Sungkai",
-              "(1 released in",
-              "Sungkai Wildlife Reserve)"
-            ]
+            "lon": 100.42,
+            "lat": 4.0,
+            "text": "NWRC, Sungkai",
+            "bold": true
+          },
+          {
+            "lon": 100.42,
+            "lat": 3.5,
+            "text": [
+              "1 animal released locally,",
+              "in Sungkai Wildlife Reserve"
+            ],
+            "bold": false
           }
         ]
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        }
       },
       "layer": [
         {
           "mark": {
-            "type": "circle",
-            "size": 380,
+            "type": "rule",
             "color": "#1f2d2a",
-            "stroke": "#fbf9f2",
-            "strokeWidth": 2
+            "strokeWidth": 0.8
+          },
+          "encoding": {
+            "longitude2": {
+              "datum": 101.31
+            },
+            "latitude2": {
+              "datum": 3.97
+            }
           }
         },
         {
+          "transform": [
+            {
+              "filter": "datum.bold"
+            }
+          ],
           "mark": {
             "type": "text",
             "align": "right",
-            "dx": -16,
-            "fontSize": 12.5,
+            "dx": -5,
+            "fontSize": 13,
             "fontWeight": 700,
+            "color": "#1f2d2a"
+          },
+          "encoding": {
+            "text": {
+              "field": "text"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "!datum.bold"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -5,
+            "fontSize": 12.5,
             "lineHeight": 15,
             "color": "#1f2d2a"
           },
           "encoding": {
             "text": {
-              "field": "label"
+              "field": "text"
             }
           }
         }
-      ],
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "longitude": 101.33,
+            "latitude": 3.98
+          }
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "size": 380,
+        "color": "#1f2d2a",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 2
+      },
       "encoding": {
         "longitude": {
           "field": "longitude",

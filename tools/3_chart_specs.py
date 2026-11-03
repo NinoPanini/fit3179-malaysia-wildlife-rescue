@@ -64,20 +64,57 @@ save('01-handover-waffle.json', {
         'y': {'field': 'row', 'type': 'ordinal', 'axis': None},
         'color': group_colour(None, {'orient': 'right', 'direction': 'vertical', 'symbolType': 'square',
                                      'symbolSize': 260, 'labelFontSize': 15, 'rowPadding': 10, 'labelLimit': 300,
-                                     'labelExpr': "datum.label == 'Reptiles' ? 'Reptiles · 88%' : datum.label == 'Mammals' ? 'Mammals · 11%' : 'Birds · 1%'"}),
+                                     'labelExpr': "datum.label == 'Reptiles' ? 'Reptiles · 88% (14,146)' : datum.label == 'Mammals' ? 'Mammals · 11% (1,683)' : 'Birds · 1% (205)'"}),
         'tooltip': [{'field': 'group', 'type': 'nominal', 'title': 'Animal group'},
                     {'field': 'group_total', 'type': 'quantitative', 'title': 'Animals handed over, 2024', 'format': ','},
                     {'field': 'share', 'type': 'quantitative', 'title': 'Share of all handovers (%)'}],
     },
 })
 
+# ---- State labels shared by maps 02 and 03 ---------------------------------
+# Hand-placed so every state is named. Small or crowded states get their label in the sea with a
+# thin leader line back to the state's centre (lon/lat = label position; ax/ay = state centre).
+def lab(state, lon, lat, align, leader, name=None):
+    return {'state': state, 'name': name or state, 'lon': lon, 'lat': lat, 'align': align, 'leader': leader}
+CIRCLE_LABELS = [lab('Perlis', 99.85, 6.62, 'right', True), lab('Kedah', 99.85, 6.08, 'right', True),
+    lab('Pulau Pinang', 99.85, 5.42, 'right', True), lab('Perak', 101.38, 4.62, 'left', False),
+    lab('Kelantan', 102.3, 5.62, 'left', False), lab('Terengganu', 103.42, 5.0, 'left', False),
+    lab('Pahang', 102.78, 3.75, 'left', False), lab('Selangor', 100.85, 3.6, 'right', True),
+    lab('Wilayah Persekutuan', 100.95, 3.12, 'right', True, 'Federal Territories'),
+    lab('Negeri Sembilan', 102.5, 2.98, 'left', False), lab('Melaka', 101.7, 2.08, 'right', True),
+    lab('Johor', 103.82, 2.12, 'left', False)]
+SHARE_LABELS = [lab('Perlis', 99.85, 6.62, 'right', True), lab('Pulau Pinang', 99.85, 5.42, 'right', True),
+    lab('Melaka', 101.7, 2.08, 'right', True), lab('Kedah', 100.66, 5.92, 'center', False),
+    lab('Perak', 101.11, 4.77, 'center', False), lab('Kelantan', 102.03, 5.28, 'center', False),
+    lab('Terengganu', 102.95, 4.94, 'center', False), lab('Pahang', 102.54, 3.74, 'center', False),
+    lab('Selangor', 100.85, 3.6, 'right', True), lab('Negeri Sembilan', 102.21, 2.78, 'center', False),
+    lab('Johor', 103.38, 2.05, 'center', False)]
+WP_POINT = {'state': 'Wilayah Persekutuan', 'longitude': 101.69, 'latitude': 3.12}   # Kuala Lumpur, where the combined figure is drawn
+def leader_lines(labels, anchors_url='data/state-anchors.json'):
+    """Thin grey lines from each offshore label back to its state."""
+    return {'data': {'values': [d for d in labels if d['leader']]},
+            'transform': [{'lookup': 'state', 'from': {'data': {'url': anchors_url}, 'key': 'state', 'fields': ['longitude', 'latitude']}},
+                          {'calculate': "isValid(datum.longitude) ? datum.longitude : 101.69", 'as': 'ax'},
+                          {'calculate': "isValid(datum.latitude) ? datum.latitude : 3.12", 'as': 'ay'}],
+            'mark': {'type': 'rule', 'color': '#8a8270', 'strokeWidth': 0.8},
+            'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
+                         'longitude2': {'field': 'ax'}, 'latitude2': {'field': 'ay'}}}
+
 # ---- 02 Proportional-symbol map ----------------------------------------
 save('02-handover-map.json', {
     'description': 'Proportional-symbol map: circle area shows wildlife handed over in each reporting state, 2024.',
-    'width': 'container', 'height': 470,
+    'width': 'container', 'height': 470, 'padding': {'left': 72, 'top': 5, 'right': 5, 'bottom': 5},   # room for the labels in the sea
     'projection': {'type': 'mercator'},
     'layer': [
         BASEMAP,
+        {'data': {'values': [WP_POINT]},   # Federal Territories: one combined figure, drawn at Kuala Lumpur
+         'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state',
+                                                     'fields': ['total', 'reptiles', 'mammals', 'birds']}},
+                       {'calculate': "'Federal Territories (combined)'", 'as': 'state'}],
+         'mark': {'type': 'circle', 'color': MARK, 'stroke': PAPER, 'strokeWidth': 1.5, 'opacity': 0.72},
+         'encoding': {'longitude': {'field': 'longitude', 'type': 'quantitative'}, 'latitude': {'field': 'latitude', 'type': 'quantitative'},
+                      'size': {'field': 'total', 'type': 'quantitative'},
+                      'tooltip': [{'field': 'state', 'title': 'Reporting unit'}, {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','}]}},
         {'data': {'url': 'data/state-anchors.json'},
          'params': [{'name': 'stateHover', 'select': {'type': 'point', 'fields': ['state'], 'on': 'pointerover', 'clear': 'pointerout'}}],
          'mark': {'type': 'circle', 'color': MARK, 'stroke': PAPER, 'strokeWidth': 1.5, 'cursor': 'pointer'},
@@ -94,15 +131,13 @@ save('02-handover-map.json', {
                          {'field': 'reptiles', 'type': 'quantitative', 'title': 'Reptiles', 'format': ','},
                          {'field': 'mammals', 'type': 'quantitative', 'title': 'Mammals', 'format': ','},
                          {'field': 'birds', 'type': 'quantitative', 'title': 'Birds', 'format': ','}]}},
-        {'data': {'url': 'data/state-anchors.json'},
-         'transform': [{'window': [{'op': 'rank', 'as': 'r'}], 'sort': [{'field': 'total', 'order': 'descending'}]},
-                       {'filter': 'datum.r <= 6'},
-                       {'calculate': "[datum.state, format(datum.total, ',')]", 'as': 'label'}],
-         'mark': {'type': 'text', 'align': 'left', 'dx': 30, 'fontSize': 13, 'fontWeight': 600, 'lineHeight': 15},
-         'encoding': {'longitude': {'field': 'longitude', 'type': 'quantitative'},
-                      'latitude': {'field': 'latitude', 'type': 'quantitative'},
-                      'text': {'field': 'label'}}},
-    ],
+        leader_lines(CIRCLE_LABELS),
+    ] + [{'data': {'values': [d for d in CIRCLE_LABELS if d['align'] == a]},
+          'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state', 'fields': ['total']}},
+                        {'calculate': "[datum.name, format(datum.total, ',')]", 'as': 'label'}],
+          'mark': {'type': 'text', 'align': a, 'dx': 4 if a == 'left' else -4, 'fontSize': 12, 'fontWeight': 600, 'lineHeight': 14, 'baseline': 'middle'},
+          'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
+                       'text': {'field': 'label'}}} for a in ('left', 'right')],
 })
 
 # ---- 03 Choropleth with animal-group selector -------------------------
@@ -123,9 +158,9 @@ LEGEND_EXPR = ("(groupChoice == 'Mammals' ? " + json.dumps(_labels(BREAKS['Mamma
                json.dumps(_labels(BREAKS['Reptiles'])) + " : " + json.dumps(_labels(BREAKS['Birds'])) + ")[datum.value]")
 save('03-group-share-map.json', {
     'description': "Choropleth: the selected animal group's share of each state's 2024 handovers, in fixed classes.",
-    'width': 'container', 'height': 470,
+    'width': 'container', 'height': 470, 'padding': {'left': 72, 'top': 5, 'right': 5, 'bottom': 5},
     'params': [{'name': 'groupChoice', 'value': 'Mammals',
-                'bind': {'input': 'select', 'options': ['Mammals', 'Reptiles', 'Birds'], 'name': 'Show the share that were: '}}],
+                'bind': {'input': 'select', 'options': ['Mammals', 'Reptiles', 'Birds'], 'name': 'Animal group: ', 'element': '#share-map-control'}}],
     'projection': {'type': 'mercator'},
     'layer': [
         {**BASEMAP, 'transform': [{'calculate': "'Federal Territories: one combined figure, not split by territory'", 'as': 'note'}],
@@ -140,35 +175,31 @@ save('03-group-share-map.json', {
                        {'calculate': share, 'as': 'share'},
                        {'calculate': "groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds", 'as': 'count'},
                        {'calculate': cls, 'as': 'cls'}],
-         'mark': {'type': 'geoshape', 'stroke': PAPER, 'strokeWidth': 1.2},
+         'mark': {'type': 'geoshape', 'stroke': BORDER, 'strokeWidth': 0.9},
          'encoding': {
              'color': {'field': 'cls', 'type': 'ordinal', 'title': 'Share of the state’s handovers (classes change with the group)',
                        'scale': {'domain': [0, 1, 2, 3, 4, 5, 6], 'range': SEQ + [NODATA]},
-                       'legend': {'labelExpr': LEGEND_EXPR, 'orient': 'bottom-left', 'direction': 'vertical', 'title': ['Share of each state’s', 'handovers in this group'],
+                       'legend': {'labelExpr': LEGEND_EXPR, 'orient': 'bottom', 'direction': 'horizontal', 'columns': 4, 'title': ['Share of each state’s', 'handovers in the chosen group'],
                                   'symbolType': 'square', 'symbolSize': 220, 'symbolStrokeColor': '#9c9686', 'symbolStrokeWidth': 0.5,
                                   'labelLimit': 160, 'titleLimit': 420, 'columnPadding': 14}},
              'tooltip': [{'field': 'properties.state', 'type': 'nominal', 'title': 'State'},
                          {'field': 'share', 'type': 'quantitative', 'title': 'Share of handovers', 'format': '.1%'},
                          {'field': 'count', 'type': 'quantitative', 'title': 'Animals in this group', 'format': ','},
                          {'field': 'total', 'type': 'quantitative', 'title': 'All animals handed over', 'format': ','}]}},
-        {'data': {'url': 'data/state-anchors.json'},
-         'transform': [{'calculate': share, 'as': 'share'}, {'calculate': cls, 'as': 'cls'},
-                       {'calculate': "datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')", 'as': 'label'},
-                       {'filter': "datum.state != 'Pulau Pinang' && datum.state != 'Perlis'"}],
-         'mark': {'type': 'text', 'fontSize': 12, 'fontWeight': 700},
-         'encoding': {'longitude': {'field': 'longitude', 'type': 'quantitative'},
-                      'latitude': {'field': 'latitude', 'type': 'quantitative'},
-                      'text': {'field': 'label'},
-                      'color': {'condition': {'test': 'datum.cls >= 3', 'value': 'white'}, 'value': INK},
-                      'tooltip': [{'field': 'state', 'title': 'State'}, {'field': 'share', 'type': 'quantitative', 'title': 'Share', 'format': '.1%'}]}},
-        # Pulau Pinang and Perlis are too small to hold their labels, so they sit in the sea to the left, in dark text.
-        {'data': {'url': 'data/state-anchors.json'},
-         'transform': [{'filter': "datum.state == 'Pulau Pinang' || datum.state == 'Perlis'"}, {'calculate': share, 'as': 'share'},
-                       {'calculate': "datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')", 'as': 'label'}],
-         'mark': {'type': 'text', 'fontSize': 12, 'fontWeight': 700, 'align': 'right', 'dx': -12, 'color': INK},
-         'encoding': {'longitude': {'field': 'longitude', 'type': 'quantitative'},
-                      'latitude': {'field': 'latitude', 'type': 'quantitative'}, 'text': {'field': 'label'}}},
-    ],
+        leader_lines(SHARE_LABELS),
+    ] + [{'data': {'values': [d for d in SHARE_LABELS if d['leader'] == offshore]},
+          'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state',
+                                                      'fields': ['reptiles', 'mammals', 'birds', 'total']}},
+                        {'calculate': share, 'as': 'share'}, {'calculate': cls, 'as': 'cls'},
+                        {'calculate': "[datum.name, datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')]", 'as': 'label'}],
+          # offshore labels sit in the sea (dark text); the rest sit on their state (white on dark classes)
+          'mark': {'type': 'text', 'fontSize': 11.5, 'fontWeight': 700, 'lineHeight': 13, 'baseline': 'middle',
+                   'align': 'right' if offshore else 'center', 'dx': -4 if offshore else 0},
+          'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
+                       'text': {'field': 'label'},
+                       'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': 'white'}, 'value': INK},
+                       'tooltip': [{'field': 'name', 'title': 'State'}, {'field': 'share', 'type': 'quantitative', 'title': 'Share', 'format': '.1%'}]}}
+         for offshore in (False, True)],
 })
 
 # ---- 04 Bump chart of state ranks --------------------------------------
@@ -185,7 +216,7 @@ save('04-state-rank-bump.json', {
     'layer': [
         {'data': {'values': [{'year': 2022, 'rank': 13.6}]},
          'mark': {'type': 'text', 'fontSize': 12.5, 'color': MUTED, 'lineHeight': 17, 'fontStyle': 'italic',
-                  'text': ['2022: no state table published', '(national total 11,170 animals)']}},
+                  'text': ['2022 state rankings unavailable:', 'dashed lines join 2021 to 2023']}},
         {'transform': [{'filter': 'datum.year <= 2023'}],
          'mark': {'type': 'line', 'strokeDash': [4, 4], 'cursor': 'pointer', 'interpolate': 'monotone'},
          'encoding': {'detail': {'field': 'state'},
@@ -198,7 +229,7 @@ save('04-state-rank-bump.json', {
                       'color': {'condition': {**picked, 'value': INK}, 'value': PALE},
                       'strokeWidth': {'condition': {**picked, 'value': 3.5}, 'value': 2},
                       'order': {'field': 'year'}}},
-        {'params': [{'name': 'pickState', 'value': [{'state': 'Terengganu'}, {'state': 'Kelantan'}, {'state': 'Pulau Pinang'}],
+        {'params': [{'name': 'pickState', 'value': [{'state': 'Terengganu'}],   # the headline's state stands out first
                      'select': {'type': 'point', 'fields': ['state'], 'on': 'click', 'clear': 'dblclick'}}],
          'mark': {'type': 'circle', 'size': 90, 'opacity': 1, 'stroke': PAPER, 'strokeWidth': 1.5, 'cursor': 'pointer'},
          'encoding': {'color': {'condition': {**picked, 'value': INK}, 'value': PALE},
@@ -206,22 +237,26 @@ save('04-state-rank-bump.json', {
                                   {'field': 'year', 'type': 'ordinal', 'title': 'Year'},
                                   {'field': 'rank', 'type': 'quantitative', 'title': 'Rank (1 = most)'},
                                   {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','}]}},
-        {'transform': [{'filter': 'datum.year == 2021'}],
+        {'transform': [{'filter': 'datum.year == 2021'}, {'calculate': "datum.state + '  ' + datum.rank", 'as': 'label'}],
          'mark': {'type': 'text', 'align': 'right', 'dx': -12, 'fontSize': 13},
-         'encoding': {'text': {'field': 'state'},
+         'encoding': {'text': {'field': 'label'},
                       'color': {'condition': {**picked, 'value': INK}, 'value': MUTED}}},
-        {'transform': [{'filter': 'datum.year == 2024'}, {'calculate': "datum.state + '  ' + format(datum.total, ',')", 'as': 'label'}],
+        {'transform': [{'filter': 'datum.year == 2024'}, {'calculate': "datum.rank + '  ' + datum.state + '  ' + format(datum.total, ',')", 'as': 'label'}],
          'mark': {'type': 'text', 'align': 'left', 'dx': 12, 'fontSize': 13},
          'encoding': {'text': {'field': 'label'},
                       'color': {'condition': {**picked, 'value': INK}, 'value': MUTED}}},
+        {'transform': [{'filter': picked},
+                       {'calculate': "datum.rank == 1 ? '1st' : datum.rank == 2 ? '2nd' : datum.rank == 3 ? '3rd' : datum.rank + 'th'", 'as': 'ord'}],
+         'mark': {'type': 'text', 'dy': -14, 'fontSize': 13, 'fontWeight': 700, 'color': INK},
+         'encoding': {'text': {'field': 'ord'}}},
     ],
 })
 
 # ---- 05 Heatmap + total bars: NWRC monthly intake 2023-2024 -----------
 ROWS = [f'{y} · {g}' for y in (2023, 2024) for g in GROUP]
 row_y = {'field': 'row', 'type': 'nominal', 'sort': ROWS, 'title': None}
-BANDS = ['0', '1–9', '10–99', '100–999', '1,000+', 'Not printed']
-band = ("!datum.reported ? 'Not printed' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : "
+BANDS = ['0', '1–9', '10–99', '100–999', '1,000+', 'Not available']
+band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : "
         "datum.animals < 100 ? '10–99' : datum.animals < 1000 ? '100–999' : '1,000+'")
 save('05-intake-heatmap.json', {
     'description': 'Heatmap of animals received by NWRC each month in 2023 and 2024 by animal group, with yearly totals as bars.',
@@ -240,14 +275,20 @@ save('05-intake-heatmap.json', {
                          {'field': 'animals', 'type': 'quantitative', 'title': 'Animals received', 'format': ','},
                          {'field': 'band', 'type': 'nominal', 'title': 'Class'}]},
          'layer': [
-             {'mark': {'type': 'rect', 'stroke': PAPER, 'strokeWidth': 3, 'cornerRadius': 3},
-              'encoding': {'color': {'field': 'band', 'type': 'ordinal', 'title': 'Animals received in the month',
-                                     'scale': {'domain': BANDS, 'range': [PAPER, '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8', '#ffffff']},
+             # zero months: empty cell with a thin outline; unavailable months: grey with "n/a"
+             {'mark': {'type': 'rect', 'cornerRadius': 3},
+              'encoding': {'stroke': {'condition': {'test': "datum.band == '0'", 'value': '#c9c3b0'}, 'value': PAPER},
+                           'strokeWidth': {'condition': {'test': "datum.band == '0'", 'value': 1}, 'value': 3},
+                           'color': {'field': 'band', 'type': 'ordinal', 'title': 'Animals received in the month',
+                                     'scale': {'domain': BANDS, 'range': [PAPER, '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8', '#d6d0bf']},
                                      'legend': {'orient': 'bottom', 'direction': 'horizontal', 'symbolType': 'square',
                                                 'symbolStrokeColor': '#bdb7a5', 'symbolStrokeWidth': 1}}}},
              {'mark': {'type': 'text', 'fontSize': 12.5},
-              'encoding': {'text': {'condition': {'test': '!datum.reported', 'value': 'n/p'}, 'field': 'animals', 'format': ','},
+              'encoding': {'text': {'condition': {'test': '!datum.reported', 'value': 'n/a'}, 'field': 'animals', 'format': ','},
                            'color': {'condition': {'test': 'datum.animals >= 1000', 'value': 'white'}, 'value': INK}}},
+             # the two spikes behind "sudden waves": outlined in ink
+             {'transform': [{'filter': 'datum.animals >= 1000'}],
+              'mark': {'type': 'rect', 'fillOpacity': 0, 'stroke': INK, 'strokeWidth': 2.5, 'cornerRadius': 3}},
          ]},
         {'width': 210, 'height': 240,
          'data': {'url': 'data/nwrc-intake-totals.json'},
@@ -261,6 +302,8 @@ save('05-intake-heatmap.json', {
                                                                {'field': 'animals', 'type': 'quantitative', 'title': 'Animals received', 'format': ','}]}},
              {'mark': {'type': 'text', 'align': 'left', 'dx': 6, 'fontSize': 13, 'fontWeight': 600},
               'encoding': {'text': {'field': 'animals', 'format': ','}}},
+             {'data': {'values': [{}]}, 'mark': {'type': 'rule', 'color': MUTED, 'strokeWidth': 1},   # zero baseline
+              'encoding': {'x': {'datum': 0}, 'y': {'value': 0}, 'y2': {'value': 'height'}}},
          ]},
     ],
     'spacing': 18,
@@ -268,25 +311,32 @@ save('05-intake-heatmap.json', {
 })
 
 # ---- 06 Bear journeys: connected dot plot on a timeline ----------------
-KINDS = ['Into care', 'Rehabilitation step', 'Release', 'Recaptured', 'Last report', 'Death reported']
+KINDS = ['Into care', 'Rehabilitation step', 'Release', 'Recaptured', 'Other collar signal', 'Collar death signal', 'Remains found']
+X_SHAPE = 'M-1,-0.6L-0.6,-1L0,-0.4L0.6,-1L1,-0.6L0.4,0L1,0.6L0.6,1L0,0.4L-0.6,1L-1,0.6L-0.4,0Z'   # an X, drawn as an SVG path
 XT = {'type': 'temporal', 'title': None,
       'axis': {'format': '%Y', 'tickCount': {'interval': 'year'}, 'labelFontSize': 14, 'labelColor': INK, 'grid': True}}
-SHAPES = {'domain': KINDS, 'range': ['circle', 'square', 'triangle-up', 'diamond', 'triangle-down', 'cross']}
-KCOLS = {'domain': KINDS, 'range': ['#8a8270', '#1b7837', '#D55E00', '#762a83', '#5e6b8a', '#000000']}
+SHAPES = {'domain': KINDS, 'range': ['circle', 'square', 'triangle-up', 'diamond', 'triangle-down', X_SHAPE, 'cross']}
+KCOLS = {'domain': KINDS, 'range': ['#8a8270', '#1b7837', '#D55E00', '#762a83', '#5e6b8a', '#b2182b', '#000000']}
 BEAR_TIP = [{'field': 'bear', 'title': 'Bear'}, {'field': 'event', 'title': 'Event'},
             {'field': 'date_label', 'title': 'Date'}, {'field': 'place', 'title': 'Place'},
             {'field': 'note', 'title': 'Note'}, {'field': 'source', 'title': 'Source'}]
 LEG = {'orient': 'top', 'direction': 'horizontal', 'symbolSize': 150, 'columnPadding': 22, 'labelLimit': 200}
 picked_bear = {'param': 'bearPick'}
+RELEASED, IN_CARE = ['Sunbearo', 'Loki', 'Wawa', 'Sika', 'Itam'], ['Rudy', 'Kwong', 'Tenom', 'Pitang']
+GROUP_HEAD = ['Released to the forest · 5 bears', 'Still in care · 4 bears']
 save('06-bear-journeys.json', {
     'description': 'Timeline of nine sun bears at BSBCC, 2021-2025, with an enlarged view of the bear you click.',
     'usermeta': {'fitWidth': 960},   # js/app.js scales the fixed widths below to the page column
     'data': {'url': 'data/bear-journeys.json'},
     'vconcat': [
-        {'width': 860, 'height': 330,
-         'encoding': {'y': {'field': 'bear', 'type': 'nominal', 'sort': {'field': 'order'}, 'title': None,
-                            'axis': {'labelFontSize': 15, 'labelFontWeight': 600, 'labelColor': INK, 'labelPadding': 12, 'grid': True, 'gridColor': '#efece2'}}},
+        {'width': 860, 'height': 418,   # 11 rows of 38 px
+         'encoding': {'y': {'field': 'bear', 'type': 'nominal', 'title': None,
+                            'scale': {'domain': [GROUP_HEAD[0]] + RELEASED + [GROUP_HEAD[1]] + IN_CARE},   # a heading row above each group
+                            'axis': {'values': RELEASED + IN_CARE, 'labelFontSize': 15, 'labelFontWeight': 600, 'labelColor': INK, 'labelPadding': 12, 'grid': True, 'gridColor': '#efece2'}}},
          'layer': [
+             {'data': {'values': [{'head': h} for h in GROUP_HEAD]},
+              'mark': {'type': 'text', 'align': 'left', 'fontSize': 14, 'fontWeight': 700, 'color': MUTED},
+              'encoding': {'y': {'field': 'head', 'type': 'nominal', 'title': None}, 'x': {'value': -90}, 'text': {'field': 'head'}}},
              {'data': {'url': 'data/bear-outcomes.json'},
               'mark': {'type': 'rule', 'strokeWidth': 2.5},
               'encoding': {'x': {'field': 'first', **XT}, 'x2': {'field': 'last'},
@@ -298,6 +348,7 @@ save('06-bear-journeys.json', {
                                  'axis': {**XT['axis'], 'values': [{'year': y, 'month': 1, 'date': 1} for y in range(2021, 2026)]}},   # only years with events; the space on the right holds the notes
                            'shape': {'field': 'kind', 'type': 'nominal', 'title': None, 'scale': SHAPES, 'legend': LEG},
                            'color': {'field': 'kind', 'type': 'nominal', 'title': None, 'scale': KCOLS, 'legend': LEG},
+                           'yOffset': {'field': 'nudge', 'type': 'quantitative', 'scale': {'domain': [-1, 1], 'range': [8, 30]}},   # offset from the row top (row centre = 19 px); stacks events under five weeks apart
                            'opacity': {'condition': {'param': 'kindPick', 'value': 1}, 'value': 0.12},
                            'tooltip': BEAR_TIP}},
              {'data': {'url': 'data/bear-outcomes.json'},
@@ -366,7 +417,7 @@ save('07-release-flow-map.json', {
                       'detail': {'field': 'site'}, 'order': {'field': 'step'},
                       'opacity': {'condition': {'test': "siteFocus == 'All destinations' || datum.site == siteFocus", 'value': 0.85}, 'value': 0.1},
                       'strokeWidth': {'field': 'animals', 'type': 'quantitative', 'scale': width_scale,
-                                      'title': 'Animals released', 'legend': {'values': [1, 4, 13], 'orient': 'bottom-left'}}}},
+                                      'title': 'Animals released', 'legend': {'values': [1, 4, 13], 'orient': 'bottom-left', 'symbolType': 'stroke', 'symbolSize': 1600, 'labelFontSize': 13}}}},
         {'data': SITES, 'transform': [{'filter': 'isValid(datum.arrow_angle)'}, {'calculate': '50 + datum.animals * 16', 'as': 'arrow_size'}],
          'mark': {'type': 'point', 'shape': 'triangle-up', 'filled': True, 'color': MARK},
          'encoding': {'opacity': {'condition': {'test': "siteFocus == 'All destinations' || datum.site == siteFocus", 'value': 0.95}, 'value': 0.1},'longitude': {'field': 'arrow_longitude', 'type': 'quantitative'},
@@ -381,13 +432,22 @@ save('07-release-flow-map.json', {
                       'tooltip': [{'field': 'site', 'title': 'Release area'}, {'field': 'state', 'title': 'State'},
                                   {'field': 'animals', 'type': 'quantitative', 'title': 'Animals released'},
                                   {'field': 'species_list', 'title': 'Species (animals)'}]}},
-        {'data': {'values': [{'longitude': 101.33, 'latitude': 3.98, 'label': ['NWRC, Sungkai', '(1 released in', 'Sungkai Wildlife Reserve)']}]},
+        # NWRC and the one local release: labels sit offshore, joined to the centre by thin leader lines
+        {'data': {'values': [{'lon': 100.42, 'lat': 4.0, 'text': 'NWRC, Sungkai', 'bold': True},
+                             {'lon': 100.42, 'lat': 3.5, 'text': ['1 animal released locally,', 'in Sungkai Wildlife Reserve'], 'bold': False}]},
+         'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'}},
          'layer': [
-             {'mark': {'type': 'circle', 'size': 380, 'color': INK, 'stroke': PAPER, 'strokeWidth': 2}},
-             {'mark': {'type': 'text', 'align': 'right', 'dx': -16, 'fontSize': 12.5, 'fontWeight': 700, 'lineHeight': 15, 'color': INK},
-              'encoding': {'text': {'field': 'label'}}}],
-         'encoding': {'longitude': {'field': 'longitude', 'type': 'quantitative'},
-                      'latitude': {'field': 'latitude', 'type': 'quantitative'}}},
+             {'mark': {'type': 'rule', 'color': INK, 'strokeWidth': 0.8},
+              'encoding': {'longitude2': {'datum': 101.31}, 'latitude2': {'datum': 3.97}}},
+             {'transform': [{'filter': 'datum.bold'}],
+              'mark': {'type': 'text', 'align': 'right', 'dx': -5, 'fontSize': 13, 'fontWeight': 700, 'color': INK},
+              'encoding': {'text': {'field': 'text'}}},
+             {'transform': [{'filter': '!datum.bold'}],
+              'mark': {'type': 'text', 'align': 'right', 'dx': -5, 'fontSize': 12.5, 'lineHeight': 15, 'color': INK},
+              'encoding': {'text': {'field': 'text'}}}]},
+        {'data': {'values': [{'longitude': 101.33, 'latitude': 3.98}]},
+         'mark': {'type': 'circle', 'size': 380, 'color': INK, 'stroke': PAPER, 'strokeWidth': 2},
+         'encoding': {'longitude': {'field': 'longitude', 'type': 'quantitative'}, 'latitude': {'field': 'latitude', 'type': 'quantitative'}}},
         site_labels(['Penang National Park'], 'right', -10),
         site_labels(['Ulu Muda Forest Reserve', 'Temenggor Forest Reserve', 'Taman Negara Terengganu', 'Taman Negara Pahang'], 'left', 10),
     ],
@@ -402,11 +462,11 @@ save('08-release-sankey.json', {
     'description': 'Sankey diagram linking 16 released species to six release areas; ribbon width shows animals. Same 32 animals as the flow map.',
     'width': 'container', 'height': 520,
     'params': [{'name': 'destinationChoice', 'value': 'All destinations',
-                'bind': {'input': 'select', 'options': ['All destinations'] + DESTS, 'name': 'Highlight a release area: '}}],
-    'padding': {'left': 212, 'right': 210, 'top': 10, 'bottom': 10},
+                'bind': {'input': 'select', 'options': ['All destinations'] + DESTS, 'name': 'Highlight a release area: ', 'element': '#sankey-control'}}],
+    'padding': {'left': 4, 'right': 4, 'top': 4, 'bottom': 10},   # 'fit' already leaves room for the labels
     'autosize': {'type': 'fit', 'contains': 'padding'},
     'encoding': {'x': {'field': 'x', 'type': 'quantitative', 'scale': {'domain': [0, 1]}, 'axis': None},
-                 'y': {'field': 'y', 'type': 'quantitative', 'scale': {'reverse': True, 'domain': [0, 43]}, 'axis': None}},
+                 'y': {'field': 'y', 'type': 'quantitative', 'scale': {'reverse': True, 'domain': [-2, 45.5]}, 'axis': None}},
     'layer': [
         {'data': {'url': 'data/release-ribbons.json'},
          'transform': [{'calculate': group_of.format(f='species'), 'as': 'group'}],
@@ -424,8 +484,8 @@ save('08-release-sankey.json', {
         {'data': {'url': 'data/release-nodes.json'},
          'transform': [{'filter': {'field': 'label', 'oneOf': ['Leopard', 'Brahminy kite']}},
                        {'calculate': "datum.label == 'Leopard' ? 'MAMMALS' : 'BIRDS'", 'as': 'heading'}],
-         'mark': {'type': 'text', 'align': 'left', 'dx': -208, 'fontSize': 12, 'fontWeight': 700, 'letterSpacing': 1.5, 'baseline': 'middle'},
-         'encoding': {'y': {'field': 'mid', 'type': 'quantitative'}, 'text': {'field': 'heading'},
+         'mark': {'type': 'text', 'align': 'right', 'dx': -8, 'dy': -6, 'fontSize': 12.5, 'fontWeight': 700, 'letterSpacing': 1.5, 'baseline': 'bottom'},
+         'encoding': {'y': {'field': 'y', 'type': 'quantitative'}, 'text': {'field': 'heading'},   # just above the first species of each group
                       'color': {'value': MUTED}}},
         {'data': {'url': 'data/release-nodes.json'},
          'transform': [{'filter': "datum.side == 'species'"}, {'calculate': "datum.label + '  ' + datum.animals", 'as': 'label_count'}],
@@ -463,6 +523,10 @@ save('09-volunteer-lines.json', {
         {'transform': [{'filter': 'datum.year == 2025'}],
          'mark': {'type': 'text', 'align': 'left', 'dx': 12, 'dy': 4, 'fontSize': 14, 'fontWeight': 600},
          'encoding': {'text': {'field': 'programme'}}},
+        {'data': {'values': [{'year': 2021, 'people': 60}]},   # the 2021 caveat, above that year
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': -8, 'fontSize': 12, 'fontStyle': 'italic', 'lineHeight': 15, 'color': MUTED,
+                  'text': ['2021 report also mentions', '2 remote volunteers;', 'unclear if among the 7']},
+         'encoding': {'color': {'value': MUTED}, 'tooltip': None}},
     ],
 })
 
@@ -472,63 +536,72 @@ save('10-volunteer-origins.json', {
     'width': 'container', 'height': 300,
     'data': {'url': 'data/bsbcc-origins-2025.json'},
     'encoding': {'y': {'field': 'origin', 'type': 'nominal', 'sort': '-x', 'title': None, 'axis': {'labelFontSize': 13.5, 'labelColor': INK}},
-                 'x': {'field': 'placements', 'type': 'quantitative', 'title': 'Volunteer placements, 2025', 'scale': {'domain': [0, 30]}, 'axis': {'tickCount': 4}},
+                 'x': {'field': 'placements', 'type': 'quantitative', 'title': 'Volunteer placements, 2025', 'scale': {'domain': [0, 38]}, 'axis': {'values': [0, 10, 20, 30]}},
                  'color': {'condition': {'test': "datum.origin == 'Malaysia'", 'value': MY}, 'value': OTHER},
                  'tooltip': [{'field': 'origin', 'title': 'Listed origin'}, {'field': 'placements', 'type': 'quantitative', 'title': 'Placements'}]},
     'layer': [
         {'mark': {'type': 'rule', 'strokeWidth': 2.5}, 'encoding': {'x2': {'datum': 0}}},
         {'mark': {'type': 'circle', 'size': 150, 'opacity': 1}},
-        {'mark': {'type': 'text', 'align': 'left', 'dx': 11, 'fontSize': 13, 'fontWeight': 600}, 'encoding': {'text': {'field': 'placements'}, 'color': {'value': INK}}},
+        {'transform': [{'joinaggregate': [{'op': 'sum', 'field': 'placements', 'as': 'all'}]},
+                       {'calculate': "datum.origin == 'Malaysia' ? datum.placements + ' of ' + datum.all + ' · ' + format(datum.placements / datum.all, '.0%') : datum.placements", 'as': 'label'}],
+         'mark': {'type': 'text', 'align': 'left', 'dx': 11, 'fontSize': 13, 'fontWeight': 600}, 'encoding': {'text': {'field': 'label'}, 'color': {'value': INK}}},
     ],
 })
 
 # ---- 11 Gantt + linked histogram: 57 placements in 2025 ---------------
-HX = {'field': 'bin_start', 'type': 'quantitative', 'scale': {'domain': [7, 42]}, 'title': 'Length of stay (days on site)', 'axis': {'values': [7, 14, 21, 28, 35, 42]}}
+BINS = ['8–14', '15–21', '22–28', '29–35', '36–42']            # one-week bins, labelled by the days they hold
+WEEK_BIN = [{'bin': {'step': 7, 'extent': [8, 43], 'nice': False}, 'field': 'days', 'as': ['bin_start', 'bin_end']},
+            {'calculate': "datum.bin_start + '–' + (datum.bin_end - 1)", 'as': 'range'}]
+HX = {'field': 'range', 'type': 'ordinal', 'scale': {'domain': BINS}, 'title': 'Length of stay (days on site)', 'axis': {'labelAngle': 0}}
 ORIGIN = {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]}
+def half_year(name, title, first, after, domain):
+    """One Gantt panel: placements that started in this half of 2025. Both panels use a 197-day x domain, so they share one scale."""
+    return {'name': name, 'width': 620, 'height': {'step': 11},
+            'title': {'text': title, 'anchor': 'start', 'fontSize': 14, 'color': INK, 'offset': 4},
+            'transform': [{'filter': {'field': 'start', 'gte': first}}, {'filter': {'field': 'start', 'lt': after}}],
+            'mark': {'type': 'bar', 'height': 8, 'cornerRadius': 1.5},
+            'encoding': {
+                'y': {'field': 'placement', 'type': 'nominal', 'sort': {'field': 'start'}, 'title': None,
+                      'axis': {'labels': False, 'ticks': False, 'domain': False, 'grid': True, 'gridColor': '#efece2'}},
+                'x': {'field': 'start', 'type': 'temporal', 'title': None, 'scale': {'domainMin': domain[0], 'domainMax': domain[1]},
+                      'axis': {'format': '%b', 'tickCount': {'interval': 'month'}, 'orient': 'top', 'labelColor': INK, 'labelFontSize': 13}},
+                'x2': {'field': 'end'},
+                'color': {'field': 'origin_group', 'type': 'nominal', 'title': 'Volunteer from', 'scale': ORIGIN,
+                          'legend': {'orient': 'top', 'direction': 'horizontal'}},
+                'tooltip': [{'field': 'origin', 'title': 'Listed origin'},
+                            {'field': 'start', 'type': 'temporal', 'title': 'Start', 'format': '%d %b %Y'},
+                            {'field': 'end', 'type': 'temporal', 'title': 'End', 'format': '%d %b %Y'},
+                            {'field': 'days', 'type': 'quantitative', 'title': 'Days on site'}]}}
+JAN, JUL = {'year': 2025, 'month': 1, 'date': 1}, {'year': 2025, 'month': 7, 'date': 1}
 save('11-placement-gantt.json', {
-    'description': 'Gantt chart of 57 volunteer placements at BSBCC in 2025, linked to a histogram of placement length. Drag across the timeline to select placements that started in that period.',
+    'description': 'Gantt chart of 57 volunteer placements at BSBCC in 2025 (two half-year panels), linked to a histogram of placement length. Drag across either timeline to select placements that started in that period.',
     'usermeta': {'fitWidth': 1010},  # js/app.js scales the fixed widths below to the page column
     'data': {'url': 'data/bsbcc-placements-2025.json'},
+    'params': [{'name': 'brush', 'select': {'type': 'interval', 'encodings': ['x']}, 'views': ['firstHalf', 'secondHalf']}],
     'hconcat': [
-        {'width': 620, 'height': 627,
-         'params': [{'name': 'brush', 'select': {'type': 'interval', 'encodings': ['x']}}],
-         'mark': {'type': 'bar', 'height': 7, 'cornerRadius': 1.5},
-         'encoding': {
-             'y': {'field': 'placement', 'type': 'nominal', 'sort': {'field': 'start'}, 'title': None,
-                   'axis': {'labels': False, 'ticks': False, 'domain': False, 'grid': True, 'gridColor': '#efece2'}},
-             'x': {'field': 'start', 'type': 'temporal', 'title': None, 'scale': {'nice': 'month'},
-                   
-                   'axis': {'format': '%b', 'tickCount': {'interval': 'month'}, 'orient': 'top', 'labelColor': INK, 'labelFontSize': 13}},
-             'x2': {'field': 'end'},
-             'color': {'field': 'origin_group', 'type': 'nominal', 'title': 'Volunteer from', 'scale': ORIGIN,
-                       'legend': {'orient': 'top', 'direction': 'horizontal', 'offset': 26}},
-             'tooltip': [{'field': 'origin', 'title': 'Listed origin'},
-                         {'field': 'start', 'type': 'temporal', 'title': 'Start', 'format': '%d %b %Y'},
-                         {'field': 'end', 'type': 'temporal', 'title': 'End', 'format': '%d %b %Y'},
-                         {'field': 'days', 'type': 'quantitative', 'title': 'Days on site'}]}},
+        {'vconcat': [half_year('firstHalf', 'Started January–June', JAN, JUL, [JAN, {'year': 2025, 'month': 7, 'date': 17}]),
+                     half_year('secondHalf', 'Started July–December', JUL, {'year': 2026, 'month': 1, 'date': 1}, [JUL, {'year': 2026, 'month': 1, 'date': 14}])],
+         'spacing': 22, 'resolve': {'scale': {'x': 'independent'}}},   # each half-year has its own dates
         {'width': 290, 'height': 250,
          'layer': [
              {'transform': [{'filter': {'param': 'brush'}},
-                            {'aggregate': [{'op': 'count', 'as': 'n'}, {'op': 'sum', 'field': 'days', 'as': 'd'}]},
-                            {'calculate': "(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements') + ' · ' + format(datum.d, ',') + ' days on site'", 'as': 't'}],
-              'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'fontSize': 14, 'fontWeight': 700, 'color': INK},
-              'encoding': {'x': {'value': 0}, 'y': {'value': -16}, 'text': {'field': 't'}}},
-             {'transform': [{'bin': {'step': 7, 'extent': [7, 42]}, 'field': 'days', 'as': ['bin_start', 'bin_end']}],
+                            {'aggregate': [{'op': 'count', 'as': 'n'}, {'op': 'sum', 'field': 'days', 'as': 'd'}, {'op': 'median', 'field': 'days', 'as': 'm'}]},
+                            {'calculate': "[(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements'),"
+                                          " format(datum.d, ',') + ' total placement-days', 'Median stay: ' + datum.m + ' days']", 'as': 't'}],
+              'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'fontSize': 14, 'fontWeight': 700, 'lineHeight': 19, 'color': INK},
+              'encoding': {'x': {'value': 0}, 'y': {'value': -78}, 'text': {'field': 't'}}},
+             {'transform': WEEK_BIN,
               'mark': {'type': 'bar', 'fill': PAPER, 'stroke': MARK, 'strokeWidth': 1.5, 'strokeDash': [3, 2]},
-              'encoding': {'x': HX, 'x2': {'field': 'bin_end'},
-                           'y': {'aggregate': 'count', 'type': 'quantitative', 'title': 'Placements', 'scale': {'domain': [0, 26]}, 'axis': {'tickCount': 5}}}},
-             {'transform': [{'filter': {'param': 'brush'}}, {'bin': {'step': 7, 'extent': [7, 42]}, 'field': 'days', 'as': ['bin_start', 'bin_end']},
-                            {'calculate': "datum.bin_start + '–' + (datum.bin_end - 1) + ' days'", 'as': 'range'}],
+              'encoding': {'x': HX, 'y': {'aggregate': 'count', 'type': 'quantitative', 'title': 'Placements', 'scale': {'domain': [0, 45]}, 'axis': {'tickCount': 5}}}},
+             {'transform': [{'filter': {'param': 'brush'}}] + WEEK_BIN,
               'mark': {'type': 'bar', 'color': MY, 'stroke': PAPER, 'strokeWidth': 2},
-              'encoding': {'x': HX, 'x2': {'field': 'bin_end'}, 'y': {'aggregate': 'count', 'type': 'quantitative'},
-                           'tooltip': [{'field': 'range', 'title': 'Placement length'},
+              'encoding': {'x': HX, 'y': {'aggregate': 'count', 'type': 'quantitative'},
+                           'tooltip': [{'field': 'range', 'title': 'Days on site'},
                                        {'aggregate': 'count', 'type': 'quantitative', 'title': 'Placements'}]}},
-             {'data': {'values': [{'d': 14}]},
-              'encoding': {'x': {'field': 'd', 'type': 'quantitative'}},
-              'layer': [{'mark': {'type': 'rule', 'color': INK, 'strokeDash': [5, 4], 'strokeWidth': 2}},
-                        {'mark': {'type': 'text', 'text': 'Half stayed 14 days or less', 'align': 'left', 'dx': 6, 'dy': 4,
-                                  'baseline': 'top', 'color': INK, 'fontSize': 12.5, 'fontWeight': 600},
-                         'encoding': {'y': {'value': 0}}}]}]},
+             {'data': {'values': [{'range': '8–14', 'n': 38}]},
+              'mark': {'type': 'text', 'text': '38 of 57 stayed two weeks or less', 'align': 'left', 'dx': -16, 'dy': -8,
+                       'baseline': 'bottom', 'color': INK, 'fontSize': 12.5, 'fontWeight': 600},
+              'encoding': {'x': {'field': 'range', 'type': 'ordinal'}, 'y': {'field': 'n', 'type': 'quantitative'}}}]},
     ],
     'spacing': 36,
 })
@@ -536,16 +609,16 @@ save('11-placement-gantt.json', {
 # ---- Context (not counted): national handover totals beside the bump chart --
 save('context-national-totals.json', {
     'description': 'Small bar chart of total animals handed over to PERHILITAN each year, 2021-2024.',
-    'width': 300, 'height': 120,
+    'width': 220, 'height': 70,
     'data': {'url': 'data/handovers-national.json'},
     'encoding': {'x': {'field': 'year', 'type': 'ordinal', 'title': None, 'axis': {'labelAngle': 0, 'labelColor': INK, 'labelFontSize': 13}},
                  'y': {'field': 'total', 'type': 'quantitative', 'axis': None, 'scale': {'domain': [0, 17000]}},
                  'tooltip': [{'field': 'year', 'title': 'Year'}, {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','},
                              {'field': 'source', 'title': 'Source'}]},
     'layer': [
-        {'mark': {'type': 'bar', 'width': 34, 'cornerRadiusEnd': 2},
+        {'mark': {'type': 'bar', 'width': 24, 'cornerRadiusEnd': 2},
          'encoding': {'color': {'condition': {'test': '!datum.state_table', 'value': '#b9b39f'}, 'value': MARK}}},
-        {'mark': {'type': 'text', 'dy': -7, 'baseline': 'bottom', 'fontSize': 13, 'fontWeight': 700},
+        {'mark': {'type': 'text', 'dy': -5, 'baseline': 'bottom', 'fontSize': 12, 'fontWeight': 600},
          'encoding': {'text': {'field': 'total', 'format': ','}}},
     ],
 })

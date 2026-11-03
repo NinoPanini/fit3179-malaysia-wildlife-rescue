@@ -1,111 +1,294 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Gantt chart of 57 volunteer placements at BSBCC in 2025, linked to a histogram of placement length. Drag across the timeline to select placements that started in that period.",
+  "description": "Gantt chart of 57 volunteer placements at BSBCC in 2025 (two half-year panels), linked to a histogram of placement length. Drag across either timeline to select placements that started in that period.",
   "usermeta": {
     "fitWidth": 1010
   },
   "data": {
     "url": "data/bsbcc-placements-2025.json"
   },
+  "params": [
+    {
+      "name": "brush",
+      "select": {
+        "type": "interval",
+        "encodings": [
+          "x"
+        ]
+      },
+      "views": [
+        "firstHalf",
+        "secondHalf"
+      ]
+    }
+  ],
   "hconcat": [
     {
-      "width": 620,
-      "height": 627,
-      "params": [
+      "vconcat": [
         {
-          "name": "brush",
-          "select": {
-            "type": "interval",
-            "encodings": [
-              "x"
+          "name": "firstHalf",
+          "width": 620,
+          "height": {
+            "step": 11
+          },
+          "title": {
+            "text": "Started January–June",
+            "anchor": "start",
+            "fontSize": 14,
+            "color": "#1f2d2a",
+            "offset": 4
+          },
+          "transform": [
+            {
+              "filter": {
+                "field": "start",
+                "gte": {
+                  "year": 2025,
+                  "month": 1,
+                  "date": 1
+                }
+              }
+            },
+            {
+              "filter": {
+                "field": "start",
+                "lt": {
+                  "year": 2025,
+                  "month": 7,
+                  "date": 1
+                }
+              }
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "height": 8,
+            "cornerRadius": 1.5
+          },
+          "encoding": {
+            "y": {
+              "field": "placement",
+              "type": "nominal",
+              "sort": {
+                "field": "start"
+              },
+              "title": null,
+              "axis": {
+                "labels": false,
+                "ticks": false,
+                "domain": false,
+                "grid": true,
+                "gridColor": "#efece2"
+              }
+            },
+            "x": {
+              "field": "start",
+              "type": "temporal",
+              "title": null,
+              "scale": {
+                "domainMin": {
+                  "year": 2025,
+                  "month": 1,
+                  "date": 1
+                },
+                "domainMax": {
+                  "year": 2025,
+                  "month": 7,
+                  "date": 17
+                }
+              },
+              "axis": {
+                "format": "%b",
+                "tickCount": {
+                  "interval": "month"
+                },
+                "orient": "top",
+                "labelColor": "#1f2d2a",
+                "labelFontSize": 13
+              }
+            },
+            "x2": {
+              "field": "end"
+            },
+            "color": {
+              "field": "origin_group",
+              "type": "nominal",
+              "title": "Volunteer from",
+              "scale": {
+                "domain": [
+                  "Malaysia",
+                  "Other countries"
+                ],
+                "range": [
+                  "#2f4858",
+                  "#8a8270"
+                ]
+              },
+              "legend": {
+                "orient": "top",
+                "direction": "horizontal"
+              }
+            },
+            "tooltip": [
+              {
+                "field": "origin",
+                "title": "Listed origin"
+              },
+              {
+                "field": "start",
+                "type": "temporal",
+                "title": "Start",
+                "format": "%d %b %Y"
+              },
+              {
+                "field": "end",
+                "type": "temporal",
+                "title": "End",
+                "format": "%d %b %Y"
+              },
+              {
+                "field": "days",
+                "type": "quantitative",
+                "title": "Days on site"
+              }
+            ]
+          }
+        },
+        {
+          "name": "secondHalf",
+          "width": 620,
+          "height": {
+            "step": 11
+          },
+          "title": {
+            "text": "Started July–December",
+            "anchor": "start",
+            "fontSize": 14,
+            "color": "#1f2d2a",
+            "offset": 4
+          },
+          "transform": [
+            {
+              "filter": {
+                "field": "start",
+                "gte": {
+                  "year": 2025,
+                  "month": 7,
+                  "date": 1
+                }
+              }
+            },
+            {
+              "filter": {
+                "field": "start",
+                "lt": {
+                  "year": 2026,
+                  "month": 1,
+                  "date": 1
+                }
+              }
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "height": 8,
+            "cornerRadius": 1.5
+          },
+          "encoding": {
+            "y": {
+              "field": "placement",
+              "type": "nominal",
+              "sort": {
+                "field": "start"
+              },
+              "title": null,
+              "axis": {
+                "labels": false,
+                "ticks": false,
+                "domain": false,
+                "grid": true,
+                "gridColor": "#efece2"
+              }
+            },
+            "x": {
+              "field": "start",
+              "type": "temporal",
+              "title": null,
+              "scale": {
+                "domainMin": {
+                  "year": 2025,
+                  "month": 7,
+                  "date": 1
+                },
+                "domainMax": {
+                  "year": 2026,
+                  "month": 1,
+                  "date": 14
+                }
+              },
+              "axis": {
+                "format": "%b",
+                "tickCount": {
+                  "interval": "month"
+                },
+                "orient": "top",
+                "labelColor": "#1f2d2a",
+                "labelFontSize": 13
+              }
+            },
+            "x2": {
+              "field": "end"
+            },
+            "color": {
+              "field": "origin_group",
+              "type": "nominal",
+              "title": "Volunteer from",
+              "scale": {
+                "domain": [
+                  "Malaysia",
+                  "Other countries"
+                ],
+                "range": [
+                  "#2f4858",
+                  "#8a8270"
+                ]
+              },
+              "legend": {
+                "orient": "top",
+                "direction": "horizontal"
+              }
+            },
+            "tooltip": [
+              {
+                "field": "origin",
+                "title": "Listed origin"
+              },
+              {
+                "field": "start",
+                "type": "temporal",
+                "title": "Start",
+                "format": "%d %b %Y"
+              },
+              {
+                "field": "end",
+                "type": "temporal",
+                "title": "End",
+                "format": "%d %b %Y"
+              },
+              {
+                "field": "days",
+                "type": "quantitative",
+                "title": "Days on site"
+              }
             ]
           }
         }
       ],
-      "mark": {
-        "type": "bar",
-        "height": 7,
-        "cornerRadius": 1.5
-      },
-      "encoding": {
-        "y": {
-          "field": "placement",
-          "type": "nominal",
-          "sort": {
-            "field": "start"
-          },
-          "title": null,
-          "axis": {
-            "labels": false,
-            "ticks": false,
-            "domain": false,
-            "grid": true,
-            "gridColor": "#efece2"
-          }
-        },
-        "x": {
-          "field": "start",
-          "type": "temporal",
-          "title": null,
-          "scale": {
-            "nice": "month"
-          },
-          "axis": {
-            "format": "%b",
-            "tickCount": {
-              "interval": "month"
-            },
-            "orient": "top",
-            "labelColor": "#1f2d2a",
-            "labelFontSize": 13
-          }
-        },
-        "x2": {
-          "field": "end"
-        },
-        "color": {
-          "field": "origin_group",
-          "type": "nominal",
-          "title": "Volunteer from",
-          "scale": {
-            "domain": [
-              "Malaysia",
-              "Other countries"
-            ],
-            "range": [
-              "#2f4858",
-              "#8a8270"
-            ]
-          },
-          "legend": {
-            "orient": "top",
-            "direction": "horizontal",
-            "offset": 26
-          }
-        },
-        "tooltip": [
-          {
-            "field": "origin",
-            "title": "Listed origin"
-          },
-          {
-            "field": "start",
-            "type": "temporal",
-            "title": "Start",
-            "format": "%d %b %Y"
-          },
-          {
-            "field": "end",
-            "type": "temporal",
-            "title": "End",
-            "format": "%d %b %Y"
-          },
-          {
-            "field": "days",
-            "type": "quantitative",
-            "title": "Days on site"
-          }
-        ]
+      "spacing": 22,
+      "resolve": {
+        "scale": {
+          "x": "independent"
+        }
       }
     },
     {
@@ -129,20 +312,26 @@
                   "op": "sum",
                   "field": "days",
                   "as": "d"
+                },
+                {
+                  "op": "median",
+                  "field": "days",
+                  "as": "m"
                 }
               ]
             },
             {
-              "calculate": "(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements') + ' · ' + format(datum.d, ',') + ' days on site'",
+              "calculate": "[(length(data('brush_store')) ? 'Selected: ' : 'All: ') + datum.n + (datum.n == 1 ? ' placement' : ' placements'), format(datum.d, ',') + ' total placement-days', 'Median stay: ' + datum.m + ' days']",
               "as": "t"
             }
           ],
           "mark": {
             "type": "text",
             "align": "left",
-            "baseline": "bottom",
+            "baseline": "top",
             "fontSize": 14,
             "fontWeight": 700,
+            "lineHeight": 19,
             "color": "#1f2d2a"
           },
           "encoding": {
@@ -150,7 +339,7 @@
               "value": 0
             },
             "y": {
-              "value": -16
+              "value": -78
             },
             "text": {
               "field": "t"
@@ -163,15 +352,20 @@
               "bin": {
                 "step": 7,
                 "extent": [
-                  7,
-                  42
-                ]
+                  8,
+                  43
+                ],
+                "nice": false
               },
               "field": "days",
               "as": [
                 "bin_start",
                 "bin_end"
               ]
+            },
+            {
+              "calculate": "datum.bin_start + '–' + (datum.bin_end - 1)",
+              "as": "range"
             }
           ],
           "mark": {
@@ -186,28 +380,21 @@
           },
           "encoding": {
             "x": {
-              "field": "bin_start",
-              "type": "quantitative",
+              "field": "range",
+              "type": "ordinal",
               "scale": {
                 "domain": [
-                  7,
-                  42
+                  "8–14",
+                  "15–21",
+                  "22–28",
+                  "29–35",
+                  "36–42"
                 ]
               },
               "title": "Length of stay (days on site)",
               "axis": {
-                "values": [
-                  7,
-                  14,
-                  21,
-                  28,
-                  35,
-                  42
-                ]
+                "labelAngle": 0
               }
-            },
-            "x2": {
-              "field": "bin_end"
             },
             "y": {
               "aggregate": "count",
@@ -216,7 +403,7 @@
               "scale": {
                 "domain": [
                   0,
-                  26
+                  45
                 ]
               },
               "axis": {
@@ -236,9 +423,10 @@
               "bin": {
                 "step": 7,
                 "extent": [
-                  7,
-                  42
-                ]
+                  8,
+                  43
+                ],
+                "nice": false
               },
               "field": "days",
               "as": [
@@ -247,7 +435,7 @@
               ]
             },
             {
-              "calculate": "datum.bin_start + '–' + (datum.bin_end - 1) + ' days'",
+              "calculate": "datum.bin_start + '–' + (datum.bin_end - 1)",
               "as": "range"
             }
           ],
@@ -259,28 +447,21 @@
           },
           "encoding": {
             "x": {
-              "field": "bin_start",
-              "type": "quantitative",
+              "field": "range",
+              "type": "ordinal",
               "scale": {
                 "domain": [
-                  7,
-                  42
+                  "8–14",
+                  "15–21",
+                  "22–28",
+                  "29–35",
+                  "36–42"
                 ]
               },
               "title": "Length of stay (days on site)",
               "axis": {
-                "values": [
-                  7,
-                  14,
-                  21,
-                  28,
-                  35,
-                  42
-                ]
+                "labelAngle": 0
               }
-            },
-            "x2": {
-              "field": "bin_end"
             },
             "y": {
               "aggregate": "count",
@@ -289,7 +470,7 @@
             "tooltip": [
               {
                 "field": "range",
-                "title": "Placement length"
+                "title": "Days on site"
               },
               {
                 "aggregate": "count",
@@ -303,47 +484,32 @@
           "data": {
             "values": [
               {
-                "d": 14
+                "range": "8–14",
+                "n": 38
               }
             ]
           },
+          "mark": {
+            "type": "text",
+            "text": "38 of 57 stayed two weeks or less",
+            "align": "left",
+            "dx": -16,
+            "dy": -8,
+            "baseline": "bottom",
+            "color": "#1f2d2a",
+            "fontSize": 12.5,
+            "fontWeight": 600
+          },
           "encoding": {
             "x": {
-              "field": "d",
+              "field": "range",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "n",
               "type": "quantitative"
             }
-          },
-          "layer": [
-            {
-              "mark": {
-                "type": "rule",
-                "color": "#1f2d2a",
-                "strokeDash": [
-                  5,
-                  4
-                ],
-                "strokeWidth": 2
-              }
-            },
-            {
-              "mark": {
-                "type": "text",
-                "text": "Half stayed 14 days or less",
-                "align": "left",
-                "dx": 6,
-                "dy": 4,
-                "baseline": "top",
-                "color": "#1f2d2a",
-                "fontSize": 12.5,
-                "fontWeight": 600
-              },
-              "encoding": {
-                "y": {
-                  "value": 0
-                }
-              }
-            }
-          ]
+          }
         }
       ]
     }

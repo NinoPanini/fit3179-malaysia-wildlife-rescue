@@ -10,16 +10,39 @@
   "vconcat": [
     {
       "width": 860,
-      "height": 330,
+      "height": 418,
       "encoding": {
         "y": {
           "field": "bear",
           "type": "nominal",
-          "sort": {
-            "field": "order"
-          },
           "title": null,
+          "scale": {
+            "domain": [
+              "Released to the forest · 5 bears",
+              "Sunbearo",
+              "Loki",
+              "Wawa",
+              "Sika",
+              "Itam",
+              "Still in care · 4 bears",
+              "Rudy",
+              "Kwong",
+              "Tenom",
+              "Pitang"
+            ]
+          },
           "axis": {
+            "values": [
+              "Sunbearo",
+              "Loki",
+              "Wawa",
+              "Sika",
+              "Itam",
+              "Rudy",
+              "Kwong",
+              "Tenom",
+              "Pitang"
+            ],
             "labelFontSize": 15,
             "labelFontWeight": 600,
             "labelColor": "#1f2d2a",
@@ -30,6 +53,38 @@
         }
       },
       "layer": [
+        {
+          "data": {
+            "values": [
+              {
+                "head": "Released to the forest · 5 bears"
+              },
+              {
+                "head": "Still in care · 4 bears"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "#56625d"
+          },
+          "encoding": {
+            "y": {
+              "field": "head",
+              "type": "nominal",
+              "title": null
+            },
+            "x": {
+              "value": -90
+            },
+            "text": {
+              "field": "head"
+            }
+          }
+        },
         {
           "data": {
             "url": "data/bear-outcomes.json"
@@ -160,8 +215,9 @@
                   "Rehabilitation step",
                   "Release",
                   "Recaptured",
-                  "Last report",
-                  "Death reported"
+                  "Other collar signal",
+                  "Collar death signal",
+                  "Remains found"
                 ],
                 "range": [
                   "circle",
@@ -169,6 +225,7 @@
                   "triangle-up",
                   "diamond",
                   "triangle-down",
+                  "M-1,-0.6L-0.6,-1L0,-0.4L0.6,-1L1,-0.6L0.4,0L1,0.6L0.6,1L0,0.4L-0.6,1L-1,0.6L-0.4,0Z",
                   "cross"
                 ]
               },
@@ -190,8 +247,9 @@
                   "Rehabilitation step",
                   "Release",
                   "Recaptured",
-                  "Last report",
-                  "Death reported"
+                  "Other collar signal",
+                  "Collar death signal",
+                  "Remains found"
                 ],
                 "range": [
                   "#8a8270",
@@ -199,6 +257,7 @@
                   "#D55E00",
                   "#762a83",
                   "#5e6b8a",
+                  "#b2182b",
                   "#000000"
                 ]
               },
@@ -208,6 +267,20 @@
                 "symbolSize": 150,
                 "columnPadding": 22,
                 "labelLimit": 200
+              }
+            },
+            "yOffset": {
+              "field": "nudge",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  -1,
+                  1
+                ],
+                "range": [
+                  8,
+                  30
+                ]
               }
             },
             "opacity": {
@@ -382,8 +455,9 @@
                   "Rehabilitation step",
                   "Release",
                   "Recaptured",
-                  "Last report",
-                  "Death reported"
+                  "Other collar signal",
+                  "Collar death signal",
+                  "Remains found"
                 ],
                 "range": [
                   "circle",
@@ -391,6 +465,7 @@
                   "triangle-up",
                   "diamond",
                   "triangle-down",
+                  "M-1,-0.6L-0.6,-1L0,-0.4L0.6,-1L1,-0.6L0.4,0L1,0.6L0.6,1L0,0.4L-0.6,1L-1,0.6L-0.4,0Z",
                   "cross"
                 ]
               },
@@ -405,8 +480,9 @@
                   "Rehabilitation step",
                   "Release",
                   "Recaptured",
-                  "Last report",
-                  "Death reported"
+                  "Other collar signal",
+                  "Collar death signal",
+                  "Remains found"
                 ],
                 "range": [
                   "#8a8270",
@@ -414,6 +490,7 @@
                   "#D55E00",
                   "#762a83",
                   "#5e6b8a",
+                  "#b2182b",
                   "#000000"
                 ]
               },

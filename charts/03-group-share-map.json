@@ -3,6 +3,12 @@
   "description": "Choropleth: the selected animal group's share of each state's 2024 handovers, in fixed classes.",
   "width": "container",
   "height": 470,
+  "padding": {
+    "left": 72,
+    "top": 5,
+    "right": 5,
+    "bottom": 5
+  },
   "params": [
     {
       "name": "groupChoice",
@@ -14,7 +20,8 @@
           "Reptiles",
           "Birds"
         ],
-        "name": "Show the share that were: "
+        "name": "Animal group: ",
+        "element": "#share-map-control"
       }
     }
   ],
@@ -102,8 +109,8 @@
       ],
       "mark": {
         "type": "geoshape",
-        "stroke": "#fbf9f2",
-        "strokeWidth": 1.2
+        "stroke": "#a39b86",
+        "strokeWidth": 0.9
       },
       "encoding": {
         "color": {
@@ -132,11 +139,12 @@
           },
           "legend": {
             "labelExpr": "(groupChoice == 'Mammals' ? [\"under 2%\", \"2%\\u20134%\", \"4%\\u20137%\", \"7%\\u201310%\", \"10%\\u201325%\", \"25% or more\", \"No separate figure\"] : groupChoice == 'Reptiles' ? [\"under 50%\", \"50%\\u201390%\", \"90%\\u201393%\", \"93%\\u201396%\", \"96%\\u201398%\", \"98% or more\", \"No separate figure\"] : [\"under 0.5%\", \"0.5%\\u20131%\", \"1%\\u20131.5%\", \"1.5%\\u20132%\", \"2%\\u20133%\", \"3% or more\", \"No separate figure\"])[datum.value]",
-            "orient": "bottom-left",
-            "direction": "vertical",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 4,
             "title": [
               "Share of each state’s",
-              "handovers in this group"
+              "handovers in the chosen group"
             ],
             "symbolType": "square",
             "symbolSize": 220,
@@ -176,9 +184,163 @@
     },
     {
       "data": {
-        "url": "data/state-anchors.json"
+        "values": [
+          {
+            "state": "Perlis",
+            "name": "Perlis",
+            "lon": 99.85,
+            "lat": 6.62,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Pulau Pinang",
+            "name": "Pulau Pinang",
+            "lon": 99.85,
+            "lat": 5.42,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Melaka",
+            "name": "Melaka",
+            "lon": 101.7,
+            "lat": 2.08,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Selangor",
+            "name": "Selangor",
+            "lon": 100.85,
+            "lat": 3.6,
+            "align": "right",
+            "leader": true
+          }
+        ]
       },
       "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/state-anchors.json"
+            },
+            "key": "state",
+            "fields": [
+              "longitude",
+              "latitude"
+            ]
+          }
+        },
+        {
+          "calculate": "isValid(datum.longitude) ? datum.longitude : 101.69",
+          "as": "ax"
+        },
+        {
+          "calculate": "isValid(datum.latitude) ? datum.latitude : 3.12",
+          "as": "ay"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#8a8270",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "ax"
+        },
+        "latitude2": {
+          "field": "ay"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Kedah",
+            "name": "Kedah",
+            "lon": 100.66,
+            "lat": 5.92,
+            "align": "center",
+            "leader": false
+          },
+          {
+            "state": "Perak",
+            "name": "Perak",
+            "lon": 101.11,
+            "lat": 4.77,
+            "align": "center",
+            "leader": false
+          },
+          {
+            "state": "Kelantan",
+            "name": "Kelantan",
+            "lon": 102.03,
+            "lat": 5.28,
+            "align": "center",
+            "leader": false
+          },
+          {
+            "state": "Terengganu",
+            "name": "Terengganu",
+            "lon": 102.95,
+            "lat": 4.94,
+            "align": "center",
+            "leader": false
+          },
+          {
+            "state": "Pahang",
+            "name": "Pahang",
+            "lon": 102.54,
+            "lat": 3.74,
+            "align": "center",
+            "leader": false
+          },
+          {
+            "state": "Negeri Sembilan",
+            "name": "Negeri Sembilan",
+            "lon": 102.21,
+            "lat": 2.78,
+            "align": "center",
+            "leader": false
+          },
+          {
+            "state": "Johor",
+            "name": "Johor",
+            "lon": 103.38,
+            "lat": 2.05,
+            "align": "center",
+            "leader": false
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/handovers-2024.json"
+            },
+            "key": "state",
+            "fields": [
+              "reptiles",
+              "mammals",
+              "birds",
+              "total"
+            ]
+          }
+        },
         {
           "calculate": "(groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds) / datum.total",
           "as": "share"
@@ -188,25 +350,26 @@
           "as": "cls"
         },
         {
-          "calculate": "datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')",
+          "calculate": "[datum.name, datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')]",
           "as": "label"
-        },
-        {
-          "filter": "datum.state != 'Pulau Pinang' && datum.state != 'Perlis'"
         }
       ],
       "mark": {
         "type": "text",
-        "fontSize": 12,
-        "fontWeight": 700
+        "fontSize": 11.5,
+        "fontWeight": 700,
+        "lineHeight": 13,
+        "baseline": "middle",
+        "align": "center",
+        "dx": 0
       },
       "encoding": {
         "longitude": {
-          "field": "longitude",
+          "field": "lon",
           "type": "quantitative"
         },
         "latitude": {
-          "field": "latitude",
+          "field": "lat",
           "type": "quantitative"
         },
         "text": {
@@ -221,7 +384,7 @@
         },
         "tooltip": [
           {
-            "field": "state",
+            "field": "name",
             "title": "State"
           },
           {
@@ -235,41 +398,106 @@
     },
     {
       "data": {
-        "url": "data/state-anchors.json"
+        "values": [
+          {
+            "state": "Perlis",
+            "name": "Perlis",
+            "lon": 99.85,
+            "lat": 6.62,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Pulau Pinang",
+            "name": "Pulau Pinang",
+            "lon": 99.85,
+            "lat": 5.42,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Melaka",
+            "name": "Melaka",
+            "lon": 101.7,
+            "lat": 2.08,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Selangor",
+            "name": "Selangor",
+            "lon": 100.85,
+            "lat": 3.6,
+            "align": "right",
+            "leader": true
+          }
+        ]
       },
       "transform": [
         {
-          "filter": "datum.state == 'Pulau Pinang' || datum.state == 'Perlis'"
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/handovers-2024.json"
+            },
+            "key": "state",
+            "fields": [
+              "reptiles",
+              "mammals",
+              "birds",
+              "total"
+            ]
+          }
         },
         {
           "calculate": "(groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds) / datum.total",
           "as": "share"
         },
         {
-          "calculate": "datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')",
+          "calculate": "groupChoice == 'Mammals' ? (datum.share < 0.02 ? 0 : datum.share < 0.04 ? 1 : datum.share < 0.07 ? 2 : datum.share < 0.1 ? 3 : datum.share < 0.25 ? 4 : 5) : groupChoice == 'Reptiles' ? (datum.share < 0.5 ? 0 : datum.share < 0.9 ? 1 : datum.share < 0.93 ? 2 : datum.share < 0.96 ? 3 : datum.share < 0.98 ? 4 : 5) : (datum.share < 0.005 ? 0 : datum.share < 0.01 ? 1 : datum.share < 0.015 ? 2 : datum.share < 0.02 ? 3 : datum.share < 0.03 ? 4 : 5)",
+          "as": "cls"
+        },
+        {
+          "calculate": "[datum.name, datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')]",
           "as": "label"
         }
       ],
       "mark": {
         "type": "text",
-        "fontSize": 12,
+        "fontSize": 11.5,
         "fontWeight": 700,
+        "lineHeight": 13,
+        "baseline": "middle",
         "align": "right",
-        "dx": -12,
-        "color": "#1f2d2a"
+        "dx": -4
       },
       "encoding": {
         "longitude": {
-          "field": "longitude",
+          "field": "lon",
           "type": "quantitative"
         },
         "latitude": {
-          "field": "latitude",
+          "field": "lat",
           "type": "quantitative"
         },
         "text": {
           "field": "label"
-        }
+        },
+        "color": {
+          "value": "#1f2d2a"
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "title": "State"
+          },
+          {
+            "field": "share",
+            "type": "quantitative",
+            "title": "Share",
+            "format": ".1%"
+          }
+        ]
       }
     }
   ],

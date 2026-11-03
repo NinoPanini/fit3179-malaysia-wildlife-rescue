@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Small bar chart of total animals handed over to PERHILITAN each year, 2021-2024.",
-  "width": 300,
-  "height": 120,
+  "width": 220,
+  "height": 70,
   "data": {
     "url": "data/handovers-national.json"
   },
@@ -49,7 +49,7 @@
     {
       "mark": {
         "type": "bar",
-        "width": 34,
+        "width": 24,
         "cornerRadiusEnd": 2
       },
       "encoding": {
@@ -65,10 +65,10 @@
     {
       "mark": {
         "type": "text",
-        "dy": -7,
+        "dy": -5,
         "baseline": "bottom",
-        "fontSize": 13,
-        "fontWeight": 700
+        "fontSize": 12,
+        "fontWeight": 600
       },
       "encoding": {
         "text": {

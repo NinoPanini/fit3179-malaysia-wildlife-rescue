@@ -18,14 +18,15 @@
           "Taman Negara Pahang",
           "Sungkai Wildlife Reserve"
         ],
-        "name": "Highlight a release area: "
+        "name": "Highlight a release area: ",
+        "element": "#sankey-control"
       }
     }
   ],
   "padding": {
-    "left": 212,
-    "right": 210,
-    "top": 10,
+    "left": 4,
+    "right": 4,
+    "top": 4,
     "bottom": 10
   },
   "autosize": {
@@ -50,8 +51,8 @@
       "scale": {
         "reverse": true,
         "domain": [
-          0,
-          43
+          -2,
+          45.5
         ]
       },
       "axis": null
@@ -190,16 +191,17 @@
       ],
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": -208,
-        "fontSize": 12,
+        "align": "right",
+        "dx": -8,
+        "dy": -6,
+        "fontSize": 12.5,
         "fontWeight": 700,
         "letterSpacing": 1.5,
-        "baseline": "middle"
+        "baseline": "bottom"
       },
       "encoding": {
         "y": {
-          "field": "mid",
+          "field": "y",
           "type": "quantitative"
         },
         "text": {
