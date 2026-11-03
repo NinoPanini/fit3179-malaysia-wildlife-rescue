@@ -43,7 +43,7 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 ## Limitations
 
 - Handovers are records of contact with the authorities. They do not estimate wild populations or measure how well a state protects wildlife.
-- PERHILITAN's 2022 report gives only a national total. The state comparison uses the 2021 and 2024 endpoints, while the supporting national bars include all four years. In the 2023 report, the rescue centre's December row repeats the annual totals, so December 2023 is marked unavailable. The heatmap's year-total column and its monthly shares use the published annual totals, not sums of incomplete monthly records, so the 2023 rows add up to slightly less than 100%.
+- PERHILITAN's 2022 report gives only a national total. The state comparison uses the 2021 and 2024 endpoints, and its subtitle gives the national totals, including the 2022 dip. In the 2023 report, the rescue centre's December row repeats the annual totals, so December 2023 is marked unavailable. The heatmap's year-total column and its monthly shares use the published annual totals, not sums of incomplete monthly records, so the 2023 rows add up to slightly less than 100%.
 - The Federal Territories are reported as a single unit. The maps treat Kuala Lumpur, Putrajaya and Labuan as one unit drawn at Kuala Lumpur, and its rate per km² uses their combined area.
 - The animals-per-1,000 km² rate uses state areas measured from the simplified boundary file, so the areas are approximate.
 - Release-area positions are approximate (within about 10–20 km) and show destinations, not routes. The 2024 NWRC report does not follow up on the animals it released.

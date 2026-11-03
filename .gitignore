@@ -12,3 +12,5 @@ Thumbs.db
 *.pdf
 *.xlsx
 *.docx
+# The hand-drawn sketch is submitted as a PDF from this repository
+!sketch/*.pdf

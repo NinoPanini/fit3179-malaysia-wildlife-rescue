@@ -77,13 +77,19 @@ figure{margin:0;min-width:0}
 .comparison-chart{min-width:620px}
 .placement-facts{display:flex;flex-wrap:wrap;gap:18px 40px;margin:18px 0 24px;color:var(--muted);font-size:15px}
 .placement-facts strong{display:block;color:var(--ink);font-size:25px;line-height:1.3}
-figcaption{font-size:16px;line-height:1.6;color:var(--muted);margin-top:16px;max-width:78ch}
+figcaption{font-size:16px;line-height:1.6;color:var(--muted);margin-top:16px;max-width:62ch}   /* about 60-70 characters a line (typography notes) */
 figcaption b{color:var(--ink)}
 .wide-figure{margin-top:64px}
 .hint{font-size:14px;color:var(--muted);font-style:italic}
 
 /* ---- grids (12-column logic: 6+6, 5+7, 7+5) ---- */
-.map-pair,.chart-pair{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:64px}
+.map-pair,.chart-pair{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,auto);gap:0 48px;margin-top:64px}
+/* the two figures share rows (heading, menu, chart, caption), so their charts and captions start on the same sight-lines */
+.map-pair>figure,.chart-pair>figure{display:grid;grid-row:span 4;grid-template-rows:subgrid}
+.map-pair .figure-top,.chart-pair .figure-top{grid-row:1}
+.map-pair .chart-control{grid-row:2}
+.map-pair .chart,.chart-pair .chart{grid-row:3}
+.map-pair figcaption,.chart-pair figcaption{grid-row:4}
 .split{display:grid;gap:56px;align-items:center}
 .split--waffle{grid-template-columns:7fr 5fr}
 .split--map{grid-template-columns:7fr 5fr;align-items:start}
@@ -96,8 +102,8 @@ figcaption b{color:var(--ink)}
 .inset figcaption{font-size:13px;margin-top:4px}
 
 /* ---- text furniture ---- */
-.scope-note{font-size:15px;color:var(--muted);border-left:3px solid var(--line);padding-left:14px;margin:26px 0 0;max-width:78ch}
-.source{font-size:14px;line-height:1.6;color:var(--muted);margin:18px 0 6px;max-width:90ch}
+.scope-note{font-size:15px;color:var(--muted);border-left:3px solid var(--line);padding-left:14px;margin:26px 0 0;max-width:66ch}
+.source{font-size:14px;line-height:1.6;color:var(--muted);margin:18px 0 6px;max-width:64ch}
 .source a{color:inherit}
 details{font-size:15px;border-top:1px solid var(--line);margin-top:12px;padding:10px 0;color:var(--muted)}
 summary{cursor:pointer;color:var(--green);font-weight:600;width:fit-content}
@@ -132,10 +138,10 @@ footer code{font-size:13px;background:var(--tint);padding:1px 5px;border-radius:
 /* ---- sources and footer ---- */
 .sources h2{font-size:38px}
 .sources>p{max-width:var(--measure);color:var(--muted)}
-.source-list{padding-left:22px;max-width:96ch}
+.source-list{padding-left:22px;max-width:76ch}
 .source-list li{font-size:15px;line-height:1.7;color:var(--muted);padding:0 0 14px 6px}
 .source-list b{color:var(--ink)}
-details ul{padding-left:22px;max-width:90ch}
+details ul{padding-left:22px;max-width:72ch}
 details li{margin-bottom:8px}
 footer{display:grid;grid-template-columns:5fr 7fr;gap:56px;padding-top:36px;padding-bottom:48px;font-size:14px;color:var(--muted)}
 footer strong{font-family:var(--serif);font-size:20px;color:var(--ink)}
@@ -158,7 +164,8 @@ footer p{margin:6px 0 12px}
   .hero{padding-top:44px}
   .hero-facts{grid-template-columns:1fr;gap:22px}
   .hero-facts strong{font-size:42px}
-  .map-pair,.chart-pair{grid-template-columns:1fr}
+  .map-pair,.chart-pair{grid-template-columns:1fr;grid-template-rows:none;row-gap:48px}
+  .map-pair>figure,.chart-pair>figure{display:block;grid-row:auto}
   nav a{font-size:13px;gap:6px;padding:12px 6px}
   .chapter{padding:56px 0}
   .story-break p{font-size:21px}

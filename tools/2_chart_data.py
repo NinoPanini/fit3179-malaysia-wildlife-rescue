@@ -131,7 +131,7 @@ mon = lambda d: f"{_dt.date.fromisoformat(d):%b %Y}"
 after = lambda b, kind: (_dt.date.fromisoformat(first(b, kind)) - _dt.date.fromisoformat(first(b, 'Release'))).days
 detail = {
     'Sika': f"Released {mon(first('Sika', 'Release'))} · collar signalled death {after('Sika', 'Collar death signal')} days later",
-    'Itam': f"Released {mon(first('Itam', 'Release'))} · collar signalled death {after('Itam', 'Collar death signal')} days later; remains in {_dt.date.fromisoformat(first('Itam', 'Remains recovered')):%B}",
+    'Itam': f"Released {mon(first('Itam', 'Release'))} · collar signalled death {after('Itam', 'Collar death signal')} days later; remains found in {_dt.date.fromisoformat(first('Itam', 'Remains recovered')):%B}",
     'Sunbearo': f"Released {mon(first('Sunbearo', 'Release'))} · death confirmed later (collar retrieved)",
     'Wawa': f"Released {mon(first('Wawa', 'Release'))} · rescued from a plantation and re-released; last signal {mon(first('Wawa', 'Other collar signal'))}",
     'Loki': f"Released {mon(first('Loki', 'Release'))} · collar failed, no later news",
