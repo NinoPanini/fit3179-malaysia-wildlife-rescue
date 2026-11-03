@@ -2,14 +2,14 @@
 
 Updated 3 November 2026 after a first-view readability review: each chart must be understandable from what it shows before the caption is read or a tooltip is opened.
 
-The site has **12 numbered charts** and **9 advanced idioms**, including three different map idioms. Basic idioms are classified using the unit's own definitions: the brief lists bar, stacked bar, grouped bar, dot plots, line, area, pie, scatter and bubble charts as basic, and Course Notes 4 (section 2.2.2) treats dumbbell and connected dot plots as dot plots.
+The site has **12 numbered charts** and **9 advanced idioms**, including three different map idioms (brief v1.2 confirms that all map idioms count as advanced). Basic idioms are classified using the unit's own definitions: the brief lists bar, stacked bar, grouped bar, dot plots, line, area, pie, scatter and bubble charts as basic, and Course Notes 4 (section 2.2.2) treats dumbbell and connected dot plots as dot plots.
 
 | Chart | Question | Idiom | Classification |
 |---|---|---|---|
 | 01 | Which animal groups were handed over? | Waffle (100 squares, 1 square ≈ 1%) | Advanced 1 |
 | 02 | Where were most animals handed over? | Proportional-symbol map | Advanced 2 (map) |
 | 03 | Where are handovers concentrated for the land area, and how does the mix vary? | Choropleth: animals per 1,000 km² by default; a menu switches to one group's share of each state's handovers | Advanced 3 (map) |
-| 04 | How did each state's handovers change from 2021 to 2024? | Connected dot plot (two labelled endpoints per state) | Basic (dot plot) |
+| 04 | How did each state's handovers change from 2021 to 2024? | Bar chart of the change, sorted, rises right and falls left | Basic (bar) |
 | 05 | When in the year does each animal group arrive at NWRC? | Heatmap: each cell is the month's share of that row's year total, with the published totals beside it | Advanced 4 |
 | 06 | What happened to the featured bears? | Event timeline: one row per bear, event types by shape and colour, outcome at the end of each row, enlarged view of a chosen bear | Advanced 5 |
 | 07 | Where did NWRC release animals? | Flow map | Advanced 6 (map) |
@@ -19,11 +19,11 @@ The site has **12 numbered charts** and **9 advanced idioms**, including three d
 | 11 | When did placements start? | Stacked columns by month and origin | Basic (stacked bar) |
 | 12 | How long did placements last, and who stayed how long? | Isotype: one person figure per placement, one row per length of stay, Malaysia first | Advanced 9 |
 
-The national-total bars beside chart 04 and the Sabah locator map are supporting context and are not counted. Selections, tooltips, pictograms and repeated panels do not create extra idioms.
+The Sabah locator map is supporting context and is not counted. Selections, tooltips, pictograms and repeated panels do not create extra idioms.
 
 ## First-view design decisions
 
-- **04** replaced a bump chart of ranks, which readers could not decode without the caption. Each row now shows the same state's 2021 and 2024 counts, with year shown by both colour and shape; Terengganu is highlighted.
+- **04** replaced a bump chart of ranks, then a connected dot plot; both needed the legend to tell which end was which year. It now shows the change itself: one bar per state, sorted from the biggest rise to the biggest fall, with rises to the right of zero and falls to the left, each labelled with the change and both counts (for example +1,753, from 264 to 2,017). This gives the chart its own story, since map 02 already shows the 2024 totals. The national totals for 2021–2024 moved from a separate mini chart into the subtitle.
 - **06** groups the bears into "Released to the forest" and "Still in care". Each row ends with its outcome, and the three deaths are in bold so they can be counted at a glance. A collar death signal (×) is kept separate from remains recovered (cross). Events less than five weeks apart are stacked so their symbols do not overlap.
 - **10** replaced a lollipop chart. The Malaysia block fills almost half the area, which is the chart's message; every block carries its country and count. The layout is calculated in `tools/2_chart_data.py` with the squarified treemap algorithm (Bruls et al., 2000), in the same way as the Sankey layout.
 - **11** replaced a Gantt chart of individual placements, which readers did not recognise. Monthly starts are split by origin and every segment is labelled. These are starts, not the number of volunteers present in a month.
@@ -34,4 +34,4 @@ The national-total bars beside chart 04 and the Sabah locator map are supporting
 
 ## Verification
 
-`npm run check` compiles all 13 specifications, validates the source totals, verifies the 24 state-comparison endpoints, the missing heatmap values, the reptile shares in chart 05, the nine treemap blocks (57 placements), the 57 figures and four row counts in chart 12, and every month's highlighted placements against the original placement records. Browser review covers visible labels, menu and column selection, reset, and the 1280 and 1024 px laptop layouts with no sideways scrolling.
+`npm run check` compiles all 12 specifications, validates the source totals, verifies the 12 change bars in chart 04, the missing heatmap values, the reptile shares in chart 05, the nine treemap blocks (57 placements), the 57 figures and four row counts in chart 12, and every month's highlighted placements against the original placement records. Browser review covers visible labels, menu and column selection, reset, and the 1280 and 1024 px laptop layouts with no sideways scrolling.

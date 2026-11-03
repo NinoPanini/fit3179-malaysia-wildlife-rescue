@@ -216,41 +216,44 @@ save('03-group-share-map.json', {
          for offshore in (False, True)],
 })
 
-# ---- 04 Connected dots: actual handovers, 2021 versus 2024 ------------
-# A shared count axis replaces ranks. Above/below endpoint labels remain readable
-# even when the two years have similar counts. Year is encoded by shape AND hue.
+# ---- 04 Change bars: how each state's handovers changed, 2021 to 2024 ----
+# One bar per state, sorted from the biggest rise to the biggest fall. Rises go right of zero (slate),
+# falls go left (amber), so direction reads from position as well as colour. Each bar is labelled with
+# the change and both counts. (Map 02 already shows the 2024 totals; this chart shows the change.)
+RISE, FALL = MY, '#9a6200'
 trend = json.loads((ROOT / 'data/handovers-trend.json').read_text(encoding='utf8'))
-STATE_ORDER = [r['state'] for r in sorted([r for r in trend if r['year'] == 2024], key=lambda r: -r['total'])]
-state_y = {'field': 'state', 'type': 'nominal', 'sort': STATE_ORDER,
-           'axis': {'title': None, 'labelColor': INK, 'labelFontSize': 14, 'labelLimit': 190,
-                    'labelExpr': "datum.label == 'Wilayah Persekutuan' ? 'Federal Territories' : datum.label", 'ticks': False}}
+by = {(r['state'], r['year']): r['total'] for r in trend}
+CHANGE_ORDER = sorted({r['state'] for r in trend}, key=lambda st: -(by[(st, 2024)] - by[(st, 2021)]))   # biggest rise first
+change_label = ("(datum.change >= 0 ? '+' : '−') + format(abs(datum.change), ',') + '   (' + "
+                "format(datum.y2021, ',') + ' → ' + format(datum.y2024, ',') + ')'")
 save('04-state-comparison.json', {
-    'description': 'Connected-dot comparison of handovers in 2021 and 2024. Each row is one reporting unit; every endpoint has its exact count.',
-    'width': 'container', 'height': 540, 'padding': 18,
+    'description': 'Bar chart of the change in animals handed over in each state from 2021 to 2024, sorted; each bar is labelled with the change and both counts.',
+    'width': 'container', 'height': 480, 'padding': 10,
     'data': {'url': 'data/handovers-trend.json'},
-    'transform': [{'filter': 'datum.year == 2021 || datum.year == 2024'}],
-    'encoding': {'y': state_y},
+    'transform': [{'filter': 'datum.year == 2021 || datum.year == 2024'},
+                  {'pivot': 'year', 'value': 'total', 'groupby': ['state']},
+                  {'calculate': "datum['2021']", 'as': 'y2021'}, {'calculate': "datum['2024']", 'as': 'y2024'},
+                  {'calculate': 'datum.y2024 - datum.y2021', 'as': 'change'}],
+    'encoding': {'y': {'field': 'state', 'type': 'nominal', 'sort': CHANGE_ORDER, 'title': None,
+                       'axis': {'labelColor': INK, 'labelFontSize': 14, 'ticks': False, 'labelPadding': 10,
+                                'labelExpr': "datum.label == 'Wilayah Persekutuan' ? 'Federal Territories' : datum.label"}}},
     'layer': [
-        {'transform': [{'filter': "datum.state == 'Terengganu' && datum.year == 2024"}],
-         'mark': {'type': 'rect', 'height': 43, 'color': '#e6ecdf'},
-         'encoding': {'x': {'datum': 0, 'type': 'quantitative'}, 'x2': {'datum': 3200}}},
-        {'transform': [{'pivot': 'year', 'value': 'total', 'groupby': ['state']}],
-         'mark': {'type': 'rule', 'strokeWidth': 3},
-         'encoding': {'x': {'field': '2021', 'type': 'quantitative', 'title': 'Animals handed over',
-                            'scale': {'domain': [0, 3200]}, 'axis': {'values': [0, 500, 1000, 1500, 2000, 2500, 3000], 'format': ',.0f', 'grid': True}},
-                      'x2': {'field': '2024'},
-                      'color': {'condition': {'test': "datum.state == 'Terengganu'", 'value': INK}, 'value': '#b9b3a3'}}},
-        {'mark': {'type': 'point', 'filled': True, 'size': 105, 'opacity': 1, 'stroke': PAPER, 'strokeWidth': 1},
-         'encoding': {'x': {'field': 'total', 'type': 'quantitative'},
-                      'color': {'field': 'year', 'type': 'nominal', 'scale': {'domain': [2021, 2024], 'range': ['#9a6200', MY]},
-                                'legend': {'orient': 'top', 'title': None, 'symbolSize': 110, 'labelFontSize': 15}},
-                      'shape': {'field': 'year', 'type': 'nominal', 'scale': {'domain': [2021, 2024], 'range': ['circle', 'square']}},
-                      'tooltip': [{'field': 'state', 'title': 'Reporting unit'}, {'field': 'year', 'title': 'Year'},
-                                  {'field': 'total', 'type': 'quantitative', 'format': ',', 'title': 'Animals'}, {'field': 'source', 'title': 'Source'}]}},
-        *[{'transform': [{'filter': f'datum.year == {year}'}],
-           'mark': {'type': 'text', 'dy': offset, 'fontSize': 13, 'fontWeight': 600, 'color': colour},
-           'encoding': {'x': {'field': 'total', 'type': 'quantitative'}, 'text': {'field': 'total', 'type': 'quantitative', 'format': ','}}}
-          for year, offset, colour in [(2021, -13, '#875600'), (2024, 15, MY)]],
+        {'mark': {'type': 'bar', 'height': 22, 'cornerRadiusEnd': 2},
+         'encoding': {'x': {'field': 'change', 'type': 'quantitative', 'scale': {'domain': [-600, 2900]},
+                            'axis': {'title': 'Change in animals handed over, 2021 to 2024', 'values': [-500, 0, 500, 1000, 1500, 2000, 2500], 'format': '+,d', 'grid': True}},
+                      'color': {'condition': {'test': 'datum.change < 0', 'value': FALL}, 'value': RISE},
+                      'tooltip': [{'field': 'state', 'title': 'Reporting unit'}, {'field': 'y2021', 'type': 'quantitative', 'title': '2021', 'format': ','},
+                                  {'field': 'y2024', 'type': 'quantitative', 'title': '2024', 'format': ','},
+                                  {'field': 'change', 'type': 'quantitative', 'title': 'Change', 'format': '+,'}]}},
+        {'mark': {'type': 'rule', 'color': INK, 'strokeWidth': 1.5}, 'encoding': {'x': {'datum': 0}, 'y': None}},   # the zero line
+        *[{'transform': [{'filter': test}, {'calculate': change_label, 'as': 'label'}],
+           'mark': {'type': 'text', 'align': align, 'dx': dx, 'fontSize': 13.5, 'fontWeight': 600, 'color': colour},
+           'encoding': {'x': {'field': 'change', 'type': 'quantitative'}, 'text': {'field': 'label'}}}
+          for test, align, dx, colour in [('datum.change >= 0', 'left', 8, INK), ('datum.change < 0', 'right', -8, '#7a4d00')]],
+        *[{'data': {'values': [{'x': x, 't': t}]},   # direction cues above the zero line
+           'mark': {'type': 'text', 'align': align, 'baseline': 'bottom', 'dy': -6, 'fontSize': 12.5, 'fontStyle': 'italic', 'color': MUTED},
+           'encoding': {'x': {'field': 'x', 'type': 'quantitative'}, 'y': {'value': 0}, 'text': {'field': 't'}}}
+          for x, t, align in [(30, 'More animals than in 2021 →', 'left'), (-30, '← Fewer', 'right')]],
     ],
 })
 
@@ -650,23 +653,6 @@ save('11-placement-months.json', {
     ],
     'spacing': 44,
     'resolve': {'scale': {'x': 'independent', 'y': 'independent'}},
-})
-
-# ---- Context (not counted): national handover totals beside the state comparison --
-save('context-national-totals.json', {
-    'description': 'Small bar chart of total animals handed over to PERHILITAN each year, 2021-2024.',
-    'width': 220, 'height': 70,
-    'data': {'url': 'data/handovers-national.json'},
-    'encoding': {'x': {'field': 'year', 'type': 'ordinal', 'title': None, 'axis': {'labelAngle': 0, 'labelColor': INK, 'labelFontSize': 13}},
-                 'y': {'field': 'total', 'type': 'quantitative', 'axis': None, 'scale': {'domain': [0, 17000]}},
-                 'tooltip': [{'field': 'year', 'title': 'Year'}, {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','},
-                             {'field': 'source', 'title': 'Source'}]},
-    'layer': [
-        {'mark': {'type': 'bar', 'width': 24, 'cornerRadiusEnd': 2},
-         'encoding': {'color': {'condition': {'test': '!datum.state_table', 'value': '#b9b39f'}, 'value': MARK}}},
-        {'mark': {'type': 'text', 'dy': -5, 'baseline': 'bottom', 'fontSize': 12, 'fontWeight': 600},
-         'encoding': {'text': {'field': 'total', 'format': ','}}},
-    ],
 })
 
 # ---- Context inset (not counted): Sabah places named in section 2 ------

@@ -79,9 +79,9 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
   assert(placements.every(p => p.end <= '2025-12-31'), 'all placement days fall in 2025');
 
   const files = fs.readdirSync(path.join(root, 'charts')).filter(f => f.endsWith('.json'));
-  assert.equal(files.length, 13, 'Eleven numbered chart files plus two small context charts');
+  assert.equal(files.length, 12, 'Eleven numbered chart files plus the Sabah locator map');
   const chartLinks = [...fs.readFileSync(path.join(root, 'index.html'), 'utf8').matchAll(/data-spec="([^"]+)"/g)].map(m => m[1]);
-  assert.equal(chartLinks.length, 13, 'The page must reference all 13 specifications');
+  assert.equal(chartLinks.length, 12, 'The page must reference all 12 specifications');
   chartLinks.forEach(file => assert(fs.existsSync(path.join(root, file)), `Missing chart linked from page: ${file}`));
   for (const file of files) {
     const spec = read(`charts/${file}`);
@@ -109,9 +109,11 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
     }
     if (file.startsWith('06-')) assert(items('symbol').length >= 23, 'Every bear event must be drawn in the overview');
     if (file.startsWith('04-')) {
-      assert.equal(items('symbol').length, 24, 'Two endpoints for each of 12 reporting units');
+      const bars = items('rect').filter(b => b.datum && b.datum.change !== undefined);
+      assert.equal(bars.length, 12, 'One change bar for each of 12 reporting units');
       const labels = items('text').map(t => String(t.text));
-      assert(labels.includes('264') && labels.includes('2,017'), 'Both Terengganu counts must be visible');
+      assert(labels.some(t => t.startsWith('+1,753')), 'Terengganu change must be labelled');
+      assert.equal(bars.filter(b => b.datum.change < 0).length, 2, 'Only Perak and Negeri Sembilan fell');
     }
     if (file.startsWith('05-')) {
       const totals = items('text').filter(t => t.datum && t.datum.animals === 10968);

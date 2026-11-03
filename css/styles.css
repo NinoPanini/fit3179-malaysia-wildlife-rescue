@@ -73,10 +73,6 @@ figure{margin:0;min-width:0}
 .chart-scroll{overflow-x:auto;padding-bottom:6px}
 .wide-fixed{min-width:620px}
 .sankey{min-width:820px}
-.bump-totals{display:flex;gap:20px;align-items:center;margin:4px 0 6px 44px;padding:8px 14px;background:var(--tint);border-radius:4px;width:fit-content;max-width:100%}
-.bump-totals p{font-size:13.5px;color:var(--muted);margin:0;max-width:24ch;line-height:1.4}
-.bump-totals b{color:var(--ink)}
-@media (max-width:720px){.bump-totals{flex-direction:column;align-items:flex-start;margin-left:0}}
 .chart-error{padding:30px;background:#f3e7d8;color:#783511}
 .comparison-chart{min-width:620px}
 .placement-facts{display:flex;flex-wrap:wrap;gap:18px 40px;margin:18px 0 24px;color:var(--muted);font-size:15px}
