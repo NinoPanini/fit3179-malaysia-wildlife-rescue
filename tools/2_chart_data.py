@@ -89,7 +89,7 @@ KIND = {'Confiscation': 'Into care', 'Handover': 'Into care', 'Admission / trans
         'Transfer for soft-release rehabilitation': 'Rehabilitation step', 'Forest walks started': 'Rehabilitation step',
         'Hard release': 'Release', 'First hard release': 'Release', 'Second hard release': 'Release',
         'Recapture': 'Recaptured', 'Last reported signal': 'Other collar signal', 'Mortality signal': 'Collar death signal',
-        'Location alert': 'Other collar signal', 'Remains recovered': 'Remains found'}
+        'Location alert': 'Other collar signal', 'Remains recovered': 'Remains recovered'}
 # Plain wording for collar and release terms shown on the chart (the report's own term stays in brackets).
 PLAIN = {'Hard release': 'Released to the forest (hard release)',
          'First hard release': 'First release to the forest', 'Second hard release': 'Second release to the forest',
@@ -115,10 +115,14 @@ for e in ev:
     else:
         early = 'early ' if 'early' in e['note'].lower() else ''
         e['date_label'] = f"{early.capitalize()}{t:%B %Y}".strip() + ' (day not reported)'
-outcome = {'Sunbearo': 'Later confirmed dead (collar retrieved)', 'Loki': 'Fate unknown: collar failed',
-           'Wawa': 'No news after May 2022', 'Sika': 'Died about three weeks after release',
-           'Itam': 'Died weeks after release', 'Tenom': 'Still in supervised rehabilitation (2025 report)',
-           'Pitang': 'Still in supervised rehabilitation (2025 report)', 'Rudy': 'At BSBCC (2024 report)', 'Kwong': 'At BSBCC (2025 report)'}
+# Outcome at the latest report: the status word leads, so the three deaths can be counted at a glance.
+status = {'Sunbearo': 'Died', 'Sika': 'Died', 'Itam': 'Died', 'Loki': 'Fate unknown', 'Wawa': 'Fate unknown',
+          'Rudy': 'In care', 'Kwong': 'In care', 'Tenom': 'In care', 'Pitang': 'In care'}
+detail = {'Sunbearo': 'confirmed later (collar retrieved)', 'Loki': 'collar failed', 'Wawa': 'no news after May 2022',
+          'Sika': 'about three weeks after release', 'Itam': 'weeks after release',
+          'Tenom': 'supervised rehabilitation (2025 report)', 'Pitang': 'supervised rehabilitation (2025 report)',
+          'Rudy': 'at BSBCC (2024 report)', 'Kwong': 'at BSBCC (2025 report)'}
+outcome = {b: f"{status[b]}: {detail[b]}" for b in status}
 released, in_care = ['Sunbearo', 'Loki', 'Wawa', 'Sika', 'Itam'], ['Rudy', 'Kwong', 'Tenom', 'Pitang']
 order = released + in_care
 for e in ev:
@@ -135,7 +139,7 @@ for c in clusters:
     for i, e in enumerate(c):
         e['nudge'] = i - (len(c) - 1) / 2
 wr('bear-journeys.json', ev)
-wr('bear-outcomes.json', [{'bear': b, 'order': i, 'outcome': outcome[b], 'group': 'Released' if b in released else 'In care',
+wr('bear-outcomes.json', [{'bear': b, 'order': i, 'status': status[b], 'outcome': outcome[b], 'group': 'Released' if b in released else 'In care',
     'first': min(e['date'] for e in ev if e['bear'] == b),
     'last': max(e['date'] for e in ev if e['bear'] == b)} for i, b in enumerate(order)])
 
@@ -160,7 +164,7 @@ wr('release-sites.json', flows)
 wr('bsbcc-participation-2021-2025.json', [{'year': int(r['year']), 'programme': r['programme'],
     'people': int(r['people']), 'note': r['note']} for r in rows('bsbcc_volunteers_interns_2021_2025.csv')])
 
-# ---- 7. 2025 placements for the Gantt chart (no names; origin as listed)
+# ---- 7. 2025 placements for charts 11 and 12 (no names; origin as listed)
 pl = []
 for r in rows('bsbcc_volunteer_placements_2025.csv'):
     pl.append({'placement': r['placement_id'], 'start': r['start_date'], 'end': r['end_date'],
@@ -170,6 +174,48 @@ assert len(pl) == 57 and sum(p['days'] for p in pl) == 978
 wr('bsbcc-placements-2025.json', pl)
 wr('bsbcc-origins-2025.json', [{'origin': r['country_of_origin'], 'placements': int(r['placements'])}
                                for r in rows('bsbcc_volunteer_origins_2025.csv')])
+
+# ---- 7b. Treemap layout for chart 10: one rectangle per country, area = placements.
+# Malaysia takes a full-height block on the left; the eight other countries share the rest,
+# arranged with the squarified algorithm (Bruls et al., 2000) so the blocks stay close to square.
+W, H = 500, 300                                   # drawing units; the chart scales them to its size
+origins = sorted(rd('bsbcc-origins-2025.json'), key=lambda r: (-r['placements'], r['origin']))
+total = sum(r['placements'] for r in origins); assert total == 57
+unit = W * H / total                              # area of one placement
+def worst(areas, side):                           # the most elongated block if these areas share one strip
+    s = sum(areas)
+    return max(max(side * side * a / (s * s), s * s / (side * side * a)) for a in areas)
+def squarify(items, x, y, w, h, out):
+    if not items:
+        return
+    side, n = min(w, h), 1
+    while n < len(items) and worst([a for _, a in items[:n + 1]], side) <= worst([a for _, a in items[:n]], side):
+        n += 1                                    # keep adding blocks while the strip gets squarer
+    row, s = items[:n], sum(a for _, a in items[:n])
+    if w >= h:                                    # strip down the left side, then fill the rest
+        cw, yy = s / h, y
+        for name, a in row:
+            out.append((name, x, yy, x + cw, yy + a / cw)); yy += a / cw
+        squarify(items[n:], x + cw, y, w - cw, h, out)
+    else:                                         # strip along the top, then fill the rest
+        rh, xx = s / w, x
+        for name, a in row:
+            out.append((name, xx, y, xx + a / rh, y + rh)); xx += a / rh
+        squarify(items[n:], x, y + rh, w, h - rh, out)
+my = next(r for r in origins if r['origin'] == 'Malaysia')
+split = W * my['placements'] / total
+blocks = [('Malaysia', 0, 0, split, H)]
+squarify([(r['origin'], r['placements'] * unit) for r in origins if r['origin'] != 'Malaysia'], split, 0, W - split, H, blocks)
+count = {r['origin']: r['placements'] for r in origins}
+tree = [{'level': 'country', 'origin': n, 'placements': count[n], 'group': 'Malaysia' if n == 'Malaysia' else 'Other countries',
+         'x': round(x0, 2), 'x2': round(x1, 2), 'y': round(y0, 2), 'y2': round(y1, 2)} for n, x0, y0, x1, y1 in blocks]
+for t in tree:   # printed in each block: name and count (one line when the block is too short for two)
+    t['label'] = ([t['origin'], f"{t['placements']} · {t['placements'] / total:.0%} of all {total}"] if t['origin'] == 'Malaysia'
+                  else [t['origin'], str(t['placements'])] if t['y2'] - t['y'] >= 45 else [f"{t['origin']}  {t['placements']}"])
+assert all(abs((t['x2'] - t['x']) * (t['y2'] - t['y']) - t['placements'] * unit) < 2 for t in tree)   # area matches the count
+tree += [{'level': 'group', 'group': 'Malaysia', 'placements': my['placements'], 'x': 0, 'x2': round(split, 2), 'y': 0, 'y2': H},
+         {'level': 'group', 'group': 'Other countries', 'placements': total - my['placements'], 'x': round(split, 2), 'x2': W, 'y': 0, 'y2': H}]
+wr('volunteer-origins-treemap.json', tree)
 print('Step 2: chart data written.')
 
 # ---- 8. Curved flow arcs (quadratic curves between NWRC and each site; drawing aid only)

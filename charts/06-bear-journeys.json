@@ -217,7 +217,7 @@
                   "Recaptured",
                   "Other collar signal",
                   "Collar death signal",
-                  "Remains found"
+                  "Remains recovered"
                 ],
                 "range": [
                   "circle",
@@ -249,7 +249,7 @@
                   "Recaptured",
                   "Other collar signal",
                   "Collar death signal",
-                  "Remains found"
+                  "Remains recovered"
                 ],
                 "range": [
                   "#8a8270",
@@ -322,6 +322,48 @@
           "data": {
             "url": "data/bear-outcomes.json"
           },
+          "transform": [
+            {
+              "filter": "datum.status == 'Died'"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 16,
+            "fontSize": 13.5,
+            "fontWeight": 700,
+            "color": "#1f2d2a"
+          },
+          "encoding": {
+            "x": {
+              "field": "last",
+              "type": "temporal",
+              "title": null,
+              "axis": {
+                "format": "%Y",
+                "tickCount": {
+                  "interval": "year"
+                },
+                "labelFontSize": 14,
+                "labelColor": "#1f2d2a",
+                "grid": true
+              }
+            },
+            "text": {
+              "field": "outcome"
+            }
+          }
+        },
+        {
+          "data": {
+            "url": "data/bear-outcomes.json"
+          },
+          "transform": [
+            {
+              "filter": "datum.status != 'Died'"
+            }
+          ],
           "mark": {
             "type": "text",
             "align": "left",
@@ -457,7 +499,7 @@
                   "Recaptured",
                   "Other collar signal",
                   "Collar death signal",
-                  "Remains found"
+                  "Remains recovered"
                 ],
                 "range": [
                   "circle",
@@ -482,7 +524,7 @@
                   "Recaptured",
                   "Other collar signal",
                   "Collar death signal",
-                  "Remains found"
+                  "Remains recovered"
                 ],
                 "range": [
                   "#8a8270",

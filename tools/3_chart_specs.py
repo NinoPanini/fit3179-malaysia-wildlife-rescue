@@ -17,7 +17,7 @@ SCHEMA = 'https://vega.github.io/schema/vega-lite/v5.json'
 # dash, position or number so the charts still read for colour-blind viewers.
 INK, MUTED, GRID, PAPER = '#1f2d2a', '#56625d', '#e4e0d2', '#fbf9f2'
 GROUP = {'Reptiles': '#0072B2', 'Mammals': '#B26F00', 'Birds': '#A85F8C'}   # Okabe-Ito hues, darkened so every mark reaches 3:1 contrast
-SEQ = ['#ffffcc', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#081d58']   # ColorBrewer YlGnBu, steps spaced so neighbours stay apart for colour-blind readers
+SEQ = ['#ffffcc', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']   # ColorBrewer YlGnBu; darkest step deepened so the top two classes stay apart for colour-blind readers
 MARK = '#3e5260'                                                             # neutral slate for single-series marks
 PALE = '#9c947f'   # context lines and dots: faint but still visible (2.9:1)
 MY, OTHER = '#2f4858', '#8a8270'                                             # Malaysia highlighted in slate, other countries in neutral grey
@@ -299,8 +299,8 @@ save('05-intake-heatmap.json', {
     'spacing': 16,
 })
 
-# ---- 06 Bear journeys: connected dot plot on a timeline ----------------
-KINDS = ['Into care', 'Rehabilitation step', 'Release', 'Recaptured', 'Other collar signal', 'Collar death signal', 'Remains found']
+# ---- 06 Bear journeys: event timeline (one row per bear) ---------------
+KINDS = ['Into care', 'Rehabilitation step', 'Release', 'Recaptured', 'Other collar signal', 'Collar death signal', 'Remains recovered']
 X_SHAPE = 'M-1,-0.6L-0.6,-1L0,-0.4L0.6,-1L1,-0.6L0.4,0L1,0.6L0.6,1L0,0.4L-0.6,1L-1,0.6L-0.4,0Z'   # an X, drawn as an SVG path
 XT = {'type': 'temporal', 'title': None,
       'axis': {'format': '%Y', 'tickCount': {'interval': 'year'}, 'labelFontSize': 14, 'labelColor': INK, 'grid': True}}
@@ -340,7 +340,11 @@ save('06-bear-journeys.json', {
                            'yOffset': {'field': 'nudge', 'type': 'quantitative', 'scale': {'domain': [-1, 1], 'range': [8, 30]}},   # offset from the row top (row centre = 19 px); stacks events under five weeks apart
                            'opacity': {'condition': {'param': 'kindPick', 'value': 1}, 'value': 0.12},
                            'tooltip': BEAR_TIP}},
-             {'data': {'url': 'data/bear-outcomes.json'},
+             # outcome at the latest report, led by its status; deaths in bold so they can be counted at a glance
+             {'data': {'url': 'data/bear-outcomes.json'}, 'transform': [{'filter': "datum.status == 'Died'"}],
+              'mark': {'type': 'text', 'align': 'left', 'dx': 16, 'fontSize': 13.5, 'fontWeight': 700, 'color': INK},
+              'encoding': {'x': {'field': 'last', **XT}, 'text': {'field': 'outcome'}}},
+             {'data': {'url': 'data/bear-outcomes.json'}, 'transform': [{'filter': "datum.status != 'Died'"}],
               'mark': {'type': 'text', 'align': 'left', 'dx': 16, 'fontSize': 13, 'fontStyle': 'italic'},
               'encoding': {'x': {'field': 'last', **XT}, 'text': {'field': 'outcome'},
                            'color': {'condition': {**picked_bear, 'value': INK}, 'value': MUTED}}},
@@ -519,35 +523,48 @@ save('09-volunteer-lines.json', {
     ],
 })
 
-# ---- 10 Lollipop: where 2025 volunteers came from ----------------------
+# ---- 10 Treemap: where 2025 volunteers came from -------------------------
+# Block positions come from tools/2_chart_data.py (squarified layout); area = placements.
+TREE = {'url': 'data/volunteer-origins-treemap.json'}
+TX = {'type': 'quantitative', 'scale': {'domain': [0, 500]}, 'axis': None}
+TY = {'type': 'quantitative', 'scale': {'domain': [0, 300], 'reverse': True}, 'axis': None}
 save('10-volunteer-origins.json', {
-    'description': 'Lollipop chart: 2025 BSBCC volunteer placements by listed country of origin.',
+    'description': 'Treemap: 2025 BSBCC volunteer placements by listed country of origin; block area shows placements.',
     'width': 'container', 'height': 300,
-    'data': {'url': 'data/bsbcc-origins-2025.json'},
-    'encoding': {'y': {'field': 'origin', 'type': 'nominal', 'sort': '-x', 'title': None, 'axis': {'labelFontSize': 13.5, 'labelColor': INK}},
-                 'x': {'field': 'placements', 'type': 'quantitative', 'title': 'Volunteer placements, 2025', 'scale': {'domain': [0, 38]}, 'axis': {'values': [0, 10, 20, 30]}},
-                 'color': {'condition': {'test': "datum.origin == 'Malaysia'", 'value': MY}, 'value': OTHER},
-                 'tooltip': [{'field': 'origin', 'title': 'Listed origin'}, {'field': 'placements', 'type': 'quantitative', 'title': 'Placements'}]},
+    'padding': {'top': 26, 'left': 2, 'right': 2, 'bottom': 2},
+    'data': TREE,
     'layer': [
-        {'mark': {'type': 'rule', 'strokeWidth': 2.5}, 'encoding': {'x2': {'datum': 0}}},
-        {'mark': {'type': 'circle', 'size': 150, 'opacity': 1}},
-        {'transform': [{'joinaggregate': [{'op': 'sum', 'field': 'placements', 'as': 'all'}]},
-                       {'calculate': "datum.origin == 'Malaysia' ? datum.placements + ' of ' + datum.all + ' · ' + format(datum.placements / datum.all, '.0%') : datum.placements", 'as': 'label'}],
-         'mark': {'type': 'text', 'align': 'left', 'dx': 11, 'fontSize': 13, 'fontWeight': 600}, 'encoding': {'text': {'field': 'label'}, 'color': {'value': INK}}},
+        {'transform': [{'filter': "datum.level == 'country'"}],
+         'mark': {'type': 'rect', 'stroke': PAPER, 'strokeWidth': 2},
+         'encoding': {'x': {'field': 'x', **TX}, 'x2': {'field': 'x2'}, 'y': {'field': 'y', **TY}, 'y2': {'field': 'y2'},
+                      'color': {'field': 'group', 'type': 'nominal', 'legend': None,
+                                'scale': {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]}},
+                      'tooltip': [{'field': 'origin', 'title': 'Listed origin'}, {'field': 'placements', 'type': 'quantitative', 'title': 'Placements'}]}},
+        {'transform': [{'filter': "datum.level == 'group'"}],   # a wider gap between Malaysia and the other countries
+         'mark': {'type': 'rect', 'fillOpacity': 0, 'stroke': PAPER, 'strokeWidth': 6},
+         'encoding': {'x': {'field': 'x', **TX}, 'x2': {'field': 'x2'}, 'y': {'field': 'y', **TY}, 'y2': {'field': 'y2'}}},
+        {'transform': [{'filter': "datum.level == 'country'"}],
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 8, 'dy': 7, 'fontSize': 13, 'fontWeight': 700, 'lineHeight': 16},
+         'encoding': {'x': {'field': 'x', **TX}, 'y': {'field': 'y', **TY}, 'text': {'field': 'label'},
+                      'color': {'condition': {'test': "datum.group == 'Malaysia'", 'value': 'white'}, 'value': '#141c19'}}},
+        {'transform': [{'filter': "datum.level == 'group'"},
+                       {'calculate': "datum.group == 'Malaysia' ? 'From Malaysia · ' + datum.placements : 'From eight other countries · ' + datum.placements", 'as': 'head'}],
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'dx': 2, 'dy': -8, 'fontSize': 13.5, 'fontWeight': 700, 'color': INK},
+         'encoding': {'x': {'field': 'x', **TX}, 'y': {'value': 0}, 'text': {'field': 'head'}}},
     ],
 })
 
 # ---- 11 Monthly placement starts + 12 linked duration histogram -------
 # Counts come from the same 57 anonymised placements; starts are not occupancy.
-BINS = ['8–14', '15–21', '22–28', '29–35', '36–42']
-HX = {'field': 'range', 'type': 'ordinal', 'sort': BINS,
-      'axis': {'title': 'Length of stay (days)', 'labelAngle': 0, 'labelFontSize': 13}}
+DAYS = list(range(11, 40))   # every stay length from the shortest (11 days) to the longest (39)
+# One column per day, so the fixed programme lengths show; only the lengths that occur are labelled on the axis.
+HX = {'field': 'days', 'type': 'ordinal', 'scale': {'domain': DAYS, 'paddingInner': 0.12},
+      'axis': {'title': 'Length of stay (days on site)', 'labelAngle': 0, 'labelFontSize': 12.5, 'values': [11, 14, 21, 25, 32, 39],
+               'labelExpr': "datum.value == 14 ? ['14', '2 weeks'] : datum.value == 32 ? ['32', 'about a month'] : datum.value"}}
 month_filter = {'filter': "selectedMonth == 'All months' || datum.month == selectedMonth"}
 duration_counts = [month_filter,
-    {'calculate': "8 + floor((datum.days - 8) / 7) * 7", 'as': 'bin_start'},
-    {'calculate': "datum.bin_start + '–' + (datum.bin_start + 6)", 'as': 'range'},
-    {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['range']},
-    {'impute': 'placements', 'key': 'range', 'keyvals': BINS, 'value': 0}]
+    {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['days']},
+    {'impute': 'placements', 'key': 'days', 'keyvals': DAYS, 'value': 0}]
 monthly_counts = [
     {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['month', 'origin_group']},
     {'calculate': "datum.origin_group == 'Malaysia' ? 0 : 1", 'as': 'group_order'},
@@ -561,7 +578,7 @@ save('11-placement-months.json', {
     'params': [{'name': 'selectedMonth', 'value': 'All months',
                 'bind': {'input': 'select', 'options': ['All months'] + MONTHS, 'name': 'Month: ', 'element': '#placement-control'}}],
     'hconcat': [
-        {'width': 570, 'height': 300,
+        {'width': 500, 'height': 300,
          'title': {'text': '11 · When did placements start?', 'subtitle': '2025 · Monthly starts', 'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'encoding': {'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                             'axis': {'title': 'Start month · 2025', 'labelAngle': 0, 'labelFontSize': 13}},
@@ -585,16 +602,25 @@ save('11-placement-months.json', {
               'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700, 'cursor': 'pointer'},
               'encoding': {'y': {'field': 'total', 'type': 'quantitative'}, 'text': {'field': 'total'}}},
          ]},
-        {'width': 330, 'height': 300,
-         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'All 57 placements · 2025' : 'Placements starting in ' + selectedMonth + ' · 2025'"},
+        {'width': 420, 'height': 300,
+         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'All 57 placements · most stays were 11 or 14 days' : 'Placements starting in ' + selectedMonth + ' · 2025'"},
                    'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'transform': duration_counts,
          'encoding': {'x': HX, 'y': {'field': 'placements', 'type': 'quantitative', 'title': 'Placements',
-                                    'scale': {'domain': [0, 42]}, 'axis': {'values': [0, 10, 20, 30, 40]}},
-                      'tooltip': [{'field': 'range', 'title': 'Days on site'}, {'field': 'placements', 'title': 'Placements', 'type': 'quantitative'}]},
+                                    'scale': {'domain': [0, 21]}, 'axis': {'values': [0, 5, 10, 15, 20]}},
+                      'tooltip': [{'field': 'days', 'title': 'Days on site'}, {'field': 'placements', 'title': 'Placements', 'type': 'quantitative'}]},
          'layer': [
-             {'mark': {'type': 'bar', 'color': MY, 'stroke': PAPER, 'strokeWidth': 2}},
-             {'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700}, 'encoding': {'text': {'field': 'placements'}}},
+             {'data': {'values': [{}]},   # shaded band: stays of two weeks or less (11-14 days)
+              'mark': {'type': 'rect', 'color': '#e6e0cf'},
+              'encoding': {'x': {'datum': 11}, 'x2': {'datum': 15}, 'y': {'value': 0}, 'y2': {'value': 'height'}, 'tooltip': None}},
+             {'transform': [{'joinaggregate': [{'op': 'sum', 'field': 'placements', 'as': 'all'}]}, {'filter': 'datum.days <= 14'},
+                            {'aggregate': [{'op': 'sum', 'field': 'placements', 'as': 'short'}, {'op': 'max', 'field': 'all', 'as': 'all'}]},
+                            {'calculate': "[datum.short + ' of ' + datum.all + ' stayed', 'two weeks or less']", 'as': 't'}],
+              'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 6, 'fontSize': 13, 'fontWeight': 700, 'lineHeight': 16, 'color': INK},
+              'encoding': {'x': {'datum': 15}, 'y': {'value': 4}, 'text': {'field': 't'}, 'tooltip': None}},
+             {'mark': {'type': 'bar', 'color': MY}},
+             {'transform': [{'filter': 'datum.placements > 0'}],   # counts on every column that has placements
+              'mark': {'type': 'text', 'dy': -8, 'fontSize': 13, 'fontWeight': 700}, 'encoding': {'text': {'field': 'placements'}}},
          ]},
     ],
     'spacing': 44,

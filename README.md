@@ -15,7 +15,7 @@ The study uses separate public records to explain four parts of wildlife care. E
 3. **Return.** Where are rehabilitated animals released?
 4. **People.** Who gives their time to support this work?
 
-The site presents twelve visualisations built with Vega-Lite. They include three map idioms, a connected-dot comparison of state handovers, a monthly intake heatmap, bear event timelines, a Sankey, and monthly volunteer-start columns linked to a duration histogram. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
+The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a connected-dot comparison of state handovers, a monthly intake heatmap, bear event timelines, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to a day-by-day histogram of stay lengths. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
 
 ## Data sources
 

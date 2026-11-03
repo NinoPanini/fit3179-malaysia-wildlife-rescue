@@ -99,6 +99,11 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
     const items = type => marks.filter(m => m.marktype === type && m.role === 'mark').flatMap(m => m.items);
     if (file.startsWith('01-')) assert.equal(items('rect').length, 100, 'Waffle must have 100 squares');
     if (file.startsWith('08-')) assert.equal(marks.filter(m => m.marktype === 'area').length, 16, 'Each released species must have one ribbon');
+    if (file.startsWith('10-')) {
+      const blocks = items('rect').filter(b => b.datum && b.datum.level === 'country');
+      assert.equal(blocks.length, 9, 'One treemap block per listed country');
+      assert.equal(sum(blocks.map(b => b.datum), 'placements'), 57, 'Treemap blocks account for all 57 placements');
+    }
     if (file.startsWith('06-')) assert(items('symbol').length >= 23, 'Every bear event must be drawn in the overview');
     if (file.startsWith('04-')) {
       assert.equal(items('symbol').length, 24, 'Two endpoints for each of 12 reporting units');
@@ -114,19 +119,20 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
       const startBars = items('rect').filter(b => b.datum && b.datum.month && b.datum.origin_group);
       assert.equal(sum(startBars.map(b => b.datum), 'placements'), 57, 'Monthly start segments account for all 57 placements');
       assert.equal(sum(startBars.filter(b => b.datum.month === 'Mar').map(b => b.datum), 'placements'), 12, 'March has 12 starts');
-      const histogram = () => items('rect').filter(b => b.datum && b.datum.range);
-      assert.equal(sum(histogram().map(b => b.datum), 'placements'), 57, 'All placements appear in duration bins');
-      assert.deepEqual(histogram().map(b => b.datum.placements).sort((a,b) => a-b), [1,4,6,8,38]);
+      const histogram = () => items('rect').filter(b => b.datum && b.datum.days !== undefined);
+      assert.equal(sum(histogram().map(b => b.datum), 'placements'), 57, 'All placements appear in the day columns');
+      const perDay = Object.fromEntries(histogram().map(b => [b.datum.days, b.datum.placements]));
+      assert.deepEqual([perDay[11], perDay[14], perDay[32]], [12, 19, 7], 'Peaks at 11, 14 and 32 days');
       for (const month of ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']) {
         await view.signal('selectedMonth', month).runAsync();
         // Refresh the scenegraph references after a signal changes the histogram.
         const bars = [];
         (function walk(n) { if (n.marktype === 'rect' && n.role === 'mark') bars.push(...n.items); for (const i of n.items || []) walk(i); })(view.scenegraph().root);
-        const bins = bars.filter(b => b.datum && b.datum.range);
+        const bins = bars.filter(b => b.datum && b.datum.days !== undefined);
         const monthIndex = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(month) + 1;
         const expected = placements.filter(p => Number(p.start.slice(5,7)) === monthIndex);
         assert.equal(sum(bins.map(b => b.datum), 'placements'), expected.length, `${month}: selected histogram counts every start`);
-        assert.equal(bins.length, 5, `${month}: retain empty bins with zero labels`);
+        assert.equal(bins.length, 29, `${month}: keep one column for every length from 11 to 39 days`);
       }
       await view.signal('selectedMonth', 'All months').runAsync();
     }

@@ -10,7 +10,7 @@
   "source": "BSBCC 2021, PDF p8",
   "date_label": "10 Jan 2021",
   "order": 0,
-  "outcome": "Later confirmed dead (collar retrieved)",
+  "outcome": "Died: confirmed later (collar retrieved)",
   "nudge": 0.0
  },
  {
@@ -38,7 +38,7 @@
   "source": "BSBCC 2022, PDF p8",
   "date_label": "26 Feb 2022",
   "order": 2,
-  "outcome": "No news after May 2022",
+  "outcome": "Fate unknown: no news after May 2022",
   "nudge": 0.0
  },
  {
@@ -52,7 +52,7 @@
   "source": "BSBCC 2022, PDF p9",
   "date_label": "25 Apr 2022",
   "order": 2,
-  "outcome": "No news after May 2022",
+  "outcome": "Fate unknown: no news after May 2022",
   "nudge": -1.0
  },
  {
@@ -66,7 +66,7 @@
   "source": "BSBCC 2022, PDF p10",
   "date_label": "26 Apr 2022",
   "order": 2,
-  "outcome": "No news after May 2022",
+  "outcome": "Fate unknown: no news after May 2022",
   "nudge": 0.0
  },
  {
@@ -80,7 +80,7 @@
   "source": "BSBCC 2022, PDF p10",
   "date_label": "5 May 2022",
   "order": 2,
-  "outcome": "No news after May 2022",
+  "outcome": "Fate unknown: no news after May 2022",
   "nudge": 1.0
  },
  {
@@ -94,7 +94,7 @@
   "source": "BSBCC 2023, PDF p7",
   "date_label": "10 Feb 2023",
   "order": 3,
-  "outcome": "Died about three weeks after release",
+  "outcome": "Died: about three weeks after release",
   "nudge": -0.5
  },
  {
@@ -108,7 +108,7 @@
   "source": "BSBCC 2023, PDF p7",
   "date_label": "5 Mar 2023",
   "order": 3,
-  "outcome": "Died about three weeks after release",
+  "outcome": "Died: about three weeks after release",
   "nudge": 0.5
  },
  {
@@ -122,7 +122,7 @@
   "source": "BSBCC 2025, PDF p6",
   "date_label": "10 Mar 2025",
   "order": 4,
-  "outcome": "Died weeks after release",
+  "outcome": "Died: weeks after release",
   "nudge": 0.0
  },
  {
@@ -136,7 +136,7 @@
   "source": "BSBCC 2025, PDF p6",
   "date_label": "30 Apr 2025",
   "order": 4,
-  "outcome": "Died weeks after release",
+  "outcome": "Died: weeks after release",
   "nudge": -1.0
  },
  {
@@ -150,7 +150,7 @@
   "source": "BSBCC 2025, PDF p6",
   "date_label": "10 May 2025",
   "order": 4,
-  "outcome": "Died weeks after release",
+  "outcome": "Died: weeks after release",
   "nudge": 0.0
  },
  {
@@ -158,13 +158,13 @@
   "date": "2025-06-01",
   "precision": "month",
   "event": "Remains recovered",
-  "kind": "Remains found",
+  "kind": "Remains recovered",
   "place": "Tabin Wildlife Reserve",
   "note": "Early June; exact day unspecified. Cause is suspected, not proven",
   "source": "BSBCC 2025, PDF p6",
   "date_label": "Early June 2025 (day not reported)",
   "order": 4,
-  "outcome": "Died weeks after release",
+  "outcome": "Died: weeks after release",
   "nudge": 1.0
  },
  {
@@ -178,7 +178,7 @@
   "source": "BSBCC 2022, PDF p6",
   "date_label": "13 Mar 2021",
   "order": 5,
-  "outcome": "At BSBCC (2024 report)",
+  "outcome": "In care: at BSBCC (2024 report)",
   "nudge": 0.0
  },
  {
@@ -192,7 +192,7 @@
   "source": "BSBCC 2022, PDF p6",
   "date_label": "26 Jul 2022",
   "order": 5,
-  "outcome": "At BSBCC (2024 report)",
+  "outcome": "In care: at BSBCC (2024 report)",
   "nudge": 0.0
  },
  {
@@ -206,7 +206,7 @@
   "source": "BSBCC 2023, PDF p6",
   "date_label": "20 Sep 2022",
   "order": 6,
-  "outcome": "At BSBCC (2025 report)",
+  "outcome": "In care: at BSBCC (2025 report)",
   "nudge": 0.0
  },
  {
@@ -220,7 +220,7 @@
   "source": "BSBCC 2023, PDF p6",
   "date_label": "1 Aug 2023",
   "order": 6,
-  "outcome": "At BSBCC (2025 report)",
+  "outcome": "In care: at BSBCC (2025 report)",
   "nudge": 0.0
  },
  {
@@ -234,7 +234,7 @@
   "source": "BSBCC 2023, PDF p6",
   "date_label": "2 Jun 2023",
   "order": 7,
-  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "outcome": "In care: supervised rehabilitation (2025 report)",
   "nudge": -0.5
  },
  {
@@ -248,7 +248,7 @@
   "source": "BSBCC 2023, PDF p6",
   "date_label": "10 Jun 2023",
   "order": 7,
-  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "outcome": "In care: supervised rehabilitation (2025 report)",
   "nudge": 0.5
  },
  {
@@ -262,7 +262,7 @@
   "source": "BSBCC 2024, PDF p11",
   "date_label": "30 Jan 2024",
   "order": 7,
-  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "outcome": "In care: supervised rehabilitation (2025 report)",
   "nudge": -0.5
  },
  {
@@ -276,7 +276,7 @@
   "source": "BSBCC 2024, PDF p11",
   "date_label": "20 Feb 2024",
   "order": 7,
-  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "outcome": "In care: supervised rehabilitation (2025 report)",
   "nudge": 0.5
  },
  {
@@ -290,7 +290,7 @@
   "source": "BSBCC 2024, PDF p6",
   "date_label": "16 Oct 2024",
   "order": 8,
-  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "outcome": "In care: supervised rehabilitation (2025 report)",
   "nudge": -0.5
  },
  {
@@ -304,7 +304,7 @@
   "source": "BSBCC 2024, PDF p6",
   "date_label": "25 Oct 2024",
   "order": 8,
-  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "outcome": "In care: supervised rehabilitation (2025 report)",
   "nudge": 0.5
  },
  {
@@ -318,7 +318,7 @@
   "source": "BSBCC 2025, PDF p9",
   "date_label": "5 Jan 2025",
   "order": 8,
-  "outcome": "Still in supervised rehabilitation (2025 report)",
+  "outcome": "In care: supervised rehabilitation (2025 report)",
   "nudge": 0.0
  }
 ]

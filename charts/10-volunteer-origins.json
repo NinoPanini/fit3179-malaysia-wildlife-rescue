@@ -1,108 +1,220 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Lollipop chart: 2025 BSBCC volunteer placements by listed country of origin.",
+  "description": "Treemap: 2025 BSBCC volunteer placements by listed country of origin; block area shows placements.",
   "width": "container",
   "height": 300,
-  "data": {
-    "url": "data/bsbcc-origins-2025.json"
+  "padding": {
+    "top": 26,
+    "left": 2,
+    "right": 2,
+    "bottom": 2
   },
-  "encoding": {
-    "y": {
-      "field": "origin",
-      "type": "nominal",
-      "sort": "-x",
-      "title": null,
-      "axis": {
-        "labelFontSize": 13.5,
-        "labelColor": "#1f2d2a"
-      }
-    },
-    "x": {
-      "field": "placements",
-      "type": "quantitative",
-      "title": "Volunteer placements, 2025",
-      "scale": {
-        "domain": [
-          0,
-          38
-        ]
-      },
-      "axis": {
-        "values": [
-          0,
-          10,
-          20,
-          30
-        ]
-      }
-    },
-    "color": {
-      "condition": {
-        "test": "datum.origin == 'Malaysia'",
-        "value": "#2f4858"
-      },
-      "value": "#8a8270"
-    },
-    "tooltip": [
-      {
-        "field": "origin",
-        "title": "Listed origin"
-      },
-      {
-        "field": "placements",
-        "type": "quantitative",
-        "title": "Placements"
-      }
-    ]
+  "data": {
+    "url": "data/volunteer-origins-treemap.json"
   },
   "layer": [
     {
+      "transform": [
+        {
+          "filter": "datum.level == 'country'"
+        }
+      ],
       "mark": {
-        "type": "rule",
-        "strokeWidth": 2.5
+        "type": "rect",
+        "stroke": "#fbf9f2",
+        "strokeWidth": 2
       },
       "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ]
+          },
+          "axis": null
+        },
         "x2": {
-          "datum": 0
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "circle",
-        "size": 150,
-        "opacity": 1
+          "field": "x2"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              300
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y2"
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Malaysia",
+              "Other countries"
+            ],
+            "range": [
+              "#2f4858",
+              "#8a8270"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "title": "Listed origin"
+          },
+          {
+            "field": "placements",
+            "type": "quantitative",
+            "title": "Placements"
+          }
+        ]
       }
     },
     {
       "transform": [
         {
-          "joinaggregate": [
-            {
-              "op": "sum",
-              "field": "placements",
-              "as": "all"
-            }
-          ]
+          "filter": "datum.level == 'group'"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "fillOpacity": 0,
+        "stroke": "#fbf9f2",
+        "strokeWidth": 6
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ]
+          },
+          "axis": null
         },
+        "x2": {
+          "field": "x2"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              300
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y2"
+        }
+      }
+    },
+    {
+      "transform": [
         {
-          "calculate": "datum.origin == 'Malaysia' ? datum.placements + ' of ' + datum.all + ' · ' + format(datum.placements / datum.all, '.0%') : datum.placements",
-          "as": "label"
+          "filter": "datum.level == 'country'"
         }
       ],
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 11,
+        "baseline": "top",
+        "dx": 8,
+        "dy": 7,
         "fontSize": 13,
-        "fontWeight": 600
+        "fontWeight": 700,
+        "lineHeight": 16
       },
       "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              300
+            ],
+            "reverse": true
+          },
+          "axis": null
+        },
         "text": {
           "field": "label"
         },
         "color": {
-          "value": "#1f2d2a"
+          "condition": {
+            "test": "datum.group == 'Malaysia'",
+            "value": "white"
+          },
+          "value": "#141c19"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.level == 'group'"
+        },
+        {
+          "calculate": "datum.group == 'Malaysia' ? 'From Malaysia · ' + datum.placements : 'From eight other countries · ' + datum.placements",
+          "as": "head"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 2,
+        "dy": -8,
+        "fontSize": 13.5,
+        "fontWeight": 700,
+        "color": "#1f2d2a"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              500
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "value": 0
+        },
+        "text": {
+          "field": "head"
         }
       }
     }

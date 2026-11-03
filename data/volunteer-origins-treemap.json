@@ -1,0 +1,145 @@
+[
+ {
+  "level": "country",
+  "origin": "Malaysia",
+  "placements": 27,
+  "group": "Malaysia",
+  "x": 0,
+  "x2": 236.84,
+  "y": 0,
+  "y2": 300,
+  "label": [
+   "Malaysia",
+   "27 · 47% of all 57"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "Sweden",
+  "placements": 7,
+  "group": "Other countries",
+  "x": 236.84,
+  "x2": 378.54,
+  "y": 0,
+  "y2": 130.0,
+  "label": [
+   "Sweden",
+   "7"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "Japan",
+  "placements": 6,
+  "group": "Other countries",
+  "x": 378.54,
+  "x2": 500.0,
+  "y": 0,
+  "y2": 130.0,
+  "label": [
+   "Japan",
+   "6"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "Australia",
+  "placements": 4,
+  "group": "Other countries",
+  "x": 236.84,
+  "x2": 360.68,
+  "y": 130.0,
+  "y2": 215.0,
+  "label": [
+   "Australia",
+   "4"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "United Kingdom",
+  "placements": 4,
+  "group": "Other countries",
+  "x": 236.84,
+  "x2": 360.68,
+  "y": 215.0,
+  "y2": 300.0,
+  "label": [
+   "United Kingdom",
+   "4"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "United States",
+  "placements": 4,
+  "group": "Other countries",
+  "x": 360.68,
+  "x2": 500.0,
+  "y": 130.0,
+  "y2": 205.56,
+  "label": [
+   "United States",
+   "4"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "Mexico",
+  "placements": 2,
+  "group": "Other countries",
+  "x": 360.68,
+  "x2": 416.41,
+  "y": 205.56,
+  "y2": 300.0,
+  "label": [
+   "Mexico",
+   "2"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "Singapore",
+  "placements": 2,
+  "group": "Other countries",
+  "x": 416.41,
+  "x2": 500.0,
+  "y": 205.56,
+  "y2": 268.52,
+  "label": [
+   "Singapore",
+   "2"
+  ]
+ },
+ {
+  "level": "country",
+  "origin": "Latvia",
+  "placements": 1,
+  "group": "Other countries",
+  "x": 416.41,
+  "x2": 500.0,
+  "y": 268.52,
+  "y2": 300.0,
+  "label": [
+   "Latvia  1"
+  ]
+ },
+ {
+  "level": "group",
+  "group": "Malaysia",
+  "placements": 27,
+  "x": 0,
+  "x2": 236.84,
+  "y": 0,
+  "y2": 300
+ },
+ {
+  "level": "group",
+  "group": "Other countries",
+  "placements": 30,
+  "x": 236.84,
+  "x2": 500,
+  "y": 0,
+  "y2": 300
+ }
+]
