@@ -77,12 +77,15 @@ for g in GROUPS:
 for r in rd('nwrc-intake-2024.json'):
     intake.append({'year': 2024, 'month': r['month'], 'group': r['group'], 'animals': r['animals'], 'reported': True})
 assert len(intake) == 72
+# Published annual totals (2023 text and Disember row; 2024 Figure 26 table). Each month also carries
+# its row's total, so chart 05 can colour a month by its share of that group's year.
+year_totals = {(2023, 'Reptiles'): 417, (2023, 'Mammals'): 77, (2023, 'Birds'): 73,
+               (2024, 'Reptiles'): 10968, (2024, 'Mammals'): 75, (2024, 'Birds'): 183}
+for r in intake:
+    r['year_total'] = year_totals[(r['year'], r['group'])]
+assert all(sum(r['animals'] for r in intake if r['year'] == 2024 and r['group'] == g) == year_totals[(2024, g)] for g in GROUPS)
 wr('nwrc-intake-2023-2024.json', intake)
-wr('nwrc-intake-totals.json', [
-    {'year': 2023, 'group': 'Reptiles', 'animals': 417}, {'year': 2023, 'group': 'Mammals', 'animals': 77},
-    {'year': 2023, 'group': 'Birds', 'animals': 73},
-    {'year': 2024, 'group': 'Reptiles', 'animals': 10968}, {'year': 2024, 'group': 'Mammals', 'animals': 75},
-    {'year': 2024, 'group': 'Birds', 'animals': 183}])
+wr('nwrc-intake-totals.json', [{'year': y, 'group': g, 'animals': n} for (y, g), n in year_totals.items()])
 
 # ---- 4. Bear journeys 2021-2025 (BSBCC reports; GPS fixes never used)
 KIND = {'Confiscation': 'Into care', 'Handover': 'Into care', 'Admission / transfer': 'Into care',

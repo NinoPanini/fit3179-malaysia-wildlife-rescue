@@ -114,25 +114,27 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
       const totals = items('text').filter(t => t.datum && t.datum.animals === 10968);
       assert.equal(totals.length, 1, 'Published reptile annual total must remain visible');
       assert.equal(items('text').filter(t => t.text === 'n/a').length, 3, 'December 2023 remains missing, not zero');
+      const cell = (y, g, m) => items('text').find(t => t.datum && t.datum.year === y && t.datum.group === g && t.datum.month === m && t.datum.label);
+      assert.deepEqual([cell(2023, 'Reptiles', 'Aug').text, cell(2024, 'Reptiles', 'Sep').text, cell(2024, 'Reptiles', 'Dec').text], ['58%', '46%', '48%'], 'Reptile waves shown as shares of the year');
     }
     if (file.startsWith('11-')) {
       const startBars = items('rect').filter(b => b.datum && b.datum.month && b.datum.origin_group);
       assert.equal(sum(startBars.map(b => b.datum), 'placements'), 57, 'Monthly start segments account for all 57 placements');
       assert.equal(sum(startBars.filter(b => b.datum.month === 'Mar').map(b => b.datum), 'placements'), 12, 'March has 12 starts');
-      const histogram = () => items('rect').filter(b => b.datum && b.datum.days !== undefined);
-      assert.equal(sum(histogram().map(b => b.datum), 'placements'), 57, 'All placements appear in the day columns');
-      const perDay = Object.fromEntries(histogram().map(b => [b.datum.days, b.datum.placements]));
-      assert.deepEqual([perDay[11], perDay[14], perDay[32]], [12, 19, 7], 'Peaks at 11, 14 and 32 days');
+      const stays = () => items('rect').filter(b => b.datum && b.datum.stay !== undefined);
+      assert.equal(sum(stays().map(b => b.datum), 'placements'), 57, 'All placements appear in the length-of-stay columns');
+      const perStay = Object.fromEntries(stays().map(b => [b.datum.stay, b.datum.placements]));
+      assert.deepEqual(['Under 2 weeks', 'Exactly 2 weeks', '2 to 4 weeks', 'Over 4 weeks'].map(k => perStay[k]), [19, 19, 10, 9], 'Counts for each length of stay');
       for (const month of ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']) {
         await view.signal('selectedMonth', month).runAsync();
         // Refresh the scenegraph references after a signal changes the histogram.
         const bars = [];
         (function walk(n) { if (n.marktype === 'rect' && n.role === 'mark') bars.push(...n.items); for (const i of n.items || []) walk(i); })(view.scenegraph().root);
-        const bins = bars.filter(b => b.datum && b.datum.days !== undefined);
+        const bins = bars.filter(b => b.datum && b.datum.stay !== undefined);
         const monthIndex = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(month) + 1;
         const expected = placements.filter(p => Number(p.start.slice(5,7)) === monthIndex);
         assert.equal(sum(bins.map(b => b.datum), 'placements'), expected.length, `${month}: selected histogram counts every start`);
-        assert.equal(bins.length, 29, `${month}: keep one column for every length from 11 to 39 days`);
+        assert.equal(bins.length, 4, `${month}: keep all four length-of-stay columns, including zeros`);
       }
       await view.signal('selectedMonth', 'All months').runAsync();
     }

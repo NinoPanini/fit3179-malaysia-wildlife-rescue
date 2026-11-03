@@ -15,7 +15,7 @@ The study uses separate public records to explain four parts of wildlife care. E
 3. **Return.** Where are rehabilitated animals released?
 4. **People.** Who gives their time to support this work?
 
-The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a connected-dot comparison of state handovers, a monthly intake heatmap, bear event timelines, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to a day-by-day histogram of stay lengths. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
+The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a connected-dot comparison of state handovers, a heatmap of when each animal group arrives at the rescue centre, bear event timelines, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to a chart of stay lengths. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
 
 ## Data sources
 
@@ -38,12 +38,12 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 
 **Accessibility.** Categories use the Okabe–Ito palette and amounts use ColorBrewer YlGnBu. Every colour distinction is repeated with labels, shapes or line styles. The main datasets can also be opened as data tables, for keyboard and screen-reader users.
 
-**Validation.** `npm run check` compiles and runs every chart. It confirms report totals, geographic joins, Sankey flows, histogram counts and the key figures quoted in the text.
+**Validation.** `npm run check` compiles and runs every chart. It confirms report totals, geographic joins, Sankey flows, treemap and length-of-stay counts and the key figures quoted in the text.
 
 ## Limitations
 
 - Handovers are records of contact with the authorities. They do not estimate wild populations or measure how well a state protects wildlife.
-- PERHILITAN's 2022 report gives only a national total. The state comparison uses the 2021 and 2024 endpoints, while the supporting national bars include all four years. In the 2023 report, the rescue centre's December row repeats the annual totals, so December 2023 is marked unavailable. The heatmap's year-total column uses published annual totals, not sums of incomplete monthly records.
+- PERHILITAN's 2022 report gives only a national total. The state comparison uses the 2021 and 2024 endpoints, while the supporting national bars include all four years. In the 2023 report, the rescue centre's December row repeats the annual totals, so December 2023 is marked unavailable. The heatmap's year-total column and its monthly shares use the published annual totals, not sums of incomplete monthly records, so the 2023 rows add up to slightly less than 100%.
 - The Federal Territories are reported as a single unit, so they are counted in all totals but appear in grey on the maps.
 - Release-area positions are approximate (within about 10–20 km) and show destinations, not routes. The 2024 NWRC report does not follow up on the animals it released.
 - The sun bear timeline covers cases described in BSBCC's public reports, not every bear in its care. Sabah and Sarawak wildlife agencies publish separately and are outside the scope of this study.

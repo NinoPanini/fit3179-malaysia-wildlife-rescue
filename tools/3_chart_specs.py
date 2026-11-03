@@ -240,7 +240,7 @@ save('04-state-comparison.json', {
     ],
 })
 
-# ---- 05 Paired-year heatmap with a numeric annual-total column --------
+# ---- 05 Heatmap: each month's share of its row's year, with year totals --
 # Use the published annual totals, NOT the sum of incomplete 2023 monthly rows.
 ROWS = [f'{g} · {y}' for g in GROUP for y in (2023, 2024)]
 # Original vector pictograms: lizard, paw and bird. These supplement the text labels;
@@ -252,11 +252,14 @@ ANIMAL_SHAPES = [
 ]
 row_y = {'field': 'row', 'type': 'nominal', 'sort': ROWS, 'title': None}
 MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-BANDS = ['0', '1–9', '10–99', '100–999', '1,000+', 'Not available']
-band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : "
-        "datum.animals < 100 ? '10–99' : datum.animals < 1000 ? '100–999' : '1,000+'")
+# Colour = the month's share of that row's published year total, so every row shows WHEN its group
+# arrived, whatever the group's size (75 mammals or 10,968 reptiles). The year-total column shows HOW MANY.
+# An even spread over the year would be about 8% a month.
+BANDS = ['0', 'under 5%', '5–14%', '15–29%', '30% or more', 'Not available']
+band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.share < 0.05 ? 'under 5%' : "
+        "datum.share < 0.15 ? '5–14%' : datum.share < 0.30 ? '15–29%' : '30% or more'")
 save('05-intake-heatmap.json', {
-    'description': 'Monthly intake with 2023 and 2024 paired for each animal group. One shared colour scale; exact counts in every cell and published year totals at right.',
+    'description': 'Monthly intake with 2023 and 2024 paired for each animal group. Each cell shows the month as a share of that row\'s published year total; the year totals are printed at right.',
     'usermeta': {'fitWidth': 1050},
     'hconcat': [
         {'width': 28, 'height': 330,
@@ -267,29 +270,30 @@ save('05-intake-heatmap.json', {
                       'shape': {'field': 'group', 'type': 'nominal', 'scale': {'domain': list(GROUP), 'range': ANIMAL_SHAPES}, 'legend': None}}},
         {'width': 720, 'height': 330,
          'data': {'url': 'data/nwrc-intake-2023-2024.json'},
-         'transform': [{'calculate': "datum.group + ' · ' + datum.year", 'as': 'row'}, {'calculate': band, 'as': 'band'}],
+         'transform': [{'calculate': "datum.group + ' · ' + datum.year", 'as': 'row'},
+                       {'calculate': 'datum.animals / datum.year_total', 'as': 'share'},
+                       {'calculate': band, 'as': 'band'},
+                       {'calculate': "!datum.reported ? 'n/a' : datum.animals == 0 ? '0' : datum.share < 0.01 ? '<1%' : format(datum.share, '.0%')", 'as': 'label'}],
          'encoding': {
              'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                    'axis': {'title': None, 'labelAngle': 0, 'orient': 'top', 'labelColor': INK}},
              'y': {**row_y, 'axis': {'labelFontSize': 14, 'labelColor': INK, 'labelPadding': 10, 'ticks': False}},
              'tooltip': [{'field': 'month', 'title': 'Month'}, {'field': 'year', 'title': 'Year'},
                          {'field': 'group', 'title': 'Group'}, {'field': 'animals', 'type': 'quantitative', 'title': 'Animals received', 'format': ','},
-                         {'field': 'band', 'title': 'Class'}]},
+                         {'field': 'share', 'type': 'quantitative', 'title': 'Share of the year', 'format': '.1%'}]},
          'layer': [
              {'mark': {'type': 'rect', 'cornerRadius': 3},
               'encoding': {'stroke': {'condition': {'test': "datum.band == '0'", 'value': '#c9c3b0'}, 'value': PAPER},
                            'strokeWidth': {'condition': {'test': "datum.band == '0'", 'value': 1}, 'value': 3},
-                           'color': {'field': 'band', 'type': 'ordinal', 'title': 'Animals per month · same scale for every row',
+                           'color': {'field': 'band', 'type': 'ordinal', 'title': 'Share of the row’s year total that arrived in the month',
                                      'scale': {'domain': BANDS, 'range': [PAPER, '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8', '#d6d0bf']},
                                      'legend': {'orient': 'bottom', 'direction': 'horizontal', 'symbolType': 'square', 'titleLimit': 600,
                                                 'symbolStrokeColor': '#bdb7a5', 'symbolStrokeWidth': 1}}}},
              {'mark': {'type': 'text', 'fontSize': 14, 'fontWeight': 500},
-              'encoding': {'text': {'condition': {'test': '!datum.reported', 'value': 'n/a'}, 'field': 'animals', 'format': ','},
-                           'color': {'condition': {'test': 'datum.animals >= 1000', 'value': 'white'}, 'value': INK}}},
-             {'transform': [{'filter': 'datum.animals >= 1000'}],
-              'mark': {'type': 'rect', 'fillOpacity': 0, 'stroke': INK, 'strokeWidth': 2.5, 'cornerRadius': 3}},
+              'encoding': {'text': {'field': 'label'},
+                           'color': {'condition': {'test': "datum.band == '30% or more'", 'value': 'white'}, 'value': INK}}},
          ]},
-        {'width': 95, 'height': 330, 'title': {'text': 'Year total', 'anchor': 'middle', 'fontSize': 14, 'offset': 16},
+        {'width': 95, 'height': 330, 'title': {'text': 'Year total', 'subtitle': '= 100% of the row', 'anchor': 'middle', 'fontSize': 14, 'subtitleFontSize': 12, 'offset': 8},
          'data': {'url': 'data/nwrc-intake-totals.json'},
          'transform': [{'calculate': "datum.group + ' · ' + datum.year", 'as': 'row'}],
          'mark': {'type': 'text', 'fontSize': 17, 'fontWeight': 700},
@@ -554,31 +558,34 @@ save('10-volunteer-origins.json', {
     ],
 })
 
-# ---- 11 Monthly placement starts + 12 linked duration histogram -------
+# ---- 11 Monthly placement starts + 12 linked lengths of stay -----------
 # Counts come from the same 57 anonymised placements; starts are not occupancy.
-DAYS = list(range(11, 40))   # every stay length from the shortest (11 days) to the longest (39)
-# One column per day, so the fixed programme lengths show; only the lengths that occur are labelled on the axis.
-HX = {'field': 'days', 'type': 'ordinal', 'scale': {'domain': DAYS, 'paddingInner': 0.12},
-      'axis': {'title': 'Length of stay (days on site)', 'labelAngle': 0, 'labelFontSize': 12.5, 'values': [11, 14, 21, 25, 32, 39],
-               'labelExpr': "datum.value == 14 ? ['14', '2 weeks'] : datum.value == 32 ? ['32', 'about a month'] : datum.value"}}
+# Stays are grouped in plain-language lengths. The report's placements cluster at fixed programme
+# lengths (11 and 14 days most often), so "two weeks" gets its own column.
+STAYS = ['Under 2 weeks', 'Exactly 2 weeks', '2 to 4 weeks', 'Over 4 weeks']
+STAY_DAYS = {'Under 2 weeks': '11–13 days', 'Exactly 2 weeks': '14 days', '2 to 4 weeks': '15–28 days', 'Over 4 weeks': '29–39 days'}
+HX = {'field': 'stay', 'type': 'ordinal', 'scale': {'domain': STAYS, 'paddingInner': 0.25, 'paddingOuter': 0.12},
+      'axis': {'title': None, 'labelAngle': 0, 'labelFontSize': 13, 'labelColor': INK,
+               'labelExpr': '[datum.value, ' + json.dumps(STAY_DAYS) + '[datum.value]]'}}   # second line: the days in each column
 month_filter = {'filter': "selectedMonth == 'All months' || datum.month == selectedMonth"}
 duration_counts = [month_filter,
-    {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['days']},
-    {'impute': 'placements', 'key': 'days', 'keyvals': DAYS, 'value': 0}]
+    {'calculate': "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'", 'as': 'stay'},
+    {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['stay']},
+    {'impute': 'placements', 'key': 'stay', 'keyvals': STAYS, 'value': 0}]
 monthly_counts = [
     {'aggregate': [{'op': 'count', 'as': 'placements'}], 'groupby': ['month', 'origin_group']},
     {'calculate': "datum.origin_group == 'Malaysia' ? 0 : 1", 'as': 'group_order'},
     {'stack': 'placements', 'groupby': ['month'], 'sort': [{'field': 'group_order'}], 'as': ['bottom', 'top']},
     {'calculate': '(datum.bottom + datum.top) / 2', 'as': 'middle'}]
 save('11-placement-months.json', {
-    'description': 'Monthly volunteer placement starts, split by origin, linked to a duration histogram. All counts are labelled. Select a month by click or menu; All months resets.',
+    'description': 'Monthly volunteer placement starts, split by origin, linked to a column chart of four stay lengths. All counts are labelled. Select a month by click or menu; All months resets.',
     'usermeta': {'fitWidth': 1100, 'mobileStack': True},
     'data': {'url': 'data/bsbcc-placements-2025.json'},
     'transform': [{'calculate': "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][toNumber(substring(datum.start, 5, 7)) - 1]", 'as': 'month'}],
     'params': [{'name': 'selectedMonth', 'value': 'All months',
                 'bind': {'input': 'select', 'options': ['All months'] + MONTHS, 'name': 'Month: ', 'element': '#placement-control'}}],
     'hconcat': [
-        {'width': 500, 'height': 300,
+        {'width': 560, 'height': 300,
          'title': {'text': '11 · When did placements start?', 'subtitle': '2025 · Monthly starts', 'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'encoding': {'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                             'axis': {'title': 'Start month · 2025', 'labelAngle': 0, 'labelFontSize': 13}},
@@ -602,25 +609,25 @@ save('11-placement-months.json', {
               'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700, 'cursor': 'pointer'},
               'encoding': {'y': {'field': 'total', 'type': 'quantitative'}, 'text': {'field': 'total'}}},
          ]},
-        {'width': 420, 'height': 300,
-         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'All 57 placements · most stays were 11 or 14 days' : 'Placements starting in ' + selectedMonth + ' · 2025'"},
+        {'width': 360, 'height': 300,
+         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'All 57 placements · 2025' : 'Placements starting in ' + selectedMonth + ' · 2025'"},
                    'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'transform': duration_counts,
          'encoding': {'x': HX, 'y': {'field': 'placements', 'type': 'quantitative', 'title': 'Placements',
-                                    'scale': {'domain': [0, 21]}, 'axis': {'values': [0, 5, 10, 15, 20]}},
-                      'tooltip': [{'field': 'days', 'title': 'Days on site'}, {'field': 'placements', 'title': 'Placements', 'type': 'quantitative'}]},
+                                    'scale': {'domain': [0, 25]}, 'axis': {'values': [0, 5, 10, 15, 20]}},
+                      'tooltip': [{'field': 'stay', 'title': 'Length of stay'}, {'field': 'placements', 'title': 'Placements', 'type': 'quantitative'}]},
          'layer': [
-             {'data': {'values': [{}]},   # shaded band: stays of two weeks or less (11-14 days)
+             {'data': {'values': [{}]},   # shaded band behind the two columns of two weeks or less
               'mark': {'type': 'rect', 'color': '#e6e0cf'},
-              'encoding': {'x': {'datum': 11}, 'x2': {'datum': 15}, 'y': {'value': 0}, 'y2': {'value': 'height'}, 'tooltip': None}},
-             {'transform': [{'joinaggregate': [{'op': 'sum', 'field': 'placements', 'as': 'all'}]}, {'filter': 'datum.days <= 14'},
+              'encoding': {'x': {'datum': 'Under 2 weeks', 'bandPosition': -0.12}, 'x2': {'datum': 'Exactly 2 weeks', 'bandPosition': 1.12}, 'y': {'value': 0}, 'y2': {'value': 'height'}, 'tooltip': None}},
+             {'transform': [{'joinaggregate': [{'op': 'sum', 'field': 'placements', 'as': 'all'}]},
+                            {'filter': "datum.stay == 'Under 2 weeks' || datum.stay == 'Exactly 2 weeks'"},
                             {'aggregate': [{'op': 'sum', 'field': 'placements', 'as': 'short'}, {'op': 'max', 'field': 'all', 'as': 'all'}]},
                             {'calculate': "[datum.short + ' of ' + datum.all + ' stayed', 'two weeks or less']", 'as': 't'}],
               'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 6, 'fontSize': 13, 'fontWeight': 700, 'lineHeight': 16, 'color': INK},
-              'encoding': {'x': {'datum': 15}, 'y': {'value': 4}, 'text': {'field': 't'}, 'tooltip': None}},
+              'encoding': {'x': {'datum': 'Under 2 weeks'}, 'y': {'value': 6}, 'text': {'field': 't'}, 'tooltip': None}},
              {'mark': {'type': 'bar', 'color': MY}},
-             {'transform': [{'filter': 'datum.placements > 0'}],   # counts on every column that has placements
-              'mark': {'type': 'text', 'dy': -8, 'fontSize': 13, 'fontWeight': 700}, 'encoding': {'text': {'field': 'placements'}}},
+             {'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700}, 'encoding': {'text': {'field': 'placements'}}},
          ]},
     ],
     'spacing': 44,

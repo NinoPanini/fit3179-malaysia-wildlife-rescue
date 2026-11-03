@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Monthly volunteer placement starts, split by origin, linked to a duration histogram. All counts are labelled. Select a month by click or menu; All months resets.",
+  "description": "Monthly volunteer placement starts, split by origin, linked to a column chart of four stay lengths. All counts are labelled. Select a month by click or menu; All months resets.",
   "usermeta": {
     "fitWidth": 1100,
     "mobileStack": true
@@ -42,7 +42,7 @@
   ],
   "hconcat": [
     {
-      "width": 500,
+      "width": 560,
       "height": 300,
       "title": {
         "text": "11 · When did placements start?",
@@ -284,12 +284,12 @@
       ]
     },
     {
-      "width": 420,
+      "width": 360,
       "height": 300,
       "title": {
         "text": "12 · How long did they stay?",
         "subtitle": {
-          "expr": "selectedMonth == 'All months' ? 'All 57 placements · most stays were 11 or 14 days' : 'Placements starting in ' + selectedMonth + ' · 2025'"
+          "expr": "selectedMonth == 'All months' ? 'All 57 placements · 2025' : 'Placements starting in ' + selectedMonth + ' · 2025'"
         },
         "fontSize": 17,
         "subtitleFontSize": 13,
@@ -300,6 +300,10 @@
           "filter": "selectedMonth == 'All months' || datum.month == selectedMonth"
         },
         {
+          "calculate": "datum.days <= 13 ? 'Under 2 weeks' : datum.days == 14 ? 'Exactly 2 weeks' : datum.days <= 28 ? '2 to 4 weeks' : 'Over 4 weeks'",
+          "as": "stay"
+        },
+        {
           "aggregate": [
             {
               "op": "count",
@@ -307,97 +311,41 @@
             }
           ],
           "groupby": [
-            "days"
+            "stay"
           ]
         },
         {
           "impute": "placements",
-          "key": "days",
+          "key": "stay",
           "keyvals": [
-            11,
-            12,
-            13,
-            14,
-            15,
-            16,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28,
-            29,
-            30,
-            31,
-            32,
-            33,
-            34,
-            35,
-            36,
-            37,
-            38,
-            39
+            "Under 2 weeks",
+            "Exactly 2 weeks",
+            "2 to 4 weeks",
+            "Over 4 weeks"
           ],
           "value": 0
         }
       ],
       "encoding": {
         "x": {
-          "field": "days",
+          "field": "stay",
           "type": "ordinal",
           "scale": {
             "domain": [
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20,
-              21,
-              22,
-              23,
-              24,
-              25,
-              26,
-              27,
-              28,
-              29,
-              30,
-              31,
-              32,
-              33,
-              34,
-              35,
-              36,
-              37,
-              38,
-              39
+              "Under 2 weeks",
+              "Exactly 2 weeks",
+              "2 to 4 weeks",
+              "Over 4 weeks"
             ],
-            "paddingInner": 0.12
+            "paddingInner": 0.25,
+            "paddingOuter": 0.12
           },
           "axis": {
-            "title": "Length of stay (days on site)",
+            "title": null,
             "labelAngle": 0,
-            "labelFontSize": 12.5,
-            "values": [
-              11,
-              14,
-              21,
-              25,
-              32,
-              39
-            ],
-            "labelExpr": "datum.value == 14 ? ['14', '2 weeks'] : datum.value == 32 ? ['32', 'about a month'] : datum.value"
+            "labelFontSize": 13,
+            "labelColor": "#1f2d2a",
+            "labelExpr": "[datum.value, {\"Under 2 weeks\": \"11\\u201313 days\", \"Exactly 2 weeks\": \"14 days\", \"2 to 4 weeks\": \"15\\u201328 days\", \"Over 4 weeks\": \"29\\u201339 days\"}[datum.value]]"
           }
         },
         "y": {
@@ -407,7 +355,7 @@
           "scale": {
             "domain": [
               0,
-              21
+              25
             ]
           },
           "axis": {
@@ -422,8 +370,8 @@
         },
         "tooltip": [
           {
-            "field": "days",
-            "title": "Days on site"
+            "field": "stay",
+            "title": "Length of stay"
           },
           {
             "field": "placements",
@@ -445,10 +393,12 @@
           },
           "encoding": {
             "x": {
-              "datum": 11
+              "datum": "Under 2 weeks",
+              "bandPosition": -0.12
             },
             "x2": {
-              "datum": 15
+              "datum": "Exactly 2 weeks",
+              "bandPosition": 1.12
             },
             "y": {
               "value": 0
@@ -471,7 +421,7 @@
               ]
             },
             {
-              "filter": "datum.days <= 14"
+              "filter": "datum.stay == 'Under 2 weeks' || datum.stay == 'Exactly 2 weeks'"
             },
             {
               "aggregate": [
@@ -504,10 +454,10 @@
           },
           "encoding": {
             "x": {
-              "datum": 15
+              "datum": "Under 2 weeks"
             },
             "y": {
-              "value": 4
+              "value": 6
             },
             "text": {
               "field": "t"
@@ -522,15 +472,10 @@
           }
         },
         {
-          "transform": [
-            {
-              "filter": "datum.placements > 0"
-            }
-          ],
           "mark": {
             "type": "text",
-            "dy": -8,
-            "fontSize": 13,
+            "dy": -9,
+            "fontSize": 15,
             "fontWeight": 700
           },
           "encoding": {

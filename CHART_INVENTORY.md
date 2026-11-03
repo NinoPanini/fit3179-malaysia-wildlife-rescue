@@ -10,14 +10,14 @@ The site has **12 numbered charts** and **8 advanced idioms**, including three d
 | 02 | Where were most animals handed over? | Proportional-symbol map | Advanced 2 (map) |
 | 03 | How does the animal mix vary by state? | Choropleth with classed shares and a group selector | Advanced 3 (map) |
 | 04 | How did each state's handovers change from 2021 to 2024? | Connected dot plot (two labelled endpoints per state) | Basic (dot plot) |
-| 05 | When did animals arrive at NWRC? | Heatmap with published annual totals | Advanced 4 |
+| 05 | When in the year does each animal group arrive at NWRC? | Heatmap: each cell is the month's share of that row's year total, with the published totals beside it | Advanced 4 |
 | 06 | What happened to the featured bears? | Event timeline: one row per bear, event types by shape and colour, outcome at the end of each row, enlarged view of a chosen bear | Advanced 5 |
 | 07 | Where did NWRC release animals? | Flow map | Advanced 6 (map) |
 | 08 | Which species went to each release area? | Sankey diagram | Advanced 7 |
 | 09 | How did volunteers and interns change over time? | Multi-line chart | Basic |
 | 10 | Where did volunteers come from? | Treemap (block area = placements) | Advanced 8 |
 | 11 | When did placements start? | Stacked columns by month and origin | Basic (stacked bar) |
-| 12 | How long did placements last? | Histogram, one column per day of stay | Basic |
+| 12 | How long did placements last? | Column chart of four plain-language stay lengths | Basic (bar) |
 
 The national-total bars beside chart 04 and the Sabah locator map are supporting context and are not counted. Selections, tooltips, pictograms and repeated panels do not create extra idioms.
 
@@ -27,9 +27,10 @@ The national-total bars beside chart 04 and the Sabah locator map are supporting
 - **06** groups the bears into "Released to the forest" and "Still in care". Each row ends with its outcome, and the three deaths are in bold so they can be counted at a glance. A collar death signal (×) is kept separate from remains recovered (cross). Events less than five weeks apart are stacked so their symbols do not overlap.
 - **10** replaced a lollipop chart. The Malaysia block fills almost half the area, which is the chart's message; every block carries its country and count. The layout is calculated in `tools/2_chart_data.py` with the squarified treemap algorithm (Bruls et al., 2000), in the same way as the Sankey layout.
 - **11** replaced a Gantt chart of individual placements, which readers did not recognise. Monthly starts are split by origin and every segment is labelled. These are starts, not the number of volunteers present in a month.
-- **12** shows one column for each length of stay (11–39 days) rather than week-wide bins, so the fixed programme lengths are visible: 14 days (19 placements), 11 days (12) and 32 days (7). A shaded band marks stays of two weeks or less and states how many of the shown placements fall in it. A month menu or a click on a chart 11 column filters the histogram; All months restores the full year.
+- **05** previously coloured raw counts on one scale. The rows differ in size by about 150 times (75 mammals against 10,968 reptiles in 2024), so the colours mainly repeated chart 01's message that reptiles dominate, and two months hid everything else. Each row is now normalised to its own published year total, and the cell prints the same percentage that sets its colour. The rows now show timing: reptiles arrive in one or two waves (58% in August 2023; 46% in September and 48% in December 2024), while no month brings in 20% of a year's mammals. A ridgeline of the same shares was considered; it shows the wave shapes, but it reads as an area chart, smooths between months, and makes zero and the missing December 2023 harder to see.
+- **12** replaced week-wide histogram bins and then a one-column-per-day histogram, neither of which read clearly. It now has four labelled columns, each with its day range: under 2 weeks (11–13 days), exactly 2 weeks (14 days), 2 to 4 weeks (15–28) and over 4 weeks (29–39). The columns are categories of unequal width, so they are spaced as a bar chart rather than drawn as a histogram. A shaded band over the first two states how many of the shown placements stayed two weeks or less. A month menu or a click on a chart 11 column filters it; All months restores the full year.
 - **03** uses a deeper top class so the two darkest colours stay distinct for colour-blind readers; every state also prints its percentage.
 
 ## Verification
 
-`npm run check` compiles all 13 specifications, validates the source totals, verifies the 24 state-comparison endpoints, the missing heatmap values, the nine treemap blocks (57 placements), the histogram peaks and every month's histogram against the original placement records. Browser review covers visible labels, menu and column selection, reset, and the 1280 and 1024 px laptop layouts with no sideways scrolling.
+`npm run check` compiles all 13 specifications, validates the source totals, verifies the 24 state-comparison endpoints, the missing heatmap values, the reptile shares in chart 05, the nine treemap blocks (57 placements), the four length-of-stay counts and every month's counts against the original placement records. Browser review covers visible labels, menu and column selection, reset, and the 1280 and 1024 px laptop layouts with no sideways scrolling.

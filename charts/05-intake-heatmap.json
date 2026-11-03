@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Monthly intake with 2023 and 2024 paired for each animal group. One shared colour scale; exact counts in every cell and published year totals at right.",
+  "description": "Monthly intake with 2023 and 2024 paired for each animal group. Each cell shows the month as a share of that row's published year total; the year totals are printed at right.",
   "usermeta": {
     "fitWidth": 1050
   },
@@ -70,8 +70,16 @@
           "as": "row"
         },
         {
-          "calculate": "!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.animals < 10 ? '1–9' : datum.animals < 100 ? '10–99' : datum.animals < 1000 ? '100–999' : '1,000+'",
+          "calculate": "datum.animals / datum.year_total",
+          "as": "share"
+        },
+        {
+          "calculate": "!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.share < 0.05 ? 'under 5%' : datum.share < 0.15 ? '5–14%' : datum.share < 0.30 ? '15–29%' : '30% or more'",
           "as": "band"
+        },
+        {
+          "calculate": "!datum.reported ? 'n/a' : datum.animals == 0 ? '0' : datum.share < 0.01 ? '<1%' : format(datum.share, '.0%')",
+          "as": "label"
         }
       ],
       "encoding": {
@@ -138,8 +146,10 @@
             "format": ","
           },
           {
-            "field": "band",
-            "title": "Class"
+            "field": "share",
+            "type": "quantitative",
+            "title": "Share of the year",
+            "format": ".1%"
           }
         ]
       },
@@ -167,14 +177,14 @@
             "color": {
               "field": "band",
               "type": "ordinal",
-              "title": "Animals per month · same scale for every row",
+              "title": "Share of the row’s year total that arrived in the month",
               "scale": {
                 "domain": [
                   "0",
-                  "1–9",
-                  "10–99",
-                  "100–999",
-                  "1,000+",
+                  "under 5%",
+                  "5–14%",
+                  "15–29%",
+                  "30% or more",
                   "Not available"
                 ],
                 "range": [
@@ -205,34 +215,15 @@
           },
           "encoding": {
             "text": {
-              "condition": {
-                "test": "!datum.reported",
-                "value": "n/a"
-              },
-              "field": "animals",
-              "format": ","
+              "field": "label"
             },
             "color": {
               "condition": {
-                "test": "datum.animals >= 1000",
+                "test": "datum.band == '30% or more'",
                 "value": "white"
               },
               "value": "#1f2d2a"
             }
-          }
-        },
-        {
-          "transform": [
-            {
-              "filter": "datum.animals >= 1000"
-            }
-          ],
-          "mark": {
-            "type": "rect",
-            "fillOpacity": 0,
-            "stroke": "#1f2d2a",
-            "strokeWidth": 2.5,
-            "cornerRadius": 3
           }
         }
       ]
@@ -242,9 +233,11 @@
       "height": 330,
       "title": {
         "text": "Year total",
+        "subtitle": "= 100% of the row",
         "anchor": "middle",
         "fontSize": 14,
-        "offset": 16
+        "subtitleFontSize": 12,
+        "offset": 8
       },
       "data": {
         "url": "data/nwrc-intake-totals.json"
