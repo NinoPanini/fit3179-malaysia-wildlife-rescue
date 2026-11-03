@@ -10829,7 +10829,7 @@
       "type": "Feature",
       "properties": {
         "state": "Kuala Lumpur",
-        "coverage": "Separate state count not available"
+        "coverage": "Federal Territories (combined figure)"
       },
       "geometry": {
         "type": "Polygon",
@@ -17699,7 +17699,7 @@
       "type": "Feature",
       "properties": {
         "state": "Putrajaya",
-        "coverage": "Separate state count not available"
+        "coverage": "Federal Territories (combined figure)"
       },
       "geometry": {
         "type": "Polygon",

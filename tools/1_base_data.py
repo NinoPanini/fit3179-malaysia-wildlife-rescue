@@ -1,7 +1,7 @@
 """Step 1 of 3: base data for the website (run from the website folder: python tools/1_base_data.py).
 
 Writes into data/:
-  handovers-2024.json        PERHILITAN 2024 Table 34 (typed from the report)
+  handovers-2024.json        PERHILITAN 2024 Table 34 (typed from the report), plus state area from the boundary file
   peninsular-states.geojson  state outlines for the maps (geoBoundaries, see tools/README.md)
   state-anchors.json         a centre point per state, for the proportional circles
   nwrc-intake-2024.json      NWRC monthly intake, numeric table under Figure 26
@@ -10,7 +10,7 @@ Writes into data/:
 The report PDFs are not stored here (they are large); tools/README.md links each one.
 Page numbers are given beside each table.
 """
-import json
+import json, math
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]          # the website folder
@@ -32,7 +32,6 @@ states = [dict(state=n, reptiles=r, mammals=m, birds=b, total=r+m+b,
                mammal_share=m/(r+m+b),year=2024,source='PERHILITAN 2024, Table 34, p121') for n,r,m,b in raw]
 assert sum(r['total'] for r in states)==16034
 assert [sum(r[k] for r in states) for k in ['reptiles','mammals','birds']]==[14146,1683,205]
-save('handovers-2024.json',states)
 lookup={r['state']:r for r in states}
 
 # Geographic anchors are derived from administrative geometry, never animal GPS.
@@ -40,12 +39,25 @@ lookup={r['state']:r for r in states}
 geo=json.loads((INPUTS/'geoboundaries-MYS-ADM1-simplified.geojson').read_text(encoding='utf-8'))
 anchors={}
 features=[]
+def area(ring): return sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(ring,ring[1:]))/2
+def km2(ring):   # area on the Earth's surface (spherical polygon formula, radius 6,371 km)
+    return abs(sum(math.radians(b[0]-a[0])*(2+math.sin(math.radians(a[1]))+math.sin(math.radians(b[1])))
+                   for a,b in zip(ring,ring[1:])))*6371**2/2
+def land(polygons): return sum(km2(p[0])-sum(km2(h) for h in p[1:]) for p in polygons)   # outer rings minus holes
+# Table 34 reports the Federal Territories as one row ("W.Persekutuan"). The site treats it as one unit
+# covering Kuala Lumpur, Putrajaya and Labuan, drawn at Kuala Lumpur; its area is the three combined.
+FT={'Kuala Lumpur','Putrajaya'}
+ft_km2=0; labuan_km2=0
 for f in geo['features']:
     name=f['properties']['shapeName']
+    polygons=f['geometry']['coordinates'] if f['geometry']['type']=='MultiPolygon' else [f['geometry']['coordinates']]
+    if name=='Labuan': labuan_km2=land(polygons)
     if name in ['Sabah','Sarawak','Labuan']: continue
     name={'Penang':'Pulau Pinang','Malacca':'Melaka'}.get(name,name)
-    polygons=f['geometry']['coordinates'] if f['geometry']['type']=='MultiPolygon' else [f['geometry']['coordinates']]
-    def area(ring): return sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(ring,ring[1:]))/2
+    if name in lookup:   # land area from the boundary file; chart 03 divides by it
+        lookup[name]['area_km2']=int(round(land(polygons),-1))
+        lookup[name]['per_1000_km2']=round(lookup[name]['total']/lookup[name]['area_km2']*1000,1)
+    if name in FT: ft_km2+=land(polygons)
     ring=max((p[0] for p in polygons),key=lambda r:abs(area(r)))
     signed=area(ring)
     lon=sum((a[0]+b[0])*(a[0]*b[1]-b[0]*a[1]) for a,b in zip(ring,ring[1:]))/(6*signed)
@@ -55,8 +67,11 @@ for f in geo['features']:
     for polygon in polygons:
         for i,r in enumerate(polygon):
             if (i==0 and area(r)>0) or (i>0 and area(r)<0): r.reverse()
-    f['properties']={'state':name,'coverage':'Separate state count not available' if name not in lookup else 'Reported'}
+    f['properties']={'state':name,'coverage':'Federal Territories (combined figure)' if name in FT else 'Reported'}
     features.append(f)
+wp=lookup['Wilayah Persekutuan']   # one combined figure: Kuala Lumpur + Putrajaya + Labuan
+wp['area_km2']=int(round(ft_km2+labuan_km2,-1)); wp['per_1000_km2']=round(wp['total']/wp['area_km2']*1000,1)
+save('handovers-2024.json',states)   # Table 34 rows, plus each state's area and animals per 1,000 km2
 save('peninsular-states.geojson',{'type':'FeatureCollection','features':features})
 save('state-anchors.json',[dict(lookup[n],**a) for n,a in anchors.items() if n in lookup])
 

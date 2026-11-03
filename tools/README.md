@@ -17,7 +17,7 @@ On Windows, use `py` in place of `python` if `python` is not found. The output i
 
 | Step | Writes | What it does |
 |---|---|---|
-| `1_base_data.py` | 7 files in `data/` | PERHILITAN 2024 tables transcribed from the report (handovers by state, National Wildlife Rescue Centre monthly intake and releases), Peninsular state outlines and centre points, and the Sankey layout |
+| `1_base_data.py` | 7 files in `data/` | PERHILITAN 2024 tables transcribed from the report (handovers by state, National Wildlife Rescue Centre monthly intake and releases), Peninsular state outlines, centre points and land areas (for the choropleth's animals per 1,000 km²), and the Sankey layout |
 | `2_chart_data.py` | 15 files in `data/` | PERHILITAN 2021–2023 figures, BSBCC sun bear events and volunteer figures, the volunteer-origin treemap layout, release-area positions, flow-map curves and the Sabah inset |
 | `3_chart_specs.py` | 13 files in `charts/` | Each Vega-Lite specification as readable JSON, sharing one configuration for typography and colour |
 

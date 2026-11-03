@@ -8,6 +8,8 @@
     "mammal_share": 0.5883241066935078,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 7970,
+    "per_1000_km2": 249.3,
     "longitude": 101.510636,
     "latitude": 3.273819
   },
@@ -20,6 +22,8 @@
     "mammal_share": 0.018114259173246633,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 19260,
+    "per_1000_km2": 111.8,
     "longitude": 103.380677,
     "latitude": 2.045288
   },
@@ -32,6 +36,8 @@
     "mammal_share": 0.08923076923076922,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 1670,
+    "per_1000_km2": 389.2,
     "longitude": 102.304392,
     "latitude": 2.323672
   },
@@ -44,6 +50,8 @@
     "mammal_share": 0.03561643835616438,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 6690,
+    "per_1000_km2": 54.6,
     "longitude": 102.206671,
     "latitude": 2.775071
   },
@@ -56,6 +64,8 @@
     "mammal_share": 0.012461059190031152,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 14930,
+    "per_1000_km2": 193.5,
     "longitude": 102.027379,
     "latitude": 5.284958
   },
@@ -68,6 +78,8 @@
     "mammal_share": 0.011898859692612791,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 12920,
+    "per_1000_km2": 156.1,
     "longitude": 102.947239,
     "latitude": 4.935281
   },
@@ -80,6 +92,8 @@
     "mammal_share": 0.07251264755480608,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 36290,
+    "per_1000_km2": 16.3,
     "longitude": 102.540764,
     "latitude": 3.739644
   },
@@ -92,6 +106,8 @@
     "mammal_share": 0.06900452488687783,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 9510,
+    "per_1000_km2": 93.0,
     "longitude": 100.660009,
     "latitude": 5.923132
   },
@@ -104,6 +120,8 @@
     "mammal_share": 0.028169014084507043,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 820,
+    "per_1000_km2": 173.2,
     "longitude": 100.241645,
     "latitude": 6.503694
   },
@@ -116,6 +134,8 @@
     "mammal_share": 0.034340659340659344,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 20910,
+    "per_1000_km2": 34.8,
     "longitude": 101.107488,
     "latitude": 4.774272
   },
@@ -128,6 +148,8 @@
     "mammal_share": 0.07418856259659969,
     "year": 2024,
     "source": "PERHILITAN 2024, Table 34, p121",
+    "area_km2": 1060,
+    "per_1000_km2": 2441.5,
     "longitude": 100.459441,
     "latitude": 5.361621
   }

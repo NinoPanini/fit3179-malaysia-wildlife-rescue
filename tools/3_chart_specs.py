@@ -76,26 +76,37 @@ save('01-handover-waffle.json', {
 # thin leader line back to the state's centre (lon/lat = label position; ax/ay = state centre).
 def lab(state, lon, lat, align, leader, name=None):
     return {'state': state, 'name': name or state, 'lon': lon, 'lat': lat, 'align': align, 'leader': leader}
+# Map 02: every circle is joined to its label by a leader line.
 CIRCLE_LABELS = [lab('Perlis', 99.85, 6.62, 'right', True), lab('Kedah', 99.85, 6.08, 'right', True),
-    lab('Pulau Pinang', 99.85, 5.42, 'right', True), lab('Perak', 101.38, 4.62, 'left', False),
-    lab('Kelantan', 102.3, 5.62, 'left', False), lab('Terengganu', 103.42, 5.0, 'left', False),
-    lab('Pahang', 102.78, 3.75, 'left', False), lab('Selangor', 100.85, 3.6, 'right', True),
-    lab('Wilayah Persekutuan', 100.95, 3.12, 'right', True, 'Federal Territories'),
-    lab('Negeri Sembilan', 102.5, 2.98, 'left', False), lab('Melaka', 101.7, 2.08, 'right', True),
-    lab('Johor', 103.82, 2.12, 'left', False)]
+    lab('Pulau Pinang', 99.85, 5.42, 'right', True), lab('Perak', 101.55, 4.42, 'left', True),
+    lab('Kelantan', 102.5, 5.8, 'left', True), lab('Terengganu', 103.55, 5.2, 'left', True),
+    lab('Pahang', 103.02, 3.55, 'left', True), lab('Selangor', 100.85, 3.62, 'right', True),
+    lab('Wilayah Persekutuan', 100.95, 3.08, 'right', True, 'Federal Territories'),
+    lab('Negeri Sembilan', 102.72, 3.02, 'left', True), lab('Melaka', 101.7, 2.08, 'right', True),
+    lab('Johor', 103.92, 2.32, 'left', True)]
+# Selangor's centre is so close to Kuala Lumpur that its circle covered the Federal Territories circle,
+# so map 02 draws it a little north-west, still inside Selangor.
+MOVED = {'Selangor': (101.3, 3.45)}
 SHARE_LABELS = [lab('Perlis', 99.85, 6.62, 'right', True), lab('Pulau Pinang', 99.85, 5.42, 'right', True),
     lab('Melaka', 101.7, 2.08, 'right', True), lab('Kedah', 100.66, 5.92, 'center', False),
     lab('Perak', 101.11, 4.77, 'center', False), lab('Kelantan', 102.03, 5.28, 'center', False),
     lab('Terengganu', 102.95, 4.94, 'center', False), lab('Pahang', 102.54, 3.74, 'center', False),
     lab('Selangor', 100.85, 3.6, 'right', True), lab('Negeri Sembilan', 102.21, 2.78, 'center', False),
+    lab('Wilayah Persekutuan', 100.95, 3.08, 'right', True, 'Federal Territories'),
     lab('Johor', 103.38, 2.05, 'center', False)]
 WP_POINT = {'state': 'Wilayah Persekutuan', 'longitude': 101.69, 'latitude': 3.12}   # Kuala Lumpur, where the combined figure is drawn
-def leader_lines(labels, anchors_url='data/state-anchors.json'):
-    """Thin grey lines from each offshore label back to its state."""
+def moved(axis, field):
+    """Expression for a state's drawing position: the state centre, unless MOVED gives another point."""
+    i = 0 if axis == 'lon' else 1
+    return ''.join(f"datum.state == '{st}' ? {pos[i]} : " for st, pos in MOVED.items()) + field
+def leader_lines(labels, anchors_url='data/state-anchors.json', use_moved=False):
+    """Thin grey lines from each label back to its state (or its moved circle)."""
+    lon = moved('lon', 'datum.longitude') if use_moved else 'datum.longitude'
+    lat = moved('lat', 'datum.latitude') if use_moved else 'datum.latitude'
     return {'data': {'values': [d for d in labels if d['leader']]},
             'transform': [{'lookup': 'state', 'from': {'data': {'url': anchors_url}, 'key': 'state', 'fields': ['longitude', 'latitude']}},
-                          {'calculate': "isValid(datum.longitude) ? datum.longitude : 101.69", 'as': 'ax'},
-                          {'calculate': "isValid(datum.latitude) ? datum.latitude : 3.12", 'as': 'ay'}],
+                          {'calculate': f"isValid(datum.longitude) ? {lon} : 101.69", 'as': 'ax'},
+                          {'calculate': f"isValid(datum.latitude) ? {lat} : 3.12", 'as': 'ay'}],
             'mark': {'type': 'rule', 'color': '#8a8270', 'strokeWidth': 0.8},
             'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
                          'longitude2': {'field': 'ax'}, 'latitude2': {'field': 'ay'}}}
@@ -107,31 +118,30 @@ save('02-handover-map.json', {
     'projection': {'type': 'mercator'},
     'layer': [
         BASEMAP,
+        leader_lines(CIRCLE_LABELS, use_moved=True),   # drawn before the circles, so each line ends under its circle
         {'data': {'values': [WP_POINT]},   # Federal Territories: one combined figure, drawn at Kuala Lumpur
          'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state',
                                                      'fields': ['total', 'reptiles', 'mammals', 'birds']}},
                        {'calculate': "'Federal Territories (combined)'", 'as': 'state'}],
-         'mark': {'type': 'circle', 'color': MARK, 'stroke': PAPER, 'strokeWidth': 1.5, 'opacity': 0.72},
+         'mark': {'type': 'circle', 'color': MARK, 'stroke': PAPER, 'strokeWidth': 1.5, 'opacity': 1},
          'encoding': {'longitude': {'field': 'longitude', 'type': 'quantitative'}, 'latitude': {'field': 'latitude', 'type': 'quantitative'},
                       'size': {'field': 'total', 'type': 'quantitative'},
                       'tooltip': [{'field': 'state', 'title': 'Reporting unit'}, {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','}]}},
         {'data': {'url': 'data/state-anchors.json'},
-         'params': [{'name': 'stateHover', 'select': {'type': 'point', 'fields': ['state'], 'on': 'pointerover', 'clear': 'pointerout'}}],
-         'mark': {'type': 'circle', 'color': MARK, 'stroke': PAPER, 'strokeWidth': 1.5, 'cursor': 'pointer'},
+         'transform': [{'calculate': moved('lon', 'datum.longitude'), 'as': 'x_lon'}, {'calculate': moved('lat', 'datum.latitude'), 'as': 'x_lat'}],
+         'mark': {'type': 'circle', 'color': MARK, 'stroke': PAPER, 'strokeWidth': 1.5, 'opacity': 1, 'cursor': 'pointer'},   # solid, so leader lines stop at the circle edge
          'encoding': {
-             'longitude': {'field': 'longitude', 'type': 'quantitative'},
-             'latitude': {'field': 'latitude', 'type': 'quantitative'},
+             'longitude': {'field': 'x_lon', 'type': 'quantitative'},
+             'latitude': {'field': 'x_lat', 'type': 'quantitative'},
              'size': {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over',
                       'scale': {'range': [0, 1900], 'zero': True},
                       'legend': {'values': [300, 1000, 2500], 'orient': 'bottom-left', 'symbolFillColor': MARK,
-                                 'symbolOpacity': 0.7, 'labelExpr': "format(datum.value, ',')"}},
-             'opacity': {'condition': {'param': 'stateHover', 'empty': False, 'value': 0.95}, 'value': 0.72},
+                                 'symbolOpacity': 1, 'labelExpr': "format(datum.value, ',')"}},
              'tooltip': [{'field': 'state', 'type': 'nominal', 'title': 'Reporting state'},
                          {'field': 'total', 'type': 'quantitative', 'title': 'Animals handed over', 'format': ','},
                          {'field': 'reptiles', 'type': 'quantitative', 'title': 'Reptiles', 'format': ','},
                          {'field': 'mammals', 'type': 'quantitative', 'title': 'Mammals', 'format': ','},
                          {'field': 'birds', 'type': 'quantitative', 'title': 'Birds', 'format': ','}]}},
-        leader_lines(CIRCLE_LABELS),
     ] + [{'data': {'values': [d for d in CIRCLE_LABELS if d['align'] == a]},
           'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state', 'fields': ['total']}},
                         {'calculate': "[datum.name, format(datum.total, ',')]", 'as': 'label'}],
@@ -140,65 +150,69 @@ save('02-handover-map.json', {
                        'text': {'field': 'label'}}} for a in ('left', 'right')],
 })
 
-# ---- 03 Choropleth with animal-group selector -------------------------
-share = "(groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds) / datum.total"
-# Manual class breaks (Week 9 classification) chosen separately for each group, because the groups
-# live on very different ranges: birds never exceed 3.4% of a state's handovers, reptiles never fall
-# below 38%. One shared scale would paint the bird map a single colour. The page explains this and
-# prints every state's exact percentage, so readers never have to decode a colour.
-BREAKS = {'Mammals': [0.02, 0.04, 0.07, 0.10, 0.25], 'Reptiles': [0.50, 0.90, 0.93, 0.96, 0.98], 'Birds': [0.005, 0.01, 0.015, 0.02, 0.03]}
+# ---- 03 Choropleth: animals per 1,000 km2, or one group's share ------
+# "All animals" (the default) is normalised by land area: animals handed over per 1,000 km2, with the
+# area measured from the boundary file in step 1. Choosing a group shows that group's share of each
+# state's handovers instead. Either way the measure is a rate, never a raw count (map 02 shows counts).
+share = ("(groupChoice == 'All animals' ? datum.per_1000_km2 : groupChoice == 'Mammals' ? datum.mammals / datum.total : "
+         "groupChoice == 'Reptiles' ? datum.reptiles / datum.total : datum.birds / datum.total)")
+# Manual class breaks (Week 9 classification) chosen separately for each view, because they live on very
+# different ranges: birds never exceed 3.4% of a state's handovers, reptiles never fall below 38%, and
+# the density runs from 16 (Pahang) to 2,442 (Pulau Pinang) animals per 1,000 km2.
+BREAKS = {'All animals': [25, 50, 100, 200, 500],
+          'Mammals': [0.02, 0.04, 0.07, 0.10, 0.25], 'Reptiles': [0.50, 0.90, 0.93, 0.96, 0.98], 'Birds': [0.005, 0.01, 0.015, 0.02, 0.03]}
+GROUPS_03 = ['All animals', 'Reptiles', 'Mammals', 'Birds']
 def _cls(b):
     return " : ".join([f"datum.share < {v} ? {i}" for i, v in enumerate(b)]) + " : 5"
-cls = ("groupChoice == 'Mammals' ? (" + _cls(BREAKS['Mammals']) + ") : groupChoice == 'Reptiles' ? (" +
-       _cls(BREAKS['Reptiles']) + ") : (" + _cls(BREAKS['Birds']) + ")")
-def _labels(b):
-    f = lambda v: (f"{v*100:.1f}".rstrip('0').rstrip('.')) + '%'
-    return [f"under {f(b[0])}"] + [f"{f(b[i])}–{f(b[i+1])}" for i in range(len(b) - 1)] + [f"{f(b[-1])} or more", 'No separate figure']
-LEGEND_EXPR = ("(groupChoice == 'Mammals' ? " + json.dumps(_labels(BREAKS['Mammals'])) + " : groupChoice == 'Reptiles' ? " +
-               json.dumps(_labels(BREAKS['Reptiles'])) + " : " + json.dumps(_labels(BREAKS['Birds'])) + ")[datum.value]")
+cls = " : ".join(f"groupChoice == '{g}' ? ({_cls(BREAKS[g])})" for g in GROUPS_03[:-1]) + f" : ({_cls(BREAKS['Birds'])})"
+def _labels(b, density=False):
+    f = (lambda v: f"{v:,}") if density else (lambda v: (f"{v*100:.1f}".rstrip('0').rstrip('.')) + '%')
+    return [f"under {f(b[0])}"] + [f"{f(b[i])}–{f(b[i+1])}" for i in range(len(b) - 1)] + [f"{f(b[-1])} or more"]
+LEGEND_EXPR = ("(" + " : ".join(f"groupChoice == '{g}' ? " + json.dumps(_labels(BREAKS[g], g == 'All animals')) for g in GROUPS_03[:-1]) +
+               " : " + json.dumps(_labels(BREAKS['Birds'])) + ")[datum.value]")
+LABEL_03 = ("groupChoice == 'All animals' ? format(datum.share, ',.0f') : datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')")
 save('03-group-share-map.json', {
-    'description': "Choropleth: the selected animal group's share of each state's 2024 handovers, in fixed classes.",
+    'description': "Choropleth: animals handed over per 1,000 km2 in each state (default), or the chosen animal group's share of each state's 2024 handovers, in fixed classes.",
     'width': 'container', 'height': 470, 'padding': {'left': 72, 'top': 5, 'right': 5, 'bottom': 5},
-    'params': [{'name': 'groupChoice', 'value': 'Mammals',
-                'bind': {'input': 'select', 'options': ['Mammals', 'Reptiles', 'Birds'], 'name': 'Animal group: ', 'element': '#share-map-control'}}],
+    'params': [{'name': 'groupChoice', 'value': 'All animals',
+                'bind': {'input': 'select', 'options': GROUPS_03, 'name': 'Show: ', 'element': '#share-map-control'}}],
     'projection': {'type': 'mercator'},
     'layer': [
-        {**BASEMAP, 'transform': [{'calculate': "'Federal Territories: one combined figure, not split by territory'", 'as': 'note'}],
-         'mark': {'type': 'geoshape', 'stroke': PAPER, 'strokeWidth': 1.2},
-         'encoding': {'color': {'datum': 6, 'type': 'ordinal'},   # class 6 = no separate figure (last legend entry)
-                      'tooltip': [{'field': 'properties.state', 'type': 'nominal', 'title': 'Territory'},
-                                  {'field': 'note', 'type': 'nominal', 'title': 'Note'}]}},
         {'data': GEO,
-         'transform': [{'lookup': 'properties.state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state',
-                                                              'fields': ['reptiles', 'mammals', 'birds', 'total']}},
+         # Kuala Lumpur and Putrajaya both take the one combined Federal Territories figure (which also covers Labuan)
+         'transform': [{'calculate': "indexof(['Kuala Lumpur', 'Putrajaya'], datum.properties.state) >= 0 ? 'Wilayah Persekutuan' : datum.properties.state", 'as': 'unit'},
+                       {'calculate': "datum.unit == 'Wilayah Persekutuan' ? 'Federal Territories (combined)' : datum.unit", 'as': 'name'},
+                       {'lookup': 'unit', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state',
+                                                              'fields': ['reptiles', 'mammals', 'birds', 'total', 'area_km2', 'per_1000_km2']}},
                        {'filter': 'isValid(datum.total)'},
                        {'calculate': share, 'as': 'share'},
-                       {'calculate': "groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : datum.birds", 'as': 'count'},
+                       {'calculate': "groupChoice == 'Mammals' ? datum.mammals : groupChoice == 'Reptiles' ? datum.reptiles : groupChoice == 'Birds' ? datum.birds : datum.total", 'as': 'count'},
                        {'calculate': cls, 'as': 'cls'}],
          'mark': {'type': 'geoshape', 'stroke': BORDER, 'strokeWidth': 0.9},
          'encoding': {
-             'color': {'field': 'cls', 'type': 'ordinal', 'title': 'Share of the state’s handovers (classes change with the group)',
-                       'scale': {'domain': [0, 1, 2, 3, 4, 5, 6], 'range': SEQ + [NODATA]},
-                       'legend': {'labelExpr': LEGEND_EXPR, 'orient': 'bottom', 'direction': 'horizontal', 'columns': 4, 'title': ['Share of each state’s', 'handovers in the chosen group'],
+             'color': {'field': 'cls', 'type': 'ordinal', 'title': 'Colour class (classes change with the view)',
+                       'scale': {'domain': [0, 1, 2, 3, 4, 5], 'range': SEQ},
+                       'legend': {'labelExpr': LEGEND_EXPR, 'orient': 'bottom', 'direction': 'horizontal', 'columns': 4, 'title': ['All animals: animals per 1,000 km² of land', 'One group: share of the state’s handovers'],
                                   'symbolType': 'square', 'symbolSize': 220, 'symbolStrokeColor': '#9c9686', 'symbolStrokeWidth': 0.5,
                                   'labelLimit': 160, 'titleLimit': 420, 'columnPadding': 14}},
-             'tooltip': [{'field': 'properties.state', 'type': 'nominal', 'title': 'State'},
-                         {'field': 'share', 'type': 'quantitative', 'title': 'Share of handovers', 'format': '.1%'},
-                         {'field': 'count', 'type': 'quantitative', 'title': 'Animals in this group', 'format': ','},
-                         {'field': 'total', 'type': 'quantitative', 'title': 'All animals handed over', 'format': ','}]}},
+             'tooltip': [{'field': 'name', 'type': 'nominal', 'title': 'State'},
+                         {'field': 'count', 'type': 'quantitative', 'title': 'Animals (chosen view)', 'format': ','},
+                         {'field': 'total', 'type': 'quantitative', 'title': 'All animals handed over', 'format': ','},
+                         {'field': 'area_km2', 'type': 'quantitative', 'title': 'Land area (km²)', 'format': ','},
+                         {'field': 'per_1000_km2', 'type': 'quantitative', 'title': 'All animals per 1,000 km²', 'format': ',.0f'}]}},
         leader_lines(SHARE_LABELS),
     ] + [{'data': {'values': [d for d in SHARE_LABELS if d['leader'] == offshore]},
           'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state',
-                                                      'fields': ['reptiles', 'mammals', 'birds', 'total']}},
+                                                      'fields': ['reptiles', 'mammals', 'birds', 'total', 'per_1000_km2']}},
                         {'calculate': share, 'as': 'share'}, {'calculate': cls, 'as': 'cls'},
-                        {'calculate': "[datum.name, datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')]", 'as': 'label'}],
+                        {'calculate': "[datum.name, " + LABEL_03 + "]", 'as': 'label'}],
           # offshore labels sit in the sea (dark text); the rest sit on their state (white on dark classes)
           'mark': {'type': 'text', 'fontSize': 11.5, 'fontWeight': 700, 'lineHeight': 13, 'baseline': 'middle',
                    'align': 'right' if offshore else 'center', 'dx': -4 if offshore else 0},
           'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
                        'text': {'field': 'label'},
                        'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': 'white'}, 'value': INK},
-                       'tooltip': [{'field': 'name', 'title': 'State'}, {'field': 'share', 'type': 'quantitative', 'title': 'Share', 'format': '.1%'}]}}
+                       'tooltip': [{'field': 'name', 'title': 'State'}, {'field': 'label', 'title': 'Shown'}]}}
          for offshore in (False, True)],
 })
 

@@ -41,6 +41,152 @@
       "data": {
         "values": [
           {
+            "state": "Perlis",
+            "name": "Perlis",
+            "lon": 99.85,
+            "lat": 6.62,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Kedah",
+            "name": "Kedah",
+            "lon": 99.85,
+            "lat": 6.08,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Pulau Pinang",
+            "name": "Pulau Pinang",
+            "lon": 99.85,
+            "lat": 5.42,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Perak",
+            "name": "Perak",
+            "lon": 101.55,
+            "lat": 4.42,
+            "align": "left",
+            "leader": true
+          },
+          {
+            "state": "Kelantan",
+            "name": "Kelantan",
+            "lon": 102.5,
+            "lat": 5.8,
+            "align": "left",
+            "leader": true
+          },
+          {
+            "state": "Terengganu",
+            "name": "Terengganu",
+            "lon": 103.55,
+            "lat": 5.2,
+            "align": "left",
+            "leader": true
+          },
+          {
+            "state": "Pahang",
+            "name": "Pahang",
+            "lon": 103.02,
+            "lat": 3.55,
+            "align": "left",
+            "leader": true
+          },
+          {
+            "state": "Selangor",
+            "name": "Selangor",
+            "lon": 100.85,
+            "lat": 3.62,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Wilayah Persekutuan",
+            "name": "Federal Territories",
+            "lon": 100.95,
+            "lat": 3.08,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Negeri Sembilan",
+            "name": "Negeri Sembilan",
+            "lon": 102.72,
+            "lat": 3.02,
+            "align": "left",
+            "leader": true
+          },
+          {
+            "state": "Melaka",
+            "name": "Melaka",
+            "lon": 101.7,
+            "lat": 2.08,
+            "align": "right",
+            "leader": true
+          },
+          {
+            "state": "Johor",
+            "name": "Johor",
+            "lon": 103.92,
+            "lat": 2.32,
+            "align": "left",
+            "leader": true
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/state-anchors.json"
+            },
+            "key": "state",
+            "fields": [
+              "longitude",
+              "latitude"
+            ]
+          }
+        },
+        {
+          "calculate": "isValid(datum.longitude) ? datum.state == 'Selangor' ? 101.3 : datum.longitude : 101.69",
+          "as": "ax"
+        },
+        {
+          "calculate": "isValid(datum.latitude) ? datum.state == 'Selangor' ? 3.45 : datum.latitude : 3.12",
+          "as": "ay"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#8a8270",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "ax"
+        },
+        "latitude2": {
+          "field": "ay"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
             "state": "Wilayah Persekutuan",
             "longitude": 101.69,
             "latitude": 3.12
@@ -73,7 +219,7 @@
         "color": "#3e5260",
         "stroke": "#fbf9f2",
         "strokeWidth": 1.5,
-        "opacity": 0.72
+        "opacity": 1
       },
       "encoding": {
         "longitude": {
@@ -106,17 +252,14 @@
       "data": {
         "url": "data/state-anchors.json"
       },
-      "params": [
+      "transform": [
         {
-          "name": "stateHover",
-          "select": {
-            "type": "point",
-            "fields": [
-              "state"
-            ],
-            "on": "pointerover",
-            "clear": "pointerout"
-          }
+          "calculate": "datum.state == 'Selangor' ? 101.3 : datum.longitude",
+          "as": "x_lon"
+        },
+        {
+          "calculate": "datum.state == 'Selangor' ? 3.45 : datum.latitude",
+          "as": "x_lat"
         }
       ],
       "mark": {
@@ -124,15 +267,16 @@
         "color": "#3e5260",
         "stroke": "#fbf9f2",
         "strokeWidth": 1.5,
+        "opacity": 1,
         "cursor": "pointer"
       },
       "encoding": {
         "longitude": {
-          "field": "longitude",
+          "field": "x_lon",
           "type": "quantitative"
         },
         "latitude": {
-          "field": "latitude",
+          "field": "x_lat",
           "type": "quantitative"
         },
         "size": {
@@ -154,17 +298,9 @@
             ],
             "orient": "bottom-left",
             "symbolFillColor": "#3e5260",
-            "symbolOpacity": 0.7,
+            "symbolOpacity": 1,
             "labelExpr": "format(datum.value, ',')"
           }
-        },
-        "opacity": {
-          "condition": {
-            "param": "stateHover",
-            "empty": false,
-            "value": 0.95
-          },
-          "value": 0.72
         },
         "tooltip": [
           {
@@ -203,150 +339,52 @@
       "data": {
         "values": [
           {
-            "state": "Perlis",
-            "name": "Perlis",
-            "lon": 99.85,
-            "lat": 6.62,
-            "align": "right",
-            "leader": true
-          },
-          {
-            "state": "Kedah",
-            "name": "Kedah",
-            "lon": 99.85,
-            "lat": 6.08,
-            "align": "right",
-            "leader": true
-          },
-          {
-            "state": "Pulau Pinang",
-            "name": "Pulau Pinang",
-            "lon": 99.85,
-            "lat": 5.42,
-            "align": "right",
-            "leader": true
-          },
-          {
-            "state": "Selangor",
-            "name": "Selangor",
-            "lon": 100.85,
-            "lat": 3.6,
-            "align": "right",
-            "leader": true
-          },
-          {
-            "state": "Wilayah Persekutuan",
-            "name": "Federal Territories",
-            "lon": 100.95,
-            "lat": 3.12,
-            "align": "right",
-            "leader": true
-          },
-          {
-            "state": "Melaka",
-            "name": "Melaka",
-            "lon": 101.7,
-            "lat": 2.08,
-            "align": "right",
-            "leader": true
-          }
-        ]
-      },
-      "transform": [
-        {
-          "lookup": "state",
-          "from": {
-            "data": {
-              "url": "data/state-anchors.json"
-            },
-            "key": "state",
-            "fields": [
-              "longitude",
-              "latitude"
-            ]
-          }
-        },
-        {
-          "calculate": "isValid(datum.longitude) ? datum.longitude : 101.69",
-          "as": "ax"
-        },
-        {
-          "calculate": "isValid(datum.latitude) ? datum.latitude : 3.12",
-          "as": "ay"
-        }
-      ],
-      "mark": {
-        "type": "rule",
-        "color": "#8a8270",
-        "strokeWidth": 0.8
-      },
-      "encoding": {
-        "longitude": {
-          "field": "lon",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "lat",
-          "type": "quantitative"
-        },
-        "longitude2": {
-          "field": "ax"
-        },
-        "latitude2": {
-          "field": "ay"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
             "state": "Perak",
             "name": "Perak",
-            "lon": 101.38,
-            "lat": 4.62,
+            "lon": 101.55,
+            "lat": 4.42,
             "align": "left",
-            "leader": false
+            "leader": true
           },
           {
             "state": "Kelantan",
             "name": "Kelantan",
-            "lon": 102.3,
-            "lat": 5.62,
+            "lon": 102.5,
+            "lat": 5.8,
             "align": "left",
-            "leader": false
+            "leader": true
           },
           {
             "state": "Terengganu",
             "name": "Terengganu",
-            "lon": 103.42,
-            "lat": 5.0,
+            "lon": 103.55,
+            "lat": 5.2,
             "align": "left",
-            "leader": false
+            "leader": true
           },
           {
             "state": "Pahang",
             "name": "Pahang",
-            "lon": 102.78,
-            "lat": 3.75,
+            "lon": 103.02,
+            "lat": 3.55,
             "align": "left",
-            "leader": false
+            "leader": true
           },
           {
             "state": "Negeri Sembilan",
             "name": "Negeri Sembilan",
-            "lon": 102.5,
-            "lat": 2.98,
+            "lon": 102.72,
+            "lat": 3.02,
             "align": "left",
-            "leader": false
+            "leader": true
           },
           {
             "state": "Johor",
             "name": "Johor",
-            "lon": 103.82,
-            "lat": 2.12,
+            "lon": 103.92,
+            "lat": 2.32,
             "align": "left",
-            "leader": false
+            "leader": true
           }
         ]
       },
@@ -422,7 +460,7 @@
             "state": "Selangor",
             "name": "Selangor",
             "lon": 100.85,
-            "lat": 3.6,
+            "lat": 3.62,
             "align": "right",
             "leader": true
           },
@@ -430,7 +468,7 @@
             "state": "Wilayah Persekutuan",
             "name": "Federal Territories",
             "lon": 100.95,
-            "lat": 3.12,
+            "lat": 3.08,
             "align": "right",
             "leader": true
           },

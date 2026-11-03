@@ -34,7 +34,7 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 
 **Processing.** Three Python scripts in [`tools/`](tools/) turn the extracts into JSON data files and Vega-Lite specifications. The pipeline is deterministic: a fresh clone regenerates the committed data and specifications byte for byte.
 
-**Encoding.** Choropleth values are shares of each state's handovers rather than raw counts. Records from different sources are shown side by side and never combined into rates.
+**Encoding.** Choropleth values are rates rather than raw counts: animals per 1,000 km² of land (area measured from the boundary file), or one group's share of each state's handovers. Records from different sources are shown side by side and never combined into rates.
 
 **Accessibility.** Categories use the Okabe–Ito palette and amounts use ColorBrewer YlGnBu. Every colour distinction is repeated with labels, shapes or line styles. The main datasets can also be opened as data tables, for keyboard and screen-reader users.
 
@@ -44,7 +44,8 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 
 - Handovers are records of contact with the authorities. They do not estimate wild populations or measure how well a state protects wildlife.
 - PERHILITAN's 2022 report gives only a national total. The state comparison uses the 2021 and 2024 endpoints, while the supporting national bars include all four years. In the 2023 report, the rescue centre's December row repeats the annual totals, so December 2023 is marked unavailable. The heatmap's year-total column and its monthly shares use the published annual totals, not sums of incomplete monthly records, so the 2023 rows add up to slightly less than 100%.
-- The Federal Territories are reported as a single unit, so they are counted in all totals but appear in grey on the maps.
+- The Federal Territories are reported as a single unit. The maps treat Kuala Lumpur, Putrajaya and Labuan as one unit drawn at Kuala Lumpur, and its rate per km² uses their combined area.
+- The animals-per-1,000 km² rate uses state areas measured from the simplified boundary file, so the areas are approximate.
 - Release-area positions are approximate (within about 10–20 km) and show destinations, not routes. The 2024 NWRC report does not follow up on the animals it released.
 - The sun bear timeline covers cases described in BSBCC's public reports, not every bear in its care. Sabah and Sarawak wildlife agencies publish separately and are outside the scope of this study.
 - No animal tracking (GPS) data are used. Volunteer records contain no personal names.
