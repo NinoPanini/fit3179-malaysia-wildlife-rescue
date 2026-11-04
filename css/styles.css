@@ -134,7 +134,8 @@ th{background:var(--tint);position:sticky;top:0}
 .story-break p{font-family:var(--serif);font-size:26px;line-height:1.35;margin:0}
 .story-break strong{font-weight:600;color:var(--green)}
 .key{padding:0 6px;border-radius:3px;color:#1f2d2a;font-size:.92em}
-.key--mammal{background:#f4e3c7;box-shadow:inset 0 -3px 0 var(--mammal)}.key--bird{background:#f1e0ea;box-shadow:inset 0 -3px 0 var(--bird)}   /* light fill keeps the text readable; the underline carries the chart colour */
+.key--reptile{background:#d9e8f2;box-shadow:inset 0 -3px 0 var(--reptile)}.key--mammal{background:#f4e3c7;box-shadow:inset 0 -3px 0 var(--mammal)}.key--bird{background:#f1e0ea;box-shadow:inset 0 -3px 0 var(--bird)}
+.key--malaysia{background:#d3e8ea;box-shadow:inset 0 -3px 0 #00525a}.key--other{background:#e9e5da;box-shadow:inset 0 -3px 0 #8a8270}   /* light fill keeps the text readable; the underline carries the chart colour */
 .closing{padding:36px 0 0;margin-top:48px;border-top:1px solid var(--rule);max-width:72ch}
 .closing>p:first-child{color:var(--gold-ink);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
 .closing h3{font-size:40px;line-height:1.18;font-weight:520}

@@ -19,7 +19,7 @@ INK, MUTED, GRID, PAPER = '#1f2d2a', '#56625d', '#e4e0d2', '#fbf9f2'
 GROUP = {'Reptiles': '#0072B2', 'Mammals': '#B26F00', 'Birds': '#8F3F72'}   # Okabe-Ito hues, darkened so every mark reaches 3:1 contrast
 SEQ = ['#f7ed9e', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']   # ColorBrewer YlGnBu; lightest step deepened so it shows against the page, darkest step deepened so the top two classes stay apart for colour-blind readers
 MARK = '#3e5260'                                                             # neutral slate for single-series marks
-MY, OTHER = '#2f4858', '#8a8270'                                             # Malaysia highlighted in slate, other countries in neutral grey
+MY, OTHER = '#00525a', '#8a8270'   # Malaysia in deep teal (checked against grey for all three colour-blind types), other countries in neutral grey; no other chart uses these
 FONT = "'Source Sans 3', 'Segoe UI', Arial, sans-serif"  # quoted: the family name contains a digit
 
 CONFIG = {
@@ -226,10 +226,10 @@ save('03-group-share-map.json', {
 })
 
 # ---- 04 Change bars: how each state's handovers changed, 2021 to 2024 ----
-# One bar per state, sorted from the biggest rise to the biggest fall. Rises go right of zero (slate),
-# falls go left (amber), so direction reads from position as well as colour. Each bar is labelled with
-# the change and both counts. (Map 02 already shows the 2024 totals; this chart shows the change.)
-RISE, FALL = MY, '#9a6200'
+# One bar per state, sorted from the biggest rise to the biggest fall. Rises go right of zero and falls go
+# left, and every bar is labelled with the change and both counts, so one neutral colour is enough: the same
+# slate as the animal counts in maps 02 and 07, and not a colour that means a group or an origin elsewhere. (Map 02 already shows the 2024 totals; this chart shows the change.)
+RISE = FALL = MARK
 trend = json.loads((ROOT / 'data/handovers-trend.json').read_text(encoding='utf8'))
 by = {(r['state'], r['year']): r['total'] for r in trend}
 CHANGE_ORDER = sorted({r['state'] for r in trend}, key=lambda st: -(by[(st, 2024)] - by[(st, 2021)]))   # biggest rise first
@@ -258,7 +258,7 @@ save('04-state-comparison.json', {
         *[{'transform': [{'filter': test}, {'calculate': change_label, 'as': 'label'}],
            'mark': {'type': 'text', 'align': align, 'dx': dx, 'fontSize': 13, 'fontWeight': 600, 'color': colour},
            'encoding': {'x': {'field': 'change', 'type': 'quantitative'}, 'text': {'field': 'label'}}}
-          for test, align, dx, colour in [('datum.change >= 0', 'left', 8, INK), ('datum.change < 0', 'right', -8, '#7a4d00')]],
+          for test, align, dx, colour in [('datum.change >= 0', 'left', 8, INK), ('datum.change < 0', 'right', -8, INK)]],
         *[{'data': {'values': [{'x': x, 't': t}]},   # direction cues above the zero line
            'mark': {'type': 'text', 'align': align, 'baseline': 'bottom', 'dy': -6, 'fontSize': 12, 'fontStyle': 'italic', 'color': MUTED},
            'encoding': {'x': {'field': 'x', 'type': 'quantitative'}, 'y': {'value': 0}, 'text': {'field': 't'}}}

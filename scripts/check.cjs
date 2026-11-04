@@ -138,7 +138,7 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
         await view.signal('selectedMonth', month).runAsync();
         const monthIndex = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(month) + 1;
         const expected = placements.filter(p => Number(p.start.slice(5,7)) === monthIndex).length;
-        const solid = dots().filter(d => d.fill === '#2f4858' || d.fill === '#8a8270');   // the others are outlines
+        const solid = dots().filter(d => d.fill === '#00525a' || d.fill === '#8a8270');   // the others are outlines
         assert.equal(solid.length, expected, `${month}: chart 12 fills every placement that started that month`);
         assert.equal(dots().length, 57, `${month}: chart 12 still shows all 57 figures`);
       }

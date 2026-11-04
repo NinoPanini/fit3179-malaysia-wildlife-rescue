@@ -94,9 +94,9 @@
         "color": {
           "condition": {
             "test": "datum.change < 0",
-            "value": "#9a6200"
+            "value": "#3e5260"
           },
-          "value": "#2f4858"
+          "value": "#3e5260"
         },
         "tooltip": [
           {
@@ -181,7 +181,7 @@
         "dx": -8,
         "fontSize": 13,
         "fontWeight": 600,
-        "color": "#7a4d00"
+        "color": "#1f2d2a"
       },
       "encoding": {
         "x": {

@@ -58,7 +58,7 @@
           <div class="chart-scroll"><div id="waffle" class="chart" data-spec="charts/01-handover-waffle.json" aria-label="Waffle chart: of 100 squares, 88 are reptiles, 11 mammals and 1 bird."></div></div>
         </figure>
         <div class="side-copy">
-          <p>About one in ten was a mammal, and about one in a hundred was a bird.</p>
+          <p>About one in ten was a <span class="key key--mammal">mammal</span>, and about one in a hundred was a <span class="key key--bird">bird</span>.</p>
           <p>A handover records contact between people and wildlife. It does not show how many animals live in the wild.</p>
         </div>
       </div>
@@ -67,7 +67,7 @@
         <figure>
           <div class="figure-top"><span class="chart-number">02</span><div><h3>Animals handed over by state, 2024</h3><p>Circle area shows animals handed over · Peninsular Malaysia <span class="try">Hover a circle for details</span></p></div></div>
           <div id="handover-map" class="chart map" data-spec="charts/02-handover-map.json" aria-label="Proportional-symbol map of 2024 handovers by state. Kelantan has the largest total, 2,889, followed by Pulau Pinang and Johor."></div>
-          <figcaption>Kelantan handed over 2,889 animals, followed by Pulau Pinang (2,588) and Johor (2,153). In all three, most of the animals were reptiles. Each circle represents a whole state, not the places where animals were found. Selangor’s circle is drawn slightly north-west so that it does not cover the Federal Territories.</figcaption>
+          <figcaption>Kelantan handed over 2,889 animals, followed by Pulau Pinang (2,588) and Johor (2,153). In all three, most of the animals were <span class="key key--reptile">reptiles</span>. Each circle represents a whole state, not the places where animals were found. Selangor’s circle is drawn slightly north-west so that it does not cover the Federal Territories.</figcaption>
         </figure>
         <figure>
           <div class="figure-top"><span class="chart-number">03</span><div><h3 id="share-map-title">Handover density by state</h3><p id="share-map-subtitle">Animals per 1,000 km² of land · Peninsular Malaysia, 2024</p></div></div>
@@ -99,7 +99,7 @@
       <figure class="wide-figure">
         <div class="figure-top"><span class="chart-number">05</span><div><h3>Monthly intake by animal group, 2023 and 2024</h3><p>Share of each group’s yearly intake received in each month · National Wildlife Rescue Centre, Sungkai · 2023 and 2024</p></div></div>
         <div class="chart-scroll"><div id="intake-heatmap" class="chart wide-fixed" data-spec="charts/05-intake-heatmap.json" aria-label="Heatmap of each month's share of the group's yearly intake. Reptiles: 58% arrived in August 2023; 46% in September and 48% in December 2024. No month reaches 20% of a year’s mammals."></div></div>
-        <figcaption>Each row adds up to its year total, shown on the right, so a row shows <i>when</i> that group arrived, whatever its size. Reptiles arrived in one or two large waves: 58% of the 2023 total came in August, and in 2024, 46% came in September and 48% in December. Mammals arrived more evenly, and no single month brought in 20% of a year’s mammals. In all, the centre received 11,226 animals in 2024, about 20 times as many as in 2023 (567). The report does not give a reason. December 2023 is shown in grey as not available because the printed December row repeats the year totals, so the 2023 rows add up to slightly less than 100%.</figcaption>
+        <figcaption>Each row adds up to its year total, shown on the right, so a row shows <i>when</i> that group arrived, whatever its size. <span class="key key--reptile">Reptiles</span> arrived in one or two large waves: 58% of the 2023 total came in August, and in 2024, 46% came in September and 48% in December. <span class="key key--mammal">Mammals</span> arrived more evenly, and no single month brought in 20% of a year’s mammals. In all, the centre received 11,226 animals in 2024, about 20 times as many as in 2023 (567). The report does not give a reason. December 2023 is shown in grey as not available because the printed December row repeats the year totals, so the 2023 rows add up to slightly less than 100%.</figcaption>
       </figure>
       <p class="source">Source: <a href="#src-perhilitan">PERHILITAN</a> 2024, numeric table under Figure 26 (p107); 2023, Table 31 (p89) and text. Where Figure 26’s bar labels differ from its table, the table is used.</p>
       <details data-table="data/nwrc-intake-2023-2024.json" data-caption="NWRC animals received by month, 2023 and 2024" data-columns='[["year","Year"],["month","Month"],["group","Group"],["animals","Animals"]]'><summary>Read the monthly figures as a table</summary><div class="table-wrap"></div></details>
@@ -178,7 +178,7 @@
         <figure>
           <div class="figure-top"><span class="chart-number">10</span><div><h3>Volunteer placements by country, 2025</h3><p>Listed country of origin · block size shows placements</p></div></div>
           <div id="volunteer-origins" class="chart" data-spec="charts/10-volunteer-origins.json" aria-label="Treemap of 57 placements by country: Malaysia 27, Sweden 7, Japan 6, Australia, the United Kingdom and the United States 4 each, Mexico and Singapore 2 each, Latvia 1."></div>
-          <figcaption>Volunteers from Malaysia filled 27 of the 57 placements. The other 30 came from eight countries, led by Sweden and Japan.</figcaption>
+          <figcaption>Volunteers from <span class="key key--malaysia">Malaysia</span> filled 27 of the 57 placements. The other 30 came from <span class="key key--other">eight other countries</span>, led by Sweden and Japan.</figcaption>
         </figure>
       </div>
 
@@ -187,7 +187,7 @@
         <div class="placement-facts"><span><strong>57</strong> placements</span><span><strong>14 days</strong> median stay</span><span><strong>978</strong> total placement-days</span></div>
         <div id="placement-control" class="chart-control"></div>
         <div class="chart-scroll"><div id="placement-months" class="chart" data-spec="charts/11-placement-months.json" aria-label="Monthly placement starts split by origin, linked to an isotype with one person figure per placement in four rows: under 2 weeks 19, exactly 2 weeks 19, 2 to 4 weeks 10, over 4 weeks 9. Most Malaysian volunteers stayed exactly two weeks; most from other countries stayed less than two weeks or more than four. All bars have exact counts. Choose a month using the menu or a column; choose All months to reset."></div></div>
-        <figcaption>Placements started in every month of 2025. March had the most, with 12; the columns count new arrivals, not everyone on site that month. In chart 12, where each figure is one placement, 38 of the 57 lasted two weeks or less. Most volunteers from Malaysia stayed exactly two weeks (17 of 27), while most from other countries stayed less than two weeks or more than four. Choose a month, or click a column, to outline that month in chart 11 and fill in its placements in chart 12. Choose <b>All months</b> to reset. Placement-days count calendar days on site, not hours worked.</figcaption>
+        <figcaption>Placements started in every month of 2025. March had the most, with 12; the columns count new arrivals, not everyone on site that month. In chart 12, where each figure is one placement, 38 of the 57 lasted two weeks or less. Most volunteers from <span class="key key--malaysia">Malaysia</span> stayed exactly two weeks (17 of 27), while most from <span class="key key--other">other countries</span> stayed less than two weeks or more than four. Choose a month, or click a column, to outline that month in chart 11 and fill in its placements in chart 12. Choose <b>All months</b> to reset. Placement-days count calendar days on site, not hours worked.</figcaption>
       </figure>
       <p class="source">Sources: <a href="#src-bsbcc">BSBCC Annual Reports 2021–2025</a>; 2025 placements from Appendix I (pp30–32). Placement length = end date − start date + 1. Names are not shown.</p>
       <details data-table="data/bsbcc-placements-2025.json" data-caption="BSBCC volunteer placements, 2025 (names omitted)" data-columns='[["placement","Placement"],["origin","Listed origin"],["start","Start"],["end","End"],["days","Calendar days"]]'><summary>Read all 57 placements as a table</summary><div class="table-wrap"></div></details>
