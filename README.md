@@ -1,4 +1,4 @@
-# A Second Chance: Wildlife Rescue and Rehabilitation in Malaysia
+# Wildlife rescue and rehabilitation in Malaysia, 2021–2025
 
 An interactive data visualisation study of how wild animals move through rescue and rehabilitation in Malaysia, from handover to release, based on published records from the Department of Wildlife and National Parks Peninsular Malaysia and the Bornean Sun Bear Conservation Centre for 2021–2025.
 
@@ -129,4 +129,4 @@ Sherman, J., Menon, V., Kock, R., King, T., Luz, S., Ashraf, N. V. K., Soorae, P
 
 ## Citation
 
-Gomes, K. (2026). *A second chance: Wildlife rescue and rehabilitation in Malaysia* [Interactive data visualisation]. https://ninopanini.github.io/fit3179-malaysia-wildlife-rescue/
+Gomes, K. (2026). *Wildlife rescue and rehabilitation in Malaysia, 2021–2025* [Interactive data visualisation]. https://ninopanini.github.io/fit3179-malaysia-wildlife-rescue/

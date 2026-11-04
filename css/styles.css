@@ -102,7 +102,7 @@ figcaption b{color:var(--ink)}
 .map-pair .chart,.chart-pair .chart{grid-row:3}
 .map-pair figcaption,.chart-pair figcaption{grid-row:4}
 .split{display:grid;gap:48px;align-items:center}
-.split--waffle{grid-template-columns:7fr 5fr}
+.split--waffle{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}   /* same two columns as the chapter heading above */
 .split--map{grid-template-columns:7fr 5fr;align-items:start}
 .split--bears{grid-template-columns:7fr 5fr;margin-bottom:8px}
 .side-copy{max-width:52ch}

@@ -6,10 +6,10 @@ window.vegaViews = views;   // e.g. vegaViews.get('placement-months').signal('se
 const specs = new Map();     // original specs, kept so fixed-width charts can be refitted on resize
 // Chart 03 headings for each choice in its "Show" menu: [heading, subtitle]
 const SHARE_MAP_HEADINGS = {   // kept to similar lengths so the map does not jump when the menu changes
-  'All animals': ['Small states hand over the most per km²', 'Animals per 1,000 km² of land · Peninsular Malaysia, 2024'],
-  Reptiles: ['Reptiles led everywhere but Selangor', 'Share that were reptiles · Peninsular Malaysia, 2024'],
-  Mammals: ['Selangor’s handovers were 59% mammals', 'Share that were mammals · Peninsular Malaysia, 2024'],
-  Birds: ['Birds stayed under 3.4% in every state', 'Share that were birds · Peninsular Malaysia, 2024'],
+  'All animals': ['Handover density by state', 'Animals per 1,000 km² of land · Peninsular Malaysia, 2024'],
+  Reptiles: ['Reptile share of handovers by state', 'Share that were reptiles · Peninsular Malaysia, 2024'],
+  Mammals: ['Mammal share of handovers by state', 'Share that were mammals · Peninsular Malaysia, 2024'],
+  Birds: ['Bird share of handovers by state', 'Share that were birds · Peninsular Malaysia, 2024'],
 };
 window.chartStatus = {};
 

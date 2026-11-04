@@ -45,8 +45,8 @@
       "width": 480,
       "height": 300,
       "title": {
-        "text": "11 · When did placements start?",
-        "subtitle": "2025 · Monthly starts",
+        "text": "11 · Placements by start month",
+        "subtitle": "2025 · new arrivals each month",
         "fontSize": 17,
         "subtitleFontSize": 13,
         "offset": 18
@@ -313,7 +313,7 @@
       "width": 400,
       "height": 280,
       "title": {
-        "text": "12 · How long did they stay?",
+        "text": "12 · Placements by length of stay",
         "subtitle": {
           "expr": "selectedMonth == 'All months' ? 'Each figure is one placement · 38 of 57 stayed two weeks or less' : 'Solid: placements starting in ' + selectedMonth + ' · outline: other months'"
         },

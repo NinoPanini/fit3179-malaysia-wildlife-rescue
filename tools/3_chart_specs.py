@@ -56,7 +56,7 @@ save('01-handover-waffle.json', {
     'description': '100 squares, one per percent of the 16,034 animals handed over to PERHILITAN in 2024, coloured by animal group.',
     'data': {'url': 'data/handovers-waffle-2024.json'},
     'transform': [{'calculate': "datum.group + ' · ' + datum.share + '%'", 'as': 'label'}],
-    'width': 300, 'height': 300,
+    'width': 240, 'height': 240,   # fits a half-width column at 1024 px, so the side text shares the page's column line
     'mark': {'type': 'rect', 'cornerRadius': 2, 'stroke': PAPER, 'strokeWidth': 3},
     'encoding': {
         'x': {'field': 'col', 'type': 'ordinal', 'axis': None},
@@ -77,12 +77,12 @@ def lab(state, lon, lat, align, leader, name=None):
     return {'state': state, 'name': name or state, 'lon': lon, 'lat': lat, 'align': align, 'leader': leader}
 # Map 02: every circle is joined to its label by a leader line.
 CIRCLE_LABELS = [lab('Perlis', 99.85, 6.62, 'right', True), lab('Kedah', 99.85, 6.08, 'right', True),
-    lab('Pulau Pinang', 99.85, 5.42, 'right', True), lab('Perak', 101.55, 4.42, 'left', True),
-    lab('Kelantan', 102.5, 5.8, 'left', True), lab('Terengganu', 103.55, 5.2, 'left', True),
-    lab('Pahang', 103.02, 3.55, 'left', True), lab('Selangor', 100.85, 3.62, 'right', True),
+    lab('Pulau Pinang', 99.85, 5.42, 'right', True), lab('Perak', 100.2, 4.5, 'right', True),
+    lab('Kelantan', 102.6, 6.4, 'left', True), lab('Terengganu', 103.55, 5.2, 'left', True),
+    lab('Pahang', 103.75, 3.75, 'left', True), lab('Selangor', 100.85, 3.62, 'right', True),
     lab('Wilayah Persekutuan', 100.95, 3.08, 'right', True, 'Federal Territories'),
-    lab('Negeri Sembilan', 102.72, 3.02, 'left', True), lab('Melaka', 101.7, 2.08, 'right', True),
-    lab('Johor', 103.92, 2.32, 'left', True)]
+    lab('Negeri Sembilan', 101.15, 2.6, 'right', True), lab('Melaka', 101.7, 2.08, 'right', True),
+    lab('Johor', 104.15, 2.1, 'left', True)]   # all labels sit in the sea, outside the coastline
 # Selangor's centre is so close to Kuala Lumpur that its circle covered the Federal Territories circle,
 # so map 02 draws it a little north-west, still inside Selangor.
 MOVED = {'Selangor': (101.3, 3.45)}
@@ -565,7 +565,7 @@ save('11-placement-months.json', {
                 'bind': {'input': 'select', 'options': ['All months'] + MONTHS, 'name': 'Month: ', 'element': '#placement-control'}}],
     'hconcat': [
         {'width': 480, 'height': 300,
-         'title': {'text': '11 · When did placements start?', 'subtitle': '2025 · Monthly starts', 'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
+         'title': {'text': '11 · Placements by start month', 'subtitle': '2025 · new arrivals each month', 'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'encoding': {'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                             'axis': {'title': 'Start month · 2025', 'labelAngle': 0, 'labelFontSize': 13}},
                       'y': {'field': 'top', 'type': 'quantitative', 'title': 'Placements starting',
@@ -592,7 +592,7 @@ save('11-placement-months.json', {
               'encoding': {'y': {'field': 'total', 'type': 'quantitative'}, 'y2': {'datum': 0}}},
          ]},
         {'width': 400, 'height': 280,
-         'title': {'text': '12 · How long did they stay?', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'Each figure is one placement · 38 of 57 stayed two weeks or less' : 'Solid: placements starting in ' + selectedMonth + ' · outline: other months'"},
+         'title': {'text': '12 · Placements by length of stay', 'subtitle': {'expr': "selectedMonth == 'All months' ? 'Each figure is one placement · 38 of 57 stayed two weeks or less' : 'Solid: placements starting in ' + selectedMonth + ' · outline: other months'"},
                    'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'layer': [
              # figures from the chosen month (or all) are solid; the rest become outlines in the same colour
