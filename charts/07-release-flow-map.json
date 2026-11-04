@@ -29,8 +29,8 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#34443d",
-        "stroke": "#93a69b",
+        "fill": "#3f514b",
+        "stroke": "#83968a",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -49,8 +49,7 @@
       },
       "mark": {
         "type": "line",
-        "color": "#a7bccb",
-        "opacity": 0.8,
+        "color": "#eac17e",
         "strokeCap": "round"
       },
       "encoding": {
@@ -71,9 +70,9 @@
         "opacity": {
           "condition": {
             "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
-            "value": 0.85
+            "value": 1
           },
-          "value": 0.1
+          "value": 0.43
         },
         "strokeWidth": {
           "field": "animals",
@@ -98,6 +97,7 @@
             ],
             "orient": "bottom-left",
             "symbolType": "stroke",
+            "symbolStrokeColor": "#eac17e",
             "symbolSize": 1600,
             "labelFontSize": 13
           }
@@ -121,15 +121,15 @@
         "type": "point",
         "shape": "triangle-up",
         "filled": true,
-        "color": "#a7bccb"
+        "color": "#eac17e"
       },
       "encoding": {
         "opacity": {
           "condition": {
             "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
-            "value": 0.95
+            "value": 1
           },
-          "value": 0.1
+          "value": 0.43
         },
         "longitude": {
           "field": "arrow_longitude",
@@ -336,18 +336,18 @@
         "type": "text",
         "align": "right",
         "dx": -10,
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": 600,
-        "lineHeight": 15,
+        "lineHeight": 16,
         "cursor": "pointer"
       },
       "encoding": {
-        "opacity": {
+        "color": {
           "condition": {
             "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
-            "value": 1
+            "value": "#edf1e8"
           },
-          "value": 0.3
+          "value": "#c6d1ca"
         },
         "longitude": {
           "field": "longitude",
@@ -387,18 +387,18 @@
         "type": "text",
         "align": "left",
         "dx": 10,
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": 600,
-        "lineHeight": 15,
+        "lineHeight": 16,
         "cursor": "pointer"
       },
       "encoding": {
-        "opacity": {
+        "color": {
           "condition": {
             "test": "siteFocus == 'All destinations' || datum.site == siteFocus",
-            "value": 1
+            "value": "#edf1e8"
           },
-          "value": 0.3
+          "value": "#c6d1ca"
         },
         "longitude": {
           "field": "longitude",
@@ -425,20 +425,20 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
-      "labelColor": "#bdc9c0",
+      "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#42524b",
-      "tickColor": "#42524b",
+      "gridColor": "#3a4842",
+      "tickColor": "#3a4842",
       "labelPadding": 6,
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",
@@ -452,7 +452,7 @@
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
       "color": "#edf1e8",
-      "subtitleColor": "#bdc9c0"
+      "subtitleColor": "#c6d1ca"
     }
   }
 }

@@ -43,8 +43,8 @@
           "Interns"
         ],
         "range": [
-          "#edf1e8",
-          "#ada797"
+          "#8ed2ca",
+          "#d8b58c"
         ]
       },
       "legend": {
@@ -216,7 +216,7 @@
         "fontSize": 12,
         "fontStyle": "italic",
         "lineHeight": 15,
-        "color": "#bdc9c0",
+        "color": "#c6d1ca",
         "text": [
           "2021 report also mentions",
           "2 remote volunteers;",
@@ -225,7 +225,7 @@
       },
       "encoding": {
         "color": {
-          "value": "#bdc9c0"
+          "value": "#c6d1ca"
         },
         "tooltip": null
       }
@@ -242,20 +242,20 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
-      "labelColor": "#bdc9c0",
+      "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#42524b",
-      "tickColor": "#42524b",
+      "gridColor": "#3a4842",
+      "tickColor": "#3a4842",
       "labelPadding": 6,
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",
@@ -269,7 +269,7 @@
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
       "color": "#edf1e8",
-      "subtitleColor": "#bdc9c0"
+      "subtitleColor": "#c6d1ca"
     }
   }
 }

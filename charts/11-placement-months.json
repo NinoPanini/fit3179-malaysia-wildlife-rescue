@@ -155,8 +155,8 @@
                   "Other countries"
                 ],
                 "range": [
-                  "#b9dcee",
-                  "#a09886"
+                  "#28738a",
+                  "#b6ae99"
                 ]
               },
               "legend": {
@@ -235,6 +235,10 @@
               "field": "placements"
             },
             "color": {
+              "condition": {
+                "test": "datum.origin_group == 'Malaysia'",
+                "value": "#ffffff"
+              },
               "value": "#101917"
             }
           }
@@ -404,8 +408,8 @@
                   "Other countries"
                 ],
                 "range": [
-                  "#b9dcee",
-                  "#a09886"
+                  "#70c6df",
+                  "#b6ae99"
                 ]
               },
               "legend": {
@@ -470,7 +474,7 @@
             "filled": false,
             "opacity": 1,
             "size": 330,
-            "strokeWidth": 1.2,
+            "strokeWidth": 1.6,
             "cursor": "pointer"
           },
           "encoding": {
@@ -517,8 +521,8 @@
                   "Other countries"
                 ],
                 "range": [
-                  "#b9dcee",
-                  "#a09886"
+                  "#70c6df",
+                  "#b6ae99"
                 ]
               },
               "legend": {
@@ -611,7 +615,8 @@
   "resolve": {
     "scale": {
       "x": "independent",
-      "y": "independent"
+      "y": "independent",
+      "color": "independent"
     }
   },
   "config": {
@@ -621,20 +626,20 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
-      "labelColor": "#bdc9c0",
+      "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#42524b",
-      "tickColor": "#42524b",
+      "gridColor": "#3a4842",
+      "tickColor": "#3a4842",
       "labelPadding": 6,
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",
@@ -648,7 +653,7 @@
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
       "color": "#edf1e8",
-      "subtitleColor": "#bdc9c0"
+      "subtitleColor": "#c6d1ca"
     }
   }
 }

@@ -10,7 +10,7 @@
   color-scheme:dark;
   --paper:#17201e; --tint:#202c27; --surface:#293731; --on-accent:#101917; --ink:#edf1e8; --muted:#bdc9c0; --line:#42524b;
   --green:#b1d6b6; --gold:#e0bf79; --gold-ink:#e0bf79;
-  --reptile:#64b8e6; --mammal:#e7ad55; --bird:#cf8bbb;
+  --reptile:#3994be; --mammal:#e7ad55; --bird:#cf8bbb;
   --serif:"Fraunces",Georgia,"Times New Roman",serif; --sans:"Source Sans 3","Segoe UI",Arial,sans-serif;
   --measure:66ch; --gutter:48px; --max:1180px;
   --sage:#304638; --rule:#776e57; --chapter-space:64px;
@@ -78,7 +78,14 @@ figure{margin:0;min-width:0}
 .chart .vega-embed{width:100%;padding-right:0!important}
 .chart .vega-embed summary{display:none}
 .chart svg{display:block;max-width:none}
-.chart.map{min-height:470px}
+#release-map .mark-text text,#handover-map .mark-text text,#sabah-inset .mark-text text{
+  paint-order:stroke fill;stroke:var(--paper);stroke-width:2.5px;stroke-linejoin:round
+}
+.chart.map{min-height:470px;min-width:518px}
+#release-map{min-width:590px}
+.map-scroll{min-width:0}
+.map-pair .map-scroll{grid-row:3}
+.map-scroll:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .map--tall{min-height:520px}
 .chart-scroll{overflow-x:auto;padding-bottom:6px}
 .wide-fixed{min-width:620px}

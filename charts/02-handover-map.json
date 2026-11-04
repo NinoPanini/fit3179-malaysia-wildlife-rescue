@@ -23,8 +23,8 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#34443d",
-        "stroke": "#93a69b",
+        "fill": "#3f514b",
+        "stroke": "#83968a",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -163,8 +163,8 @@
       ],
       "mark": {
         "type": "rule",
-        "color": "#a09886",
-        "strokeWidth": 0.8
+        "color": "#a3b5ab",
+        "strokeWidth": 1.1
       },
       "encoding": {
         "longitude": {
@@ -216,7 +216,7 @@
       ],
       "mark": {
         "type": "circle",
-        "color": "#a7bccb",
+        "color": "#80c3de",
         "stroke": "#17201e",
         "strokeWidth": 1.5,
         "opacity": 1
@@ -264,7 +264,7 @@
       ],
       "mark": {
         "type": "circle",
-        "color": "#a7bccb",
+        "color": "#80c3de",
         "stroke": "#17201e",
         "strokeWidth": 1.5,
         "opacity": 1,
@@ -384,9 +384,9 @@
         "type": "text",
         "align": "left",
         "dx": 4,
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": 600,
-        "lineHeight": 14,
+        "lineHeight": 15,
         "baseline": "middle"
       },
       "encoding": {
@@ -494,9 +494,9 @@
         "type": "text",
         "align": "right",
         "dx": -4,
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": 600,
-        "lineHeight": 14,
+        "lineHeight": 15,
         "baseline": "middle"
       },
       "encoding": {
@@ -525,20 +525,20 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
-      "labelColor": "#bdc9c0",
+      "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#42524b",
-      "tickColor": "#42524b",
+      "gridColor": "#3a4842",
+      "tickColor": "#3a4842",
       "labelPadding": 6,
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",
@@ -552,7 +552,7 @@
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
       "color": "#edf1e8",
-      "subtitleColor": "#bdc9c0"
+      "subtitleColor": "#c6d1ca"
     }
   }
 }

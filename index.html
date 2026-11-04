@@ -66,13 +66,17 @@
       <div class="map-pair">
         <figure>
           <div class="figure-top"><span class="chart-number">02</span><div><h3>Animals handed over by state, 2024</h3><p>Circle area shows animals handed over · Peninsular Malaysia <span class="try">Hover a circle for details</span></p></div></div>
-          <div id="handover-map" class="chart map" data-spec="charts/02-handover-map.json" aria-label="Proportional-symbol map of 2024 handovers by state. Kelantan has the largest total, 2,889, followed by Pulau Pinang and Johor."></div>
+          <div class="chart-scroll map-scroll" tabindex="0" role="region" aria-label="Scrollable map">
+            <div id="handover-map" class="chart map" data-spec="charts/02-handover-map.json" aria-label="Proportional-symbol map of 2024 handovers by state. Kelantan has the largest total, 2,889, followed by Pulau Pinang and Johor."></div>
+          </div>
           <figcaption>Kelantan handed over 2,889 animals, followed by Pulau Pinang (2,588) and Johor (2,153). In all three, most of the animals were reptiles. Each circle represents a whole state, not the places where animals were found. Selangor’s circle is drawn slightly north-west so that it does not cover the Federal Territories.</figcaption>
         </figure>
         <figure>
           <div class="figure-top"><span class="chart-number">03</span><div><h3 id="share-map-title">Handover density by state</h3><p id="share-map-subtitle">Animals per 1,000 km² of land · Peninsular Malaysia, 2024</p></div></div>
           <div id="share-map-control" class="chart-control"></div>
-          <div id="share-map" class="chart map" data-spec="charts/03-group-share-map.json" aria-label="Choropleth map. By default it shows animals handed over per 1,000 square kilometres: the Federal Territories about 2,660, Pulau Pinang about 2,440, Melaka about 390, and Pahang 16. A menu switches to one animal group's share of each state's handovers; in Selangor, 59 percent were mammals."></div>
+          <div class="chart-scroll map-scroll" tabindex="0" role="region" aria-label="Scrollable map">
+            <div id="share-map" class="chart map" data-spec="charts/03-group-share-map.json" aria-label="Choropleth map. By default it shows animals handed over per 1,000 square kilometres: the Federal Territories about 2,660, Pulau Pinang about 2,440, Melaka about 390, and Pahang 16. A menu switches to one animal group's share of each state's handovers; in Selangor, 59 percent were mammals."></div>
+          </div>
           <figcaption>Adjusted for land area, Pulau Pinang handed over about 2,440 animals per 1,000 km², roughly 150 times Pahang’s rate of 16, and the Federal Territories about 2,660. Choosing a single animal group shows each state’s mix instead: in Selangor, 59% of handovers were mammals, compared with 2% or less in Kelantan, Johor and Terengganu. The colour classes differ between views because the values cover very different ranges. State areas are measured from the map’s boundary file and are approximate.</figcaption>
         </figure>
       </div>
@@ -139,7 +143,9 @@
       <div class="split split--map">
         <figure>
           <div class="figure-top"><span class="chart-number">07</span><div><h3>Animals released by NWRC by destination, 2024</h3><p>Line width shows animals released <span class="try">Click an area · linked to chart 08</span></p></div></div>
-          <div id="release-map" class="chart map map--tall" data-spec="charts/07-release-flow-map.json" aria-label="Flow map from NWRC in Sungkai, Perak, to six protected areas. The widest line goes to Penang National Park, with 13 animals."></div>
+          <div class="chart-scroll map-scroll" tabindex="0" role="region" aria-label="Scrollable map">
+            <div id="release-map" class="chart map map--tall" data-spec="charts/07-release-flow-map.json" aria-label="Flow map from NWRC in Sungkai, Perak, to six protected areas. The widest line goes to Penang National Park, with 13 animals."></div>
+          </div>
         </figure>
         <div class="side-copy">
           <p class="eyebrow">Reading the map</p>

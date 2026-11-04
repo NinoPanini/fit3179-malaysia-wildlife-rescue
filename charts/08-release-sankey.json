@@ -91,7 +91,7 @@
               "Birds"
             ],
             "range": [
-              "#64b8e6",
+              "#3994be",
               "#e7ad55",
               "#cf8bbb"
             ]
@@ -101,9 +101,9 @@
         "opacity": {
           "condition": {
             "test": "destinationChoice == 'All destinations' || datum.destination == destinationChoice",
-            "value": 0.6
+            "value": 0.88
           },
-          "value": 0.08
+          "value": 0.27
         },
         "tooltip": [
           {
@@ -152,7 +152,7 @@
             "range": [
               "#e7ad55",
               "#cf8bbb",
-              "#edf1e8"
+              "#b4beb5"
             ]
           },
           "legend": null
@@ -208,7 +208,7 @@
           "field": "heading"
         },
         "color": {
-          "value": "#bdc9c0"
+          "value": "#c6d1ca"
         }
       }
     },
@@ -288,20 +288,20 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
-      "labelColor": "#bdc9c0",
+      "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#42524b",
-      "tickColor": "#42524b",
+      "gridColor": "#3a4842",
+      "tickColor": "#3a4842",
       "labelPadding": 6,
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",
@@ -315,7 +315,7 @@
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
       "color": "#edf1e8",
-      "subtitleColor": "#bdc9c0"
+      "subtitleColor": "#c6d1ca"
     }
   }
 }

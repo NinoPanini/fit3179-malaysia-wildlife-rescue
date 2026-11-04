@@ -21,7 +21,7 @@
         "type": "point",
         "filled": true,
         "size": 220,
-        "color": "#bdc9c0",
+        "color": "#c6d1ca",
         "opacity": 1
       },
       "encoding": {
@@ -161,10 +161,14 @@
           },
           "encoding": {
             "stroke": {
-              "value": "#829387"
+              "condition": {
+                "test": "!datum.reported || datum.animals == 0",
+                "value": "#809187"
+              },
+              "value": "#17201e"
             },
             "strokeWidth": {
-              "value": 1
+              "value": 1.5
             },
             "color": {
               "field": "band",
@@ -180,12 +184,12 @@
                   "Not available"
                 ],
                 "range": [
-                  "#17201e",
-                  "#305679",
-                  "#286b85",
-                  "#aad8c7",
-                  "#f3e8a2",
-                  "#655c55"
+                  "#25302e",
+                  "#334f69",
+                  "#33738a",
+                  "#74b9ad",
+                  "#f0d58a",
+                  "#514953"
                 ]
               },
               "legend": {
@@ -202,8 +206,8 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 14,
-            "fontWeight": 500
+            "fontSize": 15,
+            "fontWeight": 600
           },
           "encoding": {
             "text": {
@@ -288,20 +292,20 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
-      "labelColor": "#bdc9c0",
+      "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#42524b",
-      "tickColor": "#42524b",
+      "gridColor": "#3a4842",
+      "tickColor": "#3a4842",
       "labelPadding": 6,
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",
@@ -315,7 +319,7 @@
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
       "color": "#edf1e8",
-      "subtitleColor": "#bdc9c0"
+      "subtitleColor": "#c6d1ca"
     }
   }
 }

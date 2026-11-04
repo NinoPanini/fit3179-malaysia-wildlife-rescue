@@ -82,7 +82,7 @@
       ],
       "mark": {
         "type": "geoshape",
-        "stroke": "#93a69b",
+        "stroke": "#83968a",
         "strokeWidth": 0.9,
         "tooltip": {
           "expr": "groupChoice == 'All animals' ? {'State': datum.name, 'Animals per 1,000 km²': format(datum.per_1000_km2, ',.0f'), 'Animals handed over': format(datum.total, ','), 'Land area (km²)': format(datum.area_km2, ',')} : groupChoice == 'Reptiles' ? {'State': datum.name, 'Share that were reptiles': format(datum.share, '.1%'), 'Reptiles handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')} : groupChoice == 'Mammals' ? {'State': datum.name, 'Share that were mammals': format(datum.share, '.1%'), 'Mammals handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')} : {'State': datum.name, 'Share that were birds': format(datum.share, '.1%'), 'Birds handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')}"
@@ -103,12 +103,12 @@
               5
             ],
             "range": [
-              "#26395b",
-              "#305679",
-              "#286b85",
-              "#66aab9",
-              "#aad8c7",
-              "#f3e8a2"
+              "#354a65",
+              "#286180",
+              "#29708b",
+              "#54a3ab",
+              "#98cdbd",
+              "#f4dfa2"
             ]
           },
           "legend": {
@@ -228,8 +228,8 @@
       ],
       "mark": {
         "type": "rule",
-        "color": "#a09886",
-        "strokeWidth": 0.8
+        "color": "#a3b5ab",
+        "strokeWidth": 1.1
       },
       "encoding": {
         "longitude": {
@@ -346,9 +346,9 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 12,
-        "fontWeight": 700,
-        "lineHeight": 13,
+        "fontSize": 13,
+        "fontWeight": 650,
+        "lineHeight": 15,
         "baseline": "middle",
         "align": "center",
         "dx": 0,
@@ -459,9 +459,9 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 12,
-        "fontWeight": 700,
-        "lineHeight": 13,
+        "fontSize": 13,
+        "fontWeight": 650,
+        "lineHeight": 15,
         "baseline": "middle",
         "align": "right",
         "dx": -4,
@@ -498,20 +498,20 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
-      "labelColor": "#bdc9c0",
+      "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#42524b",
-      "tickColor": "#42524b",
+      "gridColor": "#3a4842",
+      "tickColor": "#3a4842",
       "labelPadding": 6,
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",
@@ -525,7 +525,7 @@
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
       "color": "#edf1e8",
-      "subtitleColor": "#bdc9c0"
+      "subtitleColor": "#c6d1ca"
     }
   }
 }
