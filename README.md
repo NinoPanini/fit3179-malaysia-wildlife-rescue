@@ -4,7 +4,7 @@ An interactive data visualisation study of how wild animals move through rescue 
 
 **Live site:** https://ninopanini.github.io/fit3179-malaysia-wildlife-rescue/
 
-**Author:** Kenneth Gomes, Monash University (2026)
+**Author:** Kenneth Gomes, FIT3179 Data Visualisation 2, Monash University (2026)
 
 ## Research questions
 
@@ -15,7 +15,18 @@ The study uses separate public records to explain four parts of wildlife care. E
 3. **Return.** Where are rehabilitated animals released?
 4. **People.** Who gives their time to support this work?
 
-The site presents twelve visualisations built with Vega-Lite. They include a waffle chart, three map idioms (proportional symbols, a choropleth and a flow map), a chart of how each state's handovers changed from 2021 to 2024, a heatmap of when each animal group arrives at the rescue centre, a tree of what happened to the featured sun bears, a Sankey diagram, a treemap of volunteer origins, and monthly volunteer-start columns linked to an isotype of how long each placement lasted. Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
+The site presents twelve visualisations built with Vega-Lite:
+
+- a waffle chart
+- three map idioms: proportional symbols, a choropleth and a flow map
+- a chart of how each state's handovers changed from 2021 to 2024
+- a heatmap of when each animal group arrives at the rescue centre
+- a tree of what happened to the featured sun bears
+- a Sankey diagram
+- a treemap of volunteer origins
+- monthly volunteer-start columns linked to an isotype of how long each placement lasted
+
+Main counts are visible without hovering. See the [chart inventory](CHART_INVENTORY.md) for the classification and purpose of each view.
 
 ## Data sources
 
@@ -30,15 +41,25 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 
 ## Method
 
-**Extraction.** Figures were transcribed from the published tables and checked against the original pages. Each transcribed table is checked against its printed or derived totals before any output is written.
+### Extraction
 
-**Processing.** Three Python scripts in [`tools/`](tools/) turn the extracts into JSON data files and Vega-Lite specifications. The pipeline is deterministic: a fresh clone regenerates the committed data and specifications byte for byte.
+Figures were transcribed from the published tables and compared with the original pages. Each table must match its printed or derived totals before any output is written.
 
-**Encoding.** Choropleth values are rates rather than raw counts: animals per 1,000 km² of land (area measured from the boundary file), or one group's share of each state's handovers. Records from different sources are shown side by side and never combined into rates.
+### Processing
 
-**Accessibility.** Categories use the Okabe–Ito palette and amounts use ColorBrewer YlGnBu. Every colour distinction is repeated with labels, shapes or line styles. The main datasets can also be opened as data tables, for keyboard and screen-reader users.
+Three Python scripts in [`tools/`](tools/) turn the extracts into JSON data files and Vega-Lite specifications. The pipeline is deterministic: a fresh clone regenerates the committed data and specifications byte for byte.
 
-**Validation.** `npm run check` compiles and runs every chart. It confirms report totals, geographic joins, Sankey flows, treemap blocks, the placement figures and the key figures quoted in the text.
+### Encoding
+
+Choropleth values are rates rather than raw counts: animals per 1,000 km² of land (area measured from the boundary file), or one group's share of each state's handovers. Records from different sources are shown side by side and never combined into rates.
+
+### Accessibility
+
+Categories use the Okabe–Ito palette and amounts use ColorBrewer YlGnBu. Every colour distinction is repeated with labels, shapes or line styles. The main datasets can also be opened as data tables, for keyboard and screen-reader users.
+
+### Validation
+
+`npm run check` compiles and runs every chart. It confirms report totals, geographic joins, Sankey flows, treemap blocks, the placement figures and the key figures quoted in the text.
 
 ## Limitations
 
@@ -48,7 +69,7 @@ The PERHILITAN and BSBCC reports are used with the permission of each organisati
 - The animals-per-1,000 km² rate uses state areas measured from the simplified boundary file, so the areas are approximate.
 - Release-area positions are approximate (within about 10–20 km) and show destinations, not routes. The 2024 NWRC report does not follow up on the animals it released.
 - The sun bear tree covers cases described in BSBCC's public reports, not every bear in its care. Sabah and Sarawak wildlife agencies publish separately and are outside the scope of this study.
-- No animal tracking (GPS) data are used. Volunteer records contain no personal names.
+- No animal tracking (GPS) data are used. Volunteer names are not shown.
 
 ## Repository structure
 
@@ -92,7 +113,7 @@ Bornean Sun Bear Conservation Centre. *Annual report* (2021–2025 editions). [2
 
 Brunton, E. A., Levengood, A. L., Tee, T. L., Chiew, L. M., Seng, Y. W., Yeoh, B. N., Tuuga, A., & Wong, S. T. (2025). A window into the forest: Post-release behaviour of rehabilitated Bornean sun bears *Helarctos malayanus euryspilus* in Sabah, Malaysia. *Wildlife Biology, 2025*(2), e01264. https://doi.org/10.1002/wlb3.01264
 
-Department of Wildlife and National Parks Peninsular Malaysia. *Laporan tahunan / Annual report* (2021–2024 editions). [Library catalogue record](https://koha.wildlife.gov.my/cgi-bin/koha/opac-detail.pl?biblionumber=1449)
+Department of Wildlife and National Parks Peninsular Malaysia. *Laporan tahunan / Annual report* (2021–2024 editions). [Library catalogue record](https://koha.wildlife.gov.my/cgi-bin/koha/opac-detail.pl?biblionumber=1449); [2021](https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=72808791d6dcfdbf3102f842ddc26d53), [2022](https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=92d8a4367169dc9c2c52fc7189214b1a), [2023](https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=7197e1fada4267a10d41dc857176c569), [2024](https://koha.wildlife.gov.my/cgi-bin/koha/opac-retrieve-file.pl?id=17de2df114c33ae95d20726b59c8bea6)
 
 Harrower, M., & Brewer, C. A. (2003). ColorBrewer.org: An online tool for selecting colour schemes for maps. *The Cartographic Journal, 40*(1), 27–37. https://doi.org/10.1179/000870403235002042
 

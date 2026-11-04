@@ -127,7 +127,7 @@ let navFrame = 0;
 function updateChapterNav() {
   navFrame = 0;
   const readingLine = chapterNav.getBoundingClientRect().height + 32;
-  let current = 0;
+  let current = -1;   // nothing is highlighted above chapter 01
   navSections.forEach((section, index) => {
     if (section.getBoundingClientRect().top <= readingLine) current = index;
   });
