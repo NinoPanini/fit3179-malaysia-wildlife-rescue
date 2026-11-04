@@ -82,7 +82,7 @@
       ],
       "mark": {
         "type": "geoshape",
-        "stroke": "#a39b86",
+        "stroke": "#93a69b",
         "strokeWidth": 0.9,
         "tooltip": {
           "expr": "groupChoice == 'All animals' ? {'State': datum.name, 'Animals per 1,000 km²': format(datum.per_1000_km2, ',.0f'), 'Animals handed over': format(datum.total, ','), 'Land area (km²)': format(datum.area_km2, ',')} : groupChoice == 'Reptiles' ? {'State': datum.name, 'Share that were reptiles': format(datum.share, '.1%'), 'Reptiles handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')} : groupChoice == 'Mammals' ? {'State': datum.name, 'Share that were mammals': format(datum.share, '.1%'), 'Mammals handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')} : {'State': datum.name, 'Share that were birds': format(datum.share, '.1%'), 'Birds handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')}"
@@ -103,12 +103,12 @@
               5
             ],
             "range": [
-              "#f7ed9e",
-              "#a1dab4",
-              "#41b6c4",
-              "#2171b5",
-              "#253494",
-              "#020c33"
+              "#26395b",
+              "#305679",
+              "#286b85",
+              "#66aab9",
+              "#aad8c7",
+              "#f3e8a2"
             ]
           },
           "legend": {
@@ -120,7 +120,7 @@
             "offset": 34,
             "symbolType": "square",
             "symbolSize": 220,
-            "symbolStrokeColor": "#9c9686",
+            "symbolStrokeColor": "#829387",
             "symbolStrokeWidth": 0.5,
             "labelLimit": 160,
             "columnPadding": 14
@@ -140,7 +140,7 @@
         "baseline": "top",
         "fontSize": 13,
         "fontWeight": 600,
-        "color": "#1f2d2a"
+        "color": "#edf1e8"
       },
       "encoding": {
         "x": {
@@ -228,7 +228,7 @@
       ],
       "mark": {
         "type": "rule",
-        "color": "#8a8270",
+        "color": "#a09886",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -371,9 +371,9 @@
         "color": {
           "condition": {
             "test": "datum.cls >= 3",
-            "value": "white"
+            "value": "#101917"
           },
-          "value": "#1f2d2a"
+          "value": "#edf1e8"
         }
       }
     },
@@ -482,7 +482,7 @@
           "field": "label"
         },
         "color": {
-          "value": "#1f2d2a"
+          "value": "#edf1e8"
         }
       }
     }
@@ -501,11 +501,11 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#56625d",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#bdc9c0",
+      "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#e4e0d2",
-      "tickColor": "#e4e0d2",
+      "gridColor": "#42524b",
+      "tickColor": "#42524b",
       "labelPadding": 6,
       "titlePadding": 12
     },
@@ -513,18 +513,19 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#1f2d2a",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#edf1e8",
+      "titleColor": "#edf1e8",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#1f2d2a"
+      "color": "#edf1e8"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#1f2d2a"
+      "color": "#edf1e8",
+      "subtitleColor": "#bdc9c0"
     }
   }
 }

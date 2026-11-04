@@ -21,7 +21,7 @@
         "type": "point",
         "filled": true,
         "size": 220,
-        "color": "#56625d",
+        "color": "#bdc9c0",
         "opacity": 1
       },
       "encoding": {
@@ -104,7 +104,7 @@
             "title": null,
             "labelAngle": 0,
             "orient": "top",
-            "labelColor": "#1f2d2a"
+            "labelColor": "#edf1e8"
           }
         },
         "y": {
@@ -121,7 +121,7 @@
           "title": null,
           "axis": {
             "labelFontSize": 13,
-            "labelColor": "#1f2d2a",
+            "labelColor": "#edf1e8",
             "labelPadding": 10,
             "ticks": false
           }
@@ -161,7 +161,7 @@
           },
           "encoding": {
             "stroke": {
-              "value": "#9c9686"
+              "value": "#829387"
             },
             "strokeWidth": {
               "value": 1
@@ -180,12 +180,12 @@
                   "Not available"
                 ],
                 "range": [
-                  "#fbf9f2",
-                  "#f7ed9e",
-                  "#a1dab4",
-                  "#41b6c4",
-                  "#225ea8",
-                  "#d6d0bf"
+                  "#17201e",
+                  "#305679",
+                  "#286b85",
+                  "#aad8c7",
+                  "#f3e8a2",
+                  "#655c55"
                 ]
               },
               "legend": {
@@ -193,7 +193,7 @@
                 "direction": "horizontal",
                 "symbolType": "square",
                 "titleLimit": 600,
-                "symbolStrokeColor": "#bdb7a5",
+                "symbolStrokeColor": "#829387",
                 "symbolStrokeWidth": 1
               }
             }
@@ -211,10 +211,10 @@
             },
             "color": {
               "condition": {
-                "test": "datum.band == '30% or more'",
-                "value": "white"
+                "test": "datum.band == '30% or more' || datum.band == '15–29%'",
+                "value": "#101917"
               },
-              "value": "#1f2d2a"
+              "value": "#edf1e8"
             }
           }
         }
@@ -291,11 +291,11 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#56625d",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#bdc9c0",
+      "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#e4e0d2",
-      "tickColor": "#e4e0d2",
+      "gridColor": "#42524b",
+      "tickColor": "#42524b",
       "labelPadding": 6,
       "titlePadding": 12
     },
@@ -303,18 +303,19 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#1f2d2a",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#edf1e8",
+      "titleColor": "#edf1e8",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#1f2d2a"
+      "color": "#edf1e8"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#1f2d2a"
+      "color": "#edf1e8",
+      "subtitleColor": "#bdc9c0"
     }
   }
 }

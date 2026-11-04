@@ -17,7 +17,7 @@
       "axis": {
         "labelAngle": 0,
         "labelFontSize": 13,
-        "labelColor": "#1f2d2a"
+        "labelColor": "#edf1e8"
       }
     },
     "y": {
@@ -43,8 +43,8 @@
           "Interns"
         ],
         "range": [
-          "#1f2d2a",
-          "#7a766b"
+          "#edf1e8",
+          "#ada797"
         ]
       },
       "legend": {
@@ -151,7 +151,7 @@
           "field": "people"
         },
         "color": {
-          "value": "#1f2d2a"
+          "value": "#edf1e8"
         }
       }
     },
@@ -172,7 +172,7 @@
           "field": "people"
         },
         "color": {
-          "value": "#1f2d2a"
+          "value": "#edf1e8"
         }
       }
     },
@@ -195,7 +195,7 @@
           "field": "programme"
         },
         "color": {
-          "value": "#1f2d2a"
+          "value": "#edf1e8"
         }
       }
     },
@@ -216,7 +216,7 @@
         "fontSize": 12,
         "fontStyle": "italic",
         "lineHeight": 15,
-        "color": "#56625d",
+        "color": "#bdc9c0",
         "text": [
           "2021 report also mentions",
           "2 remote volunteers;",
@@ -225,7 +225,7 @@
       },
       "encoding": {
         "color": {
-          "value": "#56625d"
+          "value": "#bdc9c0"
         },
         "tooltip": null
       }
@@ -245,11 +245,11 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#56625d",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#bdc9c0",
+      "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#e4e0d2",
-      "tickColor": "#e4e0d2",
+      "gridColor": "#42524b",
+      "tickColor": "#42524b",
       "labelPadding": 6,
       "titlePadding": 12
     },
@@ -257,18 +257,19 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#1f2d2a",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#edf1e8",
+      "titleColor": "#edf1e8",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#1f2d2a"
+      "color": "#edf1e8"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#1f2d2a"
+      "color": "#edf1e8",
+      "subtitleColor": "#bdc9c0"
     }
   }
 }

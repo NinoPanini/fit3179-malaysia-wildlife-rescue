@@ -137,7 +137,7 @@
           ],
           "mark": {
             "type": "bar",
-            "stroke": "#fbf9f2",
+            "stroke": "#17201e",
             "strokeWidth": 1,
             "cursor": "pointer"
           },
@@ -155,8 +155,8 @@
                   "Other countries"
                 ],
                 "range": [
-                  "#2f4858",
-                  "#8a8270"
+                  "#b9dcee",
+                  "#a09886"
                 ]
               },
               "legend": {
@@ -235,11 +235,7 @@
               "field": "placements"
             },
             "color": {
-              "condition": {
-                "test": "datum.origin_group == 'Malaysia'",
-                "value": "white"
-              },
-              "value": "#141c19"
+              "value": "#101917"
             }
           }
         },
@@ -294,7 +290,7 @@
           "mark": {
             "type": "bar",
             "fillOpacity": 0,
-            "stroke": "#1f2d2a",
+            "stroke": "#edf1e8",
             "strokeWidth": 3
           },
           "encoding": {
@@ -391,7 +387,7 @@
               "title": null,
               "axis": {
                 "labelFontSize": 13,
-                "labelColor": "#1f2d2a",
+                "labelColor": "#edf1e8",
                 "labelPadding": 10,
                 "ticks": false,
                 "domain": false,
@@ -408,8 +404,8 @@
                   "Other countries"
                 ],
                 "range": [
-                  "#2f4858",
-                  "#8a8270"
+                  "#b9dcee",
+                  "#a09886"
                 ]
               },
               "legend": {
@@ -504,7 +500,7 @@
               "title": null,
               "axis": {
                 "labelFontSize": 13,
-                "labelColor": "#1f2d2a",
+                "labelColor": "#edf1e8",
                 "labelPadding": 10,
                 "ticks": false,
                 "domain": false,
@@ -521,8 +517,8 @@
                   "Other countries"
                 ],
                 "range": [
-                  "#2f4858",
-                  "#8a8270"
+                  "#b9dcee",
+                  "#a09886"
                 ]
               },
               "legend": {
@@ -575,7 +571,7 @@
             "align": "left",
             "fontSize": 16,
             "fontWeight": 700,
-            "color": "#1f2d2a"
+            "color": "#edf1e8"
           },
           "encoding": {
             "x": {
@@ -596,7 +592,7 @@
               "title": null,
               "axis": {
                 "labelFontSize": 13,
-                "labelColor": "#1f2d2a",
+                "labelColor": "#edf1e8",
                 "labelPadding": 10,
                 "ticks": false,
                 "domain": false,
@@ -628,11 +624,11 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#56625d",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#bdc9c0",
+      "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#e4e0d2",
-      "tickColor": "#e4e0d2",
+      "gridColor": "#42524b",
+      "tickColor": "#42524b",
       "labelPadding": 6,
       "titlePadding": 12
     },
@@ -640,18 +636,19 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#1f2d2a",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#edf1e8",
+      "titleColor": "#edf1e8",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#1f2d2a"
+      "color": "#edf1e8"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#1f2d2a"
+      "color": "#edf1e8",
+      "subtitleColor": "#bdc9c0"
     }
   }
 }

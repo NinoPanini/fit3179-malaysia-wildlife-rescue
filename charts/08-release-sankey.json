@@ -91,9 +91,9 @@
               "Birds"
             ],
             "range": [
-              "#0072B2",
-              "#B26F00",
-              "#8F3F72"
+              "#64b8e6",
+              "#e7ad55",
+              "#cf8bbb"
             ]
           },
           "legend": null
@@ -150,9 +150,9 @@
               "Area"
             ],
             "range": [
-              "#B26F00",
-              "#8F3F72",
-              "#1f2d2a"
+              "#e7ad55",
+              "#cf8bbb",
+              "#edf1e8"
             ]
           },
           "legend": null
@@ -208,7 +208,7 @@
           "field": "heading"
         },
         "color": {
-          "value": "#56625d"
+          "value": "#bdc9c0"
         }
       }
     },
@@ -291,11 +291,11 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#56625d",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#bdc9c0",
+      "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#e4e0d2",
-      "tickColor": "#e4e0d2",
+      "gridColor": "#42524b",
+      "tickColor": "#42524b",
       "labelPadding": 6,
       "titlePadding": 12
     },
@@ -303,18 +303,19 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#1f2d2a",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#edf1e8",
+      "titleColor": "#edf1e8",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#1f2d2a"
+      "color": "#edf1e8"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#1f2d2a"
+      "color": "#edf1e8",
+      "subtitleColor": "#bdc9c0"
     }
   }
 }

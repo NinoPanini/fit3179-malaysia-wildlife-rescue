@@ -29,8 +29,8 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#e6e0cf",
-        "stroke": "#a39b86",
+        "fill": "#34443d",
+        "stroke": "#93a69b",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -49,7 +49,7 @@
       },
       "mark": {
         "type": "line",
-        "color": "#3e5260",
+        "color": "#a7bccb",
         "opacity": 0.8,
         "strokeCap": "round"
       },
@@ -121,7 +121,7 @@
         "type": "point",
         "shape": "triangle-up",
         "filled": true,
-        "color": "#3e5260"
+        "color": "#a7bccb"
       },
       "encoding": {
         "opacity": {
@@ -157,8 +157,8 @@
       },
       "mark": {
         "type": "circle",
-        "color": "#1f2d2a",
-        "stroke": "#fbf9f2",
+        "color": "#edf1e8",
+        "stroke": "#17201e",
         "strokeWidth": 1.5,
         "cursor": "pointer"
       },
@@ -233,7 +233,7 @@
         {
           "mark": {
             "type": "rule",
-            "color": "#1f2d2a",
+            "color": "#edf1e8",
             "strokeWidth": 0.8
           },
           "encoding": {
@@ -257,7 +257,7 @@
             "dx": -5,
             "fontSize": 13,
             "fontWeight": 700,
-            "color": "#1f2d2a"
+            "color": "#edf1e8"
           },
           "encoding": {
             "text": {
@@ -277,7 +277,7 @@
             "dx": -5,
             "fontSize": 12,
             "lineHeight": 15,
-            "color": "#1f2d2a"
+            "color": "#edf1e8"
           },
           "encoding": {
             "text": {
@@ -299,8 +299,8 @@
       "mark": {
         "type": "circle",
         "size": 380,
-        "color": "#1f2d2a",
-        "stroke": "#fbf9f2",
+        "color": "#edf1e8",
+        "stroke": "#17201e",
         "strokeWidth": 2
       },
       "encoding": {
@@ -428,11 +428,11 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#56625d",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#bdc9c0",
+      "titleColor": "#edf1e8",
       "domain": false,
-      "gridColor": "#e4e0d2",
-      "tickColor": "#e4e0d2",
+      "gridColor": "#42524b",
+      "tickColor": "#42524b",
       "labelPadding": 6,
       "titlePadding": 12
     },
@@ -440,18 +440,19 @@
       "labelFontSize": 13,
       "titleFontSize": 13,
       "titleFontWeight": 600,
-      "labelColor": "#1f2d2a",
-      "titleColor": "#1f2d2a",
+      "labelColor": "#edf1e8",
+      "titleColor": "#edf1e8",
       "symbolStrokeWidth": 0
     },
     "text": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "color": "#1f2d2a"
+      "color": "#edf1e8"
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "anchor": "start",
-      "color": "#1f2d2a"
+      "color": "#edf1e8",
+      "subtitleColor": "#bdc9c0"
     }
   }
 }
