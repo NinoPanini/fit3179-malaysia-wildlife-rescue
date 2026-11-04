@@ -122,7 +122,7 @@ const sum = (rows, key) => rows.reduce((n, r) => n + (r[key] || 0), 0);
     if (file.startsWith('05-')) {
       const totals = items('text').filter(t => t.datum && t.datum.animals === 10968);
       assert.equal(totals.length, 1, 'Published reptile annual total must remain visible');
-      assert.equal(items('text').filter(t => t.text === 'n/a').length, 3, 'December 2023 remains missing, not zero');
+      assert.equal(items('rect').filter(r => r.datum && r.datum.band === 'Not available').length, 3, 'December 2023 remains missing, not zero');
       const cell = (y, g, m) => items('text').find(t => t.datum && t.datum.year === y && t.datum.group === g && t.datum.month === m && t.datum.label);
       assert.deepEqual([cell(2023, 'Reptiles', 'Aug').text, cell(2024, 'Reptiles', 'Sep').text, cell(2024, 'Reptiles', 'Dec').text], ['58%', '46%', '48%'], 'Reptile waves shown as shares of the year');
     }

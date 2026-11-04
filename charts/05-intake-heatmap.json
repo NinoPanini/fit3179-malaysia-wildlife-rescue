@@ -74,11 +74,11 @@
           "as": "share"
         },
         {
-          "calculate": "!datum.reported ? 'Not available' : datum.animals == 0 ? '0 (none)' : datum.share < 0.05 ? 'above 0, under 5%' : datum.share < 0.15 ? '5–14%' : datum.share < 0.30 ? '15–29%' : '30% or more'",
+          "calculate": "!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.share < 0.05 ? '< 5%' : datum.share < 0.15 ? '5–14%' : datum.share < 0.30 ? '15–29%' : '≥ 30%'",
           "as": "band"
         },
         {
-          "calculate": "!datum.reported ? 'n/a' : datum.animals == 0 ? '0' : datum.share < 0.01 ? '<1%' : format(datum.share, '.0%')",
+          "calculate": "!datum.reported ? '' : datum.animals == 0 ? '0' : datum.share < 0.01 ? '<1%' : format(datum.share, '.0%')",
           "as": "label"
         }
       ],
@@ -172,11 +172,11 @@
               "title": "Share of the row’s year total that arrived in the month",
               "scale": {
                 "domain": [
-                  "0 (none)",
-                  "above 0, under 5%",
+                  "0",
+                  "< 5%",
                   "5–14%",
                   "15–29%",
-                  "30% or more",
+                  "≥ 30%",
                   "Not available"
                 ],
                 "range": [
@@ -211,7 +211,7 @@
             },
             "color": {
               "condition": {
-                "test": "datum.band == '30% or more'",
+                "test": "datum.band == '≥ 30%'",
                 "value": "white"
               },
               "value": "#1f2d2a"

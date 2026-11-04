@@ -165,7 +165,7 @@ def _cls(b):
 cls = " : ".join(f"groupChoice == '{g}' ? ({_cls(BREAKS[g])})" for g in GROUPS_03[:-1]) + f" : ({_cls(BREAKS['Birds'])})"
 def _labels(b, density=False):
     f = (lambda v: f"{v:,}") if density else (lambda v: (f"{v*100:.1f}".rstrip('0').rstrip('.')) + '%')
-    return [f"under {f(b[0])}"] + [f"{f(b[i])}–{f(b[i+1])}" for i in range(len(b) - 1)] + [f"{f(b[-1])} or more"]
+    return [f"< {f(b[0])}"] + [f"{f(b[i])}–{f(b[i+1])}" for i in range(len(b) - 1)] + [f"≥ {f(b[-1])}"]   # same symbols as the heatmap legend
 LEGEND_EXPR = ("(" + " : ".join(f"groupChoice == '{g}' ? " + json.dumps(_labels(BREAKS[g], g == 'All animals')) for g in GROUPS_03[:-1]) +
                " : " + json.dumps(_labels(BREAKS['Birds'])) + ")[datum.value]")
 LABEL_03 = ("groupChoice == 'All animals' ? format(datum.share, ',.0f') : datum.share < 0.1 ? format(datum.share, '.1%') : format(datum.share, '.0%')")
@@ -281,9 +281,9 @@ MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec
 # Colour = the month's share of that row's published year total, so every row shows WHEN its group
 # arrived, whatever the group's size (75 mammals or 10,968 reptiles). The year-total column shows HOW MANY.
 # An even spread over the year would be about 8% a month.
-BANDS = ['0 (none)', 'above 0, under 5%', '5–14%', '15–29%', '30% or more', 'Not available']
-band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0 (none)' : datum.share < 0.05 ? 'above 0, under 5%' : "
-        "datum.share < 0.15 ? '5–14%' : datum.share < 0.30 ? '15–29%' : '30% or more'")
+BANDS = ['0', '< 5%', '5–14%', '15–29%', '≥ 30%', 'Not available']   # 0 has its own class, so '< 5%' means above 0
+band = ("!datum.reported ? 'Not available' : datum.animals == 0 ? '0' : datum.share < 0.05 ? '< 5%' : "
+        "datum.share < 0.15 ? '5–14%' : datum.share < 0.30 ? '15–29%' : '≥ 30%'")
 save('05-intake-heatmap.json', {
     'description': 'Monthly intake with 2023 and 2024 paired for each animal group. Each cell shows the month as a share of that row\'s published year total; the year totals are printed at right.',
     'usermeta': {'fitWidth': 1050},
@@ -299,7 +299,7 @@ save('05-intake-heatmap.json', {
          'transform': [{'calculate': "datum.group + ' · ' + datum.year", 'as': 'row'},
                        {'calculate': 'datum.animals / datum.year_total', 'as': 'share'},
                        {'calculate': band, 'as': 'band'},
-                       {'calculate': "!datum.reported ? 'n/a' : datum.animals == 0 ? '0' : datum.share < 0.01 ? '<1%' : format(datum.share, '.0%')", 'as': 'label'}],
+                       {'calculate': "!datum.reported ? '' : datum.animals == 0 ? '0' : datum.share < 0.01 ? '<1%' : format(datum.share, '.0%')", 'as': 'label'}],
          'encoding': {
              'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                    'axis': {'title': None, 'labelAngle': 0, 'orient': 'top', 'labelColor': INK}},
@@ -317,7 +317,7 @@ save('05-intake-heatmap.json', {
                                                 'symbolStrokeColor': '#bdb7a5', 'symbolStrokeWidth': 1}}}},
              {'mark': {'type': 'text', 'fontSize': 14, 'fontWeight': 500},
               'encoding': {'text': {'field': 'label'},
-                           'color': {'condition': {'test': "datum.band == '30% or more'", 'value': 'white'}, 'value': INK}}},
+                           'color': {'condition': {'test': "datum.band == '≥ 30%'", 'value': 'white'}, 'value': INK}}},
          ]},
         {'width': 95, 'height': 330, 'title': {'text': 'Year total', 'subtitle': '= 100% of the row', 'anchor': 'middle', 'fontSize': 14, 'subtitleFontSize': 12, 'offset': 8},
          'data': {'url': 'data/nwrc-intake-totals.json'},
