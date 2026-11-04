@@ -33,6 +33,7 @@ function fitToColumn(spec, element, correction = 1) {
   (function scaleWidths(node) {
     for (const key of ['hconcat', 'vconcat', 'concat']) (node[key] || []).forEach(scaleWidths);
     if (typeof node.width === 'number') node.width = Math.round(node.width * scale);
+    if (typeof node.spacing === 'number') node.spacing = Math.round(node.spacing * scale);   // gaps shrink with the charts
   })(copy);
   return copy;
 }

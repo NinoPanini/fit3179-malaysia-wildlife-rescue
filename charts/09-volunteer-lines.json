@@ -44,10 +44,19 @@
         ],
         "range": [
           "#1f2d2a",
-          "#6f5520"
+          "#7a766b"
         ]
       },
-      "legend": null
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal",
+        "title": null,
+        "symbolType": "stroke",
+        "symbolStrokeWidth": 3,
+        "symbolSize": 700,
+        "labelFontSize": 14,
+        "columnPadding": 24
+      }
     },
     "tooltip": [
       {
@@ -95,7 +104,16 @@
               ]
             ]
           },
-          "legend": null
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "title": null,
+            "symbolType": "stroke",
+            "symbolStrokeWidth": 3,
+            "symbolSize": 700,
+            "labelFontSize": 14,
+            "columnPadding": 24
+          }
         }
       }
     },
@@ -108,19 +126,11 @@
       },
       "encoding": {
         "shape": {
-          "field": "programme",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "Volunteers",
-              "Interns"
-            ],
-            "range": [
-              "circle",
-              "square"
-            ]
+          "condition": {
+            "test": "datum.programme == 'Interns'",
+            "value": "square"
           },
-          "legend": null
+          "value": "circle"
         }
       }
     },
@@ -139,6 +149,9 @@
       "encoding": {
         "text": {
           "field": "people"
+        },
+        "color": {
+          "value": "#1f2d2a"
         }
       }
     },
@@ -157,6 +170,9 @@
       "encoding": {
         "text": {
           "field": "people"
+        },
+        "color": {
+          "value": "#1f2d2a"
         }
       }
     },
@@ -177,6 +193,9 @@
       "encoding": {
         "text": {
           "field": "programme"
+        },
+        "color": {
+          "value": "#1f2d2a"
         }
       }
     },

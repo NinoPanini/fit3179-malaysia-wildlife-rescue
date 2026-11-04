@@ -9,7 +9,7 @@
 :root{
   --paper:#fbf9f2; --tint:#f3f0e4; --white:#fffdf8; --ink:#213d31; --muted:#5d6b62; --line:#dcd7c6;
   --green:#2b4f33; --gold:#c4952b; --gold-ink:#7d5a10;
-  --reptile:#0072B2; --mammal:#B26F00; --bird:#A85F8C;
+  --reptile:#0072B2; --mammal:#B26F00; --bird:#8F3F72;
   --serif:"Fraunces",Georgia,"Times New Roman",serif; --sans:"Source Sans 3","Segoe UI",Arial,sans-serif;
   --measure:66ch; --gutter:48px; --max:1180px;
   --sage:#e7ecdf; --rule:#b7a77f; --chapter-space:64px;
@@ -102,7 +102,9 @@ figcaption b{color:var(--ink)}
 .map-pair .chart,.chart-pair .chart{grid-row:3}
 .map-pair figcaption,.chart-pair figcaption{grid-row:4}
 .split{display:grid;gap:48px;align-items:center}
-.split--waffle{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}   /* same two columns as the chapter heading above */
+.split--waffle{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto;row-gap:0;align-items:start}   /* same two columns as the chapter heading above */
+.split--waffle>figure{display:grid;grid-row:span 2;grid-template-rows:subgrid}
+.split--waffle .side-copy{grid-column:2;grid-row:2}   /* the text starts level with the top of the waffle */
 .split--map{grid-template-columns:7fr 5fr;align-items:start}
 .split--bears{grid-template-columns:7fr 5fr;margin-bottom:8px}
 .side-copy{max-width:52ch}
@@ -169,6 +171,7 @@ footer p{margin:6px 0 12px}
   .section-heading{display:block;max-width:var(--measure)}
   .section-heading>h2{margin-bottom:20px}
   .split--waffle,.split--map,.split--bears{grid-template-columns:1fr}
+  .split--waffle>figure{display:block;grid-row:auto}.split--waffle .side-copy{grid-column:auto;grid-row:auto}
   .split--map .side-copy{padding-top:0}
   .hero-bottom{grid-template-columns:1fr;gap:22px}
   .begin{justify-self:start}

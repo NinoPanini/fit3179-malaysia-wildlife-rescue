@@ -42,7 +42,7 @@
   ],
   "hconcat": [
     {
-      "width": 480,
+      "width": 440,
       "height": 300,
       "title": {
         "text": "11 · Placements by start month",
@@ -611,7 +611,7 @@
       ]
     }
   ],
-  "spacing": 44,
+  "spacing": 76,
   "resolve": {
     "scale": {
       "x": "independent",

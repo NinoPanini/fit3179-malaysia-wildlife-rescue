@@ -16,7 +16,7 @@ SCHEMA = 'https://vega.github.io/schema/vega-lite/v5.json'
 # colour-vision-safe palettes, and never colour alone - every colour is backed by a label, shape,
 # dash, position or number so the charts still read for colour-blind viewers.
 INK, MUTED, GRID, PAPER = '#1f2d2a', '#56625d', '#e4e0d2', '#fbf9f2'
-GROUP = {'Reptiles': '#0072B2', 'Mammals': '#B26F00', 'Birds': '#A85F8C'}   # Okabe-Ito hues, darkened so every mark reaches 3:1 contrast
+GROUP = {'Reptiles': '#0072B2', 'Mammals': '#B26F00', 'Birds': '#8F3F72'}   # Okabe-Ito hues, darkened so every mark reaches 3:1 contrast
 SEQ = ['#ffffcc', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']   # ColorBrewer YlGnBu; darkest step deepened so the top two classes stay apart for colour-blind readers
 MARK = '#3e5260'                                                             # neutral slate for single-series marks
 MY, OTHER = '#2f4858', '#8a8270'                                             # Malaysia highlighted in slate, other countries in neutral grey
@@ -391,7 +391,7 @@ save('07-release-flow-map.json', {
                       'detail': {'field': 'site'}, 'order': {'field': 'step'},
                       'opacity': {'condition': {'test': "siteFocus == 'All destinations' || datum.site == siteFocus", 'value': 0.85}, 'value': 0.1},
                       'strokeWidth': {'field': 'animals', 'type': 'quantitative', 'scale': width_scale,
-                                      'title': 'Animals released', 'legend': {'values': [1, 4, 13], 'orient': 'bottom-left', 'symbolType': 'stroke', 'symbolSize': 1600, 'labelFontSize': 13}}}},
+                                      'title': 'Animals released', 'legend': {'values': [1, 4, 6, 13], 'orient': 'bottom-left', 'symbolType': 'stroke', 'symbolSize': 1600, 'labelFontSize': 13}}}},
         {'data': SITES, 'transform': [{'filter': 'isValid(datum.arrow_angle)'}, {'calculate': '50 + datum.animals * 16', 'as': 'arrow_size'}],
          'mark': {'type': 'point', 'shape': 'triangle-up', 'filled': True, 'color': MARK},
          'encoding': {'opacity': {'condition': {'test': "siteFocus == 'All destinations' || datum.site == siteFocus", 'value': 0.95}, 'value': 0.1},'longitude': {'field': 'arrow_longitude', 'type': 'quantitative'},
@@ -474,7 +474,8 @@ save('08-release-sankey.json', {
 })
 
 # ---- 09 Volunteers and interns, 2021-2025 (basic multi-line) -----------
-PROG = {'domain': ['Volunteers', 'Interns'], 'range': [INK, '#6f5520']}
+PROG = {'domain': ['Volunteers', 'Interns'], 'range': [INK, '#7a766b']}   # near-black and mid grey: they differ in lightness, not hue
+PROG_LEGEND = {'orient': 'top', 'direction': 'horizontal', 'title': None, 'symbolType': 'stroke', 'symbolStrokeWidth': 3, 'symbolSize': 700, 'labelFontSize': 14, 'columnPadding': 24}
 save('09-volunteer-lines.json', {
     'description': 'Line chart: volunteers and interns reported by BSBCC each year, 2021-2025.',
     'width': 'container', 'height': 300,
@@ -482,21 +483,22 @@ save('09-volunteer-lines.json', {
     'padding': {'right': 20},
     'encoding': {'x': {'field': 'year', 'type': 'ordinal', 'title': None, 'axis': {'labelAngle': 0, 'labelFontSize': 14, 'labelColor': INK}},
                  'y': {'field': 'people', 'type': 'quantitative', 'title': 'People', 'scale': {'domain': [0, 65]}, 'axis': {'tickCount': 4}},
-                 'color': {'field': 'programme', 'type': 'nominal', 'scale': PROG, 'legend': None},
+                 # one legend: colour, dash and marker all describe the same programme field, so Vega-Lite merges them
+                 'color': {'field': 'programme', 'type': 'nominal', 'scale': PROG, 'legend': PROG_LEGEND},
                  'tooltip': [{'field': 'programme', 'title': 'Programme'}, {'field': 'year', 'title': 'Year'},
                              {'field': 'people', 'type': 'quantitative', 'title': 'People'}, {'field': 'note', 'title': 'Note'}]},
     'layer': [
         {'mark': {'type': 'line', 'strokeWidth': 3},
-         'encoding': {'strokeDash': {'field': 'programme', 'type': 'nominal', 'scale': {'domain': ['Volunteers', 'Interns'], 'range': [[1, 0], [6, 4]]}, 'legend': None}}},
+         'encoding': {'strokeDash': {'field': 'programme', 'type': 'nominal', 'scale': {'domain': ['Volunteers', 'Interns'], 'range': [[1, 0], [6, 4]]}, 'legend': PROG_LEGEND}}},
         {'mark': {'type': 'point', 'filled': True, 'size': 80, 'opacity': 1},
-         'encoding': {'shape': {'field': 'programme', 'type': 'nominal', 'scale': {'domain': ['Volunteers', 'Interns'], 'range': ['circle', 'square']}, 'legend': None}}},
+         'encoding': {'shape': {'condition': {'test': "datum.programme == 'Interns'", 'value': 'square'}, 'value': 'circle'}}},   # a fixed value, so the legend shows only the line style
         {'transform': [{'filter': "datum.programme == 'Volunteers'"}],
-         'mark': {'type': 'text', 'dy': -14, 'fontSize': 13, 'fontWeight': 600}, 'encoding': {'text': {'field': 'people'}}},
+         'mark': {'type': 'text', 'dy': -14, 'fontSize': 13, 'fontWeight': 600}, 'encoding': {'text': {'field': 'people'}, 'color': {'value': INK}}},
         {'transform': [{'filter': "datum.programme == 'Interns'"}],
-         'mark': {'type': 'text', 'dy': 17, 'fontSize': 13, 'fontWeight': 600}, 'encoding': {'text': {'field': 'people'}}},
+         'mark': {'type': 'text', 'dy': 17, 'fontSize': 13, 'fontWeight': 600}, 'encoding': {'text': {'field': 'people'}, 'color': {'value': INK}}},
         {'transform': [{'filter': 'datum.year == 2025'}],
          'mark': {'type': 'text', 'align': 'left', 'dx': 12, 'dy': 4, 'fontSize': 14, 'fontWeight': 600},
-         'encoding': {'text': {'field': 'programme'}}},
+         'encoding': {'text': {'field': 'programme'}, 'color': {'value': INK}}},
         {'data': {'values': [{'year': 2021, 'people': 60}]},   # the 2021 caveat, above that year
          'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': -8, 'fontSize': 12, 'fontStyle': 'italic', 'lineHeight': 15, 'color': MUTED,
                   'text': ['2021 report also mentions', '2 remote volunteers;', 'unclear if among the 7']},
@@ -564,7 +566,7 @@ save('11-placement-months.json', {
     'params': [{'name': 'selectedMonth', 'value': 'All months',
                 'bind': {'input': 'select', 'options': ['All months'] + MONTHS, 'name': 'Month: ', 'element': '#placement-control'}}],
     'hconcat': [
-        {'width': 480, 'height': 300,
+        {'width': 440, 'height': 300,
          'title': {'text': '11 · Placements by start month', 'subtitle': '2025 · new arrivals each month', 'fontSize': 17, 'subtitleFontSize': 13, 'offset': 18},
          'encoding': {'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                             'axis': {'title': 'Start month · 2025', 'labelAngle': 0, 'labelFontSize': 13}},
@@ -610,7 +612,7 @@ save('11-placement-months.json', {
               'encoding': {'x': {'field': 'end', 'type': 'quantitative'}, 'y': SY, 'text': {'field': 'n'}}},
          ]},
     ],
-    'spacing': 44,
+    'spacing': 76,   # chart 12 starts on the page's second-column line, as in the chart pairs above
     'resolve': {'scale': {'x': 'independent', 'y': 'independent'}},
 })
 
