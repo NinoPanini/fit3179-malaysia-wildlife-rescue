@@ -52,7 +52,7 @@
       "title": null,
       "axis": {
         "labelColor": "#1f2d2a",
-        "labelFontSize": 14,
+        "labelFontSize": 13,
         "ticks": false,
         "labelPadding": 10,
         "labelExpr": "datum.label == 'Wilayah Persekutuan' ? 'Federal Territories' : datum.label"
@@ -151,7 +151,7 @@
         "type": "text",
         "align": "left",
         "dx": 8,
-        "fontSize": 13.5,
+        "fontSize": 13,
         "fontWeight": 600,
         "color": "#1f2d2a"
       },
@@ -179,7 +179,7 @@
         "type": "text",
         "align": "right",
         "dx": -8,
-        "fontSize": 13.5,
+        "fontSize": 13,
         "fontWeight": 600,
         "color": "#7a4d00"
       },
@@ -207,7 +207,7 @@
         "align": "left",
         "baseline": "bottom",
         "dy": -6,
-        "fontSize": 12.5,
+        "fontSize": 12,
         "fontStyle": "italic",
         "color": "#56625d"
       },
@@ -238,7 +238,7 @@
         "align": "right",
         "baseline": "bottom",
         "dy": -6,
-        "fontSize": 12.5,
+        "fontSize": 12,
         "fontStyle": "italic",
         "color": "#56625d"
       },

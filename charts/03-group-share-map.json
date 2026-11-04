@@ -103,7 +103,7 @@
               5
             ],
             "range": [
-              "#ffffcc",
+              "#f7ed9e",
               "#a1dab4",
               "#41b6c4",
               "#2171b5",
@@ -346,7 +346,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 11.5,
+        "fontSize": 12,
         "fontWeight": 700,
         "lineHeight": 13,
         "baseline": "middle",
@@ -459,7 +459,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 11.5,
+        "fontSize": 12,
         "fontWeight": 700,
         "lineHeight": 13,
         "baseline": "middle",

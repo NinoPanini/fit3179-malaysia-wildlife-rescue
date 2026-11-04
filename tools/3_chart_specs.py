@@ -17,7 +17,7 @@ SCHEMA = 'https://vega.github.io/schema/vega-lite/v5.json'
 # dash, position or number so the charts still read for colour-blind viewers.
 INK, MUTED, GRID, PAPER = '#1f2d2a', '#56625d', '#e4e0d2', '#fbf9f2'
 GROUP = {'Reptiles': '#0072B2', 'Mammals': '#B26F00', 'Birds': '#8F3F72'}   # Okabe-Ito hues, darkened so every mark reaches 3:1 contrast
-SEQ = ['#ffffcc', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']   # ColorBrewer YlGnBu; darkest step deepened so the top two classes stay apart for colour-blind readers
+SEQ = ['#f7ed9e', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']   # ColorBrewer YlGnBu; lightest step deepened so it shows against the page, darkest step deepened so the top two classes stay apart for colour-blind readers
 MARK = '#3e5260'                                                             # neutral slate for single-series marks
 MY, OTHER = '#2f4858', '#8a8270'                                             # Malaysia highlighted in slate, other countries in neutral grey
 FONT = "'Source Sans 3', 'Segoe UI', Arial, sans-serif"  # quoted: the family name contains a digit
@@ -217,7 +217,7 @@ save('03-group-share-map.json', {
                         {'calculate': share, 'as': 'share'}, {'calculate': cls, 'as': 'cls'}, {'calculate': COUNT_03, 'as': 'count'},
                         {'calculate': "[datum.name, " + LABEL_03 + "]", 'as': 'label'}],
           # offshore labels sit in the sea (dark text); the rest sit on their state (white on dark classes)
-          'mark': {'type': 'text', 'fontSize': 11.5, 'fontWeight': 700, 'lineHeight': 13, 'baseline': 'middle',
+          'mark': {'type': 'text', 'fontSize': 12, 'fontWeight': 700, 'lineHeight': 13, 'baseline': 'middle',
                    'align': 'right' if offshore else 'center', 'dx': -4 if offshore else 0, 'tooltip': {'expr': TIP_03}},
           'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
                        'text': {'field': 'label'},
@@ -244,7 +244,7 @@ save('04-state-comparison.json', {
                   {'calculate': "datum['2021']", 'as': 'y2021'}, {'calculate': "datum['2024']", 'as': 'y2024'},
                   {'calculate': 'datum.y2024 - datum.y2021', 'as': 'change'}],
     'encoding': {'y': {'field': 'state', 'type': 'nominal', 'sort': CHANGE_ORDER, 'title': None,
-                       'axis': {'labelColor': INK, 'labelFontSize': 14, 'ticks': False, 'labelPadding': 10,
+                       'axis': {'labelColor': INK, 'labelFontSize': 13, 'ticks': False, 'labelPadding': 10,
                                 'labelExpr': "datum.label == 'Wilayah Persekutuan' ? 'Federal Territories' : datum.label"}}},
     'layer': [
         {'mark': {'type': 'bar', 'height': 22, 'cornerRadiusEnd': 2},
@@ -256,11 +256,11 @@ save('04-state-comparison.json', {
                                   {'field': 'change', 'type': 'quantitative', 'title': 'Change', 'format': '+,'}]}},
         {'mark': {'type': 'rule', 'color': INK, 'strokeWidth': 1.5}, 'encoding': {'x': {'datum': 0}, 'y': None}},   # the zero line
         *[{'transform': [{'filter': test}, {'calculate': change_label, 'as': 'label'}],
-           'mark': {'type': 'text', 'align': align, 'dx': dx, 'fontSize': 13.5, 'fontWeight': 600, 'color': colour},
+           'mark': {'type': 'text', 'align': align, 'dx': dx, 'fontSize': 13, 'fontWeight': 600, 'color': colour},
            'encoding': {'x': {'field': 'change', 'type': 'quantitative'}, 'text': {'field': 'label'}}}
           for test, align, dx, colour in [('datum.change >= 0', 'left', 8, INK), ('datum.change < 0', 'right', -8, '#7a4d00')]],
         *[{'data': {'values': [{'x': x, 't': t}]},   # direction cues above the zero line
-           'mark': {'type': 'text', 'align': align, 'baseline': 'bottom', 'dy': -6, 'fontSize': 12.5, 'fontStyle': 'italic', 'color': MUTED},
+           'mark': {'type': 'text', 'align': align, 'baseline': 'bottom', 'dy': -6, 'fontSize': 12, 'fontStyle': 'italic', 'color': MUTED},
            'encoding': {'x': {'field': 'x', 'type': 'quantitative'}, 'y': {'value': 0}, 'text': {'field': 't'}}}
           for x, t, align in [(30, 'More animals than in 2021 →', 'left'), (-30, '← Fewer', 'right')]],
     ],
@@ -303,16 +303,16 @@ save('05-intake-heatmap.json', {
          'encoding': {
              'x': {'field': 'month', 'type': 'ordinal', 'sort': MONTHS,
                    'axis': {'title': None, 'labelAngle': 0, 'orient': 'top', 'labelColor': INK}},
-             'y': {**row_y, 'axis': {'labelFontSize': 14, 'labelColor': INK, 'labelPadding': 10, 'ticks': False}},
+             'y': {**row_y, 'axis': {'labelFontSize': 13, 'labelColor': INK, 'labelPadding': 10, 'ticks': False}},
              'tooltip': [{'field': 'month', 'title': 'Month'}, {'field': 'year', 'title': 'Year'},
                          {'field': 'group', 'title': 'Group'}, {'field': 'animals', 'type': 'quantitative', 'title': 'Animals received', 'format': ','},
                          {'field': 'share', 'type': 'quantitative', 'title': 'Share of the year', 'format': '.1%'}]},
          'layer': [
              {'mark': {'type': 'rect', 'cornerRadius': 3},
-              'encoding': {'stroke': {'condition': {'test': "datum.animals == 0", 'value': '#c9c3b0'}, 'value': PAPER},
-                           'strokeWidth': {'condition': {'test': "datum.animals == 0", 'value': 1}, 'value': 3},
+              # every cell has a thin outline, so the palest cells and the empty (0) months stay visible on the page
+              'encoding': {'stroke': {'value': '#9c9686'}, 'strokeWidth': {'value': 1},
                            'color': {'field': 'band', 'type': 'ordinal', 'title': 'Share of the row’s year total that arrived in the month',
-                                     'scale': {'domain': BANDS, 'range': [PAPER, '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8', '#d6d0bf']},
+                                     'scale': {'domain': BANDS, 'range': [PAPER, SEQ[0], '#a1dab4', '#41b6c4', '#225ea8', '#d6d0bf']},
                                      'legend': {'orient': 'bottom', 'direction': 'horizontal', 'symbolType': 'square', 'titleLimit': 600,
                                                 'symbolStrokeColor': '#bdb7a5', 'symbolStrokeWidth': 1}}}},
              {'mark': {'type': 'text', 'fontSize': 14, 'fontWeight': 500},
@@ -370,7 +370,7 @@ def site_labels(names, align, dx):
     return {'data': SITES,
             'transform': [{'filter': {'field': 'site', 'oneOf': names}},
                           {'calculate': "[datum.site, datum.animals + (datum.animals == 1 ? ' animal' : ' animals')]", 'as': 'label'}],
-            'mark': {'type': 'text', 'align': align, 'dx': dx, 'fontSize': 12.5, 'fontWeight': 600, 'lineHeight': 15, 'cursor': 'pointer'},
+            'mark': {'type': 'text', 'align': align, 'dx': dx, 'fontSize': 12, 'fontWeight': 600, 'lineHeight': 15, 'cursor': 'pointer'},
             'encoding': {'opacity': {'condition': {'test': "siteFocus == 'All destinations' || datum.site == siteFocus", 'value': 1}, 'value': 0.3},
                          'longitude': {'field': 'longitude', 'type': 'quantitative'},
                          'latitude': {'field': 'latitude', 'type': 'quantitative'}, 'text': {'field': 'label'}}}
@@ -417,7 +417,7 @@ save('07-release-flow-map.json', {
               'mark': {'type': 'text', 'align': 'right', 'dx': -5, 'fontSize': 13, 'fontWeight': 700, 'color': INK},
               'encoding': {'text': {'field': 'text'}}},
              {'transform': [{'filter': '!datum.bold'}],
-              'mark': {'type': 'text', 'align': 'right', 'dx': -5, 'fontSize': 12.5, 'lineHeight': 15, 'color': INK},
+              'mark': {'type': 'text', 'align': 'right', 'dx': -5, 'fontSize': 12, 'lineHeight': 15, 'color': INK},
               'encoding': {'text': {'field': 'text'}}}]},
         {'data': {'values': [{'longitude': 101.33, 'latitude': 3.98}]},
          'mark': {'type': 'circle', 'size': 380, 'color': INK, 'stroke': PAPER, 'strokeWidth': 2},
@@ -458,7 +458,7 @@ save('08-release-sankey.json', {
         {'data': {'url': 'data/release-nodes.json'},
          'transform': [{'filter': {'field': 'label', 'oneOf': ['Leopard', 'Brahminy kite']}},
                        {'calculate': "datum.label == 'Leopard' ? 'MAMMALS' : 'BIRDS'", 'as': 'heading'}],
-         'mark': {'type': 'text', 'align': 'right', 'dx': -8, 'dy': -6, 'fontSize': 12.5, 'fontWeight': 700, 'letterSpacing': 1.5, 'baseline': 'bottom'},
+         'mark': {'type': 'text', 'align': 'right', 'dx': -8, 'dy': -6, 'fontSize': 12, 'fontWeight': 700, 'letterSpacing': 1.5, 'baseline': 'bottom'},
          'encoding': {'y': {'field': 'y', 'type': 'quantitative'}, 'text': {'field': 'heading'},   # just above the first species of each group
                       'color': {'value': MUTED}}},
         {'data': {'url': 'data/release-nodes.json'},
@@ -475,13 +475,13 @@ save('08-release-sankey.json', {
 
 # ---- 09 Volunteers and interns, 2021-2025 (basic multi-line) -----------
 PROG = {'domain': ['Volunteers', 'Interns'], 'range': [INK, '#7a766b']}   # near-black and mid grey: they differ in lightness, not hue
-PROG_LEGEND = {'orient': 'top', 'direction': 'horizontal', 'title': None, 'symbolType': 'stroke', 'symbolStrokeWidth': 3, 'symbolSize': 700, 'labelFontSize': 14, 'columnPadding': 24}
+PROG_LEGEND = {'orient': 'top', 'direction': 'horizontal', 'title': None, 'symbolType': 'stroke', 'symbolStrokeWidth': 3, 'symbolSize': 700, 'labelFontSize': 13, 'columnPadding': 24}
 save('09-volunteer-lines.json', {
     'description': 'Line chart: volunteers and interns reported by BSBCC each year, 2021-2025.',
     'width': 'container', 'height': 300,
     'data': {'url': 'data/bsbcc-participation-2021-2025.json'},
     'padding': {'right': 20},
-    'encoding': {'x': {'field': 'year', 'type': 'ordinal', 'title': None, 'axis': {'labelAngle': 0, 'labelFontSize': 14, 'labelColor': INK}},
+    'encoding': {'x': {'field': 'year', 'type': 'ordinal', 'title': None, 'axis': {'labelAngle': 0, 'labelFontSize': 13, 'labelColor': INK}},
                  'y': {'field': 'people', 'type': 'quantitative', 'title': 'People', 'scale': {'domain': [0, 65]}, 'axis': {'tickCount': 4}},
                  # one legend: colour, dash and marker all describe the same programme field, so Vega-Lite merges them
                  'color': {'field': 'programme', 'type': 'nominal', 'scale': PROG, 'legend': PROG_LEGEND},
@@ -532,7 +532,7 @@ save('10-volunteer-origins.json', {
                       'color': {'condition': {'test': "datum.group == 'Malaysia'", 'value': 'white'}, 'value': '#141c19'}}},
         {'transform': [{'filter': "datum.level == 'group'"},
                        {'calculate': "datum.group == 'Malaysia' ? 'From Malaysia · ' + datum.placements : 'From eight other countries · ' + datum.placements", 'as': 'head'}],
-         'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'dx': 2, 'dy': -8, 'fontSize': 13.5, 'fontWeight': 700, 'color': INK},
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'dx': 2, 'dy': -8, 'fontSize': 13, 'fontWeight': 700, 'color': INK},
          'encoding': {'x': {'field': 'x', **TX}, 'y': {'value': 0}, 'text': {'field': 'head'}}},
     ],
 })
@@ -550,7 +550,7 @@ figures = [
     {'window': [{'op': 'row_number', 'as': 'k'}], 'groupby': ['stay'], 'sort': [{'field': 'origin_group'}, {'field': 'start'}]},
     {'calculate': "datum.k - 1 + (datum.origin_group == 'Malaysia' ? 0 : 1)", 'as': 'slot'}]   # +1 leaves the gap
 SY = {'field': 'stay', 'type': 'ordinal', 'scale': {'domain': STAYS}, 'title': None,
-      'axis': {'labelFontSize': 13.5, 'labelColor': INK, 'labelPadding': 10, 'ticks': False, 'domain': False,
+      'axis': {'labelFontSize': 13, 'labelColor': INK, 'labelPadding': 10, 'ticks': False, 'domain': False,
                'labelExpr': '[datum.value, ' + json.dumps(STAY_DAYS) + '[datum.value]]'}}   # second line: the days in each row
 SX = {'field': 'slot', 'type': 'quantitative', 'scale': {'domain': [-0.6, 21.8], 'nice': False}, 'axis': None}
 monthly_counts = [
@@ -578,7 +578,7 @@ save('11-placement-months.json', {
               'encoding': {'y2': {'field': 'bottom'},
                            'color': {'field': 'origin_group', 'type': 'nominal', 'title': None,
                                      'scale': {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]},
-                                     'legend': {'orient': 'top', 'symbolType': 'square', 'labelFontSize': 14}},
+                                     'legend': {'orient': 'top', 'symbolType': 'square', 'labelFontSize': 13}},
                            'tooltip': [{'field': 'month', 'title': 'Start month'}, {'field': 'origin_group', 'title': 'Origin'},
                                        {'field': 'placements', 'title': 'Placements in this group', 'type': 'quantitative'}]}},
              {'transform': monthly_counts,
@@ -602,7 +602,7 @@ save('11-placement-months.json', {
                 'mark': {'type': 'point', 'shape': PERSON, 'filled': solid, 'opacity': 1, 'size': 330, 'strokeWidth': 0 if solid else 1.2, 'cursor': 'pointer'},
                 'encoding': {'x': SX, 'y': SY,
                              'color': {'field': 'origin_group', 'type': 'nominal', 'title': None, 'scale': {'domain': ['Malaysia', 'Other countries'], 'range': [MY, OTHER]},
-                                       'legend': {'orient': 'top', 'symbolType': 'square', 'labelFontSize': 14}},   # shared with chart 11: one legend
+                                       'legend': {'orient': 'top', 'symbolType': 'square', 'labelFontSize': 13}},   # shared with chart 11: one legend
                              'tooltip': [{'field': 'origin', 'title': 'Listed origin'}, {'field': 'start', 'title': 'Start date'},
                                          {'field': 'days', 'type': 'quantitative', 'title': 'Days on site'}]}}
                for solid in (True, False)],

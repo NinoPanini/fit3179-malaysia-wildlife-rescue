@@ -162,7 +162,7 @@
               "legend": {
                 "orient": "top",
                 "symbolType": "square",
-                "labelFontSize": 14
+                "labelFontSize": 13
               }
             },
             "tooltip": [
@@ -390,7 +390,7 @@
               },
               "title": null,
               "axis": {
-                "labelFontSize": 13.5,
+                "labelFontSize": 13,
                 "labelColor": "#1f2d2a",
                 "labelPadding": 10,
                 "ticks": false,
@@ -415,7 +415,7 @@
               "legend": {
                 "orient": "top",
                 "symbolType": "square",
-                "labelFontSize": 14
+                "labelFontSize": 13
               }
             },
             "tooltip": [
@@ -503,7 +503,7 @@
               },
               "title": null,
               "axis": {
-                "labelFontSize": 13.5,
+                "labelFontSize": 13,
                 "labelColor": "#1f2d2a",
                 "labelPadding": 10,
                 "ticks": false,
@@ -528,7 +528,7 @@
               "legend": {
                 "orient": "top",
                 "symbolType": "square",
-                "labelFontSize": 14
+                "labelFontSize": 13
               }
             },
             "tooltip": [
@@ -595,7 +595,7 @@
               },
               "title": null,
               "axis": {
-                "labelFontSize": 13.5,
+                "labelFontSize": 13,
                 "labelColor": "#1f2d2a",
                 "labelPadding": 10,
                 "ticks": false,

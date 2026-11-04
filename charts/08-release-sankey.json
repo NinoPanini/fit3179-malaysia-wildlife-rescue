@@ -194,7 +194,7 @@
         "align": "right",
         "dx": -8,
         "dy": -6,
-        "fontSize": 12.5,
+        "fontSize": 12,
         "fontWeight": 700,
         "letterSpacing": 1.5,
         "baseline": "bottom"
