@@ -44,7 +44,7 @@
         ],
         "range": [
           "#8ed2ca",
-          "#d8b58c"
+          "#9aa59d"
         ]
       },
       "legend": {
@@ -242,8 +242,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
@@ -254,8 +254,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",

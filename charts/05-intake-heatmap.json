@@ -180,12 +180,12 @@
                   "Not available"
                 ],
                 "range": [
-                  "#fbf9f2",
-                  "#f7ed9e",
-                  "#a1dab4",
-                  "#41b6c4",
-                  "#225ea8",
-                  "#d6d0bf"
+                  "#1d2926",
+                  "#22525e",
+                  "#286f7a",
+                  "#8fcf8e",
+                  "#f6efa0",
+                  "#5b605a"
                 ]
               },
               "legend": {
@@ -211,10 +211,10 @@
             },
             "color": {
               "condition": {
-                "test": "datum.band == '30% or more'",
-                "value": "#ffffff"
+                "test": "datum.band == '15–29%' || datum.band == '30% or more'",
+                "value": "#101917"
               },
-              "value": "#101917"
+              "value": "#edf1e8"
             }
           }
         }
@@ -288,8 +288,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
@@ -300,8 +300,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",

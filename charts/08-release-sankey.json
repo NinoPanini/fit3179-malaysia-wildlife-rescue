@@ -91,9 +91,9 @@
               "Birds"
             ],
             "range": [
-              "#3994be",
-              "#e7ad55",
-              "#cf8bbb"
+              "#56B4E9",
+              "#E69F00",
+              "#CC79A7"
             ]
           },
           "legend": null
@@ -150,8 +150,8 @@
               "Area"
             ],
             "range": [
-              "#e7ad55",
-              "#cf8bbb",
+              "#E69F00",
+              "#CC79A7",
               "#b4beb5"
             ]
           },
@@ -288,8 +288,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
@@ -300,8 +300,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",

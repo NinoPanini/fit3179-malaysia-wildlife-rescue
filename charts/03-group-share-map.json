@@ -103,12 +103,12 @@
               5
             ],
             "range": [
-              "#f7ed9e",
-              "#a1dab4",
-              "#41b6c4",
-              "#2171b5",
-              "#253494",
-              "#020c33"
+              "#1F3B42",
+              "#22525E",
+              "#286F7A",
+              "#4FB39B",
+              "#A6D98A",
+              "#F6EFA0"
             ]
           },
           "legend": {
@@ -371,13 +371,13 @@
         "color": {
           "condition": {
             "test": "datum.cls >= 3",
-            "value": "#ffffff"
+            "value": "#101917"
           },
-          "value": "#101917"
+          "value": "#ffffff"
         },
         "stroke": {
           "value": {
-            "expr": "[\"#f7ed9e\", \"#a1dab4\", \"#41b6c4\", \"#2171b5\", \"#253494\", \"#020c33\"][datum.cls]"
+            "expr": "[\"#1F3B42\", \"#22525E\", \"#286F7A\", \"#4FB39B\", \"#A6D98A\", \"#F6EFA0\"][datum.cls]"
           }
         },
         "strokeWidth": {
@@ -512,8 +512,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#c6d1ca",
       "titleColor": "#edf1e8",
@@ -524,8 +524,8 @@
       "titlePadding": 12
     },
     "legend": {
-      "labelFontSize": 14,
-      "titleFontSize": 14,
+      "labelFontSize": 13,
+      "titleFontSize": 13,
       "titleFontWeight": 600,
       "labelColor": "#edf1e8",
       "titleColor": "#edf1e8",

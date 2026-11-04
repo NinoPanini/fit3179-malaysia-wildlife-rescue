@@ -16,13 +16,13 @@ SCHEMA = 'https://vega.github.io/schema/vega-lite/v5.json'
 # Switch label ink according to its immediate background, including offshore map labels.
 INK, MUTED, GRID, PAPER = '#edf1e8', '#c6d1ca', '#3a4842', '#17201e'
 ON_LIGHT = '#101917'
-GROUP = {'Reptiles': '#3994be', 'Mammals': '#e7ad55', 'Birds': '#cf8bbb'}
+GROUP = {'Reptiles': '#56B4E9', 'Mammals': '#E69F00', 'Birds': '#CC79A7'}   # Okabe-Ito originals: they pass the colour-blind check on the dark page
 # The state outline separates the deepest navy from the dark sea.
-SEQ = ['#f7ed9e', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']
+SEQ = ['#1F3B42', '#22525E', '#286F7A', '#4FB39B', '#A6D98A', '#F6EFA0']   # on a dark page brighter means more (FIT2179 colour notes), from dark teal to pale yellow
 # Zero, four increasing shares, and a separate neutral for a missing observation.
-HEAT = ['#fbf9f2', *SEQ[:3], '#225ea8', '#d6d0bf']
+HEAT = ['#1d2926', '#22525e', '#286f7a', '#8fcf8e', '#f6efa0', '#5b605a']   # zero is the darkest cell, the biggest shares the brightest
 MARK = '#80c3de'
-MY, OTHER = '#28738a', '#b6ae99'
+MY, OTHER = '#4fa6bf', '#b6ae99'   # Malaysia's blue reaches 5.2:1 on the tinted background; its labels are dark
 ORIGIN_RANGE = [MY, OTHER]
 # Give small or hollow people the same hue as the bars, at a higher lightness.
 ORIGIN_SYMBOLS = ['#70c6df', OTHER]
@@ -33,10 +33,10 @@ FONT = "'Source Sans 3', 'Segoe UI', Arial, sans-serif"  # quoted: the family na
 CONFIG = {
     'background': None, 'font': FONT,
     'view': {'stroke': None},
-    'axis': {'labelFontSize': 14, 'titleFontSize': 14, 'titleFontWeight': 600, 'labelColor': MUTED,
+    'axis': {'labelFontSize': 13, 'titleFontSize': 13, 'titleFontWeight': 600, 'labelColor': MUTED,
              'titleColor': INK, 'domain': False, 'gridColor': GRID, 'tickColor': GRID,
              'labelPadding': 6, 'titlePadding': 12},
-    'legend': {'labelFontSize': 14, 'titleFontSize': 14, 'titleFontWeight': 600, 'labelColor': INK,
+    'legend': {'labelFontSize': 13, 'titleFontSize': 13, 'titleFontWeight': 600, 'labelColor': INK,
                'titleColor': INK, 'symbolStrokeWidth': 0},
     'text': {'font': FONT, 'color': INK},
     'title': {'font': FONT, 'anchor': 'start', 'color': INK, 'subtitleColor': MUTED},
@@ -151,7 +151,7 @@ save('02-handover-map.json', {
     ] + [{'data': {'values': [d for d in CIRCLE_LABELS if d['align'] == a]},
           'transform': [{'lookup': 'state', 'from': {'data': {'url': 'data/handovers-2024.json'}, 'key': 'state', 'fields': ['total']}},
                         {'calculate': "[datum.name, format(datum.total, ',')]", 'as': 'label'}],
-          'mark': {'type': 'text', 'align': a, 'dx': 4 if a == 'left' else -4, 'fontSize': 13, 'fontWeight': 600, 'lineHeight': 15, 'baseline': 'middle'},
+          'mark': {'type': 'text', 'align': a, 'dx': 4 if a == 'left' else -4, 'fontSize': 12, 'fontWeight': 600, 'lineHeight': 15, 'baseline': 'middle'},
           'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
                        'text': {'field': 'label'}}} for a in ('left', 'right')],
 })
@@ -229,7 +229,7 @@ save('03-group-share-map.json', {
                    'align': 'right' if offshore else 'center', 'dx': -4 if offshore else 0, 'tooltip': {'expr': TIP_03}},
           'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
                        'text': {'field': 'label'},
-                       'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': '#ffffff'}, 'value': ON_LIGHT},
+                       'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': ON_LIGHT}, 'value': '#ffffff'},
                        # Keep long names legible where they cross a coastline or adjacent state.
                        'stroke': {'value': PAPER} if offshore else {'value': {'expr': f'{json.dumps(SEQ)}[datum.cls]'}},
                        'strokeWidth': {'value': 2.5}}}
@@ -240,7 +240,7 @@ save('03-group-share-map.json', {
 # One bar per state, sorted from the biggest rise to the biggest fall. Rises go right of zero (slate),
 # falls go left (amber), so direction reads from position as well as colour. Each bar is labelled with
 # the change and both counts. (Map 02 already shows the 2024 totals; this chart shows the change.)
-RISE, FALL = '#68adbd', '#e7ad55'
+RISE, FALL = '#68adbd', '#c9d3cc'   # falls in light grey, so orange only means mammals
 trend = json.loads((ROOT / 'data/handovers-trend.json').read_text(encoding='utf8'))
 by = {(r['state'], r['year']): r['total'] for r in trend}
 CHANGE_ORDER = sorted({r['state'] for r in trend}, key=lambda st: -(by[(st, 2024)] - by[(st, 2021)]))   # biggest rise first
@@ -269,7 +269,7 @@ save('04-state-comparison.json', {
         *[{'transform': [{'filter': test}, {'calculate': change_label, 'as': 'label'}],
            'mark': {'type': 'text', 'align': align, 'dx': dx, 'fontSize': 13, 'fontWeight': 600, 'color': colour},
            'encoding': {'x': {'field': 'change', 'type': 'quantitative'}, 'text': {'field': 'label'}}}
-          for test, align, dx, colour in [('datum.change >= 0', 'left', 8, INK), ('datum.change < 0', 'right', -8, '#edbf79')]],
+          for test, align, dx, colour in [('datum.change >= 0', 'left', 8, INK), ('datum.change < 0', 'right', -8, '#c9d3cc')]],
         *[{'data': {'values': [{'x': x, 't': t}]},   # direction cues above the zero line
            'mark': {'type': 'text', 'align': align, 'baseline': 'bottom', 'dy': -6, 'fontSize': 12, 'fontStyle': 'italic', 'color': MUTED},
            'encoding': {'x': {'field': 'x', 'type': 'quantitative'}, 'y': {'value': 0}, 'text': {'field': 't'}}}
@@ -328,7 +328,7 @@ save('05-intake-heatmap.json', {
                                                 'symbolStrokeColor': '#829387', 'symbolStrokeWidth': 1}}}},
              {'mark': {'type': 'text', 'fontSize': 15, 'fontWeight': 600},
               'encoding': {'text': {'field': 'label'},
-                           'color': {'condition': {'test': "datum.band == '30% or more'", 'value': '#ffffff'}, 'value': ON_LIGHT}}},
+                           'color': {'condition': {'test': "datum.band == '15–29%' || datum.band == '30% or more'", 'value': ON_LIGHT}, 'value': INK}}},
          ]},
         {'width': 95, 'height': 330, 'title': {'text': 'Year total', 'subtitle': '= 100% of the row', 'anchor': 'middle', 'fontSize': 14, 'subtitleFontSize': 12, 'offset': 8},
          'data': {'url': 'data/nwrc-intake-totals.json'},
@@ -370,7 +370,7 @@ save('06-bear-outcomes.json', {
          'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'dx': 10, 'dy': 1, 'fontSize': 15, 'fontWeight': 700, 'color': INK},
          'encoding': {'text': {'field': 'label'}}},
         {'transform': nodes('datum.level == 3'),   # each bear's key dates, under its name
-         'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 10, 'dy': 3, 'fontSize': 14, 'color': MUTED},
+         'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 10, 'dy': 3, 'fontSize': 13, 'color': MUTED},
          'encoding': {'text': {'field': 'detail'}}},
     ],
 })
@@ -485,7 +485,7 @@ save('08-release-sankey.json', {
 })
 
 # ---- 09 Volunteers and interns, 2021-2025 (basic multi-line) -----------
-PROG = {'domain': ['Volunteers', 'Interns'], 'range': ['#8ed2ca', '#d8b58c']}   # direct labels, point shapes and line dashes distinguish the programmes as well
+PROG = {'domain': ['Volunteers', 'Interns'], 'range': ['#8ed2ca', '#9aa59d']}   # direct labels, point shapes and line dashes distinguish the programmes as well
 PROG_LEGEND = {'orient': 'top', 'direction': 'horizontal', 'title': None, 'symbolType': 'stroke', 'symbolStrokeWidth': 3, 'symbolSize': 700, 'labelFontSize': 13, 'columnPadding': 24}
 save('09-volunteer-lines.json', {
     'description': 'Line chart: volunteers and interns reported by BSBCC each year, 2021-2025.',
@@ -540,7 +540,7 @@ save('10-volunteer-origins.json', {
         {'transform': [{'filter': "datum.level == 'country'"}],
          'mark': {'type': 'text', 'align': 'left', 'baseline': 'top', 'dx': 8, 'dy': 7, 'fontSize': 13, 'fontWeight': 700, 'lineHeight': 16},
          'encoding': {'x': {'field': 'x', **TX}, 'y': {'field': 'y', **TY}, 'text': {'field': 'label'},
-                      'color': {'condition': {'test': "datum.group == 'Malaysia'", 'value': '#ffffff'}, 'value': ON_LIGHT}}},
+                      'color': {'value': ON_LIGHT}}},
         {'transform': [{'filter': "datum.level == 'group'"},
                        {'calculate': "datum.group == 'Malaysia' ? 'From Malaysia · ' + datum.placements : 'From eight other countries · ' + datum.placements", 'as': 'head'}],
          'mark': {'type': 'text', 'align': 'left', 'baseline': 'bottom', 'dx': 2, 'dy': -8, 'fontSize': 13, 'fontWeight': 700, 'color': INK},
@@ -595,7 +595,7 @@ save('11-placement-months.json', {
              {'transform': monthly_counts,
               'mark': {'type': 'text', 'fontSize': 13, 'fontWeight': 700, 'cursor': 'pointer'},
               'encoding': {'y': {'field': 'middle', 'type': 'quantitative'}, 'text': {'field': 'placements'},
-                           'color': {'condition': {'test': "datum.origin_group == 'Malaysia'", 'value': '#ffffff'}, 'value': ON_LIGHT}}},
+                           'color': {'value': ON_LIGHT}}},
              {'transform': [{'aggregate': [{'op': 'count', 'as': 'total'}], 'groupby': ['month']}],
               'mark': {'type': 'text', 'dy': -9, 'fontSize': 15, 'fontWeight': 700, 'cursor': 'pointer'},
               'encoding': {'y': {'field': 'total', 'type': 'quantitative'}, 'text': {'field': 'total'}}},
