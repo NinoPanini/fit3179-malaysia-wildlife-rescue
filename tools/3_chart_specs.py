@@ -12,15 +12,15 @@ OUT = ROOT / 'charts'                 # ROOT is the website folder
 SCHEMA = 'https://vega.github.io/schema/vega-lite/v5.json'
 
 # ---- One palette for the whole page -------------------------------------
-# Hue identifies animal groups. On dark surfaces higher quantities become lighter.
+# Hue identifies animal groups. Both themes use darker fills for higher values.
 # Switch label ink according to its immediate background, including offshore map labels.
 INK, MUTED, GRID, PAPER = '#edf1e8', '#c6d1ca', '#3a4842', '#17201e'
 ON_LIGHT = '#101917'
 GROUP = {'Reptiles': '#3994be', 'Mammals': '#e7ad55', 'Birds': '#cf8bbb'}
-# Keep the lowest mapped state distinct from the sea. Dark ink starts at class 3.
-SEQ = ['#354a65', '#286180', '#29708b', '#54a3ab', '#98cdbd', '#f4dfa2']
+# The state outline separates the deepest navy from the dark sea.
+SEQ = ['#f7ed9e', '#a1dab4', '#41b6c4', '#2171b5', '#253494', '#020c33']
 # Zero, four increasing shares, and a separate neutral for a missing observation.
-HEAT = ['#25302e', '#334f69', '#33738a', '#74b9ad', '#f0d58a', '#514953']
+HEAT = ['#fbf9f2', *SEQ[:3], '#225ea8', '#d6d0bf']
 MARK = '#80c3de'
 MY, OTHER = '#28738a', '#b6ae99'
 ORIGIN_RANGE = [MY, OTHER]
@@ -207,7 +207,7 @@ save('03-group-share-map.json', {
                        {'calculate': share, 'as': 'share'},
                        {'calculate': COUNT_03, 'as': 'count'},
                        {'calculate': cls, 'as': 'cls'}],
-         'mark': {'type': 'geoshape', 'stroke': BORDER, 'strokeWidth': 0.9, 'tooltip': {'expr': TIP_03}},
+         'mark': {'type': 'geoshape', 'stroke': '#9fa99f', 'strokeWidth': 1.1, 'tooltip': {'expr': TIP_03}},
          'encoding': {
              'color': {'field': 'cls', 'type': 'ordinal', 'title': 'Colour class (classes change with the view)',
                        'scale': {'domain': [0, 1, 2, 3, 4, 5], 'range': SEQ},
@@ -224,12 +224,15 @@ save('03-group-share-map.json', {
                                                       'fields': ['reptiles', 'mammals', 'birds', 'total', 'area_km2', 'per_1000_km2']}},
                         {'calculate': share, 'as': 'share'}, {'calculate': cls, 'as': 'cls'}, {'calculate': COUNT_03, 'as': 'count'},
                         {'calculate': "[datum.name, " + LABEL_03 + "]", 'as': 'label'}],
-          # offshore labels sit on the dark page; inland labels switch to dark ink on bright classes
+          # Offshore labels sit on the dark page. Inland labels follow the state's fill.
           'mark': {'type': 'text', 'fontSize': 13, 'fontWeight': 650, 'lineHeight': 15, 'baseline': 'middle',
                    'align': 'right' if offshore else 'center', 'dx': -4 if offshore else 0, 'tooltip': {'expr': TIP_03}},
           'encoding': {'longitude': {'field': 'lon', 'type': 'quantitative'}, 'latitude': {'field': 'lat', 'type': 'quantitative'},
                        'text': {'field': 'label'},
-                       'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': ON_LIGHT}, 'value': INK}}}
+                       'color': {'value': INK} if offshore else {'condition': {'test': 'datum.cls >= 3', 'value': '#ffffff'}, 'value': ON_LIGHT},
+                       # Keep long names legible where they cross a coastline or adjacent state.
+                       'stroke': {'value': PAPER} if offshore else {'value': {'expr': f'{json.dumps(SEQ)}[datum.cls]'}},
+                       'strokeWidth': {'value': 2.5}}}
          for offshore in (False, True)],
 })
 
@@ -317,16 +320,15 @@ save('05-intake-heatmap.json', {
                          {'field': 'share', 'type': 'quantitative', 'title': 'Share of the year', 'format': '.1%'}]},
          'layer': [
              {'mark': {'type': 'rect', 'cornerRadius': 3},
-              # Quiet seams separate ordinary cells. An outline distinguishes zero and missing months.
-              'encoding': {'stroke': {'condition': {'test': '!datum.reported || datum.animals == 0', 'value': '#809187'}, 'value': PAPER},
-                           'strokeWidth': {'value': 1.5},
+              # A neutral seam keeps dark peak cells visible at the edge of the grid.
+              'encoding': {'stroke': {'value': '#a0a598'}, 'strokeWidth': {'value': 1},
                            'color': {'field': 'band', 'type': 'ordinal', 'title': 'Share of the row’s year total that arrived in the month',
                                      'scale': {'domain': BANDS, 'range': HEAT},
                                      'legend': {'orient': 'bottom', 'direction': 'horizontal', 'symbolType': 'square', 'titleLimit': 600,
                                                 'symbolStrokeColor': '#829387', 'symbolStrokeWidth': 1}}}},
              {'mark': {'type': 'text', 'fontSize': 15, 'fontWeight': 600},
               'encoding': {'text': {'field': 'label'},
-                           'color': {'condition': {'test': "datum.band == '30% or more' || datum.band == '15–29%'", 'value': ON_LIGHT}, 'value': INK}}},
+                           'color': {'condition': {'test': "datum.band == '30% or more'", 'value': '#ffffff'}, 'value': ON_LIGHT}}},
          ]},
         {'width': 95, 'height': 330, 'title': {'text': 'Year total', 'subtitle': '= 100% of the row', 'anchor': 'middle', 'fontSize': 14, 'subtitleFontSize': 12, 'offset': 8},
          'data': {'url': 'data/nwrc-intake-totals.json'},

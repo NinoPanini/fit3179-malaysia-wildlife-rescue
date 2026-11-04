@@ -82,8 +82,8 @@
       ],
       "mark": {
         "type": "geoshape",
-        "stroke": "#83968a",
-        "strokeWidth": 0.9,
+        "stroke": "#9fa99f",
+        "strokeWidth": 1.1,
         "tooltip": {
           "expr": "groupChoice == 'All animals' ? {'State': datum.name, 'Animals per 1,000 km²': format(datum.per_1000_km2, ',.0f'), 'Animals handed over': format(datum.total, ','), 'Land area (km²)': format(datum.area_km2, ',')} : groupChoice == 'Reptiles' ? {'State': datum.name, 'Share that were reptiles': format(datum.share, '.1%'), 'Reptiles handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')} : groupChoice == 'Mammals' ? {'State': datum.name, 'Share that were mammals': format(datum.share, '.1%'), 'Mammals handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')} : {'State': datum.name, 'Share that were birds': format(datum.share, '.1%'), 'Birds handed over': format(datum.count, ','), 'All animals handed over': format(datum.total, ',')}"
         }
@@ -103,12 +103,12 @@
               5
             ],
             "range": [
-              "#354a65",
-              "#286180",
-              "#29708b",
-              "#54a3ab",
-              "#98cdbd",
-              "#f4dfa2"
+              "#f7ed9e",
+              "#a1dab4",
+              "#41b6c4",
+              "#2171b5",
+              "#253494",
+              "#020c33"
             ]
           },
           "legend": {
@@ -371,9 +371,17 @@
         "color": {
           "condition": {
             "test": "datum.cls >= 3",
-            "value": "#101917"
+            "value": "#ffffff"
           },
-          "value": "#edf1e8"
+          "value": "#101917"
+        },
+        "stroke": {
+          "value": {
+            "expr": "[\"#f7ed9e\", \"#a1dab4\", \"#41b6c4\", \"#2171b5\", \"#253494\", \"#020c33\"][datum.cls]"
+          }
+        },
+        "strokeWidth": {
+          "value": 2.5
         }
       }
     },
@@ -483,6 +491,12 @@
         },
         "color": {
           "value": "#edf1e8"
+        },
+        "stroke": {
+          "value": "#17201e"
+        },
+        "strokeWidth": {
+          "value": 2.5
         }
       }
     }

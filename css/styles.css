@@ -227,3 +227,4 @@ footer p{margin:6px 0 12px}
   .chapter--tint::before{display:none}
   .chart-scroll{overflow:visible}
 }
+#share-map .mark-text text{paint-order:stroke fill;stroke-linejoin:round}
